@@ -34,6 +34,7 @@ signal stage_changed(stage_name: String)
 @export var _avatar: EMC_Avatar
 @export var _day_mngr: EMC_DayMngr
 @export var _gui_mngr: EMC_GUIMngr
+@export var _npc_mngr: EMC_NPC_Mngr
 
 @onready var stage_offset: Node2D = $StageOffset
 
@@ -48,9 +49,11 @@ var _opt_event_mngr: EMC_OptionalEventMngr
 
 ########################################## PUBLIC METHODS ##########################################
 ## Konstruktor: Interne Avatar-Referenz setzen
-func setup(p_opt_event_mngr: EMC_OptionalEventMngr) -> void:
+func setup(p_opt_event_mngr: EMC_OptionalEventMngr, p_npc_mngr: EMC_NPC_Mngr = null) -> void:
 	_avatar.arrived.connect(_on_avatar_arrived)
 	_opt_event_mngr = p_opt_event_mngr
+	if p_npc_mngr != null:
+		_npc_mngr = p_npc_mngr
 
 	change_stage(_initial_stage_name, false)
 ## if the stage change does not advance the day it should be set to false
@@ -79,6 +82,11 @@ func load_stage(stage_name: String) -> void:
 		_stage_scn = _stages[stage_name]
 		
 	_curr_stage = _stage_scn.instantiate()
+	if not Engine.is_editor_hint():
+		if _npc_mngr != null and _opt_event_mngr != null:
+			_curr_stage.setup(_npc_mngr, _opt_event_mngr)
+		else:
+			printerr("EMC_StageMngr: missing NPCMngr and/or OptionalEventMngr reference; stage setup skipped.")
 	stage_offset.add_child(_curr_stage)
 	if not Engine.is_editor_hint():
 		_day_mngr.period_increased.connect(_curr_stage.show_electricity)
@@ -110,6 +118,11 @@ func load_state(data: Dictionary) -> void:
 
 func request_spot(spot_name: String) -> EMC_Stage_Spot:
 	return _curr_stage.request_spot(spot_name)
+
+func get_NPC(p_NPC_name: String) -> EMC_NPC:
+	if _npc_mngr == null:
+		return null
+	return _npc_mngr.get_NPC(p_NPC_name)
 
 ########################################## PRIVATE METHODS #########################################
 func _ready() -> void:

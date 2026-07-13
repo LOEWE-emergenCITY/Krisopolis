@@ -46,6 +46,8 @@ func _ready() -> void:
 		_place_upgrade_furniture()
 	
 		show_electricity()
+		if _opt_event_mngr != null and _npcs != null:
+			_load_optional_event()
 	
 func get_tile_type(p_click_pos : Vector2) -> String:
 	var tile_coord := _global_to_map(p_click_pos)

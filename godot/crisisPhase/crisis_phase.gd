@@ -113,7 +113,7 @@ func _ready() -> void:
 	icon_information.hide()
 	
 	#### Stage
-	stage_mngr.setup(_opt_event_mngr)
+	stage_mngr.setup(_opt_event_mngr, npc_mngr)
 	
 	stage_mngr.npc_interaction.connect(_gui_mngr._on_npc_interaction)
 	

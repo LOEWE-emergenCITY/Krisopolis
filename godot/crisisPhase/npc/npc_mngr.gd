@@ -27,14 +27,19 @@ func _on_stage_changed(stage_name: String) -> void:
 			npc.disable()
 			continue
 		
-		var spot_name: String = npc.get_current_spot()
-		var spot := _stage_mngr.request_spot(spot_name)
-		if spot == null:
-			npc.disable()
-			continue
-		
-		npc.global_position = spot.global_position
-		npc.enable()
+		var npc_stage: EMC_NPC_Stage = npc.npc_resource.get_comp(EMC_NPC_Stage)
+		if npc_stage != null and npc_stage.override_pos.is_finite():
+			npc.global_position = npc_stage.override_pos
+			npc.enable()
+		else:
+			var spot_name: String = npc.get_current_spot()
+			var spot := _stage_mngr.request_spot(spot_name)
+			if spot == null:
+				npc.disable()
+				continue
+			
+			npc.global_position = spot.global_position
+			npc.enable()
 
 ## Remove all NPCs that are currently spawned
 func deactivate_NPCs() -> void:
