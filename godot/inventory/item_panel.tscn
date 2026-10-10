@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://odvg8lycuwvb"]
+[gd_scene format=3 uid="uid://odvg8lycuwvb"]
 
 [ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="1_d6xj4"]
 [ext_resource type="PackedScene" uid="uid://cfk7h3ji5pkne" path="res://inventory/item_slot.tscn" id="2_pcm6l"]
 
-[node name="ItemPanel" type="PanelContainer"]
+[node name="ItemPanel" type="PanelContainer" unique_id=126185071]
 anchors_preset = -1
 anchor_left = 0.083
 anchor_top = 0.047
@@ -15,5 +15,5 @@ offset_right = -47.808
 offset_bottom = -48.128
 theme_override_styles/panel = ExtResource("1_d6xj4")
 
-[node name="ItemSlot" parent="." instance=ExtResource("2_pcm6l")]
+[node name="ItemSlot" parent="." unique_id=1331889111 instance=ExtResource("2_pcm6l")]
 layout_mode = 2
