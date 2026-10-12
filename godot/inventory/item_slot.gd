@@ -19,10 +19,22 @@ signal item_clicked(item : EMC_Item)
 signal item_long_pressed(item: EMC_Item, blocked: bool)
 signal item_swipe_left(item: EMC_Item)
 signal item_swipe_right(item: EMC_Item)
-	
+
+@export var hold_time := 0.5
+
+var _holding := false
+var _hold_triggered := false
+var _hold_timer: Timer
+
 func _init() -> void:
 	if Engine.is_editor_hint():
 		item = EMC_Item.new()
+		
+	_hold_timer = Timer.new()
+	_hold_timer.one_shot = true
+	_hold_timer.wait_time = hold_time
+	_hold_timer.timeout.connect(_on_hold_timer_timeout)
+	add_child(_hold_timer)
 	
 func _ready() -> void:
 	load_texture()
@@ -73,34 +85,51 @@ func unblock() -> void:
 	
 func is_blocked() -> bool:
 	return disabled
+	
+var start_pos: Vector2
 
-func _on_item_button_pressed() -> void:
+func _on_item_button_button_down() -> void:
 	for slot: EMC_Item_Slot in get_tree().get_nodes_in_group("slot"):
 		slot.reset_highlight()
-	
+		
 	if item.get_id() == EMC_Item.IDs.DUMMY:
 		return
 	
+	start_pos = get_viewport().get_mouse_position()
+	
+	_holding = true
+	_hold_triggered = false
+	_hold_timer.start()
 	var tween: Tween = get_tree().create_tween()
-	
-	var start_pos: Vector2 = get_viewport().get_mouse_position()
-	
 	tween.tween_property(slot_bg, "modulate", HIGHLIGHTED_COLOR, 0.4)
-	await EMC_Util.Promise.new([get_tree().create_timer(0.5).timeout, item_button.button_up], EMC_Util.Promise.signal_or_name).complete
-	if (item_button.button_pressed 
-	or (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and get_viewport().get_mouse_position().distance_to(start_pos) < DRAG_THRESHOLD)):
+
+func _on_item_button_button_up() -> void:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and get_viewport().get_mouse_position().distance_to(start_pos) < DRAG_THRESHOLD:
+		return
+	
+	_trigger_input()
+	
+func _trigger_input() -> void:
+	_hold_timer.stop()
+	var mouse_position: Vector2 = get_viewport().get_mouse_position()
+	if mouse_position.distance_to(start_pos) > DRAG_THRESHOLD:
+		slot_bg.set_modulate(DEFAULT_COLOR)
+		_holding = false
+		return
+	
+	if _hold_triggered:
 		item_long_pressed.emit(item, disabled)
 		slot_bg.set_modulate(DEFAULT_COLOR)
-		#item.clicked_sound()
-	else:
-		var mouse_position: Vector2 = get_viewport().get_mouse_position()
-		tween.stop()
-		if not disabled and mouse_position.distance_to(start_pos) < DRAG_THRESHOLD: #item_button.get_global_rect().has_point(mouse_position):
-			slot_bg.set_modulate(HIGHLIGHTED_COLOR)
-			#item.clicked_sound()
-			item_clicked.emit(item)
-		else:
-			slot_bg.set_modulate(DEFAULT_COLOR)
+	elif not disabled and _holding:
+		slot_bg.set_modulate(HIGHLIGHTED_COLOR)
+		item_clicked.emit(item)
+		
+	_holding = false
+
+func _on_hold_timer_timeout() -> void:
+	if _holding:
+		_hold_triggered = true
+		_trigger_input()
 
 func reset_highlight() -> void:
 	slot_bg.set_modulate(DEFAULT_COLOR)

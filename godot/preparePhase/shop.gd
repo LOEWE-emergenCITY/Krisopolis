@@ -96,7 +96,7 @@ func _on_inventory_item_clicked(sender : EMC_Item) -> void:
 	#item_info_gui.hide()
 	
 	#_display_info(sender)
-	_tmp_inventory.remove_item(sender)
+	_tmp_inventory.remove_item.call_deferred(sender)
 	var comp := sender.get_comp(EMC_IC_Cost)
 	if comp != null:
 		_add_balance(comp.get_cost())

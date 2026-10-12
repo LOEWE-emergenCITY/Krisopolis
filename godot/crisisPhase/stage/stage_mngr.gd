@@ -18,7 +18,7 @@ const STAGENAME_ROWHOUSE: String = "rowhouse"
 const STAGENAME_MANSION: String = "mansion"
 const STAGENAME_PENTHOUSE: String = "penthouse"
 #kann mehrfach verwendet werden in der Zukunft:
-const STAGENAME_APARTMENT_DEFAULT: String = "apartment_default" 
+const STAGENAME_APARTMENT_DEFAULT: String = "apartment_default"
 const STAGENAME_APARTMENT_MERT: String = "apartment_mert"
 const STAGENAME_APARTMENT_CAMPER: String = "apartment_camper"
 
@@ -33,7 +33,7 @@ signal stage_changed(stage_name: String)
 
 @export var _avatar: EMC_Avatar
 @export var _day_mngr: EMC_DayMngr
-@export var _gui_mngr : EMC_GUIMngr
+@export var _gui_mngr: EMC_GUIMngr
 
 @onready var stage_offset: Node2D = $StageOffset
 
@@ -42,7 +42,7 @@ var _curr_stage: EMC_Stage
 var _last_click_position: Vector2 = Vector2.INF
 var _last_clicked_NPC: EMC_NPC = null
 
-var _initial_stage_name : String = "home"
+var _initial_stage_name: String = "home"
 var _opt_event_mngr: EMC_OptionalEventMngr
 
 
@@ -54,7 +54,7 @@ func setup(p_opt_event_mngr: EMC_OptionalEventMngr) -> void:
 
 	change_stage(_initial_stage_name, false)
 ## if the stage change does not advance the day it should be set to false
-func change_stage(p_stage_name: String, wait : bool = true) -> void:
+func change_stage(p_stage_name: String, wait: bool = true) -> void:
 	if wait:
 		await _day_mngr.animation_end
 
@@ -99,13 +99,13 @@ func get_curr_stage_name() -> String:
 	return _curr_stage.name
 
 func save() -> Dictionary:
-	var data : Dictionary = {
-		"node_path" : get_path(),
-		"stage_name" : get_curr_stage_name(),
+	var data: Dictionary = {
+		"node_path": get_path(),
+		"stage_name": get_curr_stage_name(),
 	}
 	return data
 
-func load_state(data : Dictionary) -> void:
+func load_state(data: Dictionary) -> void:
 	_initial_stage_name = data.get("stage_name", "home")
 
 func request_spot(spot_name: String) -> EMC_Stage_Spot:
@@ -143,15 +143,14 @@ func _on_NPC_clicked(p_NPC: EMC_NPC) -> void:
 ## See func _unhandled_input for where the navigation began
 ## (doesn't have to be the target position that was originally set)
 func _on_avatar_arrived() -> void:
-	
 	if not _last_click_position.is_finite() and _last_clicked_NPC != null:
 		#NPC
 			npc_interaction.emit(_last_clicked_NPC)
-	else: 
+	else:
 		#FURNITURE
-		var raw_type_content : PackedStringArray = _curr_stage.get_tile_type(_last_click_position).split("\\")
-		var type : String = raw_type_content[0]
-		var content : String
+		var raw_type_content: PackedStringArray = _curr_stage.get_tile_type(_last_click_position).split("\\")
+		var type: String = raw_type_content[0]
+		var content: String
 		if raw_type_content.size() >= 2:
 			content = raw_type_content[1]
 		match type:

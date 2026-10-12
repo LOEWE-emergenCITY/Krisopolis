@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfk7h3ji5pkne"]
+[gd_scene format=3 uid="uid://cfk7h3ji5pkne"]
 
 [ext_resource type="Texture2D" uid="uid://cp0iweoxe0jx2" path="res://assets/GUI/buttons/button_inventory_slot.png" id="1_l71h0"]
 [ext_resource type="Script" uid="uid://b7tpvnn3lxhy4" path="res://inventory/item_slot.gd" id="1_lvpcn"]
@@ -14,7 +14,7 @@ region = Rect2(0, 0, 64, 64)
 script = ExtResource("2_dgih1")
 texture = SubResource("AtlasTexture_2xwh8")
 
-[node name="Slot_BG" type="TextureRect" groups=["slot"]]
+[node name="Slot_BG" type="TextureRect" unique_id=741184797 groups=["slot"]]
 custom_minimum_size = Vector2(32, 32)
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,7 +32,7 @@ expand_mode = 3
 script = ExtResource("1_lvpcn")
 item = SubResource("Resource_xtiqa")
 
-[node name="ItemButton" type="TextureButton" parent="."]
+[node name="ItemButton" type="TextureButton" parent="." unique_id=957065323]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,11 +41,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 action_mode = 0
+button_mask = 3
 texture_normal = SubResource("AtlasTexture_2xwh8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ItemSlot" type="Control" parent="."]
+[node name="ItemSlot" type="Control" parent="." unique_id=841602563]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -65,4 +66,5 @@ size_flags_vertical = 4
 mouse_filter = 1
 mouse_force_pass_scroll_events = false
 
-[connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="button_down" from="ItemButton" to="." method="_on_item_button_button_down"]
+[connection signal="button_up" from="ItemButton" to="." method="_on_item_button_button_up"]
