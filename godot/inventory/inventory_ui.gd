@@ -28,6 +28,7 @@ func _ready() -> void:
 func reload() -> void:
 	for child : EMC_Item_Slot in grid.get_children():
 		child.queue_free()
+		grid.remove_child(child)
 		
 	var items := inventory.get_items_or_dummy()
 	items.sort_custom(EMC_Inventory.sort_by_id_exclusive(block_items))

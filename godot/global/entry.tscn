@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6dhg3wicg3a5"]
+[gd_scene format=3 uid="uid://c6dhg3wicg3a5"]
 
 [ext_resource type="Script" uid="uid://b47fpyj0h0ry1" path="res://global/entry.gd" id="1_jmk7n"]
 [ext_resource type="VideoStream" uid="uid://dx1qb6rn7dgfk" path="res://assets/video/251128_Krisopolis_Intro_2160p__H264_25Mbit__UT_DE.ogv" id="2_n7mir"]
@@ -14,10 +14,10 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
-[node name="Entry" type="Node"]
+[node name="Entry" type="Node" unique_id=1288652697]
 script = ExtResource("1_jmk7n")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1089138656]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,19 +25,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="IntoVideo" type="VideoStreamPlayer" parent="."]
+[node name="IntoVideo" type="VideoStreamPlayer" parent="." unique_id=350668419]
 offset_right = 576.0
 offset_bottom = 1024.0
 stream = ExtResource("2_n7mir")
 expand = true
 
-[node name="BootVideo" type="VideoStreamPlayer" parent="."]
+[node name="BootVideo" type="VideoStreamPlayer" parent="." unique_id=344985411]
 offset_right = 576.0
 offset_bottom = 1024.0
 stream = ExtResource("3_tbubc")
 expand = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=455796304]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,7 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=919809119]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -57,7 +57,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="skip" type="RichTextLabel" parent="Margin"]
+[node name="skip" type="RichTextLabel" parent="Margin" unique_id=2000023535]
 visible = false
 layout_mode = 2
 mouse_filter = 2
@@ -65,7 +65,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "Klicke nochmal zum Überspringen >>"
 fit_content = true
 
-[node name="DataGui" type="PanelContainer" parent="."]
+[node name="DataGui" type="PanelContainer" parent="." unique_id=2034628842]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,17 +80,17 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DataGui"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DataGui" unique_id=489223117]
 custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="DataGui/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="DataGui/VBoxContainer" unique_id=730288278]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_h7xur")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DataGui/VBoxContainer/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="DataGui/VBoxContainer/PanelContainer" unique_id=255047331]
 layout_mode = 2
 theme = ExtResource("6_r7xhs")
 bbcode_enabled = true
@@ -104,18 +104,18 @@ Wenn das für dich in Ordnung ist, tippe auf „Weiter“ und tauche ein in die 
 "
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DataGui/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DataGui/VBoxContainer" unique_id=1699199020]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="ConfirmationBtn" parent="DataGui/VBoxContainer/HBoxContainer" instance=ExtResource("7_g5x06")]
+[node name="ConfirmationBtn" parent="DataGui/VBoxContainer/HBoxContainer" unique_id=569501057 instance=ExtResource("7_g5x06")]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 theme_type_variation = &"ConfirmButton"
 text = "Weiter"
 
-[node name="Cancel" parent="DataGui/VBoxContainer/HBoxContainer" instance=ExtResource("7_g5x06")]
+[node name="Cancel" parent="DataGui/VBoxContainer/HBoxContainer" unique_id=1479521448 instance=ExtResource("7_g5x06")]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 theme_type_variation = &"CancelButton"

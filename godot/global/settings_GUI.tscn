@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5dpuu2l72yhg"]
+[gd_scene format=3 uid="uid://5dpuu2l72yhg"]
 
 [ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="1_g18nf"]
 [ext_resource type="Script" uid="uid://clstq8gwbbcak" path="res://global/settings_GUI.gd" id="2_f1d4f"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cdvvsn8hcgjtw" path="res://GUI/default/confirmation_GUI.tscn" id="6_cbnpx"]
 [ext_resource type="PackedScene" uid="uid://dmp3dkvy1barj" path="res://GUI/default/tooltip_GUI.tscn" id="7_lfnls"]
 
-[node name="SettingsGUI" type="Control"]
+[node name="SettingsGUI" type="Control" unique_id=1193077859]
 process_mode = 2
 visible = false
 layout_mode = 3
@@ -21,7 +21,7 @@ grow_vertical = 2
 theme = ExtResource("1_g18nf")
 script = ExtResource("2_f1d4f")
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=885028366]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,19 +30,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_2gmg0")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1105381555]
 color = Color(0.305882, 0.305882, 0.305882, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=785280530]
 layer = 2
 visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1033123570]
 offset_top = 150.0
 offset_right = 575.0
 offset_bottom = 954.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer" unique_id=1804050286]
 custom_minimum_size = Vector2(480, 100)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 70
@@ -50,104 +50,104 @@ bbcode_enabled = true
 text = "[center][color=white]Einstellungen[/color][/center]"
 fit_content = true
 
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/VBoxContainer" unique_id=2014999593]
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 
-[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/CenterContainer2"]
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/CenterContainer2" unique_id=266659963]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Continue" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" instance=ExtResource("4_5kd0i")]
+[node name="Continue" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" unique_id=1146948769 instance=ExtResource("4_5kd0i")]
 custom_minimum_size = Vector2(400, 49)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Speichern & Zurück"
 
-[node name="SelectAvatar" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" instance=ExtResource("4_5kd0i")]
+[node name="SelectAvatar" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" unique_id=1152718038 instance=ExtResource("4_5kd0i")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Charakter auswählen"
 
-[node name="Sound" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" instance=ExtResource("4_5kd0i")]
+[node name="Sound" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" unique_id=13473120 instance=ExtResource("4_5kd0i")]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Sound"
 
-[node name="FontChange" type="CheckButton" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons"]
+[node name="FontChange" type="CheckButton" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" unique_id=601126684]
 custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Dyslexic Font"
 
-[node name="Info" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" instance=ExtResource("4_5kd0i")]
+[node name="Info" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" unique_id=1374447441 instance=ExtResource("4_5kd0i")]
 custom_minimum_size = Vector2(400, 49)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Info"
 
-[node name="Reset" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" instance=ExtResource("4_5kd0i")]
+[node name="Reset" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" unique_id=798348118 instance=ExtResource("4_5kd0i")]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Spiel zurücksetzen"
 
-[node name="Sounds" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/CenterContainer2"]
+[node name="Sounds" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/CenterContainer2" unique_id=2022901027]
 visible = false
 layout_mode = 2
 
-[node name="MasterLabel" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds"]
+[node name="MasterLabel" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=1266633040]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Allgemein"
 
-[node name="Master" type="HSlider" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds"]
+[node name="Master" type="HSlider" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=1225043713]
 layout_mode = 2
 script = ExtResource("3_n24n2")
 bus_name = "Master"
 
-[node name="BGMusicLabel" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds"]
+[node name="BGMusicLabel" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=1280899041]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Hintergrund Musik"
 
-[node name="Music" type="HSlider" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds"]
+[node name="Music" type="HSlider" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=235768906]
 layout_mode = 2
 script = ExtResource("3_n24n2")
 bus_name = "Musik"
 
-[node name="SFXLabel" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds"]
+[node name="SFXLabel" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=902595119]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Sound Effekte"
 
-[node name="SFX" type="HSlider" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds"]
+[node name="SFX" type="HSlider" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=1204261316]
 layout_mode = 2
 script = ExtResource("3_n24n2")
 bus_name = "SFX"
 
-[node name="Vibrate" type="CheckButton" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds"]
+[node name="Vibrate" type="CheckButton" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=1163403806]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Vibration"
 
-[node name="Back" type="Button" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" groups=["Button"]]
+[node name="Back" type="Button" parent="CanvasLayer/VBoxContainer/CenterContainer2/Sounds" unique_id=2130934462 groups=["Button"]]
 custom_minimum_size = Vector2(356, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Speichern & Zurück
 "
 
-[node name="ConfirmationGUI" parent="CanvasLayer" instance=ExtResource("6_cbnpx")]
+[node name="ConfirmationGUI" parent="CanvasLayer" unique_id=738021657 instance=ExtResource("6_cbnpx")]
 visible = false
 
-[node name="TooltipGUI" parent="CanvasLayer" instance=ExtResource("7_lfnls")]
+[node name="TooltipGUI" parent="CanvasLayer" unique_id=623521359 instance=ExtResource("7_lfnls")]
 visible = false
 
-[node name="AvatarSelectionGUI" parent="CanvasLayer" instance=ExtResource("4_s3tp7")]
+[node name="AvatarSelectionGUI" parent="CanvasLayer" unique_id=1313060188 instance=ExtResource("4_s3tp7")]
 visible = false
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Buttons/Continue" to="." method="_on_continue_pressed"]

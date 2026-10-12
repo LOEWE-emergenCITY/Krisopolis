@@ -100,6 +100,7 @@ func _on_inventory_item_clicked(sender : EMC_Item, backpack : bool) -> void:
 	var to_current : HBoxContainer = sell if backpack else buy
 	var to_current_items : Array[EMC_Item] = _sell_items if backpack else _buy_items
 	
+	var start_global: Vector2 = grid.get_item_slot(sender).get_global_position()
 	
 	grid.get_inventory().remove_item(sender)
 	var item_panel := _ITEM_PANEL_SCN.instantiate()
@@ -109,7 +110,6 @@ func _on_inventory_item_clicked(sender : EMC_Item, backpack : bool) -> void:
 	to_current.move_child(item_panel, 0 if backpack else -1)
 	to_current_items.push_back(sender)
 
-	var start_global: Vector2 = grid.get_item_slot(sender).get_global_position()
 	
 	animate.call_deferred(item_slot, start_global)
 	
