@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://cm40ue2h6ku7e"
+path="res://.godot/imported/day.vrv-40756c138bbd8cbbef61ab18c7f92f44.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/agathe/day/day.vrv"
+dest_files=["res://.godot/imported/day.vrv-40756c138bbd8cbbef61ab18c7f92f44.tres"]
+
+[params]
+

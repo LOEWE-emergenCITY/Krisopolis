@@ -4,7 +4,7 @@ Julia: Hallo Nachbar! Mein Auto springt schon wieder nicht an, kannst du mir kur
 	Avatar: Bin dabei!
 	Julia: Vielen Dank!
 	Julia: Soo ... Und wenn du jetzt kurz die Zündung drehst ... Der Motor läuft! Super!
-	Julia: Im Handschuhfach ist noch Schokolade, bedien‘ dich ruhig.
+	Julia: Im Handschuhfach ist noch Schokolade, bedien dich ruhig.
 	Julia: Und danke nochmal für deine Hilfe!
 	do execute("HELP_JULIA")
 	=> END

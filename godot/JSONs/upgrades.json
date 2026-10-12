@@ -9,10 +9,10 @@
 		"tilemap_position": {"x": 3, "y": 3},
 		"atlas_coord": {"x": 1, "y": 1},
 		"tiles_cols": 1,
-		"tiles_rows": 2,
+		"tiles_rows": 2
 	},
 	{
-		"description": "Sammelt Regenwasser. Das gesammelte Wasser ist schmutzig und sollte nicht getrunken werden.",
+		"description": "Sammelt Regenwasser. Regenwasser ist schmutzig und sollte nicht unbehandelt getrunken werden.",
 		"display_name": "Regentonne",
 		"id": 1,
 		"price": 800,
@@ -22,10 +22,10 @@
 		"tilemap_position": {"x": 1, "y": 0},
 		"atlas_coord": {"x": 4, "y": 1},
 		"tiles_cols": 1,
-		"tiles_rows": 2,
+		"tiles_rows": 2
 	},
 	{
-		"description": "Radio, das durch Akkus betrieben wird. Der lokale Radiosender berichtet über alle wichtigen Neuigkeiten der Stadt.",
+		"description": "Radio, das durch Batterien betrieben wird. Der lokale Radiosender berichtet über alle wichtigen Neuigkeiten der Stadt.",
 		"display_name": "Elektrisches Radio",
 		"id": 2,
 		"price": 500,
@@ -35,7 +35,7 @@
 		"tilemap_position": {"x": 2, "y": 0},
 		"atlas_coord": {"x": 7, "y": 1},
 		"tiles_cols": 1,
-		"tiles_rows": 2,
+		"tiles_rows": 2
 	},
 	{
 		"description": "Radio, das ohne Stromzufuhr auskommt. Der lokale Radiosender berichtet über alle wichtigen Neuigkeiten der Stadt.",
@@ -48,7 +48,7 @@
 		"tilemap_position": {"x": 3, "y": 0},
 		"atlas_coord": {"x": 10, "y": 1},
 		"tiles_cols": 1,
-		"tiles_rows": 2,
+		"tiles_rows": 2
 	},
 	{
 		"description": "Ermöglicht das Kochen ohne Strom, benötigt aber Gas aus einer Gaskartusche.",
@@ -61,11 +61,11 @@
 		"tilemap_position": {"x": 0, "y": 1},
 		"atlas_coord": {"x": 1, "y": 4},
 		"tiles_cols": 1,
-		"tiles_rows": 2,
+		"tiles_rows": 2
 	},
 	{
-		"description": "Ermöglicht längeres Handy nutzen bei Stromausfall",
-		"display_name": "Power Bank",
+		"description": "Ermöglicht eine längere Handynutzung bei Stromausfall.",
+		"display_name": "Powerbank",
 		"id": 5,
 		"price": 1000,
 		"state": 0,
@@ -73,19 +73,19 @@
 		"tilemap_position": {"x": 1, "y": 1},
 		"atlas_coord": {"x": 4, "y": 4},
 		"tiles_cols": 1,
-		"tiles_rows": 2,
+		"tiles_rows": 2
 	},
 	{
-		"description": "Ermöglicht abfüllen von Wasser.",
-		"display_name": "Wasser Reservoir",
+		"description": "Ermöglicht das Abfüllen von Wasser.",
+		"display_name": "Wasserspeicher",
 		"id": 6,
 		"price": 2000,
 		"state": 0,
 		"state_maximum": 100,
 		"spawn_pos": {"x": 4, "y": 9},
 		"tilemap_position": {"x": 1, "y": 2},
-		"atlas_coord": {"x": 4, "y": 7},
+		"atlas_coord": {"x": 7, "y": 4},
 		"tiles_cols": 1,
-		"tiles_rows": 2,
+		"tiles_rows": 2
 	}
 ]

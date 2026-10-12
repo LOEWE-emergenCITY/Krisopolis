@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://3kxp22f5idf4"
+path="res://.godot/imported/small_talk.vrv-91138c16baa4bdbe98d70c634b9aea1b.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/momo/small_talk.vrv"
+dest_files=["res://.godot/imported/small_talk.vrv-91138c16baa4bdbe98d70c634b9aea1b.tres"]
+
+[params]
+

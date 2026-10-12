@@ -25,6 +25,9 @@ func _init(p_num_slots: int = 30) -> void:
 func get_free_num_slot() -> int:
 	return num_slots - slots.size()
 
+func is_empty() -> bool:
+	return slots.is_empty()
+
 ## Returns if the inventory has any free slots left
 func has_space() -> bool:
 	return slots.size() < num_slots
@@ -49,6 +52,9 @@ func add_item(p_item: EMC_Item) -> bool:
 	update.emit()
 	sort()
 	return true
+
+func clear_items() -> void:
+	slots.clear()
 
 ## Remove a concrete [EMC_Item] from this inventory
 ## Returns if the removal was successful
@@ -87,7 +93,9 @@ func get_items_filterd_sorted(filter : Callable, sorter : Callable) -> Array[EMC
 	return filterd
 
 func get_items_filterd(filter : Callable) -> Array[EMC_Item]:
-	return slots.filter(filter)
+	var result: Array[EMC_Item]
+	result.assign(slots.filter(filter))
+	return result
 
 ## The inventory has at least one item of [p_ID]
 func has_item(p_ID: EMC_Item.IDs, p_times: int = 1) -> bool:
@@ -114,14 +122,14 @@ func get_items_or_dummy() -> Array[EMC_Item]:
 ## Return all items as Array of [EMC_Item]s
 func get_dup_items() -> Array[EMC_Item]:
 	var result : Array[EMC_Item] = []
-	for item in slots:
+	for item: EMC_Item in slots:
 		result.append(EMC_Item.make_from_id(item.get_id()))
 	return result
 
 func get_items_as_name() -> Array[String]:
 	var items: Array[String] = []
 	
-	for item in slots:
+	for item: EMC_Item in slots:
 		if item != null:
 			items.push_back(JsonMngr.item_id_to_name(item.get_id()))
 	return items
@@ -129,10 +137,21 @@ func get_items_as_name() -> Array[String]:
 func get_items_as_id() -> Array[int]:
 	var items: Array[int] = []
 	
-	for item in slots:
+	for item: EMC_Item in slots:
 		if item != null:
 			items.push_back(item.get_id())
 	return items
+
+func get_items_count() -> Dictionary:
+	var result: Dictionary = {}
+	for item: EMC_Item in slots:
+		if item != null:
+			var name: String = JsonMngr.item_id_to_name(item.get_id())
+			if result.has(name):
+				result[name] += 1
+			else:
+				result[name] = 1
+	return result
 
 ## Spoil some items
 func spoil_some_items() -> void:
@@ -144,7 +163,7 @@ func spoil_some_items() -> void:
 ## Returns copy of all item IDs ([EMC_Item.IDs]) and empty spaces as [EMC_Item.IDs.DUMMY]
 func get_slots_as_id() -> Array[int]:
 	var items : Array[int] = []
-	for item in slots:
+	for item: EMC_Item in slots:
 		items.push_back(item.get_id() if item != null else EMC_Item.IDs.DUMMY)
 	return items
 
@@ -225,13 +244,13 @@ static func sort_by_id(a : EMC_Item, b : EMC_Item) -> bool:
 		return true
 	return a.get_id() < b.get_id()
 	
-static func inventory_from_dict(dict: Dictionary) -> EMC_Inventory:
-	var inventory := EMC_Inventory.new()
-	for item_dict : Dictionary in dict:
-		inventory.add_item(EMC_Item.from_save(item_dict))
-	
-	inventory.sort()
-	return inventory
+#static func inventory_from_dict(dict: Dictionary) -> EMC_Inventory:
+	#var inventory := EMC_Inventory.new()
+	#for item_dict : Dictionary in dict:
+		#inventory.add_item(EMC_Item.from_save(item_dict))
+	#
+	#inventory.sort()
+	#return inventory
 
 ########################################## PRIVATE METHODS #########################################
 func sort_custom(f : Callable) -> void:

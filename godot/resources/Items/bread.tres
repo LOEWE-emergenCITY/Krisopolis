@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="EMC_Item" load_steps=5 format=3 uid="uid://ddw16ro36t1t"]
+
+[ext_resource type="Script" uid="uid://d374ckeaba1lx" path="res://inventory/components/item_component.gd" id="1_knbei"]
+[ext_resource type="Script" uid="uid://dg0wue01hcvsg" path="res://inventory/item.gd" id="2_y8c4k"]
+[ext_resource type="Texture2D" uid="uid://qk3ha65v0lsg" path="res://assets/items.png" id="3_qcj6f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bvoq"]
+atlas = ExtResource("3_qcj6f")
+region = Rect2(0, 64, 64, 64)
+
+[resource]
+script = ExtResource("2_y8c4k")
+id = 10
+name = "Brot"
+texture = SubResource("AtlasTexture_2bvoq")
+metadata/_custom_type_script = "uid://dg0wue01hcvsg"

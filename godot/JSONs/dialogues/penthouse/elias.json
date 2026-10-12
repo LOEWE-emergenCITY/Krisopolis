@@ -5,10 +5,21 @@
 			"elias#Hi"
 		],
 		"options": {
-			"#branch": ""
+			"#branchRedetNicht": "branchRedetNicht",
+			"#branchRedet": "branchRedet"
 		}
 	},
-	"#branch": {
+	"#branchRedetNicht": {
+		"weight": 1,
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": -1
+			},
+			{	"has_karma_with": "elias",
+				"karma": -1
+			}
+		],
 		"actors": ["avatar", "elias.r"],
 		"text": [
 			"elias#Brauchen Sie was?"
@@ -18,13 +29,157 @@
 				"prompt": "Reden",
 				"actors": ["avatar", "elias.r"],
 				"text": [
-					"elias#Dafür hab ich grad keine Zeit.",
+					"elias#Dafür hab ich gerade keine Zeit.",
 					"elias#[i]Sorry.[/i]"
 				]
 			},
 			"#trade": "",
 			"end": { "prompt": "Nö" }
 		}
+	},
+	"#branchRedet": {
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias#Brauchen Sie was?"
+		],
+		"options": {
+			"random": {
+				"prompt": "Nein, lass uns quatschen!",
+				"options": {"#reden1": "", "#reden2": "", "#reden3": "", "#reden4": ""}
+			},
+			"#trade": "",
+			"end": { "prompt": "Nö." }
+		}
+	},
+	"#reden1": {
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias.r#Gefällt Ihnen meine Einrichtung?"
+		],
+		"options": {
+			"#EinrichtungGefaellt": {
+				"prompt": "Ja",
+				"actors": ["avatar", "elias.r"],
+				"text": [
+					"avatar#Ja, gefällt mir gut.",
+					"elias.r#Endlich jemand mit Geschmack in dieser Katastrophe von einer Stadt."
+				]
+			},
+			"#EinrichtungGefaelltNicht": {
+				"prompt": "Naja",
+				"actors": ["avatar", "elias.r"],
+				"text": [
+					"avatar#Sie wirkt etwas unpersönlich.",
+					"elias.r#Ha! Sie sind genau wie die alte Tante, von der ich die Wohnung übernommen habe.",
+					"elias.r#Kam mal hier vorbei. Auf dem Weg vom Rathaus, meinte sie.",
+					"elias.r#Wollte ihrer Nostalgie frönen. Oder so ähnlich.",
+					"elias.r#Als sie die Couch gesehen hat, dachte ich, sie kriegt nen Herzinfarkt. Hab sie nicht mehr hier gesehen."
+				]
+			}
+		}
+	},
+	"#reden2": {
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias.r#Ich weiß nicht, warum ich hierher gezogen bin.",
+			"elias.r#Wie soll man bei diesen ständigen Internetausfällen vernünftig arbeiten?",
+			"elias.r#Ich bin Geschäftsmann! Diese Krisen sind unkalkulierbare Risiken!"
+		],
+		"options": {
+			"#WarumHergezogen": {
+				"prompt": "Warum dann herziehen?",
+				"actors": ["avatar", "elias.r"],
+				"text": [
+					"avatar#Warum sind Sie dann hergezogen?",
+					"elias.r#Frag ich mich auch..."
+				],
+				"options": { "#dialog2Mood1": "", "#dialog2Mood2": "", "#dialog2Mood3": ""}
+			},
+			"#Wegziehen": {
+				"prompt": "Warum nicht wegziehen?",
+				"actors": ["avatar", "elias.r"],
+				"text": [
+					"avatar#Warum ziehen Sie dann nicht weg?",
+					"elias.r#Sollte ich vielleicht."
+				]
+			}
+		}
+	},
+	"#dialog2Mood1": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": 1
+			}
+		],
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias.r#Mein Vater kam von hier.",
+			"elias.r#Hat immer von der Stadt geschwärmt. Wollte immer zurück.",
+			"elias.r#Aber meine Mutter wollte nicht. Zu gefährlich, meint sie.",
+			"elias.r#Ich schätze, ich war einfach neugierig."
+		],
+		"options": {
+			"ZuVielErzaehlt": {
+				"conditions": [
+					{
+						"has_karma_with": "elias",
+						"karma": -1
+					}
+				],
+				"actors": ["avatar", "elias.r"],
+				"text": [
+					"elias.r#Aber warum erzähle ich Ihnen das überhaupt? Das geht Sie gar nichts an.",
+					"elias.r#Gehen Sie, damit ich meine gute Laune nicht noch verliere!"
+				]
+			}
+		}
+	},
+	"#dialog2Mood2": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": 0
+			}
+		],
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias.r#...",
+			"elias.r#Mein Vater hat hier mal gewohnt.",
+			"elias.r#Ich wollte einen Ortswechsel. Ich wusste von diesem Ort.",
+			"elias.r#Ich schätze, es braucht keinen guten Grund, nur die Gelegenheit."
+		]
+	},
+	"#dialog2Mood3": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": -1
+			}
+		],
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias.r#Irgendein sentimentaler Unsinn.",
+			"elias.r#Auf den Spuren meines Vaters. So ein Quatsch."
+		]
+	},
+	"#reden3": {
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias.r#Ich hatte heute wieder ein Meeting, in dem einer nie zum Ende kam.",
+			"elias.r#Keine Ahnung, was er gesagt hat. Ich hab parallel Mails beantwortet.",
+			"elias.r#Aber sowas regt mich auf. Zeit ist Geld! Es gibt Leute, die das einfach nicht begreifen!"
+		]
+	},
+	"#reden4": {
+		"actors": ["avatar", "elias.r"],
+		"text": [
+			"elias.r#Ich hab mir einen neuen E-Scooter geleistet.",
+			"elias.r#Unbezahlbar die Dinger.",
+			"avatar#Ja, die sind schon sehr teuer.",
+			"elias.r#Teuer? Nein, ich meinte doch nicht in der Anschaffung, das ist ja ein Klacks.",
+			"elias.r#Aber es spart so viel Zeit, mit dem Scooter zu fahren, statt zu Fuß zu gehen."
+		]
 	},
 	"#trade": {
 		"prompt": "Handeln",

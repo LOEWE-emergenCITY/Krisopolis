@@ -1,6 +1,6 @@
 ~ START
 Mert: Hey Kumpel! Alles klar bei dir?
-- Avatar: Ja, wie läuft's bei dir?
+- Avatar: Ja, wie läuft es bei dir?
 	%2 => DIALOG1
 	%2 => DIALOG2
 - Avatar: Ich muss los!
@@ -8,10 +8,10 @@ Mert: Hey Kumpel! Alles klar bei dir?
 	=> END
 
 ~ DIALOG1
-Mert: Mir gehts super! Kommst du gut durch die Krise?
+Mert: Mir geht es super! Kommst du gut durch die Krise?
 - Ja
 	Avatar: Ich komme klar.
-	Mert: Schön zu hören! Aber pass' trotzdem auf dich auf, ja? So eine Krise ist nicht ohne.
+	Mert: Schön zu hören! Aber pass trotzdem auf dich auf, ja? So eine Krise ist nicht ohne.
 - Nein
 	Avatar: Ist ehrlich gesagt ganz schön schwierig.
 	Mert: Tut mir leid, das zu hören. Wenn du jemandem zum Reden brauchst, sag Bescheid, ja?
@@ -33,7 +33,7 @@ else
 
 
 ~ FREE_ITEMS
-Mert: Wir vom Technischen Hilfswerk verteilen momentan kostenlose Hilfspakete um die Krise zu bekämpfen!
+Mert: Wir vom Technischen Hilfswerk verteilen momentan kostenlose Hilfspakete, um die Krise zu bekämpfen!
 Mert: Hier ist dein Paket.[wait=0.5] [b]Weiterhin viel Erfolg![b]
 do execute_consequences("THW_AIDKITS")
 => END

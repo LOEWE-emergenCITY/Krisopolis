@@ -1,0 +1,61 @@
+[[Node]] start
+[[Type]] stage
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Moin.
+[Choice]
+- [talk] Hallo! Gehst du mit Friedel Gassi?
+- [stop] Man sieht sich!
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+
+[[Node]] stop
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Wir sehen uns.
+
+[[Node]] talk1
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+gerhard:Ich nehm ihn eigentlich immer mit, egal wo ich hingehe.
+gerhard:Du leistest mir gern Gesellschaft, nicht wahr, Friedel?
+friedel:Wuff!
+
+[[Node]] talk2
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+gerhard:Ja, muss auch mal sein. Auch wenn er ja meistens in meinem Garten ist.
+gerhard:Aber auch diese alten Knochen brauchen Bewegung. Und Friedel sieht gern mal was anderes. Nicht wahr, Friedel?
+friedel:Wuff!
+
+[[Node]] talk3
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Ja und bevor du was sagst, ich hab den Haufen gesehen. Ich steh hier, damit niemand reintritt.
+gerhard:Wenn keiner in der Nähe ist und reintreten kann, nehm ich ein paar Blätter und mach das hier weg.
+gerhard:Hab meine Hundekotbeutel vergessen ...
+
+[[Node]] talk4
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+gerhard:Ja. Friedel sieht gerne mal andere Menschen. Nicht wahr, Friedel?
+friedel:Wuff!
+[random]
+- [jump] menschen1
+- [jump] menschen2
+
+[[Node]] menschen1
+[Condition] npc_karma_higher_than("gerhard",0.5)
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+gerhard:Und ich eigentlich auch.
+
+[[Node]] menschen2
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+gerhard:Und ich tu ihm den Gefallen.

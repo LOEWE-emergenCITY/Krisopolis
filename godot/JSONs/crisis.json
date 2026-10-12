@@ -1,0 +1,911 @@
+{
+	"TUTORIAL": {
+		"0.Tutorial.0": {
+			"weight": 1,
+			"desc": "Dies ist ein Tutorial.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Tutorial.1"
+			]
+		}
+	},
+	"EASY": {
+		"0.Hochwasser.0": {
+			"weight": 1,
+			"desc": "Krisopolis ist von Hochwasser befallen.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Hochwasser.1",
+				"0.Hochwasser.2",
+				"0.Hochwasser.3",
+				"0.Hochwasser.4"
+			]
+		},
+		"0.Riskana.0": {
+			"weight": 1,
+			"desc": "Der Pegel der Riskana hat die Meldestufe 2 erreicht und steigt weiter an.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Riskana.1",
+				"0.Riskana.2",
+				"0.Riskana.3",
+				"0.Riskana.4"
+			]
+		},
+		"0.Chemie.0": {
+			"weight": 1,
+			"desc": "In der Nähe von Krisopolis gab es einen Chemieunfall.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Chemie.1",
+				"0.Chemie.2"
+			]
+		},
+		"0.LKW.0": {
+			"difficulty": 0,
+			"weight": 1,
+			"desc": "Austritt von Gefahrstoffen nach Chemieunfall in der Industriestraße 34-40.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.LKW.1",
+				"0.LKW.2"
+			]
+		},
+		"0.Duerre.0": {
+			"weight": 1,
+			"desc": "Warnung vor anhaltender extremer Trockenheit.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Duerre.1"
+			]
+		},
+		"0.Sturmtief.0": {
+			"weight": 1,
+			"desc": "Warnung vor Sturm mit orkanartigen Böen.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Sturmtief.1",
+				"0.Sturmtief.2"
+			]
+		},
+		"0.Pandemie.0": {
+			"weight": 1,
+			"desc": "Warnung vor steigenden Fallzahlen von Infektionen mit den hochansteckenden Krisoviren in Krisopolis.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Pandemie.1",
+				"0.Pandemie.2"
+			]
+		},
+		"0.Starkregen.0": {
+			"weight": 1,
+			"desc": "Warnung vor lokalem extremen Niederschlag durch Tief Flutaris.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Starkregen.1",
+				"0.Starkregen.2",
+				"0.Starkregen.3",
+				"0.Starkregen.4"
+			]
+		},
+		"0.Waldbrand.0": {
+			"weight": 1,
+			"desc": "Warnung vor großflächigem Brand im Waldgebiet Gluthain.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Waldbrand.1",
+				"0.Waldbrand.2",
+				"0.Waldbrand.3"
+			]
+		}
+	},
+	"MEDIUM": {
+		"1.Hochwasser.0": {
+			"weight": 1,
+			"desc": "Aufgrund von tagelangem Regen besteht in Teilen der Stadt Hochwassergefahr.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"1.Hochwasser.1"
+			]
+		},
+		"1.Riskana.0": {
+			"weight": 1,
+			"desc": "Der Pegel der Riskana hat die Meldestufe 2 erreicht und steigt weiter an.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.Riskana.1",
+				"0.Riskana.2",
+				"0.Riskana.3",
+				"0.Riskana.4"
+			]
+		},
+		"1.Chemie.0": {
+			"weight": 1,
+			"desc": "In der Nähe von Krisopolis gab es einen Chemieunfall.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.Chemie.1",
+				"0.Chemie.2"
+			]
+		},
+		"1.LKW.0": {
+			"difficulty": 0,
+			"weight": 1,
+			"desc": "Austritt von Gefahrstoffen nach Chemieunfall in der Industriestraße 34-40.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.LKW.1",
+				"0.LKW.2"
+			]
+		},
+		"1.Duerre.0": {
+			"weight": 1,
+			"desc": "Warnung vor anhaltender extremer Trockenheit.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Duerre.1"
+			]
+		},
+		"1.Sturmtief.0": {
+			"weight": 1,
+			"desc": "Warnung vor Sturm mit orkanartigen Böen.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.Sturmtief.1",
+				"0.Sturmtief.2"
+			]
+		},
+		"1.Pandemie.0": {
+			"weight": 1,
+			"desc": "Warnung vor steigenden Fallzahlen von Infektionen mit den hochansteckenden Krisoviren in Krisopolis.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.Pandemie.1",
+				"0.Pandemie.2"
+			]
+		},
+		"1.Starkregen.0": {
+			"weight": 1,
+			"desc": "Warnung vor lokalem extremen Niederschlag durch Tief Flutaris.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.Starkregen.1",
+				"0.Starkregen.2",
+				"0.Starkregen.3",
+				"0.Starkregen.4"
+			]
+		},
+		"1.Waldbrand.0": {
+			"weight": 1,
+			"desc": "Warnung vor großflächigem Brand im Waldgebiet Gluthain.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.Waldbrand.1",
+				"0.Waldbrand.2",
+				"0.Waldbrand.3"
+			]
+		}
+	},
+	"HARD": {
+		"2.Hochwasser.0": {
+			"weight": 1,
+			"desc": "Aufgrund von tagelangem Regen besteht in Teilen der Stadt Hochwassergefahr.",
+			"fcount": [
+				2,
+				3
+			],
+			"following": [
+				"0.Hochwasser.1",
+				"0.Hochwasser.2",
+				"0.Hochwasser.3",
+				"0.Hochwasser.4",
+				"1.Hochwasser.1"
+			]
+		},
+		"2.Riskana.0": {
+			"weight": 1,
+			"desc": "Der Pegel der Riskana hat die Meldestufe 2 erreicht und steigt weiter an.",
+			"fcount": [
+				2,
+				3
+			],
+			"following": [
+				"0.Riskana.1",
+				"0.Riskana.2",
+				"0.Riskana.3",
+				"0.Riskana.4"
+			]
+		},
+		"2.Chemie.0": {
+			"weight": 1,
+			"desc": "In der Nähe von Krisopolis gab es einen Chemieunfall.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.Chemie.1",
+				"0.Chemie.2"
+			]
+		},
+		"2.LKW.0": {
+			"difficulty": 0,
+			"weight": 1,
+			"desc": "Austritt von Gefahrstoffen nach Chemieunfall in der Industriestraße 34-40.",
+			"fcount": [
+				1,
+				2
+			],
+			"following": [
+				"0.LKW.1",
+				"0.LKW.2"
+			]
+		},
+		"2.Duerre.0": {
+			"weight": 1,
+			"desc": "Warnung vor anhaltender extremer Trockenheit.",
+			"fcount": [
+				1,
+				1
+			],
+			"following": [
+				"0.Duerre.1"
+			]
+		},
+		"2.Sturmtief.0": {
+			"weight": 1,
+			"desc": "Warnung vor Sturm mit orkanartigen Böen.",
+			"fcount": [
+				2,
+				2
+			],
+			"following": [
+				"0.Sturmtief.1",
+				"0.Sturmtief.2"
+			]
+		},
+		"2.Pandemie.0": {
+			"weight": 1,
+			"desc": "Warnung vor steigenden Fallzahlen von Infektionen mit den hochansteckenden Krisoviren in Krisopolis.",
+			"fcount": [
+				2,
+				2
+			],
+			"following": [
+				"0.Pandemie.1",
+				"0.Pandemie.2"
+			]
+		},
+		"2.Starkregen.0": {
+			"weight": 1,
+			"desc": "Warnung vor lokalem extremen Niederschlag durch Tief Flutaris.",
+			"fcount": [
+				2,
+				3
+			],
+			"following": [
+				"0.Starkregen.1",
+				"0.Starkregen.2",
+				"0.Starkregen.3",
+				"0.Starkregen.4"
+			]
+		},
+		"2.Waldbrand.0": {
+			"weight": 1,
+			"desc": "Warnung vor großflächigem Brand im Waldgebiet Gluthain.",
+			"fcount": [
+				2,
+				3
+			],
+			"following": [
+				"0.Waldbrand.1",
+				"0.Waldbrand.2",
+				"0.Waldbrand.3"
+			]
+		}
+	},
+	"following": {
+		"0.Tutorial.1": {
+			"weight": 1,
+			"delay": [
+				0,
+				0
+			],
+			"effects": [
+				{
+					"state": "ElectricityState",
+					"layer": "0.Tutorial",
+					"value": "NONE"
+				}
+			],
+			"desc": "Aufgrund einer Gefahrenprobe gibt es keinen Strom.",
+			"duration": [
+				4,
+				6
+			]
+		},
+		"0.Hochwasser.1": {
+			"weight": 1,
+			"desc": "Aufgrund des Hochwassers ist das Wasser verschmutzt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Hochwasser",
+					"value": "DIRTY"
+				}
+			]
+		},
+		"0.Hochwasser.2": {
+			"weight": 1,
+			"desc": "Aufgrund des Hochwassers ist die Wasserversorgung ausgefallen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Hochwasser",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Hochwasser.3": {
+			"weight": 1,
+			"desc": "Aufgrund des Hochwassers ist der Strom ausgefallen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "ElectricityState",
+					"layer": "0.Hochwasser",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Hochwasser.4": {
+			"weight": 1,
+			"desc": "Aufgrund des Hochwassers ist das Mobilfunknetz eingebrochen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "MobileNetState",
+					"layer": "0.Hochwasser",
+					"value": "OFFLINE"
+				}
+			]
+		},
+		"0.Riskana.1": {
+			"weight": 1,
+			"desc": "Aufgrund der Überflutung der Riskana ist das Wasser verschmutzt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Riskana",
+					"value": "DIRTY"
+				}
+			]
+		},
+		"0.Riskana.2": {
+			"weight": 1,
+			"desc": "Aufgrund der Überflutung der Riskana ist die Wasserversorgung ausgefallen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Riskana",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Riskana.3": {
+			"weight": 1,
+			"desc": "Aufgrund der Überflutung der Riskana ist das Stromnetz ausgefallen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "ElectricityState",
+					"layer": "0.Riskana",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Riskana.4": {
+			"weight": 1,
+			"desc": "Aufgrund der Überflutung der Riskana ist das Mobilfunknetz ausgefallen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "MobileNetState",
+					"layer": "0.Riskana",
+					"value": "OFFLINE"
+				}
+			]
+		},
+		"0.Chemie.1": {
+			"weight": 1,
+			"desc": "Achtung, das Wasser nahe Krisopolis wurde verunreinigt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Chemie",
+					"value": "DIRTY"
+				}
+			]
+		},
+		"0.Chemie.2": {
+			"weight": 1,
+			"desc": "Womöglich wurden Lebensmittel verunreinigt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				1,
+				2
+			],
+			"effects": [],
+			"states": [
+				"FoodContaminationState.FOOD_SPOILED"
+			]
+		},
+		"0.LKW.1": {
+			"weight": 1,
+			"desc": "Achtung, das Wasser nahe Krisopolis wurde verunreinigt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.LKW",
+					"value": "DIRTY"
+				}
+			]
+		},
+		"0.LKW.2": {
+			"weight": 1,
+			"desc": "Womöglich wurden Lebensmittel verunreinigt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				1,
+				2
+			],
+			"effects": [],
+			"states": [
+				"FoodContaminationState.FOOD_SPOILED"
+			]
+		},
+		"0.Duerre.1": {
+			"weight": 1,
+			"desc": "Aufgrund anhaltender Trockenheit ist die Wasserversorgung mangelhaft.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Duerre",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Sturmtief.1": {
+			"weight": 1,
+			"desc": "Sturmtief Regnetvielandra hat das Stromnetz destabilisiert.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "ElectricityState",
+					"layer": "0.Sturmtief",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Sturmtief.2": {
+			"weight": 1,
+			"desc": "Sturmtief Regnetvielandra sorgt für erhebliche Störungen des Mobilfunknetzes.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "MobileNetState",
+					"layer": "0.Sturmtief",
+					"value": "OFFLINE"
+				}
+			]
+		},
+		"0.Pandemie.1": {
+			"weight": 5,
+			"desc": "Aufgrund der steigenden Fallzahlen ist die Betretung öffentlicher Räume eingeschränkt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"flag": "NoEntry",
+					"value": "Market"
+				},
+				{
+					"flag": "NoEntry",
+					"value": "Park"
+				}
+			],
+			"states": [
+				"IsolationState.LIMITED_PUBLIC_ACCESS"
+			]
+		},
+		"0.Pandemie.2": {
+			"weight": 1,
+			"desc": "Aufgrund erheblich hoher Fallzahlen wurde eine komplette Isolation angeordnet!",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				1,
+				2
+			],
+			"effects": [
+				{
+					"flag": "NoEntry",
+					"value": "all"
+				}
+			]
+		},
+		"0.Starkregen.1": {
+			"weight": 1,
+			"desc": "Flutaris sorgt für eine Verschmutzung des Wassers.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Starkregen",
+					"value": "DIRTY"
+				}
+			]
+		},
+		"0.Starkregen.2": {
+			"weight": 1,
+			"desc": "Flutaris hat die Wasserversorgung unterbrochen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Starkregen",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Starkregen.3": {
+			"weight": 1,
+			"desc": "Flutaris hat wichtige Infrastruktur der Stromversorgung zerstört.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "ElectricityState",
+					"layer": "0.Starkregen",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Starkregen.4": {
+			"weight": 1,
+			"desc": "Flutaris beeinträchtigt das Mobilfunknetz erheblich.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "MobileNetState",
+					"layer": "0.Starkregen",
+					"value": "OFFLINE"
+				}
+			]
+		},
+		"0.Waldbrand.1": {
+			"weight": 1,
+			"desc": "Aufgrund der weitflächigen Brände in Gluthain ist die Wasserversorgung zum Erliegen gekommen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "0.Waldbrand",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Waldbrand.2": {
+			"weight": 1,
+			"desc": "Der Waldbrand in Gluthain hat wichtige Infrastruktur zerstört. Die Stromversorgung ist eingeschränkt.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "ElectricityState",
+					"layer": "0.Waldbrand",
+					"value": "NONE"
+				}
+			]
+		},
+		"0.Waldbrand.3": {
+			"weight": 1,
+			"desc": "Der Waldbrand in Gluthain hat wichtige Infrastruktur zerstört. Das Mobilfunknetz ist ausgefallen.",
+			"delay": [
+				2,
+				3
+			],
+			"duration": [
+				3,
+				4
+			],
+			"effects": [
+				{
+					"state": "MobileNetState",
+					"layer": "0.Waldbrand",
+					"value": "OFFLINE"
+				}
+			]
+		},
+		"1.Hochwasser.1": {
+			"weight": 1,
+			"delay": [
+				2,
+				3
+			],
+			"effects": [
+				{
+					"state": "WaterState",
+					"layer": "1.Hochwasser",
+					"value": "DIRTY"
+				}
+			],
+			"desc": "Aufgrund des Hochwassers ist das Wasser verschmutzt.",
+			"duration": [
+				3,
+				6
+			],
+			"fcount": [
+				0,
+				1
+			],
+			"following": [
+				"1.Hochwasser.2"
+			]
+		},
+		"1.Hochwasser.2": {
+			"weight": 5,
+			"delay": [
+				0,
+				2
+			],
+			"effects": [
+				{
+					"state": "ElectricityState",
+					"layer": "1.Hochwasser",
+					"value": "NONE"
+				}
+			],
+			"desc": "Aufgrund des Hochwassers ist der Strom ausgefallen.",
+			"duration": [
+				2,
+				3
+			],
+			"fcount": [
+				0,
+				1
+			],
+			"following": [
+				"1.Hochwasser.3"
+			]
+		},
+		"1.Hochwasser.3": {
+			"weight": 2,
+			"delay": [
+				2,
+				4
+			],
+			"effects": [
+				{
+					"state": "MobileNetState",
+					"layer": "1.Hochwasser",
+					"value": "OFFLINE"
+				}
+			],
+			"desc": "Aufgrund des Hochwassers ist das Mobilfunknetz eingebrochen.",
+			"duration": [
+				2,
+				3
+			]
+		}
+	}
+}

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://bscr86p3v8nbm"
+path="res://.godot/imported/small_talk.vrv-fda9ae4a8a15443e3ec51dab2b525002.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/friedel/small_talk.vrv"
+dest_files=["res://.godot/imported/small_talk.vrv-fda9ae4a8a15443e3ec51dab2b525002.tres"]
+
+[params]
+

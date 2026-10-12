@@ -10,7 +10,7 @@
 			"next": {
 				"actors": ["avatar", "julia.r"],
 				"text": [
-					"julia.r#Guten Morgen Nachbar! Hast du auch keinen Strom?",
+					"julia.r#Guten Morgen, Nachbar! Hast du auch keinen Strom?",
 					"avatar#Sieht ganz so aus.",
 					"julia.r#Dann scheint es wohl ein größeres Problem zu sein. Kommst du klar?"
 				],
@@ -32,7 +32,7 @@
 		"actors": ["avatar", "julia.r"],
 		"text": [
 			"avatar#Das trifft mich etwas unvorbereitet. Aber immerhin habe ich noch mein Krisenbewältigungsbuch im Regal.",
-			"julia.r#Wenn du Hilfe brauchst komm einfach bei mir vorbei."
+			"julia.r#Wenn du Hilfe brauchst, komm einfach bei mir vorbei."
 		],
 		"options": { "#end": "" }
 	},

@@ -1,21 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf1x6jm5o81ck"]
 
-[ext_resource type="Script" path="res://crisisPhase/stage/stage_mngr.gd" id="1_2ergk"]
-[ext_resource type="PackedScene" uid="uid://denwwuybtt0vq" path="res://crisisPhase/stage/stage.tscn" id="2_xjxou"]
+[ext_resource type="Script" uid="uid://b1desvm3qmfe7" path="res://crisisPhase/stage/stage_mngr.gd" id="1_2ergk"]
+[ext_resource type="PackedScene" uid="uid://riay0ilweh8c" path="res://crisisPhase/stage/home.tscn" id="2_i75qj"]
 
 [node name="StageMngr" type="Node2D"]
 process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_2ergk")
+_stages = Dictionary[String, PackedScene]({
+"": null,
+"home": ExtResource("2_i75qj")
+})
 
 [node name="StageOffset" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-32, -32)
-
-[node name="home" parent="StageOffset" instance=ExtResource("2_xjxou")]
-
-[node name="NPCs" type="Control" parent="."]
-y_sort_enabled = true
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 1

@@ -2,18 +2,23 @@
 	"comp": {
 		"descr": {
 			"name": "Julia",
-			"descr": "Das hier ist Julia.\nSie ist lieb.",
-			"portait": "julia"
+			"descr": "Das hier ist Julia.\nSie hilft gerne jedem, auch ungefragt.",
+			"portait": "julia",
+			"sprite": "julia"
 		},
-		"sprite": {
-			"texture_name": "julia"
-		},
-		"interaction": {
-			"conversation": {
-				"pitch": 1.3
+		"conversation": {
+			"pitch": 1.3,
+			"small_talk": "res://resources/dialogues/julia/small_talk.vrv",
+			"day": "res://resources/dialogues/julia/day/day.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/julia/day/"
 			}
 		},
 		"stage": {
+			"stage_name": "rowhouse",
+			"spot": "table",
+
+			"position": { "x": 450, "y": 550 },
 			"start": "Rowhouse",
 			"positions": {
 				"Park": { "x": 128, "y": 704 },

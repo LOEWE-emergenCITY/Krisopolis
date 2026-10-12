@@ -16,6 +16,6 @@ void fragment() {
 	float sinus = sin( freq * (UV.y + TIME * 0.5 + shift) ) * amp + amp_c * sin(freq_c * (UV.y + TIME + shift));
 	float shifted_level = progress - amp;
 	float treshold = smoothstep(sinus + shifted_level, sinus + shifted_level + 0.01, UV.x);
-	
+
 	COLOR = mix(color, colorBG, treshold);
 }

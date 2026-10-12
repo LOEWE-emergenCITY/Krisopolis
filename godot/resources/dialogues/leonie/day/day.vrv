@@ -1,0 +1,224 @@
+[[Node]] start
+[actors] avatar leonie.flipped
+[text]
+leonie:Hi! Willkommen im Rathaus.
+leonie:In den Büchern da drüben findest du hilfreiche Informationen.
+[Choice]
+- [talk] Was gibts Neues?
+- [stop] Geht klar!
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+- [jump] talk5
+- [jump] talk6
+- [jump] talk7
+- [jump] talk8
+
+[[Node]] stop
+[actors] avatar leonie.flipped
+
+[[Node]] talk1
+[actors] avatar leonie.flipped
+[text]
+leonie:Nett, dass du fragst. Hier im Rathaus ist ja kaum was los.
+leonie:Bücher sind ja schön und gut, aber wenn du mich fragst, reicht das nicht aus.
+avatar:Wofür?
+leonie:Um hier ein bisschen Leben rein zu bringen, natürlich.
+leonie:Wir bräuchten eine Spieleecke für die Kinder. Bällebad, Kletterturm. All das.
+leonie:Und eine Spielekonsole für die älteren.
+leonie:Und einen Bildschirm für Filmabende.
+leonie:So kriegt man die Leute her!
+[Choice]
+- [CommunityCenterCool] Klingt spannend!
+- [CommunityCenterMeh] Das hat doch ohnehin jeder zuhause.
+
+[[Node]] CommunityCenterCool
+[actors] avatar leonie.flipped
+[text]
+leonie:Ja, definitiv spannender als diese Echokammer hier.
+
+[[Node]] CommunityCenterMeh
+[actors] avatar leonie.flipped
+[text]
+leonie:Ja, aber zuhause ist man allein. Das ist auf Dauer langweilig.
+
+[[Node]] talk2
+[actors] avatar leonie.flipped
+[text]
+leonie:Gestern Nacht war ich bei Julia für einen Filmabend.
+leonie:Falls du Interesse hast, the more the merrier, du bist willkommen.
+[Choice]
+- [InteresseFilmabend] Das klingt spannend!
+- [KeinInteresseFilmabend] Ich überlege es mir.
+
+[[Node]] InteresseFilmabend
+[actors] avatar leonie.flipped
+[text]
+leonie:Kommt auf den Film an. Gestern war es eher emotional.
+leonie:Aber wir schauen alles mögliche. Ich sag dir Bescheid.
+avatar:Danke!
+[set] #filmabend_einladung true
+
+[[Node]] KeinInteresseFilmabend
+[actors] avatar leonie.flipped
+[text]
+leonie:Kein Stress.
+
+[[Node]] talk3
+[actors] avatar leonie.flipped
+[text]
+leonie:Julia war mal wieder hier. Außer dir kommen nur Julia und Agathe regelmäßig hier vorbei.
+leonie:Ich mag Julia. Sie kann manchmal etwas belehrend sein, aber sie ist wirklich nett.
+leonie:Findest du nicht auch?
+[Choice]
+- [belehrend] Ist mir auch aufgefallen.
+- [ok] Ich finde sie auch sehr nett.
+- [welches] Was? Nett oder belehrend?
+
+[[Node]] belehrend
+[actors] avatar leonie.flipped
+[text]
+leonie:Man kann ihr auch gar nix übel nehmen. Sie ist viel zu lieb dafür.
+leonie:Sie fährt sogar diesen Snob durch die Gegend, der sich zu fein ist, selbst zu fahren.
+leonie:Manchmal frage ich mich, ob sie nicht zu viel für andere macht und sich selbst vergisst.
+leonie:Aber sie scheint ja glücklich zu sein.
+avatar:Glaube ich auch.
+
+[[Node]] ok
+[actors] avatar leonie.flipped
+[text]
+leonie:Wenn du jetzt was anderes gesagt hättest, hätte ich dich auch rausgeworfen.
+leonie:Ne, war Spaß. Sowas mach ich nicht.
+leonie:Ist ja eh schon nix los hier.
+
+[[Node]] welches
+[actors] avatar leonie.flipped
+[text]
+leonie:Haha, beides.
+[Choice]
+- [belehrend] Ist mir auch aufgefallen.
+- [ok] Ich finde sie auch sehr nett.
+
+[[Node]] talk4
+[actors] avatar leonie.flipped
+[text]
+leonie:Falls du mal ne Empfehlung brauchst ... was anderes.
+avatar:Was anderes?
+leonie:Ja. Lies was anderes als sonst. Ein anderes Genre.
+leonie:Am besten irgendwas, wo du denkst, 'oh Gott, das geht ja gar nicht!'
+leonie:Sich auf was ganz Neues einzulassen, das ist wie ne Dusche fürs Gehirn.
+avatar:Okay, das merk ich mir.
+leonie:Sag Bescheid, wenn du ne Empfehlung brauchst. Ich kenn juicy Bücher für alle Genre.
+
+[[Node]] talk5
+[actors] avatar leonie.flipped
+[text]
+leonie:Hast du ein Radio?
+[Choice]
+- [ja_radio] Äh, ja.
+- [nein_radio] Nein, wieso?
+
+[[Node]] ja_radio
+[actors] avatar leonie.flipped
+[text]
+leonie:Dann weißt du ja, dass Crisis Choice nen neuen Song rausgebracht hat.
+avatar:Crisis Choice?
+leonie:Unsere lokale Band. Sag bloß, die kennst du nicht?
+[Choice]
+- [kenne_band] Doch.
+- [kenne_band_nicht] Noch nie gehört.
+
+[[Node]] kenne_band
+[actors] avatar leonie.flipped
+[text]
+leonie:Dann ist ja gut. Du hast mir schon nen Schock eingejagt.
+
+[[Node]] kenne_band_nicht
+[actors] avatar leonie.flipped
+[text]
+leonie:Du hast sie garantiert schon gehört. Die kennt hier jeder.
+
+[[Node]] nein_radio
+[actors] avatar leonie.flipped
+[text]
+leonie:Dann solltest du dir dringend eins besorgen.
+leonie:Ich bin natürlich froh, wenn du herkommst, um mit mir zu quatschen.
+leonie:Aber ein Radio solltest du schon haben. Sonst weißt du ja gar nicht, was los ist, wenn das Mobilfunknetz ausfällt.
+leonie:Und von den Events der Feuerwehr und vom THW kriegst du dann auch nix mit.
+leonie:Ein Smartphone hast du aber, oder?
+avatar:Klar!
+leonie:Puh, gut. Dann bist du immerhin vorbereitet.
+leonie:Natürlich gibt es Menschen, die ihre Vorbereitung so perfektionieren, dass sie von nix überrascht werden. Ich gehör da nicht dazu.
+leonie:Einmal ist mir während einer Krise der Kaffee ausgegangen. Nie wieder, sag ich dir! Wenn jetzt eine Warnung kommt, checke ich als allererstes meinen Vorrat.
+[action] add_score("tip", {"source": "leonie1"})
+
+[[Node]] talk6
+[actors] avatar leonie.flipped
+[text]
+leonie:Was hältst du von meiner Mütze?
+[Choice]
+- [muetze_uncool] Äh ... sieht aus wie ne Mütze?
+- [muetze_cool] Sieht cool aus!
+
+[[Node]] muetze_uncool
+[actors] avatar leonie.flipped
+[text]
+leonie:Ich merk schon, Kleidung ist nicht so dein Ding.
+[Choice]
+- [kleidung_ok] Naja, nackt rumlaufen auch nicht.
+- [kleidung_nicht_ok] Ich hab funktionale Kleidung.
+
+[[Node]] kleidung_ok
+[actors] avatar leonie.flipped
+[text]
+leonie:Haha, das hab ich auch nicht gemeint. Ich designe nur gern meine eigene Kleidung. Aber damit bin ich ziemlich allein hier in Krisopolis.
+
+[[Node]] kleidung_nicht_ok
+[actors] avatar leonie.flipped
+[text]
+leonie:Also eher der pragmatische Typ. Spricht nix gegen. Viele Taschen find ich auch super.
+leonie:Ich mags halt nur abwechslungsreicher.
+
+[[Node]] muetze_cool
+[actors] avatar leonie.flipped
+[text]
+leonie:Danke! Hab ich selbst gestrickt. Meine erste.
+leonie:Ich hab inzwischen bessere, aber irgendwie häng ich an der hier.
+
+[[Node]] talk7
+[actors] avatar leonie.flipped
+[text]
+leonie:Offenbar sind gerade wieder Verschwörungstheorien im Umlauf.
+leonie:Meiner Meinung nach gehören die in den Bereich Fantasy oder Speculative Fiction, aber nicht auf den Marktplatz.
+leonie:Hör nicht drauf, wenn dir jemand irgendeinen Unsinn andrehen will. Manche Menschen sind wirklich leichtgläubig.
+leonie:Warn-App und Radio haben verlässliche Infos.
+[random]
+- [jump] rand_1
+- [jump] rand_2
+
+[[Node]] rand_1
+[actors] avatar leonie.flipped
+[text]
+leonie:Es gibt Menschen, die sagen, denen kann man nicht vertrauen, weil es ständig neue Empfehlungen gibt. Aber in Krisen ändert sich die Situation eben ständig.
+leonie:Auch wenn man das selbst vielleicht nicht so mitbekommt.
+[action] add_score("tip", {"source": "leonie2"})
+
+[[Node]] rand_2
+[actors] avatar leonie.flipped
+[text]
+leonie:Und die Einsatzkräfte natürlich.
+[action] add_score("tip", {"source": "leonie3"})
+
+[[Node]] talk8
+[actors] avatar leonie.flipped
+[text]
+leonie:Ich lese gerade einen Roman über Drachenreiter.
+leonie:Ist es nicht faszinierend, wie Drachen in Büchern dargestellt werden?
+leonie:Manchmal sind sie Gegner, manchmal Verbündete. Und manchmal kommt es darauf an, wen du fragst.
+leonie:Menschen sind inzwischen oft weder richtig gut noch richtig böse, aber Drachen sind fast immer das eine oder das andere.
+leonie:Das ist unwahrscheinlich, wenn du mich fragst.
+

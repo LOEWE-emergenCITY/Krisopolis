@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bei226f52t1ey"]
+
+[ext_resource type="Script" uid="uid://00qjtrm53qus" path="res://crisisPhase/stage/stage_spot.gd" id="1_5n7iu"]
+[ext_resource type="Texture2D" uid="uid://ppdc880khrdn" path="res://assets/characters/sprite_avatar.png" id="2_s38yn"]
+
+[node name="StageSpot" type="Node2D"]
+script = ExtResource("1_5n7iu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s38yn")
+offset = Vector2(0, -46)
+hframes = 3

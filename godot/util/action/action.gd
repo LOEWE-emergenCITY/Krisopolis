@@ -33,8 +33,14 @@ enum IDs{
 func _init(data: Dictionary) -> void:
 	pass
 
-func execute() -> Variant:
+func execute(context: Dictionary = {"result": {}}) -> Variant:
 	return null
 
 func set_comp(get_exe: Callable) -> void:
 	pass
+
+static func load_action(data: Dictionary) -> EMC_Action:
+	assert(data.has("type"), "Action missing type!")
+	var res: Variant = ResourceLoader.load("res://util/action/" + data["type"] + "_action.gd")
+	assert(res != null, "Resource with path: res://util/action/" + data["type"] + "_action.gd not found!")
+	return res.new(data)

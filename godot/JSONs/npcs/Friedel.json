@@ -2,18 +2,27 @@
 	"comp": {
 		"descr": {
 			"name": "Friedel",
-			"descr": "Das hier ist Friedel.\nSie ist lieb.",
-			"portait": "friedel"
+			"descr": "Das hier ist Friedel.\nDer geheime Star der Nachbarschaft.",
+			"portait": "friedel",
+			"sprite": "friedel"
 		},
-		"sprite": {
-			"texture_name": "friedel"
+		"karma": {
+			"mood": 3
 		},
-		"interaction": {
-			"conversation": {
-				"pitch": 0.5
+		"conversation": {
+			"pitch": 0.5,
+			"day": "res://resources/dialogues/friedel/day/day.vrv",
+			"small_talk": "res://resources/dialogues/friedel/small_talk.vrv",
+			"paths": {
+				"1day": "res://resources/dialogues/friedel/day/",
+				"quest": "res://resources/dialogues/friedel/quest/"
 			}
 		},
 		"stage": {
+			"stage_name": "gardenhouse",
+			"spot": "waiting",
+
+			"position": { "x": 96, "y": 704 },
 			"start": "Gardenhouse",
 			"positions": {
 				"Park": {
@@ -27,120 +36,6 @@
 				"Market": {
 					"x": 160,
 					"y": 320
-				}
-			}
-		},
-		"brain": {
-			"actions": {
-				"sleep": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage_pos",
-					"params": [
-						"gardenhouse",
-						{
-							"x": 200,
-							"y": 310
-						}
-					]
-				},
-				"stroll": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": [
-						"park"
-					]
-				},
-				"idle": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": [
-						"gardenhouse"
-					]
-				},
-				"market": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": ["market"]
-				},
-				"escape": {
-					"type": "multi",
-					"acc": "array",
-					"actions": [
-						{
-							"type": "single",
-							"comp": "quest",
-							"method": "add_quest",
-							"params": [
-								"FRIEDEL_WEG"
-							]
-						},
-						{
-							"type": "single",
-							"comp": "stage",
-							"method": "change_stage",
-							"params": [
-								"market"
-							]
-						}
-					]
-				}
-			},
-			"decide": {
-				"name": "weighted_decide",
-				"weight": {
-					"stroll": 100,
-					"idle": 1,
-					"sleep": 3,
-					"escape": 1,
-					"market": 1
-				}
-			},
-			"comps": {
-				"routine": {
-					"schedule": {
-						"0": "idle",
-						"1": [
-							"sleep",
-							"idle"
-						],
-						"2": "idle"
-					}
-				},
-				"cooperation": {},
-				"quest": {
-					"priority": "",
-					"actions":  [
-						{
-							"quest": "FRIEDEL_WEG",
-							"chance": 1,
-							"stage": 0,
-							"action": "escape"
-						},
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 1,
-							"action": "market"
-						},
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 2,
-							"action": "market"
-						},
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 3,
-							"action": "idle"
-						},
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 4,
-							"action": "idle"
-						}
-					]
 				}
 			}
 		}

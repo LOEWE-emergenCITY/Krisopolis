@@ -193,5 +193,3 @@ func _create_new_optional_event(p_new_period: EMC_DayMngr.DayPeriod) -> Event:
 		_active_events.append(chosen_event)
 	
 	return chosen_event
-
-

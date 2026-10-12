@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://o44rb5kf5rsh"]
+
+[ext_resource type="Script" uid="uid://s5s2c8twanri" path="res://addons/vervain/test.gd" id="1_cqq1j"]
+[ext_resource type="Script" uid="uid://b3o5taqg4mgxm" path="res://addons/vervain/gsi.gd" id="1_fsge4"]
+[ext_resource type="Resource" uid="uid://dpqt8stwoiuwy" path="res://addons/vervain/test.vrv" id="2_dppyw"]
+
+[node name="Test" type="Node"]
+script = ExtResource("1_cqq1j")
+s = ExtResource("2_dppyw")
+
+[node name="VRV_GSI" type="Node" parent="."]
+script = ExtResource("1_fsge4")
+metadata/_custom_type_script = "uid://b3o5taqg4mgxm"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

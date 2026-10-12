@@ -1,0 +1,54 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Ach, mich bedrückt das Wetter so.
+
+[[Node]] two
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Ich freu mich auf mein Bad, wo diese Erde überall hinkommt ...
+
+[[Node]] three
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Friedel hat heute Morgen wieder im Beet gewühlt. Er lässt es sich einfach nicht abgewöhnen. Nach dem Motto, was ich darf, darf er auch.
+gerhard:Meine armen Möhren ...
+
+[[Node]] four
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Die Obstbäume hinten im Garten, die hat meine Mutter gepflanzt, als ich geboren wurde. Letztes Jahr hatte ich mehr Kirschen denn je.
+gerhard:So gut müsste man sich auch halten können.
+
+[[Node]] five
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Wenn du mal Obst oder Gemüse brauchst, ich bin immer für einen Handel zu haben.
+
+[[Node]] six
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Früher haben hier viel weniger Menschen gelebt. Heute ist es oft leichter, mit den Krisen umzugehen.
+
+[[Node]] seven
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Ich bin müde. Konnte heute Nacht nicht gut schlafen.
+gerhard:Das ist auch etwas, was ich an der Jugend vermisse. Gesunder Schlaf.
+
+[[Node]] eight
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Manchmal frage ich mich, ob mich die Leute nur besuchen, weil sie Friedel streicheln wollen ...
+gerhard:Es gibt schlechtere Gründe.

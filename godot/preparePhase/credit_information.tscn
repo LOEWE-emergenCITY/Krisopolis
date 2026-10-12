@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnjubq58koags"]
 
-[ext_resource type="Script" path="res://preparePhase/credit_information.gd" id="1_4y0di"]
+[ext_resource type="Script" uid="uid://wcxeobpkl71" path="res://preparePhase/credit_information.gd" id="1_4y0di"]
 [ext_resource type="PackedScene" uid="uid://cul33oq5ev2pa" path="res://crisisPhase/stage/park.tscn" id="2_kmjb8"]
 [ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="3_0kg73"]
 [ext_resource type="PackedScene" uid="uid://b7pij2ufkhxje" path="res://preparePhase/license_information.tscn" id="4_r73hg"]
@@ -15,8 +15,6 @@ offset_bottom = -32.0
 script = ExtResource("1_4y0di")
 
 [node name="Park" parent="." instance=ExtResource("2_kmjb8")]
-layer_2/tile_data = PackedInt32Array(327688, 851968, 6, 393224, 851968, 7, 327689, 917504, 6, 393225, 917504, 7, 262152, 851968, 5, 262153, 917504, 5, 196616, 851968, 5, 196617, 917504, 5, 131080, 851968, 5, 131081, 917504, 5, 65544, 851968, 5, 65545, 917504, 5, 8, 851968, 5, 9, 917504, 5)
-layer_4/modulate = Color(1, 1, 1, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.470588, 0.470588, 0.470588, 1)
@@ -25,17 +23,22 @@ color = Color(0.470588, 0.470588, 0.470588, 1)
 
 [node name="Control" type="Control" parent="CanvasLayer_unaffectedByCM"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer_unaffectedByCM/Control"]
 custom_minimum_size = Vector2(476, 524)
-layout_mode = 0
-offset_left = 40.0
-offset_top = 250.0
-offset_right = 546.0
-offset_bottom = 836.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer_unaffectedByCM/Control/MarginContainer2"]
 layout_mode = 2
@@ -47,30 +50,35 @@ custom_minimum_size = Vector2(0, 495)
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
-text = "[center]emergenCITY[/center]
+text = "[center]LOEWE-Zentrum emergenCITY[/center]
 
-• nadja.thiessen@tu-darmstadt.de
-• willich@tk.tu-darmstadt.de
-• schulze@stadt.tu-darmstadt.de
+[center]manager@emergencity.de[/center]
+
+• Katharina Kleinschnitger
+• Joachim Schulze
+• Nadja Thiessen
+• Julius von Willich
 
 [center]Entwickler*innen[/center]
 
-• marcos.rizig@stud.tu-darmstadt.de
-• karina.lazarova@stud.tu-darmstadt.de
-• michelle.geisler@stud.tu-darmstadt.de
-• ole.fabritz@stud.tu-darmstadt.de
-• jakob.huth@stud.tu-darmstadt.de
-• Farbpalette
+• Ole Fabritz
+• Michelle Geisler
+• Jakob Huth
+• Karina Lazarova
+• Annemarie Mattmann
+• Marcos Rizig-Mursal
+
 
 • Fonts
 •• [u][b][url=open]OpenDyslexic[/url][/b][/u]
 •• [u][b][url=cmu]CMU Typewriter[/url][/b][/u]
 "
+fit_content = true
 
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer_unaffectedByCM/Control/MarginContainer2/VBoxContainer" groups=["Button"]]
 layout_mode = 2
-text = "emergenCity"
-uri = "https://www.emergencity.de/de/"
+text = "Website"
+uri = "https://www.krisopolis.de"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_unaffectedByCM/Control"]
 layout_mode = 0

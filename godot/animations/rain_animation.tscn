@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ciu2vijowrby5"]
 
 [ext_resource type="Texture2D" uid="uid://dnbnxosef5r58" path="res://assets/citymap/citymap.png" id="1_ce5jd"]
-[ext_resource type="Script" path="res://animations/rain_animation.gd" id="1_kqvht"]
+[ext_resource type="Script" uid="uid://dgbgav0pestqb" path="res://animations/rain_animation.gd" id="1_kqvht"]
 [ext_resource type="Texture2D" uid="uid://cpitjxap7eygk" path="res://assets/particles/particle_rain.png" id="2_j5ehu"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1go70"]

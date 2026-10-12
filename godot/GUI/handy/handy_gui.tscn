@@ -1,18 +1,27 @@
-[gd_scene load_steps=22 format=3 uid="uid://druwt2u04fhrc"]
+[gd_scene load_steps=32 format=3 uid="uid://druwt2u04fhrc"]
 
-[ext_resource type="Script" path="res://GUI/handy/handy_gui.gd" id="1_4od8s"]
-[ext_resource type="PackedScene" uid="uid://c7njvi1qsgdon" path="res://GUI/handy/app_icon.tscn" id="1_xwilm"]
+[ext_resource type="Script" uid="uid://co0uhqffc67qb" path="res://GUI/handy/handy_gui.gd" id="1_4od8s"]
+[ext_resource type="PackedScene" uid="uid://c7njvi1qsgdon" path="res://GUI/phone/app_icon.tscn" id="1_xwilm"]
 [ext_resource type="Texture2D" uid="uid://b4iuh38wfe4f4" path="res://assets/GUI/icons/icon_info_app.png" id="2_6tb3d"]
 [ext_resource type="Texture2D" uid="uid://5mu0vxw1uan1" path="res://assets/GUI/backgrounds/phone.png" id="2_e701l"]
 [ext_resource type="Texture2D" uid="uid://cno5csi1waa8v" path="res://assets/GUI/icons/icon_warn_app.png" id="3_fdip5"]
 [ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="5_n7g61"]
 [ext_resource type="Texture2D" uid="uid://bduv6g8pf4rcs" path="res://assets/GUI/icons/icon_store_app.png" id="6_306ny"]
-[ext_resource type="Script" path="res://GUI/handy/app_store.gd" id="8_njk5s"]
-[ext_resource type="Script" path="res://GUI/handy/info_app.gd" id="8_von4c"]
+[ext_resource type="Script" uid="uid://ddfgx00ot36a0" path="res://GUI/handy/app_store.gd" id="8_njk5s"]
+[ext_resource type="Script" uid="uid://dgud7mqidio7w" path="res://GUI/handy/info_app.gd" id="8_von4c"]
+[ext_resource type="Texture2D" uid="uid://dcgwu2rccab6r" path="res://assets/GUI/icons/chemie_icon.png" id="12_mwwyw"]
 [ext_resource type="PackedScene" uid="uid://l7giak7i5oop" path="res://util/item_list.tscn" id="12_vrakr"]
+[ext_resource type="Texture2D" uid="uid://cg6otwnlnqjd3" path="res://assets/GUI/icons/lkw_icon.png" id="13_erivy"]
 [ext_resource type="PackedScene" uid="uid://hurmnm4yg5ew" path="res://GUI/handy/warn_list_item.tscn" id="14_iodyr"]
-[ext_resource type="Texture2D" uid="uid://u55u4lhujyg3" path="res://res/sprites/scenario_icons.png" id="14_w3wqw"]
-[ext_resource type="Script" path="res://GUI/handy/warn_app.gd" id="21_hd3ml"]
+[ext_resource type="Texture2D" uid="uid://ckjuxbkx78uml" path="res://assets/GUI/icons/storm_icon.png" id="15_gn6mf"]
+[ext_resource type="Texture2D" uid="uid://ckhxcs0p45ige" path="res://assets/GUI/icons/icon_no_electricity.png" id="15_wyg6i"]
+[ext_resource type="Texture2D" uid="uid://djbl2wksd35ha" path="res://assets/GUI/icons/heat_icon.png" id="16_cqoi2"]
+[ext_resource type="Texture2D" uid="uid://fporcnwl6csd" path="res://assets/GUI/icons/highwater_icon.png" id="16_yt3fb"]
+[ext_resource type="Texture2D" uid="uid://bjd8nobhmauco" path="res://assets/GUI/icons/riskana_icon.png" id="17_67dn7"]
+[ext_resource type="Texture2D" uid="uid://cejau2hhujec5" path="res://assets/GUI/icons/pandemie_icon.png" id="19_eh1bh"]
+[ext_resource type="Texture2D" uid="uid://xuhitwogmglt" path="res://assets/GUI/icons/flutaris_icon.png" id="20_s715n"]
+[ext_resource type="Script" uid="uid://doifnju5vr0df" path="res://GUI/phone/warn_app.gd" id="21_hd3ml"]
+[ext_resource type="Texture2D" uid="uid://c0hmfc280arn3" path="res://assets/GUI/icons/forestfire_icon.png" id="21_rgsqc"]
 [ext_resource type="Texture2D" uid="uid://b2yixgn3oaixk" path="res://assets/GUI/icons/icon_world_states.png" id="22_683kg"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ss8d5"]
@@ -30,6 +39,8 @@ bg_color = Color(0.823529, 0.788235, 0.701961, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1c1mi"]
 bg_color = Color(0.317647, 0.541176, 0.776471, 1)
+
+[sub_resource type="ImageTexture" id="ImageTexture_vp7jv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogubb"]
 bg_color = Color(0.0431373, 0.223529, 0.415686, 1)
@@ -80,7 +91,6 @@ grow_vertical = 0
 size_flags_vertical = 8
 
 [node name="Menu" type="PanelContainer" parent="VBC"]
-visible = false
 custom_minimum_size = Vector2(492, 940)
 layout_mode = 2
 size_flags_vertical = 8
@@ -109,18 +119,11 @@ theme_override_constants/h_separation = 33
 theme_override_constants/v_separation = 12
 columns = 3
 
-[node name="Info" parent="VBC/Menu/VBC/Margin/Apps" instance=ExtResource("1_xwilm")]
-layout_mode = 2
-size_flags_horizontal = 4
-app = "Info"
-icon = ExtResource("2_6tb3d")
-title = "[center]Info-Center"
-
 [node name="Store" parent="VBC/Menu/VBC/Margin/Apps" instance=ExtResource("1_xwilm")]
 layout_mode = 2
 app = "Store"
 icon = ExtResource("6_306ny")
-title = "[center]App-Store"
+title = "[center]App Store[/center]"
 
 [node name="Off" type="PanelContainer" parent="VBC"]
 visible = false
@@ -136,8 +139,8 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_3j51c")
 script = ExtResource("8_njk5s")
-handy = NodePath("../..")
 down_texture = ExtResource("6_306ny")
+handy = NodePath("../..")
 
 [node name="VBC" type="VBoxContainer" parent="VBC/Store"]
 layout_mode = 2
@@ -177,7 +180,13 @@ columns = 3
 layout_mode = 2
 app = "Warn"
 icon = ExtResource("3_fdip5")
-title = "[center]Warn-App"
+title = "[center]Warn App[/center]"
+
+[node name="Check" parent="VBC/Store/VBC/Margin/Apps" instance=ExtResource("1_xwilm")]
+visible = false
+layout_mode = 2
+app = "Check"
+title = "[center]Check Liste[/center]"
 
 [node name="Info" type="PanelContainer" parent="VBC"]
 visible = false
@@ -204,19 +213,20 @@ layout_mode = 2
 separation = -20
 
 [node name="Warn" type="PanelContainer" parent="VBC"]
+visible = false
 custom_minimum_size = Vector2(0, 940)
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"WarnItemList"
 script = ExtResource("21_hd3ml")
-warn_texture = ExtResource("14_w3wqw")
+scenario_icons = Array[Texture2D]([SubResource("ImageTexture_vp7jv"), ExtResource("12_mwwyw"), ExtResource("13_erivy"), ExtResource("16_cqoi2"), ExtResource("15_gn6mf"), ExtResource("16_yt3fb"), ExtResource("17_67dn7"), ExtResource("15_wyg6i"), ExtResource("19_eh1bh"), ExtResource("20_s715n"), ExtResource("21_rgsqc")])
 
 [node name="Notifications" type="Control" parent="VBC/Warn"]
 layout_mode = 2
 
 [node name="Panel" type="PanelContainer" parent="VBC/Warn/Notifications"]
 custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
+layout_mode = 0
 offset_right = 576.0
 offset_bottom = 96.0
 size_flags_vertical = 0
@@ -236,7 +246,7 @@ text = "[color=white]Meine Orte[/color]"
 fit_content = true
 
 [node name="Margin" type="MarginContainer" parent="VBC/Warn/Notifications"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 576.0
 offset_bottom = 940.0
 theme_override_constants/margin_left = 10
@@ -268,7 +278,6 @@ theme_type_variation = &"WarnItemList"
 LIST_ITEM_SCN = ExtResource("14_iodyr")
 
 [node name="Description" type="Control" parent="VBC/Warn"]
-visible = false
 layout_mode = 2
 
 [node name="Infos" type="PanelContainer" parent="VBC/Warn/Description"]
@@ -294,7 +303,7 @@ bbcode_enabled = true
 
 [node name="Panel" type="PanelContainer" parent="VBC/Warn/Description"]
 custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
+layout_mode = 0
 offset_right = 576.0
 offset_bottom = 96.0
 size_flags_vertical = 0
@@ -314,6 +323,7 @@ text = "[color=white]Krisopolis[/color]"
 fit_content = true
 
 [node name="Offline" type="Control" parent="VBC/Warn"]
+visible = false
 layout_mode = 2
 
 [node name="Infos" type="PanelContainer" parent="VBC/Warn/Offline"]
@@ -342,7 +352,7 @@ fit_content = true
 
 [node name="Panel" type="PanelContainer" parent="VBC/Warn/Offline"]
 custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
+layout_mode = 0
 offset_right = 576.0
 offset_bottom = 96.0
 size_flags_vertical = 0
@@ -353,6 +363,165 @@ layout_mode = 2
 theme_override_constants/margin_left = 50
 
 [node name="Title" type="RichTextLabel" parent="VBC/Warn/Offline/Panel/MarginContainer"]
+custom_minimum_size = Vector2(150, 26)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=white]Krisopolis[/color]"
+fit_content = true
+
+[node name="Cook" type="PanelContainer" parent="VBC"]
+visible = false
+custom_minimum_size = Vector2(0, 940)
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"WarnItemList"
+script = ExtResource("21_hd3ml")
+scenario_icons = Array[Texture2D]([SubResource("ImageTexture_vp7jv"), ExtResource("12_mwwyw"), ExtResource("13_erivy"), ExtResource("16_cqoi2"), ExtResource("15_gn6mf"), ExtResource("16_yt3fb"), ExtResource("17_67dn7"), ExtResource("15_wyg6i"), ExtResource("19_eh1bh"), ExtResource("20_s715n"), ExtResource("21_rgsqc")])
+
+[node name="Notifications" type="Control" parent="VBC/Cook"]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="VBC/Cook/Notifications"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 96.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogubb")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/Cook/Notifications/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+
+[node name="Title" type="RichTextLabel" parent="VBC/Cook/Notifications/Panel/MarginContainer"]
+custom_minimum_size = Vector2(150, 26)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=white]Meine Orte[/color]"
+fit_content = true
+
+[node name="Margin" type="MarginContainer" parent="VBC/Cook/Notifications"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 940.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 106
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBC" type="VBoxContainer" parent="VBC/Cook/Notifications/Margin"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBC/Cook/Notifications/Margin/VBC"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_type_variation = &"WarnItemList"
+theme_override_styles/panel = SubResource("StyleBoxFlat_uu3e2")
+
+[node name="Title" type="RichTextLabel" parent="VBC/Cook/Notifications/Margin/VBC/PanelContainer"]
+custom_minimum_size = Vector2(150, 34)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][color=black][b]Krisopolis[/b][/color][/center]"
+
+[node name="ItemList" parent="VBC/Cook/Notifications/Margin/VBC" instance=ExtResource("12_vrakr")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"WarnItemList"
+LIST_ITEM_SCN = ExtResource("14_iodyr")
+
+[node name="Description" type="Control" parent="VBC/Cook"]
+layout_mode = 2
+
+[node name="Infos" type="PanelContainer" parent="VBC/Cook/Description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvypq")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/Cook/Description/Infos"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 14
+
+[node name="Text" type="RichTextLabel" parent="VBC/Cook/Description/Infos/MarginContainer"]
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+
+[node name="Panel" type="PanelContainer" parent="VBC/Cook/Description"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 96.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogubb")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/Cook/Description/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+
+[node name="Title" type="RichTextLabel" parent="VBC/Cook/Description/Panel/MarginContainer"]
+custom_minimum_size = Vector2(150, 26)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=white]Kochbuch
+[/color]"
+fit_content = true
+
+[node name="Offline" type="Control" parent="VBC/Cook"]
+layout_mode = 2
+
+[node name="Infos" type="PanelContainer" parent="VBC/Cook/Offline"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvypq")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/Cook/Offline/Infos"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 14
+
+[node name="Text" type="RichTextLabel" parent="VBC/Cook/Offline/Infos/MarginContainer"]
+custom_minimum_size = Vector2(0, 202.73)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][img]res://assets/GUI/icons/icon_offline.png[/img]
+ You are currently offline"
+fit_content = true
+
+[node name="Panel" type="PanelContainer" parent="VBC/Cook/Offline"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 96.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogubb")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBC/Cook/Offline/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+
+[node name="Title" type="RichTextLabel" parent="VBC/Cook/Offline/Panel/MarginContainer"]
 custom_minimum_size = Vector2(150, 26)
 layout_mode = 2
 size_flags_vertical = 4
@@ -382,6 +551,20 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 texture_normal = ExtResource("5_n7g61")
 
+[node name="Trash" type="Node" parent="."]
+
+[node name="Info" parent="Trash" instance_placeholder="res://GUI/handy/app_icon.tscn"]
+visible = false
+offset_top = 122.0
+offset_right = 128.0
+offset_bottom = 311.0
+size_flags_horizontal = 4
+app = "Info"
+icon = ExtResource("2_6tb3d")
+title = "[center]Info-Center"
+
 [connection signal="meta_clicked" from="VBC/Warn/Description/Infos/MarginContainer/Text" to="VBC/Warn" method="_on_text_meta_clicked"]
 [connection signal="meta_clicked" from="VBC/Warn/Offline/Infos/MarginContainer/Text" to="VBC/Warn" method="_on_text_meta_clicked"]
+[connection signal="meta_clicked" from="VBC/Cook/Description/Infos/MarginContainer/Text" to="VBC/Cook" method="_on_text_meta_clicked"]
+[connection signal="meta_clicked" from="VBC/Cook/Offline/Infos/MarginContainer/Text" to="VBC/Cook" method="_on_text_meta_clicked"]
 [connection signal="pressed" from="Margin/BackButton" to="." method="_on_back_button_pressed"]

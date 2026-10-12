@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8qngbqj8n42a"]
+[gd_scene load_steps=9 format=3 uid="uid://c8qngbqj8n42a"]
 
-[ext_resource type="Script" path="res://GUI/summary_end_of_day_gui.gd" id="1_wmmkg"]
+[ext_resource type="Script" uid="uid://bomp3w7is7lht" path="res://GUI/summary_end_of_day_gui.gd" id="1_wmmkg"]
 [ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="2_p8j38"]
 [ext_resource type="AudioStream" uid="uid://kuu2ftwlhnk2" path="res://assets/SFX/open_GUI.wav" id="2_q6owg"]
 [ext_resource type="AudioStream" uid="uid://csooiooxhwkj0" path="res://assets/SFX/close_GUI.wav" id="3_hs5pc"]
+[ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="3_mxk1r"]
 [ext_resource type="AudioStream" uid="uid://c16h1eu6d7ay2" path="res://assets/SFX/button_pressed.wav" id="4_2a3qa"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_6ek7j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gi80"]
 
 [node name="SummaryEndOfDayGUI" type="Control"]
 layout_mode = 3
@@ -33,20 +36,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -208.0
-offset_top = -306.5
+offset_top = -314.5
 offset_right = 208.0
-offset_bottom = 306.5
+offset_bottom = 315.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="SummaryWindow"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="VBC" type="VBoxContainer" parent="SummaryWindow/MarginContainer"]
+custom_minimum_size = Vector2(0, 286)
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -62,79 +64,36 @@ bbcode_enabled = true
 text = "[center]Tagesübersicht[/center]"
 fit_content = true
 
-[node name="VBC" type="VBoxContainer" parent="SummaryWindow/MarginContainer/VBC"]
+[node name="PC" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC"]
 layout_mode = 2
-theme_override_constants/separation = 20
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0gi80")
 
-[node name="HBC1" type="HBoxContainer" parent="SummaryWindow/MarginContainer/VBC/VBC"]
+[node name="Score" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/PC"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-alignment = 1
-
-[node name="MorningLabel" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC1"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-text = "MORGEN"
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "1"
 fit_content = true
-autowrap_mode = 2
+scroll_active = false
+autowrap_mode = 0
 
-[node name="TextBox" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC1"]
-custom_minimum_size = Vector2(150, 50)
+[node name="SC" type="ScrollContainer" parent="SummaryWindow/MarginContainer/VBC"]
+custom_minimum_size = Vector2(0, 218)
 layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
+theme_override_styles/panel = ExtResource("3_mxk1r")
 
-[node name="MorningContent" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC1/TextBox"]
-custom_minimum_size = Vector2(150, 50)
+[node name="Logs" type="VBoxContainer" parent="SummaryWindow/MarginContainer/VBC/SC"]
 layout_mode = 2
-fit_content = true
-autowrap_mode = 2
-
-[node name="HBC2" type="HBoxContainer" parent="SummaryWindow/MarginContainer/VBC/VBC"]
-layout_mode = 2
-alignment = 1
-
-[node name="NoonLabel" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC2"]
-custom_minimum_size = Vector2(150, 30)
-layout_mode = 2
-text = "MITTAG"
-autowrap_mode = 2
-
-[node name="TextBox" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC2"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="NoonContent" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC2/TextBox"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-fit_content = true
-autowrap_mode = 2
-
-[node name="HBC3" type="HBoxContainer" parent="SummaryWindow/MarginContainer/VBC/VBC"]
-layout_mode = 2
-alignment = 1
-
-[node name="EveningLabel" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC3"]
-custom_minimum_size = Vector2(150, 30)
-layout_mode = 2
-text = "ABEND"
-autowrap_mode = 2
-
-[node name="TextBox" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC3"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="EveningContent" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/VBC/HBC3/TextBox"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-fit_content = true
-autowrap_mode = 2
 
 [node name="TextBox" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC"]
 layout_mode = 2
 theme_type_variation = &"WhitePanelContainer"
 
-[node name="Description" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/TextBox"]
+[node name="Tips" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/TextBox"]
 custom_minimum_size = Vector2(24, 55)
 layout_mode = 2
 text = "Kümmer dich um deine Gesundheit, iss und trink etwas."

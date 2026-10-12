@@ -1,0 +1,51 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar veronika.flipped
+[text]
+veronika:Was denkst du zu Folgendem? 'Auch eine Krise braucht gute Beleuchtung und Kameraführung.'
+veronika:Nein, vergiss es. Ich hasse Marketing ...
+
+[[Node]] two
+[actors] avatar veronika.flipped
+[text]
+veronika:Ich muss noch die Fotos nachbearbeiten und an die Kunden senden. Und einkaufen. Und mal durch die Wohnung kehren. Und ... 
+
+[[Node]] three
+[actors] avatar veronika.flipped
+[text]
+veronika:Sind deine ToDo-Listen auch immer so lang? Meine sind länger als meine Tage ...
+
+[[Node]] four
+[actors] avatar veronika.flipped
+[text]
+veronika:Kris sagt, ich arbeite zu viel. Ich werd ja so schon nicht fertig!
+
+[[Node]] five
+[actors] avatar veronika.flipped
+[text]
+veronika:Ich krieg kein Dosenfutter mehr in mich rein. Vielleicht kann Kris mir ne Pizza mitbringen. Ich muss eh noch arbeiten.
+
+[[Node]] six
+[actors] avatar veronika.flipped
+[text]
+veronika:Ich sollte mal wieder zum Arzt. Aber die Wartezeit da kann ich mir einfach nicht leisten.
+
+[[Node]] seven
+[actors] avatar veronika.flipped
+[text]
+veronika:Das Meeting mit dem Kunden lief richtig gut. Jetzt steht dem Auftrag eigentlich nichts mehr im Wege ...
+
+[[Node]] eight
+[actors] avatar veronika.flipped
+[text]
+veronika:Ich muss noch Rechnungen schreiben. Und die Buchhaltung könnte ich auch schonmal angehen.

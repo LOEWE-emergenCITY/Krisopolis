@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6rt1srdy2k6h"]
+
+[ext_resource type="Script" uid="uid://dpbl8odtaf44s" path="res://GUI/default/two_choice.gd" id="1_ldwy8"]
+[ext_resource type="Texture2D" uid="uid://b7kk24kpdehbm" path="res://assets/GUI/backgrounds/menu_box_white.png" id="2_b7w08"]
+[ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="3_sv6ei"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_j4efr"]
+[ext_resource type="Texture2D" uid="uid://clxphar2j8ggq" path="res://assets/GUI/icons/icon_needs_time.png" id="5_vgjbs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jy4p8"]
+texture = ExtResource("2_b7w08")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[node name="TwoChoice" type="PanelContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -166.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("1_ldwy8")
+icon = ExtResource("5_vgjbs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jy4p8")
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("3_sv6ei")
+bbcode_enabled = true
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Option1" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_j4efr")]
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+theme_override_constants/icon_max_width = 42
+text = "Flasche"
+
+[node name="Option2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_j4efr")]
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+theme_override_constants/icon_max_width = 42
+text = "Reservoir"
+icon = ExtResource("5_vgjbs")
+
+[node name="BackBtn" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_j4efr")]
+custom_minimum_size = Vector2(100, 42)
+layout_mode = 2
+text = "Zurück"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Option1" to="." method="_on_option_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Option2" to="." method="_on_option_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]

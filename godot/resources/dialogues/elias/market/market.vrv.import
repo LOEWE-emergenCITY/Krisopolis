@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://crnagdcjdrej6"
+path="res://.godot/imported/market.vrv-58a51140d8ab7bd486f59aa752eada84.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/elias/market/market.vrv"
+dest_files=["res://.godot/imported/market.vrv-58a51140d8ab7bd486f59aa752eada84.tres"]
+
+[params]
+

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7njvi1qsgdon"]
+
+[ext_resource type="Script" uid="uid://cjc7mcy5dxrjr" path="res://GUI/phone/app_icon.gd" id="1_al724"]
+[ext_resource type="Texture2D" uid="uid://b4iuh38wfe4f4" path="res://assets/GUI/icons/icon_info_app.png" id="1_boyfp"]
+
+[node name="AppIcon" type="VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+theme_override_constants/separation = -5
+script = ExtResource("1_al724")
+
+[node name="Icon" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture_normal = ExtResource("1_boyfp")
+stretch_mode = 4
+
+[node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center] Info-Center[center]"
+fit_content = true
+
+[connection signal="pressed" from="Icon" to="." method="_on_icon_pressed"]

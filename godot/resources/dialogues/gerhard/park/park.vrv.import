@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://cokwu0hisngqs"
+path="res://.godot/imported/park.vrv-6eb2d680ed4a9511e68022d59dd053ac.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/gerhard/park/park.vrv"
+dest_files=["res://.godot/imported/park.vrv-6eb2d680ed4a9511e68022d59dd053ac.tres"]
+
+[params]
+

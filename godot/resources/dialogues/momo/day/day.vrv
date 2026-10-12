@@ -1,0 +1,24 @@
+[[Node]] start
+[actors] avatar momo mert.flipped
+[text]
+momo:...
+mert:Momo ist etwas scheu.
+[Choice]
+- [talk] Warum denn?
+- [stop] Dann will ich lieber nicht stören.
+
+[[Node]] stop
+[actors] avatar momo mert.flipped
+
+[[Node]] talk
+[actors] avatar momo mert.flipped
+[text]
+mert:Gute Frage. Vielleicht hat sie in der Vergangenheit keine guten Erfahrungen mit Menschen gemacht.
+mert:Manchmal klettert sie sogar auf hohe Bäume, um ihre Ruhe vor Menschen zu haben ... und kommt dann alleine nicht mehr herunter.
+mert:So habe ich sie kennengelernt. Ich habe sie damals vom Baum geholt, als sie feststeckte.
+mert:Wir konnten danach keine Besitzer*innen finden und gechipt war sie auch nicht, also habe ich sie bei mir aufgenommen.
+mert:Sie versteckt sich immer noch häufig, wenn fremde Menschen da sind. Wundert mich, dass sie überhaupt so ruhig hier sitzt.
+mert:Scheint so, als würde sie dich mögen! Mit Streicheln wäre ich trotzdem vorsichtig.
+momo:Miau ...
+
+

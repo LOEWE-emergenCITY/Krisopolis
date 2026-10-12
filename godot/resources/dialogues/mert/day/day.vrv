@@ -1,0 +1,269 @@
+[[Node]] start
+[actors] avatar mert.flipped
+[text]
+mert:Hey Kumpel! Alles klar bei dir?
+avatar:Ja, wie läuft's bei dir?
+[jump] talk
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+- [jump] talk5
+- [jump] talk6
+- [jump] talk7
+- [jump] talk8
+- [jump] talk9
+
+[[Node]] stop
+[actors] avatar mert.flipped
+[text]
+mert:Man sieht sich!
+
+[[Node]] talk1
+[actors] avatar mert.flipped
+[text]
+mert:Bin ein bisschen gestresst. In solchen Zeiten hat das THW, also das Technische Hilfswerk, mehr zu tun als sonst.
+mert:Aber zu sehen, wie viel Hilfsbereitschaft und Dankbarkeit die Leute haben - das ist das Größte.
+
+[[Node]] talk2
+[actors] avatar mert.flipped
+[text]
+mert:Mir geht es super! Kommst du gut durch die Krise?
+[Choice]
+- [ja] Ja.
+- [nein] Nein.
+
+[[Node]] ja
+[actors] avatar mert.flipped
+[text]
+avatar:Ich komme klar.
+mert:Schön zu hören! Aber pass trotzdem auf dich auf, ja? So eine Krise ist nicht ohne.
+
+[[Node]] nein
+[actors] avatar mert.flipped
+[text]
+avatar:Ist ehrlich gesagt ganz schön schwierig.
+mert:Tut mir leid, das zu hören. Wenn du jemandem zum Reden brauchst, sag Bescheid, ja?
+mert:Zusammen schaffen wir das schon!
+
+[[Node]] talk3
+[actors] avatar mert.flipped
+[text]
+mert:Grad wieder viel los beim THW. War heute Nacht bis 4 Uhr im Einsatz.
+avatar:Uff, das klingt hart.
+mert:Ich kanns nur empfehlen. Hab schon so viele nette Leute kennengelernt.
+mert:Sowas stärkt einem den Rücken.
+mert:Kontakt mit andern und das Gefühl, nen Beitrag zu leisten. Gibt nichts Wichtigeres, das kann ich dir sagen.
+mert:Also außer Sport natürlich, der ist genauso wichtig.
+avatar:Stärkt auch den Rücken.
+mert:Haha, du sagst es.
+
+[[Node]] talk4
+[actors] avatar mert.flipped
+[text]
+mert:Ich mach mir ein bisschen Sorgen um Momo.
+mert:Sie mag ihre Zeiten und ich kann sie manchmal nicht rechtzeitig füttern, weil ich beim Einsatz bin.
+mert:Hab schon ne Futtermaschine versucht, aber sie hat sie aufgekriegt und sich vollgefressen.
+mert:Jetzt kommt Irena vorbei, um sie zu füttern. Eigentlich ist sie auch ganz vorsichtig mit Momo.
+mert:Aber ich glaub, Momo mag es nicht, wenn wer anders hier ist, aber ich nicht.
+avatar:Sie gewöhnt sich sicher daran.
+mert:Das hoff ich auch!
+
+[[Node]] talk5
+[actors] avatar mert.flipped
+[text]
+mert:Ich beobachte, wie Menschen sich ändern. Manchmal wirklich krass.
+mert:Und wie andere bei dem Versuch wieder und wieder scheitern.
+mert:Ich glaube, der Unterschied ist, ob man sich selbst und der Wahrheit ins Gesicht sehen kann.
+mert:Es gab ne Zeit, da hab ich geglaubt, ich könnte das.
+mert:Bis ich wirklich gelernt hab, wie es geht.
+mert:Eigentlich bin ich noch am Lernen.
+mert:Verstehst du, was ich meine?
+[Choice]
+- [understand_yes] Ich denke schon.
+- [understand_no] Nicht wirklich.
+
+[[Node]] understand_yes
+[actors] avatar mert.flipped
+[text]
+mert:Hm. Ich frage mich ...
+avatar:Was?
+[match] npc_friendship_less_than("mert", 10)
+- [true] [text] mert:Egal.
+- [false] [text]
+	mert:Ich glaube, man muss es erlebt haben, um es zu verstehen.
+	mert:Aber vielleicht hast du das ja. Es würde erklären, warum ich gleich das Gefühl hatte, mit dir kann man gut reden.
+	avatar:Danke, das Kompliment geb ich gern zurück!
+[Comment]
+	[if] npc_friendship_less_than("mert", 10)
+		[then]
+			[text]
+			mert:Egal.
+		[else]
+			[text]
+			mert:Ich glaube, man muss es erlebt haben, um es zu verstehen.
+			mert:Aber vielleicht hast du das ja. Es würde erklären, warum ich gleich das Gefühl hatte, mit dir kann man gut reden.
+			avatar:Danke, das Kompliment geb ich gern zurück!
+
+[[Node]] understand_no
+[actors] avatar mert.flipped
+[text]
+[match] npc_friendship_less_than("mert", 10)
+- [true] [text] mert:Das hab ich befürchtet. Ist auch nicht so wichtig.
+- [false] [text]
+	mert:Das hab ich befürchtet. Wie erkläre ich es besser?
+	mert:...
+	mert:Vielleicht fällt mir noch was ein.
+[Comment]
+	[if] npc_friendship_less_than("mert", 10)
+		[then]
+			[text]
+			mert:Das hab ich befürchtet. Ist auch nicht so wichtig.
+		[else]
+			[text]
+			mert:Das hab ich befürchtet. Wie erkläre ich es besser?
+			mert:...
+			mert:Vielleicht fällt mir noch was ein.
+
+[[Node]] talk6
+[actors] avatar mert.flipped
+[text]
+mert:Manchmal, wenn ich allein zu Hause bin, überfällt mich diese trübe Stimmung.
+mert:Dann kommt Momo zu mir und tröstet mich.
+mert:Und dann merke ich, dass alles gar nicht so schlimm ist.
+mert:Sie ist großartig!
+
+[[Node]] talk7
+[actors] avatar mert.flipped
+[text]
+mert:Ich denke über alte Zeiten nach. Ich war ja früher auf dem Bau. Da hab ich schon so manches gelernt was bei Krisen und bei meiner Arbeit beim THW hilft.
+[random]
+- [jump] bau_starkregen
+- [jump] bau_erdbeben
+- [jump] bau_hochwasser
+- [jump] bau_sensoren
+
+[[Node]] bau_starkregen
+[Condition] crisis_is("Starkregen")
+[actors] avatar mert.flipped
+[text]
+mert:Die Häuser in Krisopolis haben alle einen Rückstauverschluss, damit das Abwasser bei Starkregen nicht zurück in die Häuser laufen kann.
+mert:Das war eine Schweinerei, als es das noch nicht gab!
+[action] add_score("tip", {"source": "mert1"})
+
+[[Node]] bau_hochwasser
+[Condition] crisis_is("Hochwasser")
+[actors] avatar mert.flipped
+[text]
+mert:Hochwasser ist so ne Sache. Da haben modernere Gebäude tatsächlich einen Nachteil.
+[Choice]
+- [nachfragen_hochwasser] Was meinst du?
+- [nicht_nachfragen_hochwasser] Das stimmt.
+
+[[Node]] nachfragen_hochwasser
+[actors] avatar mert.flipped
+[text]
+mert:Wenn der Keller zu gut abgedichtet ist, kann das Grundwasser von außen die Wände zusammendrücken und das Haus einstürzen.
+mert:Deshalb heißt es bei Hochwasser immer, Sandsäcke schleppen, für den Gegendruck.
+mert:Wenns gar nicht anders geht, müssen wir selbst den Keller fluten.
+[action] add_score("tip", {"source": "mert2"})
+
+[[Node]] nicht_nachfragen_hochwasser
+[actors] avatar mert.flipped
+[text]
+mert:In dem Haus hier läuft der Keller einfach voll. Nervig, aber vermutlich weniger gefährlich.
+mert:Probleme mit Heizöltanks oder so haben wir nicht, wir haben Fernwärme. Und ich hab nichts im Keller, was mir wichtig ist.
+mert:Der Strom muss natürlich aus sein, bevor man in die Brühe rein kann.
+[jump] wie_oft
+
+[[Node]] wie_oft
+[Condition] npc_karma_higher_than("mert",0.5)
+[actors] avatar mert.flipped
+[text]
+avatar: Wie oft ist das denn schon passiert?
+mert:Ganz voll? Zweimal seit ich hier wohne.
+mert:Könnte schlimmer sein. Das Gebäude ist eigentlich so gebaut, dass es nicht passieren sollte.
+mert:Aber das waren Maßstäbe von vor 30 Jahren, inzwischen hat sich das geändert.
+mert:Was passiert, passiert. Und dann geht man damit um und das geht auch irgendwie.
+avatar:Das stimmt.
+
+[[Node]] bau_erdbeben
+[actors] avatar mert.flipped
+[text]
+mert:Manchmal ist es auch einfach beruhigend zu wissen, was alles getan wird.
+mert:Krisopolis ist zum Beispiel gut gegen Erdbeben gewappnet. Die Gebäude haben alle Stahlbetonrahmen für Wände, Fenster und Türen.
+mert:Wände sind ja an sich sehr stabil, nur die Öffnungen machen sie anfällig. Da hilft der Stahlbeton.
+mert:Weicher oder sandiger Boden ist natürlich noch ein Problem, da können Gebäude kippen oder absinken.
+mert:Aber sandigen Boden gibts eigentlich nur am Ufer der Riskana und das ist kaum bebaut.
+[action] add_score("tip", {"source": "mert3"})
+
+[[Node]] bau_sensoren
+[actors] avatar mert.flipped
+[text]
+mert:In Krisopolis gibt es ne Menge Sensoren, damit wir frühzeitig vor Krisen gewarnt sind. Und vor Gefahren während einer Krise, natürlich.
+mert:Die messen Wind, Temperatur, Feuchtigkeit, Luftdruck, Wasserstand der Riskana und sogar die Stabilität von Brücken und öffentlichen Gebäuden.
+mert:Wenn man die Daten alle zusammennimmt und die Daten anderer Gebiete noch mit reinnimmt, kann man erstaunlich gute Vorhersagen machen.
+mert:Manchmal allerdings nur ganz knapp im Voraus, weil es zu viele Möglichkeiten gibt, in welche Richtung es geht.
+[action] add_score("tip", {"source": "mert4"})
+
+[[Node]] talk8
+[actors] avatar mert.flipped
+[text]
+mert:Nett, dass du fragst. Mir gehts gut, aber du siehst gestresst aus?
+[Choice]
+- [geht_noch] Es geht.
+- [schon] Ja, schon.
+
+[[Node]] geht_noch
+[actors] avatar mert.flipped
+[text]
+avatar:So eine Krise bringt einem den Alltag durcheinander. Das ist schon anstrengend.
+mert:Da hast du recht. Viele von uns haben inzwischen so eine Art Krisenalltag. Das macht es leichter.
+mert:Wenn du Krisopolis erstmal gut kennst, geht es dir bald genauso.
+mert:Dann weiß man auch, wen man fragen kann, wenn das Tofu ausgegangen ist.
+avatar:Guter Tipp, danke.
+[action] add_score("tip", {"source": "mert5"})
+
+[[Node]] schon
+[actors] avatar mert.flipped
+[text]
+mert:Mit Krisen ist nicht zu spaßen.
+mert:Manche Leute vergessen das. Humor hilft ja auch, mit einer Situation umzugehen.
+mert:Aber man muss immer darauf achten, wie es den Leuten um einen herum geht.
+mert:Geteiltes Leid ist halbes Leid.
+mert:Ich dachte mal, das ist nur ein dummer Spruch. Wenn ich anderen erzähle, dass es mir schlecht geht, dann ruiniert das die Stimmung.
+mert:Aber Schönreden sorgt nur dafür, dass man nie richtige Gespräche führt. Und die anderen um einen rum eigentlich gar nicht richtig kennt.
+avatar:Das stimmt.
+mert:Möchtest du darüber reden, was dich bedrückt? Ich mach uns auch einen Tee.
+[Choice]
+- [aussprechen] Ja, gern.
+- [nicht_aussprechen] Nein, aber danke, dass du fragst.
+
+[[Node]] aussprechen
+[actors] avatar mert.flipped
+[text]
+mert:Sehr gut!
+[action] progress_day("Sprich dich bei Mert aus")
+[action] add_points_water()
+[text]
+avatar:Es tat gut, darüber zu sprechen. Danke dir!
+mert:Jederzeit!
+
+[[Node]] nicht_aussprechen
+[actors] avatar mert.flipped
+[text]
+mert:Jederzeit!
+
+[[Node]] talk9
+[actors] avatar mert.flipped
+[text]
+mert:Wir denken oft gar nicht darüber nach, was alles passieren kann.
+mert:Es kann schnell gruselig werden, wenn Krisen wichtige Infrastruktur treffen. Krankenhäuser zum Beispiel.
+mert:Stell dir vor, du hast eine wichtige Behandlung, und sie kann nicht durchgeführt werden, weil die Geräte nicht laufen.
+mert:Je nach Situation kann man Behandlungen gar nicht folgenlos verschieben.
+mert:Oder stell dir vor, eine OP muss abgebrochen werden. Das kann lebensgefährlich sein.
+mert:Tut mir leid, ich grüble schon wieder. Zum Glück hat das Krankenhaus in Krisopolis eine gute Notstromversorgung.
+

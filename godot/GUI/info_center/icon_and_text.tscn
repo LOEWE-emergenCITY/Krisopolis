@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7t7kpqkjb4jo"]
+
+[ext_resource type="Texture2D" uid="uid://c6dw35gsdmd0m" path="res://assets/GUI/icons/icon_no_water.png" id="1_1yc2v"]
+
+[node name="IconText" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_1yc2v")
+stretch_mode = 3
+
+[node name="Text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center]Kein Strom[/center]"
+fit_content = true

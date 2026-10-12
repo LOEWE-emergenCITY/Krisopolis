@@ -1,5 +1,11 @@
 class_name EMC_Util
 
+static func print_warn(line: String) -> void:
+	print_rich("[color=#ffde66][b]● WARNING:[/b] %s[/color]" % line)
+
+static func print_success(line: String) -> void:
+	print_rich("[color=#8fffdb][b]● SUCCESS:[/b] %s[/color]" % line)
+
 static func combine_filters(f1 : Callable, f2 : Callable) -> Callable:
 	return \
 		func (value : Variant) -> bool:
@@ -61,8 +67,12 @@ static var _rng : RandomNumberGenerator = RandomNumberGenerator.new()
 
 static func pick_weighted_random(list : Array[Variant], weights : Array[float], count : int) -> Array[Variant]:
 	var result : Array[Variant] = []
-	assert(count <= list.size(), "Count cannot be greater than list size")
-	assert(list.size() == weights.size(), "The size of list and weights must be equal")
+	if count > list.size():
+		printerr("Count cannot be greater than list size")
+		return []
+	if list.size() != weights.size():
+		printerr("The size of list and weights must be equal")
+		return []
 	for i in range(count):
 		var sum_of_weight : float = weights.reduce(func(a : float, b : float) -> float: return a + b)
 		var random : float = _rng.randf_range(0.0, sum_of_weight)
@@ -76,8 +86,12 @@ static func pick_weighted_random(list : Array[Variant], weights : Array[float], 
 	return result
 	
 static func pick_weighted_random_const(list : Array[Variant], weights : Array[float]) -> Variant:
-	assert(1 <= list.size(), "Count cannot be greater than list size")
-	assert(list.size() == weights.size(), "The size of list and weights must be equal")
+	if list.is_empty():
+		printerr("List must not be empty")
+		return []
+	if list.size() != weights.size():
+		printerr("The size of list and weights must be equal")
+		return []
 	var sum_of_weight : float = weights.reduce(func(a : float, b : float) -> float: return a + b)
 	var random : float = _rng.randf_range(0.0, sum_of_weight)
 	for index in range(list.size()):

@@ -1,0 +1,159 @@
+[[Node]] start
+[actors] avatar julia.flipped
+[text]
+julia:Hi! Das ist aber nett, dass du vorbeischaust.
+[jump] reden
+
+[[Node]] reden
+[random]
+- [jump] reden1
+- [jump] reden2
+- [jump] reden3
+- [jump] reden4
+- [jump] reden5
+- [jump] reden6
+- [jump] reden7
+- [jump] reden8
+- [jump] reden9
+
+[[Node]] stop
+[actors] avatar julia.flipped
+[text]
+julia:Jederzeit!
+
+[[Node]] reden1
+[actors] avatar julia.flipped
+[text]
+julia:Hast du heute schon ein paar Nachbarn besucht? Soziale Kontakte sind das A und O in einer Krise.
+julia:In unserer Nachbarschaft gibt es einige sehr liebe Menschen, die dir sicher gerne helfen, besser durch die Krise zu kommen.
+julia:Andersherum ist es natürlich auch nett, wenn du ihnen hilfst, falls sie sich mit einem Problem an dich wenden.
+avatar:Danke für den Tipp!
+[action] add_score("tip", {"source": "julia1"})
+
+[[Node]] reden2
+[actors] avatar julia.flipped
+[text]
+julia:Hast du heute schon etwas gekocht? Wenn du tagsüber etwas kochst, kannst du abends eine warme Mahlzeit zu dir nehmen.
+julia:Das schmeckt nicht nur besser; viele Lebensmittel sind ungekocht gar nicht genießbar. Niemand möchte gerne ungekochte Nudeln kauen.
+julia:Aber gekochtes Essen hält sich häufig nicht sehr lange und sollte daher bald gegessen werden.
+avatar:Danke für den Tipp!
+[action] add_score("tip", {"source": "julia2"})
+
+
+[[Node]] reden3
+[actors] avatar julia.flipped
+[text]
+julia:Es gibt viele Möglichkeiten, an Wasser zu gelangen: Schön ist natürlich, wenn einfach sauberes Wasser aus deinem Wasserhahn kommt.
+julia:Wenn das Wasser mal ausfällt, kann man welches aus der Regentonne schöpfen. Das ist dann allerdings nicht sehr sauber.
+julia:Dafür gibt es Chlortabletten: Die reinigen verschmutztes Wasser aus der Regentonne oder bei Verschmutzungen in der Leitung.
+julia:Manchmal teilt das THW auch sauberes Wasser auf dem Marktplatz aus. Das wird dann im Radio angekündigt.
+avatar:Danke für den Tipp!
+[action] add_score("tip", {"source": "julia3"})
+
+
+[[Node]] reden4
+[actors] avatar julia.flipped
+[text]
+julia:Schön, dass du vorbeischaust. Es ist wichtig, regelmäßig rauszukommen.
+julia:In Krisenzeiten ist es ja besonders leicht, einfach zu Hause zu bleiben.
+julia:Aber wir gewöhnen uns so schnell daran, nichts zu tun. Und dann versauern wir zu Hause.
+julia:Besser ist es, jeden Tag etwas außer Haus zu unternehmen.
+
+[[Node]] reden5
+[actors] avatar julia.flipped
+[text]
+julia:Tut mir leid, wenn ich so viel rede.
+julia:Ich bin als Psychologin oft den ganzen Tag damit beschäftigt, anderen zuzuhören.
+julia:Es tut auch gut, einfach mal draufloszureden.
+julia:Aber erzähl doch mal, wie geht es dir?
+[Choice]
+- [DrauflosRedenOK] Mir geht's gut.
+- [DrauflosRedenNichtOK] Es geht.
+
+[[Node]] DrauflosRedenOK
+[actors] avatar julia.flipped
+[text]
+avatar:Sprich dich ruhig bei mir aus!
+julia:Das ist lieb von dir, danke.
+
+[[Node]] DrauflosRedenNichtOK
+[actors] avatar julia.flipped
+[text]
+julia:Wenn ich dir helfen kann, sag Bescheid!
+julia:Ich kann dir auch einiges zur Krisenbewältigung sagen.
+julia:Wenn man in Krisopolis praktiziert, sind Krisen immer wieder Thema.
+julia:Obwohl die meisten, die hier wohnen, sich wirklich gut auskennen. Krisen bleiben doch immer eine Belastung.
+
+
+[[Node]] reden6
+[actors] avatar julia.flipped
+[text]
+julia:Bewegung, Schlaf, gute Ernährung und Routine gehören zu den wichtigsten Elementen für ein glückliches Leben.
+julia:Krisen können das erschweren. Die Routine geht oft zuerst über Bord.
+julia:Aber letztlich ist alles betroffen. Wenn man nicht mehr ins Fitnesscenter oder in den Park darf.
+julia:Oder man nicht schlafen kann, weil man sich Sorgen macht.
+julia:Oder die Nahrungsmittel verderben.
+julia:Deshalb ist es so wichtig, sich vorzubereiten. Ich habe eine Krisenroutine. Weißt du, was der Trick dabei ist?
+avatar:Was?
+julia:Mein Kalender bleibt, wie er ist. Ich ersetze nur das Fitnesscenter mit dem Hometrainer und frische Zutaten mit haltbaren Zutaten.
+avatar:Das klingt einfach!
+[action] add_score("tip", {"source": "julia4"})
+
+[[Node]] reden7
+[actors] avatar julia.flipped
+[text]
+julia:Womit verbringst du deine Freizeit am liebsten?
+[Choice]
+- [FreizeitSport] Sport.
+- [FreizeitLesen] Lesen.
+- [FreizeitLeuteTreffen] Leute treffen.
+- [FreizeitAlles] Alles Mögliche.
+
+[[Node]] FreizeitSport
+[actors] avatar julia.flipped
+[text]
+julia:Prima! Hier gibt es auch ein paar Leute, die sehr viel Sport machen.
+julia:Ich gehe auch regelmäßig ins Fitnesscenter.
+
+[[Node]] FreizeitLesen
+[actors] avatar julia.flipped
+[text]
+julia:Wirklich? Leonie und ich haben schon öfter überlegt, einen Buchclub aufzumachen.
+julia:Ich bin gerne im Rathaus und lese. Oder rede mit Leonie.
+julia:Sie ist immer so voller Ideen.
+julia:Und sie liebt Bücher und Filme.
+
+[[Node]] FreizeitLeuteTreffen 
+[actors] avatar julia.flipped
+[text]
+julia:Dann bist du an den richtigen Ort gezogen.
+julia:Hier leben eine Menge nette Menschen, die es sich zu treffen lohnt.
+
+[[Node]] FreizeitAlles
+[actors] avatar julia.flipped
+[text]
+julia:Du lässt dich nicht festnageln, verstehe.
+julia:Ich bleibe auch gerne flexibel.
+julia:Aber am liebsten lese ich oder höre Musik.
+
+
+[[Node]] reden8
+[actors] avatar julia.flipped
+[text]
+julia:Neulich kamen überraschend drei Freunde zu Besuch.
+julia:Eigentlich waren sie nur auf der Durchreise, aber wie das so ist, wir kamen ins Gespräch und es wurde spät.
+julia:Und ich hatte gar nichts eingekauft.
+julia:In solchen Momenten ist es wirklich praktisch, ein paar Dosen und haltbare Snacks zu Hause zu haben.
+julia:Man braucht nicht immer frische Zutaten, um etwas Leckeres zu zaubern.
+avatar:Das stimmt!
+[action] add_score("tip", {"source": "julia5"})
+
+[[Node]] reden9
+[actors] avatar julia.flipped
+[text]
+julia:Krisopolis ist wirklich eine einzigartige Stadt.
+julia:In anderen Städten habe ich mich im Dunkeln nicht immer wohl gefühlt. Da sind oft nur die Straßen ausgeleuchtet und die Gehwege sind dunkel.
+julia:Man könnte ja meinen, dass Krisopolis noch schlimmer ist - mit all den Stromausfällen.
+julia:Aber hier nehmen die Menschen viel aktiver an der Stadtgestaltung teil. In Krisopolis gibt es keine gruseligen Ecken, die ich als Frau meiden sollte.
+julia:Die Laternen haben alle Notstromversorgung. Wenn ich vom Fitnesscenter nach Hause gehe, leuchten die immer.
+julia:Ich würde nirgendwo sonst leben wollen, Krisen hin oder her.

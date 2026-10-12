@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://byfn5n1lyrawq"]
+
+[ext_resource type="Script" uid="uid://muvgg60oyrl3" path="res://animations/action_animation.gd" id="1_soykq"]
+
+[sub_resource type="Gradient" id="Gradient_hfb0w"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_soykq"]
+gradient = SubResource("Gradient_hfb0w")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 1)
+
+[node name="ActionAnimation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_soykq")
+
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 1100.0
+texture = SubResource("GradientTexture2D_soykq")

@@ -14,7 +14,3 @@ func _on_continue_btn_pressed() -> void:
 func close() -> void:
 	hide()
 	closed.emit(self)
-
-
-func _ready() -> void:
-	close()

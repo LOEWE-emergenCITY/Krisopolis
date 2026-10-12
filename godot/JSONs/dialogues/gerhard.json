@@ -1,0 +1,272 @@
+{
+    "import": ["Greetings", "gerhard/quest"],
+    "nodes": {
+        "start": {
+            "random": [
+                {"jump": "one"},
+                {"text": [{"speaker": "Gerhard", "line": "HI"}]}
+            ],
+            "match": {
+                "value": "get_distinct_day",
+                "with": {
+                    "1": {"jump": "one"},
+                    "2": {"jump": "two"}
+                }
+            }
+        },
+        "one": {
+            "prompt": "No Way",
+            "condition": [
+                {"state": "is_weather", "value": "nice"},
+                {"state": "is_crisis", "value": "none"}
+            ],
+            "sequence": [
+                {"text": [
+                    {"speaker": "$greetings", "line": "pool gerhard"},
+                    {"speaker": "gerhard", "line": "What a nice weather!"},
+                    {"speaker": "avatar", "line": "Yes you are right"}
+                ]},
+                {"jump": "end"}
+            ]
+        },
+        "two": {
+            "prompt": "Yes Way",
+            "sequence": [
+                {"choice": ["one", "two"]},
+                {"text": [
+                    {"speaker": "gerhard", "line": "Yes sir"},
+                    {"speaker": "avatar", "line": "No sir"}
+                ]},
+                {"actors": ["avatar", "gerhard"]},
+                {"match": {
+                    "value": "mood",
+                    "with": {
+                        "0.1": {"speaker": "gerhard", "line": "hello"},
+                        "0.4": {"jump": "one"}
+                    }
+                }}
+            ]
+        }
+    }
+}
+
+Vervain
+
+[import] gerhard/share.vrv @pre
+
+# one.vrv
+[Node] start
+[random]
+- [jump] @share.greeting1
+- [jump] two
+
+[Node] one
+[jump] next
+
+[Node] two
+[jump] next
+
+# two.vrv
+[Node] start
+[random]
+- [jump] one
+- [jump] two
+
+[Node] one
+
+[Node] two
+
+# share.vrv
+
+[Node] greetings
+
+
+
+
+"Global" variables
+[action] set_variable efsf sfsdfsdf
+
+[action] 
+
+[Node] start
+[actors] avatar gerhard
+[text]
+gerhard:Hallo
+avatar:hi
+[actors] avatar gerhard.t
+[action] fsefkbse
+[text]
+defe 
+fe fe
+[jump] one
+[goto] one
+
+[import] greetings
+
+[Node] start
+[actors] avatar gerhard
+[random]
+- [jump] one
+- [jump] one
+- [1] [jump] one
+- [2] [jump] two
+
+[Node] one
+[Prompt]
+No Way
+[Condition]
+is_weather nice
+is_crisis none
+[text]
+$greetings pool gerhard
+gerhard: What a nice weather!
+[set] @mood [action] ActCons.npc_get_mood("gerhard")
+[match] @mood
+- [HAPPY] 
+    [text] 
+    gerhard:Hello
+    avatar:Hi 
+    [action] 
+    ActCons.npc_set_mood("happy")
+- [SAD]
+    [text] gerhard:Oh :/ Hi 
+    [action] ActCons.npc_set_mood("happy")
+
+[match] @mood
+- [happy] [text]gerhard:ich bin happy
+- [sad] [text]gerhard:ich bin happy
+
+[set] @julia_feelings [action] get_comp "Julia" "feelings"
+[set] @mood [action] @julia_feelings.get_mood()
+[set] @karma [action] @julia_feelings.get_karma()
+[set] @good_relationship [action] and(gt(@mood, 1), gt(@karma, 1))
+
+[set] @VAR ufeusfuis
+[match] @VAR
+[if] @VAR
+
+[text]
+@VAR:ahhdwehdh
+gerh:@VAR
+
+mood
+- SAD
+- NATURAL
+- GOOD
+
+karma != relationship
+trade -> relationship
+- Level 10
+-> Gesellschaft Punkte
+
+
+freundschaft/relationship persistent
+- viel unterhaltungen über tage hinweg
+- sink langsam über tage
+- dialog pfade
+- schenken aber einmal alle drei tage
+    - gut preferenze
+- quest
+- npc abhängig level
+-> descr ändern
+
+[random]
+- [set] @item WATER
+- [set] @item WATER_DIRTY
+- [set] @item WATER_CLEAN
+
+[action] give_item_from_collection
+
+[set] @julia [action] 
+    npc=npc_mngr.get_npc("Julia")
+    $npc.get_comp_by_name("karma")
+[set] @good_relationship [action] and(@mood, gt(@julia.get_karma(), 1))
+[if] @good_relationship
+[then]
+[text]
+gerhard:I like your shirt
+avatar:Thanks
+[else]
+[text]
+gerhard:The wetter is nice.
+avatar:Yes
+
+avatar: Yes you are right
+[jump] end
+
+[Node] two
+[prompt]
+Yes Way
+[Choice]
+- [one] Hallo
+- [two] Prompt
+[text]
+gerhard: Yes, sir
+avatar: No, sir
+
+[actors] avatar gerhard
+[match] mood
+- [0.1] [text] gerhard: Hello
+- [0.4] [jump] one
+[if]
+is_effective_state WaterState.NONE
+[then]
+[text]
+gerhard:one
+[else]
+[jump] end
+
+[end]
+
+[Context] stage
+
+
+TODO:
+- !!!!Doku
+- action
+- import
+- match
+- if
+- relationship
+- karma
+- set
+- "Global" var
+- goto
+- mutiline tabs
+- context metadata
+- stage
+    - 70% stage - 30% day
+- purpose / quest
+
+
+
+# purpose/marmelade.vrv
+Goal marmelade
+if stage
+then 
+else
+marmelade
+
+
+Goal maramelade
+    sub marktplatz-purpose
+marktplatz
+
+
+Quest / Purpose
+Marmelade
+1 hole Erdbeeren
+    - 
+    -
+    - trade
+2.
+    - 
+    -
+
+Annemarie Zeit
+- x 10.10 - 19.10
+- x 8.10 - 9.10
+- x 30.10 - 31.10
+- ab November zeit
+
+https://www.youtube.com/watch?v=zgzYDobNA3E

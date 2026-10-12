@@ -10,15 +10,11 @@
             },
             "weiter": {
                 "prompt": "Was geht?",
-                "options": {
-                    "#option1": "",
-                    "#option2": "",
-                    "#option3": ""
-                }
+                "options": {"#reden1": "", "#reden2": "", "#reden3": "", "#reden4": "", "#reden5": "", "#reden6": "", "#reden7": "", "#reden8": ""}
             }
         }
     },
-    "#option1": {
+    "#reden1": {
         "actors": ["avatar", "julia.r"],
         "text": [
             "julia.r#Hast du heute schon ein paar Nachbarn besucht? Soziale Kontakte sind das A und O in einer Krise.",
@@ -27,24 +23,197 @@
             "avatar#Danke für den Tipp!"
         ]
     },
-    "#option2": {
+    "#reden2": {
         "actors": ["avatar", "julia.r"],
         "text": [
             "julia.r#Hast du heute schon etwas gekocht? Wenn du tagsüber etwas kochst, kannst du abends eine warme Mahlzeit zu dir nehmen.",
-            "julia.r#Das schmeckt nicht nur besser; viele Lebensmittel sind ungekocht gar nicht genießbar. Keiner möchte gerne ungekochte Nudeln kauen.",
+            "julia.r#Das schmeckt nicht nur besser; viele Lebensmittel sind ungekocht gar nicht genießbar. Niemand möchte gerne ungekochte Nudeln kauen.",
             "julia.r#Aber gekochtes Essen hält sich häufig nicht sehr lange und sollte daher bald gegessen werden.",
             "avatar#Danke für den Tipp!"
             
         ]
     },
-    "#option3": {
+    "#reden3": {
         "actors": ["avatar", "julia.r"],
         "text": [
             "julia.r#Es gibt viele Möglichkeiten, an Wasser zu gelangen: Schön ist natürlich, wenn einfach sauberes Wasser aus deinem Wasserhahn kommt.",
             "julia.r#Wenn das Wasser mal ausfällt, kann man welches aus der Regentonne schöpfen. Das ist dann allerdings nicht sehr sauber.",
             "julia.r#Dafür gibt es Chlortabletten: Die reinigen verschmutztes Wasser aus der Regentonne oder bei Verschmutzungen in der Leitung.",
-            "julia.r#Manchmal teilt der THW auch sauberes Wasser auf dem Marktplatz aus. Das wird dann im Radio angekündigt.",
+            "julia.r#Manchmal teilt das THW auch sauberes Wasser auf dem Marktplatz aus. Das wird dann im Radio angekündigt.",
             "avatar#Danke für den Tipp!"
+        ]
+    },
+    "#reden4": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#Schön, dass du vorbeischaust. Es ist wichtig, regelmäßig raus zu kommen.",
+            "julia.r#In Krisenzeiten ist es ja besonders leicht, einfach zu Hause zu bleiben.",
+            "julia.r#Aber wir gewöhnen uns so schnell daran, nichts zu tun. Und dann versauern wir zu Hause.",
+            "julia.r#Besser ist es, jeden Tag etwas außer Haus zu unternehmen.",
+            "avatar#Danke für den Tipp!"
+        ]
+    },
+    "#reden5": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#Tut mir Leid, wenn ich so viel rede.",
+            "julia.r#Ich bin als Psychologin oft den ganzen Tag damit beschäftigt, anderen zuzuhören.",
+            "julia.r#Es tut auch gut, einfach mal draufloszureden.",
+            "julia.r#Aber erzähl doch mal, wie geht es dir?"
+        ],
+		"options": {
+			"DrauflosRedenOK": {
+				"prompt": "Mir geht's gut.",
+				"actors": ["avatar", "julia.r"],
+            	"text": [
+                    "avatar#Sprich dich ruhig bei mir aus!",
+                    "julia.r#Das ist lieb von dir, danke."
+                ]
+			},
+			"DrauflosRedenNichtOK": {
+				"prompt": "Es geht.",
+				"actors": ["avatar", "julia.r"],
+            	"text": [
+                    "julia.r#Wenn ich dir helfen kann, sag Bescheid!",
+                    "julia.r#Ich kann dir auch einiges zur Krisenbewältigung sagen.",
+                    "julia.r#Wenn man in Krisopolis praktiziert, sind Krisen immer wieder Thema.",
+                    "julia.r#Obwohl die meisten, die hier wohnen, sich wirklich gut auskennen. Krisen bleiben doch immer eine Belastung."
+                ]
+			}
+        }
+    },
+    "#reden6": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#Bewegung, Schlaf, gute Ernährung und Routine gehören zu den wichtigsten Elementen für ein glückliches Leben.",
+            "julia.r#Krisen können das erschweren. Die Routine geht oft zuerst über Bord.",
+            "julia.r#Aber letztlich ist alles betroffen. Wenn man nicht mehr ins Fitnesscenter oder in den Park darf.",
+            "julia.r#Oder man nicht schlafen kann, weil man sich Sorgen macht.",
+            "julia.r#Oder die Nahrungsmittel verderben.",
+            "julia.r#Deshalb ist es so wichtig, sich vorzubereiten. Ich habe eine Krisenroutine. Weißt du, was der Trick dabei ist?",
+            "avatar#Was?",
+            "julia.r#Mein Kalender bleibt, wie er ist. Ich ersetze nur das Fitnesscenter mit dem Hometrainer und frische Zutaten mit haltbaren Zutaten.",
+            "avatar#Das klingt einfach!"
+        ]
+    },
+    "#reden7": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#Womit verbringst du deine Freizeit am liebsten?"
+        ],
+        "options": {
+            "FreizeitSport": {
+                "prompt": "Sport.",
+                "actors": ["avatar", "julia.r"],
+                "text": [
+                    "julia.r#Prima! Hier gibt es auch ein paar Leute, die sehr viel Sport machen.",
+                    "julia.r#Ich gehe auch regelmäßig ins Fitnesscenter."
+                ]
+            },
+            "FreizeitLesen": {
+                "prompt": "Lesen.",
+                "actors": ["avatar", "julia.r"],
+                "text": [
+                    "julia.r#Wirklich? Leonie und ich haben schon öfter überlegt, einen Buchclub aufzumachen.",
+                    "julia.r#Ich bin gerne im Rathaus und lese. Oder rede mit Leonie.",
+                    "julia.r#Sie ist immer so voller Ideen.",
+                    "julia.r#Und sie liebt Bücher und Filme."
+                ]
+            },
+            "FreizeitLeuteTreffen": {
+                "prompt": "Leute treffen.",
+                "actors": ["avatar", "julia.r"],
+                "text": [
+                    "julia.r#Dann bist du an den richtigen Ort gezogen.",
+                    "julia.r#Hier leben eine Menge nette Menschen, die es sich zu treffen lohnt."
+                ]
+            },
+            "FreizeitAlles": {
+                "prompt": "Alles mögliche.",
+                "actors": ["avatar", "julia.r"],
+                "text": [
+                    "julia.r#Du lässt dich nicht festnageln, verstehe.",
+                    "julia.r#Ich bleibe auch gerne flexibel.",
+                    "julia.r#Aber am liebsten lese ich oder höre Musik."
+                ]
+            }
+        }
+    },
+    "#reden8": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#Neulich kamen überraschend drei Freunde zu Besuch.",
+            "julia.r#Eigentlich waren sie nur auf der Durchreise, aber wie das so ist, wir kamen ins Gespräch und es wurde spät.",
+            "julia.r#Und ich hatte gar nichts eingekauft.",
+            "julia.r#In solchen Momenten ist es wirklich praktisch, ein paar Dosen und haltbare Snacks zu Hause zu haben.",
+            "julia.r#Man braucht nicht immer frische Zutaten, um etwas Leckeres zu zaubern.",
+            "avatar#Das stimmt!"
+        ]
+    },
+    "#reden9": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "avatar#"
+        ]
+    },
+    "#reden10": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "avatar#"
+        ]
+    },
+    "#reden11": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "avatar#"
+        ]
+    },
+    "#reden12": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "avatar#"
+        ]
+    },
+    "#reden13": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "avatar#"
+        ]
+    },
+    "#reden14": {
+        "actors": ["avatar", "julia.r"],
+        "text": [
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "julia.r#",
+            "avatar#"
         ]
     }
 }

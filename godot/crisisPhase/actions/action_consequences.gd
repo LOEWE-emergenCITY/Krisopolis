@@ -10,6 +10,7 @@ var _inventory: EMC_Inventory
 @export var _lower_gui_node : Node
 @export var _day_mngr : EMC_DayMngr
 @export var _gui_mngr: EMC_GUIMngr
+@export var _scoreboard: EMC_Scoreboard
 var _opt_event_mngr: EMC_OptionalEventMngr
 
 ########################################## PUBLIC METHODS ##########################################
@@ -21,23 +22,24 @@ func setup(p_inventory: EMC_Inventory, p_opt_event_mngr: EMC_OptionalEventMngr) 
 ############################################ Avatar ################################################
 
 func add_health(p_value: int) -> void:
-	_avatar.add_health(p_value)
+	_avatar.modify_health_delta(p_value)
 
 func add_hydration(p_value: int) -> void:
-	_avatar.add_hydration(p_value)
+	_avatar.modify_drink_delta(p_value)
 
 func add_happiness(p_value: int) -> void:
-	_avatar.add_happiness(p_value)
-
+	_avatar.modify_social_delta(p_value)
+	
+func make_hungry() -> void:
+	_avatar.modify_food_delta(_avatar._food_status*-0.8)
+	
+func make_thirsty() -> void:
+	_avatar.modify_drink_delta(_avatar._drink_status*-0.8)
+	
 ############################################ Action ################################################
 
-func execute_action(action : Variant) -> void:
-	var id : int = 0
-	if typeof(action) == TYPE_STRING:
-		id = JsonMngr.name_to_action_id(action as String)
-	elif typeof(action) == TYPE_INT:
-		id = action as int
-	_day_mngr.on_interacted_with_furniture(id)
+func execute_action(action : String) -> void:
+	JsonMngr.get_action(action).execute({"result": {}})
 	
 func progress_day(descr : String) -> void:
 	_day_mngr._advance_day_period(descr)
@@ -75,12 +77,12 @@ func add_items_by_name(p_names : String) -> void:
 
 ## Adds either Water depended on the Water-State
 func add_tap_water(_dummy: int) -> void:
-	match OverworldStatesMngr.get_water_state():
-		OverworldStatesMngr.WaterState.CLEAN:
+	match OverworldStatesMngr.get_effective_state_str("WaterState"):
+		"CLEAN":
 			_inventory.add_new_item(EMC_Item.IDs.WATER)
-		OverworldStatesMngr.WaterState.DIRTY:
+		"DIRTY":
 			_inventory.add_new_item(EMC_Item.IDs.WATER_DIRTY)
-		OverworldStatesMngr.WaterState.NONE:
+		"NONE":
 			printerr("Can't add water while there is no water available! \
 				This should be checked in the constraints!")
 		_: printerr("Unknown Water state!")
@@ -114,14 +116,15 @@ func use_radio(_dummy: int = NO_PARAM) -> void:
 		_opt_event_mngr.set_event_as_known(chosen_event.name)
 	else:
 		#30-70 zwischen unnützem Text und Szenario Name
-		if _rng.randi_range(0, 4) <= 3:
-			var notification := OverworldStatesMngr.get_notification()
-			if not notification.is_empty():
-				radio_msg = notification.pick_random()
-			else:
-				radio_msg = "Es läuft mal wieder viel zu laute Werbung..."
+		#if _rng.randi_range(0, 4) <= 3:
+		var notification := OverworldStatesMngr.get_notification()
+		print(notification)
+		if not notification.is_empty():
+			radio_msg = notification.pick_random()
 		else:
 			radio_msg = "Es läuft mal wieder viel zu laute Werbung..."
+		#else:
+			#radio_msg = "Es läuft mal wieder viel zu laute Werbung..."
 	_gui_mngr.request_gui("TooltipGUI", [radio_msg])
 
 
@@ -132,11 +135,11 @@ func fill_rainbarrel(_dummy: int = NO_PARAM) -> void:
 		(OverworldStatesMngr.get_furniture_state(EMC_Upgrade.IDs.RAINWATER_BARREL) + _added_water_quantity)))
 		
 func fill_reservoir(_dummy : Variant = NO_PARAM) -> void:
-	var reservoir : EMC_Upgrade = Global.get_upgrade_if_equipped(EMC_Upgrade.IDs.WATER_RESERVOIR)
+	var reservoir : EMC_Upgrade = OverworldStatesMngr.get_upgrade_if_equipped(EMC_Upgrade.IDs.WATER_RESERVOIR)
 	reservoir.set_state(reservoir.get_state_maximum())
 
 func remove_from_reservoir(amount : int) -> void:
-	var reservoir : EMC_Upgrade = Global.get_upgrade_if_equipped(EMC_Upgrade.IDs.WATER_RESERVOIR)
+	var reservoir : EMC_Upgrade = OverworldStatesMngr.get_upgrade_if_equipped(EMC_Upgrade.IDs.WATER_RESERVOIR)
 	reservoir.set_state(reservoir.get_state() - amount)
 
 func set_tutorial(value : bool) -> void:
@@ -170,17 +173,6 @@ func overlay_gui(args : Dictionary) -> void:
 ########################################## Dialogue ################################################
 
 func trigger_dialogue(p_dialogue : Dictionary) -> void:
-	#var dialog_res : DialogueResource
-	#var executer := EMC_ActionExecuter.new(_day_mngr._on_action_executed)
-	#
-	#dialog_res = load("res://res/dialogue/" + p_dialogue_name + ".dialogue")
-	#
-	#var dialogue_GUI: EMC_DialogueGUI = _DIALOGUE_GUI_SCN.instantiate()
-	#dialogue_GUI.setup(_stage_mngr.get_dialogue_pitches())
-	#_lower_gui_node.add_child(dialogue_GUI)
-	#dialogue_GUI.start(dialog_res, "START", [executer])
-	#_lower_gui_node.get_tree().paused = true
-	
 	_gui_mngr.request_gui("DialogueGui", [p_dialogue])
 	
 func set_dialogue_state(args : Dictionary) -> void:
@@ -189,7 +181,18 @@ func set_dialogue_state(args : Dictionary) -> void:
 	else:
 		printerr("Action-Consequence: wrong or missing Argumrnts for 'set_dialogue_state'")
 
+############################################ Score #################################################
+
+func add_score(args: Dictionary) -> void:
+	if args.has("name"):
+		_scoreboard.add_score(args["name"], args.get("context", {}))
+	else:
+		printerr("Action-Consequence: wrong or missing Argumrnts for 'add_score'")
+		
 ############################################# NPC ##################################################
+
+func friedel_weg() -> void:
+	_stage_mngr.get_NPC("gerhard").get_comp(EMC_NPC_Conversation).run()
 
 func npc_add_dialog_tag(args: Dictionary) -> void:
 	if args.has_all(["npc", "tag"]):
@@ -219,24 +222,35 @@ func remove_quest(args: Dictionary) -> void:
 	else:
 		printerr("Action-Consequence: wrong or missing Argumrnts for 'remove_quest'")
 
+func npc_change_stage(args: Dictionary) -> void:
+	if args.has_all(["npc", "stage", "spot"]):
+		var npc: EMC_NPC = _stage_mngr.get_NPC(args["npc"])
+		if npc != null:
+			var spot: Node2D = _stage_mngr.request_spot(args["spot"])
+			npc.change_stage(args["stage"], spot)
+	else:
+		printerr("Action-Consequence: wrong or missing Arguments for 'npc_change_stage'")
+
 ############################################ Stage #################################################
 
 func change_stage(p_data : Dictionary) -> void:
-	_stage_mngr.change_stage(p_data.get("stage_name"), p_data.get("npc_pos", {}), p_data.get("wait", true))
+	_stage_mngr.change_stage(p_data.get("stage_name"), p_data.get("wait", true))
 	
 	# Avatar is moved to early should be handeled in stage or stage_mngr
-	_avatar.position = p_data.get("avatar_pos")
+	if p_data.get("wait", true):
+		await _day_mngr.animation_end
+	var spot: Node2D = _stage_mngr.request_spot("start")
+	_avatar.global_position = spot.global_position
 	
 func change_stage_by_dict(p_data : Dictionary) -> void:
-	var npc_pos: Dictionary = p_data.get("npc_pos", {})
-	if not npc_pos.is_empty():
-		for npc: String in npc_pos:
-			npc_pos[npc] = EMC_Util.dict_to_vector(npc_pos[npc], TYPE_VECTOR2)
-		
-	_stage_mngr.change_stage(p_data.get("stage_name"),  npc_pos, p_data.get("wait", true))
+	_stage_mngr.change_stage(p_data.get("stage_name"), p_data.get("wait", true))
 	
 	# Avatar is moved to early should be handeled in stage or stage_mngr
-	_avatar.position = EMC_Util.dict_to_vector(p_data.get("avatar_pos"), TYPE_VECTOR2)
+	if p_data.get("wait", true):
+		await _day_mngr.animation_end
+	var spot: Node2D = _stage_mngr.request_spot("start")
+	_avatar.global_position = spot.global_position
+	# _avatar.position = EMC_Util.dict_to_vector(p_data.get("avatar_pos"), TYPE_VECTOR2)
 
 ############################################ JSON ##################################################
 

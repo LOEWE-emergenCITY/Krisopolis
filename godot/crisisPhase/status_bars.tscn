@@ -1,30 +1,23 @@
-[gd_scene load_steps=21 format=3 uid="uid://tpxumytrh032"]
+[gd_scene load_steps=29 format=3 uid="uid://tpxumytrh032"]
 
-[ext_resource type="Script" path="res://crisisPhase/status_bars.gd" id="1_m4dni"]
+[ext_resource type="Script" uid="uid://b4e35rcxe4mbi" path="res://crisisPhase/status_bars.gd" id="1_m4dni"]
+[ext_resource type="Texture2D" uid="uid://dfgedis7p534c" path="res://assets/GUI/icons/statusbar_food_empty.png" id="2_d3u2u"]
 [ext_resource type="Texture2D" uid="uid://dodrjlcgbbf5j" path="res://assets/GUI/icons/icon_statusbar_nutrition.png" id="2_gr84e"]
+[ext_resource type="Texture2D" uid="uid://d13oaotgtd4qn" path="res://assets/GUI/icons/statusbar_food.png" id="3_7o41n"]
 [ext_resource type="Texture2D" uid="uid://dp8ofl4ea1lse" path="res://assets/particles/particle_smoke_green.png" id="3_66xh1"]
 [ext_resource type="Texture2D" uid="uid://bqq5vbmiv8nrr" path="res://assets/GUI/icons/icon_statusbar_hydration.png" id="3_idu7t"]
 [ext_resource type="Texture2D" uid="uid://dhj4hfky75aeg" path="res://assets/GUI/icons/icon_statusbar_health.png" id="4_m4gsd"]
-[ext_resource type="Shader" path="res://shaders/status_bars.gdshader" id="4_wac0w"]
+[ext_resource type="Shader" uid="uid://k2tc2rniw21w" path="res://shaders/status_bars.gdshader" id="4_wac0w"]
 [ext_resource type="Texture2D" uid="uid://bk4pns81h8ars" path="res://assets/particles/particle_smoke_blue.png" id="5_a7waw"]
+[ext_resource type="Texture2D" uid="uid://bfst0d8m82uj3" path="res://assets/GUI/icons/statusbar_drink_empty.png" id="5_i3vbd"]
 [ext_resource type="Texture2D" uid="uid://gcdjdctkg3xv" path="res://assets/GUI/icons/icon_statusbar_happiness.png" id="5_xfaii"]
+[ext_resource type="Texture2D" uid="uid://clclcdag5gxoo" path="res://assets/GUI/icons/statusbar_drink.png" id="6_ussre"]
 [ext_resource type="Texture2D" uid="uid://bhoni508p4cmx" path="res://assets/particles/particle_smoke_red.png" id="7_5dx1v"]
 [ext_resource type="Texture2D" uid="uid://dny6kkus3j8l3" path="res://assets/particles/particle_smoke_yellow.png" id="7_mjdb6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vx5e"]
-shader = ExtResource("4_wac0w")
-shader_parameter/color = Color(0.564706, 0.784314, 0.52549, 1)
-shader_parameter/colorBG = Color(0.529412, 0.529412, 0.529412, 1)
-shader_parameter/amp = 0.015
-shader_parameter/amp_c = 0.02
-shader_parameter/freq = 8.0
-shader_parameter/freq_c = 5.0
-shader_parameter/shift = 0.0
-shader_parameter/progress = 0.5
-
-[sub_resource type="QuadMesh" id="QuadMesh_n830g"]
-size = Vector2(124, 30)
-center_offset = Vector3(50, 15, 0)
+[ext_resource type="Texture2D" uid="uid://baii2qdljnvbb" path="res://assets/GUI/icons/statusbar_health.png" id="7_vpm32"]
+[ext_resource type="Texture2D" uid="uid://bs0s2575oq6kr" path="res://assets/GUI/icons/statusbar_health_empty.png" id="10_s1ok2"]
+[ext_resource type="Texture2D" uid="uid://eycivsud01gw" path="res://assets/GUI/icons/statusbar_social_empty.png" id="15_oyj6n"]
+[ext_resource type="Texture2D" uid="uid://c466ynbu3t12a" path="res://assets/GUI/icons/statusbar_social.png" id="16_1l2ra"]
 
 [sub_resource type="Gradient" id="Gradient_hix8y"]
 offsets = PackedFloat32Array(0.405594, 1)
@@ -47,6 +40,21 @@ initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_yfwc6")
 color_ramp = SubResource("GradientTexture1D_8qpq6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vx5e"]
+shader = ExtResource("4_wac0w")
+shader_parameter/color = Color(0.564706, 0.784314, 0.52549, 1)
+shader_parameter/colorBG = Color(0.529412, 0.529412, 0.529412, 1)
+shader_parameter/amp = 0.015
+shader_parameter/amp_c = 0.02
+shader_parameter/freq = 8.0
+shader_parameter/freq_c = 5.0
+shader_parameter/shift = 0.0
+shader_parameter/progress = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_n830g"]
+size = Vector2(124, 30)
+center_offset = Vector3(50, 15, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6carx"]
 shader = ExtResource("4_wac0w")
@@ -95,45 +103,75 @@ layout_mode = 1
 offset_right = 310.0
 offset_bottom = 73.0
 scale = Vector2(0.95, 0.95)
-theme_override_constants/separation = -10
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBC"]
 layout_mode = 2
-theme_override_constants/separation = 13
+theme_override_constants/separation = 4
 
-[node name="NutritionCont" type="HBoxContainer" parent="HBC/VBoxContainer"]
+[node name="FoodCont" type="TextureProgressBar" parent="HBC/VBoxContainer"]
+layout_mode = 2
+max_value = 49.0
+step = 6.0
+value = 24.0
+texture_under = ExtResource("2_d3u2u")
+texture_progress = ExtResource("3_7o41n")
+texture_progress_offset = Vector2(32, 0)
+
+[node name="FoodVFX" type="GPUParticles2D" parent="HBC/VBoxContainer/FoodCont"]
+process_mode = 3
+position = Vector2(18.4211, 17.8947)
+scale = Vector2(1.05263, 1.05263)
+emitting = false
+amount = 40
+texture = ExtResource("3_66xh1")
+one_shot = true
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_03rpy")
+
+[node name="FoodButton" type="Button" parent="HBC/VBoxContainer/FoodCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="NutritionCont1" type="HBoxContainer" parent="HBC/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="NutritionQuad" type="MeshInstance2D" parent="HBC/VBoxContainer/NutritionCont"]
+[node name="NutritionQuad" type="MeshInstance2D" parent="HBC/VBoxContainer/NutritionCont1"]
 material = SubResource("ShaderMaterial_3vx5e")
 position = Vector2(48, 0)
 mesh = SubResource("QuadMesh_n830g")
 
-[node name="ContainerNutrition" type="Container" parent="HBC/VBoxContainer/NutritionCont"]
+[node name="ContainerNutrition" type="Container" parent="HBC/VBoxContainer/NutritionCont1"]
 custom_minimum_size = Vector2(56, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="NutritionIcon" type="Sprite2D" parent="HBC/VBoxContainer/NutritionCont/ContainerNutrition"]
+[node name="NutritionIcon" type="Sprite2D" parent="HBC/VBoxContainer/NutritionCont1/ContainerNutrition"]
 position = Vector2(40, 15)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_gr84e")
 
-[node name="SmokeVFX" type="GPUParticles2D" parent="HBC/VBoxContainer/NutritionCont/ContainerNutrition"]
+[node name="SmokeVFX" type="GPUParticles2D" parent="HBC/VBoxContainer/NutritionCont1/ContainerNutrition"]
 process_mode = 3
 position = Vector2(60, 15)
 scale = Vector2(1.05263, 1.05263)
 emitting = false
 amount = 40
-process_material = SubResource("ParticleProcessMaterial_03rpy")
 texture = ExtResource("3_66xh1")
 one_shot = true
 speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_03rpy")
 
-[node name="CaloriesLabel" type="RichTextLabel" parent="HBC/VBoxContainer/NutritionCont"]
+[node name="CaloriesLabel" type="RichTextLabel" parent="HBC/VBoxContainer/NutritionCont1"]
 clip_contents = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -146,39 +184,69 @@ text = "
 "
 fit_content = true
 
-[node name="HydrationCont" type="HBoxContainer" parent="HBC/VBoxContainer"]
+[node name="DrinkCont" type="TextureProgressBar" parent="HBC/VBoxContainer"]
+layout_mode = 2
+max_value = 49.0
+step = 6.0
+value = 24.0
+texture_under = ExtResource("5_i3vbd")
+texture_progress = ExtResource("6_ussre")
+texture_progress_offset = Vector2(32, 0)
+
+[node name="DrinkVFX" type="GPUParticles2D" parent="HBC/VBoxContainer/DrinkCont"]
+process_mode = 3
+position = Vector2(18.4211, 17.8947)
+scale = Vector2(1.05263, 1.05263)
+emitting = false
+amount = 40
+texture = ExtResource("5_a7waw")
+one_shot = true
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_03rpy")
+
+[node name="DrinkButton" type="Button" parent="HBC/VBoxContainer/DrinkCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="HydrationCont1" type="HBoxContainer" parent="HBC/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="HydrationQuad" type="MeshInstance2D" parent="HBC/VBoxContainer/HydrationCont"]
+[node name="HydrationQuad" type="MeshInstance2D" parent="HBC/VBoxContainer/HydrationCont1"]
 material = SubResource("ShaderMaterial_6carx")
 position = Vector2(48, 0)
 mesh = SubResource("QuadMesh_n830g")
 
-[node name="ContainerHydration" type="Container" parent="HBC/VBoxContainer/HydrationCont"]
+[node name="ContainerHydration" type="Container" parent="HBC/VBoxContainer/HydrationCont1"]
 custom_minimum_size = Vector2(56, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="HydrationIcon" type="Sprite2D" parent="HBC/VBoxContainer/HydrationCont/ContainerHydration"]
+[node name="HydrationIcon" type="Sprite2D" parent="HBC/VBoxContainer/HydrationCont1/ContainerHydration"]
 position = Vector2(40, 15)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_idu7t")
 
-[node name="SmokeVFX" type="GPUParticles2D" parent="HBC/VBoxContainer/HydrationCont/ContainerHydration"]
+[node name="SmokeVFX" type="GPUParticles2D" parent="HBC/VBoxContainer/HydrationCont1/ContainerHydration"]
 process_mode = 3
 position = Vector2(60, 14.895)
 scale = Vector2(1.05263, 1.05263)
 emitting = false
 amount = 40
-process_material = SubResource("ParticleProcessMaterial_03rpy")
 texture = ExtResource("5_a7waw")
 one_shot = true
 speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_03rpy")
 
-[node name="MillilitersLabel" type="RichTextLabel" parent="HBC/VBoxContainer/HydrationCont"]
+[node name="MillilitersLabel" type="RichTextLabel" parent="HBC/VBoxContainer/HydrationCont1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -192,84 +260,130 @@ fit_content = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBC"]
 layout_mode = 2
-theme_override_constants/separation = 13
+theme_override_constants/separation = 4
 
-[node name="HealthCont" type="HBoxContainer" parent="HBC/VBoxContainer2"]
+[node name="HealthCont" type="TextureProgressBar" parent="HBC/VBoxContainer2"]
+layout_mode = 2
+max_value = 49.0
+step = 6.0
+value = 24.0
+texture_under = ExtResource("10_s1ok2")
+texture_progress = ExtResource("7_vpm32")
+texture_progress_offset = Vector2(32, 0)
+
+[node name="HealthVFX" type="GPUParticles2D" parent="HBC/VBoxContainer2/HealthCont"]
+process_mode = 3
+position = Vector2(18.4211, 17.8947)
+scale = Vector2(1.05263, 1.05263)
+emitting = false
+amount = 40
+texture = ExtResource("7_5dx1v")
+one_shot = true
+speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_03rpy")
+
+[node name="HealthButton" type="Button" parent="HBC/VBoxContainer2/HealthCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="HealthCont1" type="HBoxContainer" parent="HBC/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme_override_constants/separation = 0
 
-[node name="HealthQuad" type="MeshInstance2D" parent="HBC/VBoxContainer2/HealthCont"]
+[node name="TextureRect" type="TextureRect" parent="HBC/VBoxContainer2/HealthCont1"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_vpm32")
+
+[node name="HealthQuad" type="MeshInstance2D" parent="HBC/VBoxContainer2/HealthCont1"]
+visible = false
 material = SubResource("ShaderMaterial_8s7op")
 position = Vector2(48, 0)
 mesh = SubResource("QuadMesh_n830g")
 
-[node name="ContainerHealth" type="Container" parent="HBC/VBoxContainer2/HealthCont"]
+[node name="ContainerHealth" type="Container" parent="HBC/VBoxContainer2/HealthCont1"]
 custom_minimum_size = Vector2(56, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="HealthIcon" type="Sprite2D" parent="HBC/VBoxContainer2/HealthCont/ContainerHealth"]
+[node name="HealthIcon" type="Sprite2D" parent="HBC/VBoxContainer2/HealthCont1/ContainerHealth"]
+visible = false
 position = Vector2(40, 15)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("4_m4gsd")
 
-[node name="SmokeVFX" type="GPUParticles2D" parent="HBC/VBoxContainer2/HealthCont/ContainerHealth"]
+[node name="SocialCont" type="TextureProgressBar" parent="HBC/VBoxContainer2"]
+layout_mode = 2
+max_value = 49.0
+step = 6.0
+value = 24.0
+texture_under = ExtResource("15_oyj6n")
+texture_progress = ExtResource("16_1l2ra")
+texture_progress_offset = Vector2(32, 0)
+
+[node name="SocialVFX" type="GPUParticles2D" parent="HBC/VBoxContainer2/SocialCont"]
 process_mode = 3
-position = Vector2(60, 15)
+position = Vector2(18.4211, 17.8947)
 scale = Vector2(1.05263, 1.05263)
 emitting = false
 amount = 40
-process_material = SubResource("ParticleProcessMaterial_03rpy")
-texture = ExtResource("7_5dx1v")
+texture = ExtResource("7_mjdb6")
 one_shot = true
 speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_03rpy")
 
-[node name="HealthLabel" type="RichTextLabel" parent="HBC/VBoxContainer2/HealthCont"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-text = "
-"
-fit_content = true
+[node name="SocialButton" type="Button" parent="HBC/VBoxContainer2/SocialCont"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
 
-[node name="HappinessCont" type="HBoxContainer" parent="HBC/VBoxContainer2"]
+[node name="HappinessCont1" type="HBoxContainer" parent="HBC/VBoxContainer2"]
+visible = false
 custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 
-[node name="HappinessQuad" type="MeshInstance2D" parent="HBC/VBoxContainer2/HappinessCont"]
+[node name="HappinessQuad" type="MeshInstance2D" parent="HBC/VBoxContainer2/HappinessCont1"]
 material = SubResource("ShaderMaterial_5pkcp")
 position = Vector2(48, 0)
 mesh = SubResource("QuadMesh_n830g")
 
-[node name="ContainerHappiness" type="Container" parent="HBC/VBoxContainer2/HappinessCont"]
+[node name="ContainerHappiness" type="Container" parent="HBC/VBoxContainer2/HappinessCont1"]
 custom_minimum_size = Vector2(56, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
-[node name="HappinessIcon" type="Sprite2D" parent="HBC/VBoxContainer2/HappinessCont/ContainerHappiness"]
+[node name="HappinessIcon" type="Sprite2D" parent="HBC/VBoxContainer2/HappinessCont1/ContainerHappiness"]
 position = Vector2(40, 15)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("5_xfaii")
 
-[node name="SmokeVFX" type="GPUParticles2D" parent="HBC/VBoxContainer2/HappinessCont/ContainerHappiness"]
+[node name="SmokeVFX" type="GPUParticles2D" parent="HBC/VBoxContainer2/HappinessCont1/ContainerHappiness"]
 process_mode = 3
 position = Vector2(60, 15)
 scale = Vector2(1.05263, 1.05263)
 emitting = false
 amount = 40
-process_material = SubResource("ParticleProcessMaterial_03rpy")
 texture = ExtResource("7_mjdb6")
 one_shot = true
 speed_scale = 0.5
+process_material = SubResource("ParticleProcessMaterial_03rpy")
 
-[node name="HappinessLabel" type="RichTextLabel" parent="HBC/VBoxContainer2/HappinessCont"]
+[node name="HappinessLabel" type="RichTextLabel" parent="HBC/VBoxContainer2/HappinessCont1"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -282,11 +396,14 @@ text = "
 fit_content = true
 scroll_active = false
 
-[connection signal="gui_input" from="HBC/VBoxContainer/NutritionCont" to="." method="_on_nutrition_cont_gui_input"]
-[connection signal="gui_input" from="HBC/VBoxContainer/NutritionCont/CaloriesLabel" to="." method="_on_nutrition_cont_gui_input"]
-[connection signal="gui_input" from="HBC/VBoxContainer/HydrationCont" to="." method="_on_hydration_cont_gui_input"]
-[connection signal="gui_input" from="HBC/VBoxContainer/HydrationCont/MillilitersLabel" to="." method="_on_hydration_cont_gui_input"]
-[connection signal="gui_input" from="HBC/VBoxContainer2/HealthCont" to="." method="_on_health_cont_gui_input"]
-[connection signal="gui_input" from="HBC/VBoxContainer2/HealthCont/HealthLabel" to="." method="_on_health_cont_gui_input"]
-[connection signal="gui_input" from="HBC/VBoxContainer2/HappinessCont" to="." method="_on_happiness_cont_gui_input"]
-[connection signal="gui_input" from="HBC/VBoxContainer2/HappinessCont/HappinessLabel" to="." method="_on_happiness_cont_gui_input"]
+[connection signal="pressed" from="HBC/VBoxContainer/FoodCont/FoodButton" to="." method="_on_food_button_pressed"]
+[connection signal="gui_input" from="HBC/VBoxContainer/NutritionCont1" to="." method="_on_nutrition_cont_gui_input"]
+[connection signal="gui_input" from="HBC/VBoxContainer/NutritionCont1/CaloriesLabel" to="." method="_on_nutrition_cont_gui_input"]
+[connection signal="pressed" from="HBC/VBoxContainer/DrinkCont/DrinkButton" to="." method="_on_drink_button_pressed"]
+[connection signal="gui_input" from="HBC/VBoxContainer/HydrationCont1" to="." method="_on_hydration_cont_gui_input"]
+[connection signal="gui_input" from="HBC/VBoxContainer/HydrationCont1/MillilitersLabel" to="." method="_on_hydration_cont_gui_input"]
+[connection signal="pressed" from="HBC/VBoxContainer2/HealthCont/HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="gui_input" from="HBC/VBoxContainer2/HealthCont1" to="." method="_on_health_cont_gui_input"]
+[connection signal="pressed" from="HBC/VBoxContainer2/SocialCont/SocialButton" to="." method="_on_social_button_pressed"]
+[connection signal="gui_input" from="HBC/VBoxContainer2/HappinessCont1" to="." method="_on_happiness_cont_gui_input"]
+[connection signal="gui_input" from="HBC/VBoxContainer2/HappinessCont1/HappinessLabel" to="." method="_on_happiness_cont_gui_input"]

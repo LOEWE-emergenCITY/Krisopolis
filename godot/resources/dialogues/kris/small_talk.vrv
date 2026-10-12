@@ -1,0 +1,51 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar kris.flipped
+[text]
+kris:Großartiges Wetter, findest du nicht auch?
+
+[[Node]] two
+[actors] avatar kris.flipped
+[text]
+kris:Hm, ich hab Hunger. Hab ich heute schon was gegessen?
+
+[[Node]] three
+[actors] avatar kris.flipped
+[text]
+kris:Mich drängts nach draußen. Der nächste Urlaub kann gar nicht früh genug kommen.
+
+[[Node]] four
+[actors] avatar kris.flipped
+[text]
+kris:Hängematten sind eine tolle Alternative zum Zelten. Es sei denn, es gibt keine Bäume.
+
+[[Node]] five
+[actors] avatar kris.flipped
+[text]
+kris:Vero ist in Krisen immer etwas angespannter. Es gibt mehr zu planen. Mich stört das nicht groß.
+kris:Ich wünschte, sie könnte auch einfach entspannen.
+
+[[Node]] six
+[actors] avatar kris.flipped
+[text]
+kris:Ich muss wieder Gelbfallen aufstellen. Die Trauermücken haben sich in meiner Areca Palme eingenistet.
+
+[[Node]] seven
+[actors] avatar kris.flipped
+[text]
+kris:Ich habe heute alle meine Zimmerpflanzen abgestaubt. Und weil ich schon mal dabei war, den Rest der Wohnung gleich mit.
+
+[[Node]] eight
+[actors] avatar kris.flipped
+[text]
+kris:Eigentlich würde ich am liebsten draußen leben. Mit meinen Pflanzen hole ich mir ein bisschen Draußen nach Drinnen.

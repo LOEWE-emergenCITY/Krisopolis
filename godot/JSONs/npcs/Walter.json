@@ -2,16 +2,12 @@
 	"comp": {
 		"descr": {
 			"name": "Walter",
-			"descr": "Das hier ist Walter.\nEr ist lieb.",
-			"portait": "walter"
+			"descr": "Das hier ist Walter.\nEr ist schwer aufzustöbern aber überall dort, wo Hilfe gebraucht wird.",
+			"portait": "walter",
+			"sprite": "walter"
 		},
-		"sprite": {
-			"texture_name": "walter"
-		},
-		"interaction": {
-			"conversation": {
-				"pitch": 1.3
-			}
+		"conversation": {
+			"pitch": 1.3
 		},
 		"stage": {
 			"start": "",

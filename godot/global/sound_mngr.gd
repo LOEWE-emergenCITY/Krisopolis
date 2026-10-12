@@ -6,9 +6,12 @@ class_name EMC_SoundMngr
 const SFX_PATH : String = "res://assets/SFX/"
 
 var _buttons : Array
-var _guis : Array
 
 @onready var musik : AudioStreamPlayer = $Musik
+@onready var slow_musik: AudioStreamPlayer = $SlowMusik
+@onready var crisis_musik: AudioStreamPlayer = $CrisisMusik
+@onready var stinger: AudioStreamPlayer = $Stinger
+
 @onready var button : AudioStreamPlayer = $Button
 @onready var open_gui : AudioStreamPlayer = $OpenGUI
 @onready var close_gui : AudioStreamPlayer = $CloseGUI
@@ -61,10 +64,73 @@ func play_close() -> void:
 func is_musik_playing() -> bool:
 	return musik.playing
 
+func close_game() -> Signal:
+	var tween: Tween = get_tree().create_tween()
+	tween.parallel()
+	for player: AudioStreamPlayer in get_current_bg_musik():
+		tween.tween_property(player, "volume_linear", 0, 1)#.set_ease(Tween.EASE_OUT)
+	tween.tween_interval(0.3)
+	return tween.finished
+
+func get_current_bg_musik() -> Array[AudioStreamPlayer]:
+	var currently_playing: Array[AudioStreamPlayer]
+	if slow_musik.playing:
+		currently_playing.append(slow_musik)
+	if crisis_musik.playing:
+		currently_playing.append(crisis_musik)
+	if musik.playing:
+		currently_playing.append(musik)
+	
+	return currently_playing
 
 func play_musik() -> void:
-	musik.play()
+	if musik.playing:
+		crisis_musik.stop()
+		slow_musik.stop()
+		return
+	
+	await cross_fade_musik(get_current_bg_musik(), musik)
 
+func play_slow_musik(t: float = 3) -> void:
+	if slow_musik.playing:
+		crisis_musik.stop()
+		musik.stop()
+		return
+	
+	await cross_fade_musik(get_current_bg_musik(), slow_musik, t)
+	
+
+func cross_fade_musik(from: Array, to: Node, t: float = 3) -> Signal:	
+	var tween: Tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_callback(to.play)
+	tween.tween_property(to, "volume_linear", 1, t).from(0)#.set_ease(Tween.EASE_IN)
+	for player: Node in from:
+		if player == to:
+			continue
+		tween.tween_property(player, "volume_linear", 0, t)#.set_ease(Tween.EASE_OUT)
+		tween.chain().tween_callback(player.stop)
+		tween.chain().tween_callback(player.set_volume_linear.bind(1.0))
+	return tween.finished
+ 
+func play_stinger() -> void:
+	stinger.play()
+	#await stinger.finished
+	#crisis_musik.play()
+	slow_musik.stop()
+	musik.stop()
+	crisis_musik.play()
+	
+var duration_crisis: int = 0
+
+func next_day() -> void:
+	if not crisis_musik.playing:
+		return
+	duration_crisis += 1
+	
+	if duration_crisis > 3:
+		cross_fade_musik([crisis_musik], musik)
+		duration_crisis = 0
 
 func play_sound(sound : String, start : float = 0, pitch : float = 1) -> AudioStreamPlayer:
 	if sound == "":

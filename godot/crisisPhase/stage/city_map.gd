@@ -9,25 +9,19 @@ class_name EMC_CityMap
 @onready var _opt_event_pin_template := $OptEventPin_Template
 @onready var _opt_event_pins := $OptEventPins
 
-var _crisis_phase: EMC_CrisisPhase
-var _stage_mngr: EMC_StageMngr
-var _day_mngr: EMC_DayMngr
+@export var _crisis_phase: EMC_CrisisPhase
+@export var _stage_mngr: EMC_StageMngr
+@export var _day_mngr: EMC_DayMngr
+@export var _gui_mngr : EMC_GUIMngr
+
 var _opt_event_mngr: EMC_OptionalEventMngr
-var _gui_mngr : EMC_GUIMngr
 
 @onready var _tween := get_tree().create_tween().set_loops()
 
 ########################################## PUBLIC METHODS ##########################################
-func setup(p_crisis_phase: EMC_CrisisPhase, p_day_mngr: EMC_DayMngr, p_stage_mngr: EMC_StageMngr, p_gui_mngr : EMC_GUIMngr, \
- p_opt_event_mngr: EMC_OptionalEventMngr) -> void:
-	_crisis_phase = p_crisis_phase
-	_day_mngr = p_day_mngr
-	_stage_mngr = p_stage_mngr
-	
-	_gui_mngr = p_gui_mngr
-	
+func setup(p_opt_event_mngr: EMC_OptionalEventMngr) -> void:
 	_opt_event_mngr = p_opt_event_mngr
-	$DoorbellsGUI.setup(p_stage_mngr)
+	$DoorbellsGUI.setup(_stage_mngr)
 
 func open() -> void:
 	_home_pin.show()
@@ -111,23 +105,23 @@ func handle_buttons(stage_name : String) -> void:
 	else:
 		match stage_name:
 			EMC_StageMngr.STAGENAME_HOME:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_HOME)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_HOME))
 			EMC_StageMngr.STAGENAME_MARKET:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_MARKET)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_MARKET))
 			EMC_StageMngr.STAGENAME_PENTHOUSE:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_PENTHOUSE)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_PENTHOUSE))
 			EMC_StageMngr.STAGENAME_TOWNHALL:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_TOWNHALL)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_TOWNHALL))
 			EMC_StageMngr.STAGENAME_ROWHOUSE:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_ROWHOUSE)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_ROWHOUSE))
 			EMC_StageMngr.STAGENAME_APARTMENT_DEFAULT:
 				$DoorbellsGUI.open()
 			EMC_StageMngr.STAGENAME_GARDENHOUSE:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_GARDENHOUSE)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_GARDENHOUSE))
 			EMC_StageMngr.STAGENAME_MANSION:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_MANSION)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_MANSION))
 			EMC_StageMngr.STAGENAME_PARK:
-				_day_mngr.on_interacted_with_furniture(EMC_Action.IDs.SC_PARK)
+				_day_mngr.on_interacted_with_furniture(str(EMC_Action.IDs.SC_PARK))
 
 func _on_home_btn_pressed() -> void:
 	handle_buttons(EMC_StageMngr.STAGENAME_HOME)
@@ -145,7 +139,8 @@ func _on_julias_house_btn_pressed() -> void:
 	handle_buttons(EMC_StageMngr.STAGENAME_ROWHOUSE)
 
 func _on_complex_btn_pressed() -> void:
-	handle_buttons(EMC_StageMngr.STAGENAME_APARTMENT_DEFAULT)
+	#handle_buttons(EMC_StageMngr.STAGENAME_APARTMENT_DEFAULT)
+	$DoorbellsGUI.open()
 
 func _on_gardenhouse_btn_pressed() -> void:
 	handle_buttons(EMC_StageMngr.STAGENAME_GARDENHOUSE)

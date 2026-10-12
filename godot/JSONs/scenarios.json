@@ -1,38 +1,50 @@
 {
 	"Chemie": {
+		"icon_id": 1,
+		"title": "Chemieunfall",
+		"description": "[img]res://assets/GUI/icons/chemie_icon.png[/img][font_size=30][b]Chemieunfall[/b][/font_size]\n\nIn der Nähe von Krisopolis gab es einen Chemieunfall. Dies könnte zu [b]Wasserverschmutzung[/b] und [b]Lebensmittelverschmutzung[/b] führen.\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nÜberprüfen Sie regelmäßig die Genießbarkeit Ihrer Lebensmittel. Stellen Sie sicher, dass Sie genügend sauberes Wasser zur Verfügung haben. Wenn Sie ein Radio oder Kurbelradio haben, informieren Sie sich regelmäßig über den Verlauf der Krise.\n\nInformieren Sie sich über [url=https://www.bbk.bund.de/DE/Themen/CBRN-Schutz/Chemische-Gefahren/chemische-gefahren_node.html]Handlungsempfehlung[/url] im Ernstfall."
+	},
+	"LKW" :{
 		"icon_id": 2,
-		"description": "[img]res://assets/GUI/icons/icon_dirty_water.png[/img][font_size=30][b]Chemie Unfall[/b][/font_size]\n\nIn der Nähe von Krisopolis gab es ein Chemie Unfall. Dies könnte zu [b]Wasserverschmutzung[/b] und [b]Lebensmittel Verschmutzung[/b] führen.\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nÜberprüfen sie regelmäßig die Genießbarkeit ihrer Lebensmittel. Stellen sie sicher das sie genügend sauberes Wasser zur Verfügung haben. Wenn sie ein Radio oder Kurbelradio haben informieren sie sich regelmäßig über den Verlauf der Krise.\n\nInformieren sie sich über [url=https://www.bbk.bund.de/DE/Themen/CBRN-Schutz/Chemische-Gefahren/chemische-gefahren_node.html]Handlungsempfehlung[/url] im Ernstfall."
+		"title": "Chemieunfall Gefahrstoffaustritt",
+		"description": "[img]res://assets/GUI/icons/lkw_icon.png[/img][font_size=30][b]\t\t  Chemieunfall [center] Gefahrstoffaustritt[/center][/b][/font_size]\n\nAustritt von Gefahrstoffen nach Chemieunfall in der Industriestraße 34-40. Warnung vor möglicher Verunreinigung von [b]Trinkwasser[/b] und [b]Lebensmitteln[/b].\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nMeiden Sie die betroffene Region weiträumig!\nHalten Sie Fenster und Türen geschlossen!\nÜberprüfen Sie regelmäßig die Genießbarkeit von Trinkwasser und Lebensmitteln.\nInformieren Sie sich über die aktuelle Entwicklung via Warn-App und Radio.\nBefolgen Sie die Anweisungen der Einsatzkräfte. \nWeitere Informationen zum Verhalten bei [b]chemischen Gefahren[/b] erhalten Sie beim Bundesamt für Bevölkerungsschutz und Katastrophenvorsorge: [url=https://www.bbk.bund.de/DE/Themen/CBRN-Schutz/Chemische-Gefahren/chemische-gefahren_node.html]Chemische Gefahren[/url]"
 	},
-	"Dürre": {
-		"icon_id": 0,
-		"description": ""
+	"Duerre": {
+		"title" : "Dürre",
+		"icon_id": 3,
+		"description": "[img]res://assets/GUI/icons/heat_icon.png[/img][font_size=30][b]Dürre[/b][/font_size]\n\nWarnung vor anhaltender extremer Trockenheit. In der Folge kann es zu Störungen in der [b]Trinkwasserversorgung[/b] und zu [b]gesundheitlichen Beeinträchtigungen[/b] kommen.\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nVermeiden Sie körperliche Anstrengungen bei hohen Temperaturen und achten Sie auf eine ausreichende Hydration! \nGehen Sie sparsam mit Trinkwasser um. Nutzen Sie dieses nur für den unbedingt notwendigen Gebrauch. \nVerzichten Sie auf das Bewässern von Gärten, Autowaschen und Poolbefüllungen. \nInformieren Sie sich über mögliche weitere Einschränkungen der Wasserversorgung via Warn-App und Radio. \nWeitere Informationen zum Verhalten bei [b]Hitze und Dürre[/b] erhalten Sie beim Bundesamt für Bevölkerungsschutz und Katastrophenvorsorge: [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Mit-Naturgefahren-umgehen/Hitze-Duerre/hitze-duerre_node.html]Hitze und Dürre[/url]"
 	},
-	"Erdbeben": {
-		"icon_id": 0,
-		"description": ""
-	},
-	"Flut": {
-		"icon_id": 0,
-		"description": ""
-	},
-	"Waldbrand": {
-		"icon_id": 0,
-		"description": ""
-	},
-	"Hurricane": {
-		"icon_id": 0,
-		"description": ""
-	},
-	"Pandemie": {
-		"icon_id": 0,
-		"description": ""
+	"Sturmtief": {
+		"icon_id": 4,
+		"title": "Sturmtief Regnetvielandra",
+		"description": "[img]res://assets/GUI/icons/strom_icon.png[/img][font_size=30][b]Sturmtief Regnetvielandra[/b][/font_size]\n\nWarnung vor Sturm mit orkanartigen Böen. In der Folge kann es zu Störungen oder dem Ausfall verschiedener Infrastruktursysteme kommen. Dazu zählen das [b]Stromnetz[/b] und das [b]Mobilfunknetz[/b].\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nVermeiden Sie Aufenthalte im Freien und sichern Sie lose Gegenstände.\nBereiten Sie sich auf die Unterbrechung der Versorgungsinfrastrukturen vor:\nNutzen Sie zur Lebensmittelzubereitung einen Gaskocher und informieren Sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/Kochen-ohne-Strom/kochen-ohne-strom_node.html]\"Kochen ohne Strom\".[/url].\nStellen Sie sicher, dass Sie genügend sauberes Wasser zur Verfügung haben. Füllen Sie gegebenenfalls verunreinigtes Wasser ab und reinigen Sie es nach Bedarf mit Chlortabletten.\nInformieren Sie sich über die aktuelle Entwicklung via Warn-App und Radio.\nBefolgen Sie die Anweisungen der Einsatzkräfte."
 	},
 	"Hochwasser": {
-		"icon_id": 1,
-		"description": "[img]res://assets/GUI/icons/_hochwasser-export.png[/img][font_size=30][b]Hochwasser[/b][/font_size]\n\nMomentan herrscht Hochwasser. In den folgenden Tagen können verschiedene Infrastrukturen ausfallen. Dies beinhalten [b]Stromausfall[/b], [b]Überschwemmungen[/b], [b]Wasserverschmutzung[/b] oder [b]Ausfall[/b] sowie [b]Ausfall des Mobilefunknetzes[/b]\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nWenn sie keinen Gaskocher zur Verfügung haben informieren sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Tipps-Notsituationen/Kochen-ohne-Strom/kochen-ohne-strom_node.html]stromloses Kochen[/url]. Stellen sie sicher dass sie genügend sauberes Wasser zur Verfügung haben und füllen sie gegebenenfalls dreckiges Wasser ab um es später mit Chlortabletten zu reinigen. Wenn sie ein Radio oder Kurbelradio haben informieren sie sich regelmäßig über den Verlauf der Krise.\n\nInformieren sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Tipps-Notsituationen/Hochwasser/hochwasser_node.html]Handlungsempfehlung[/url] im Ernstfall."
+		"icon_id": 5,
+		"description": "[img]res://assets/GUI/icons/highwater_icon.png[/img][font_size=30][b]Hochwasser[/b][/font_size]\n\nMomentan herrscht Hochwasser. In den folgenden Tagen können verschiedene Infrastrukturen ausfallen. Dies beinhaltet [b]Stromausfall[/b], [b]Überschwemmungen[/b], [b]Wasserverschmutzung[/b] oder [b]Ausfall[/b] sowie [b]Ausfall des Mobilfunknetzes[/b]\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nWenn Sie keinen Gaskocher zur Verfügung haben, informieren Sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/Kochen-ohne-Strom/kochen-ohne-strom_node.html]stromloses Kochen[/url]. Stellen Sie sicher, dass Sie genügend sauberes Wasser zur Verfügung haben und füllen Sie gegebenenfalls verunreinigtes Wasser ab, um es später mit Chlortabletten zu reinigen. Wenn Sie ein Radio oder Kurbelradio haben, informieren Sie sich regelmäßig über den Verlauf der Krise.\n\nInformieren Sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Mit-Naturgefahren-umgehen/Hochwasser/hochwasser_node.html]Handlungsempfehlung[/url] im Ernstfall."
+	},
+	"Riskana": {
+		"icon_id": 6,
+		"title": "Hochwassergefahr an der Riskana",
+		"description": "[img]res://assets/GUI/icons/riskana_icon.png[/img][font_size=30][b]\tHochwassergefahr an der\n[center]Riskana[/center][/b][/font_size]\n\nDer Pegel der Riskana hat die Meldestufe 2 erreicht und steigt weiter an. In der Folge kann es zu Störungen oder dem Ausfall verschiedener Infrastruktursysteme kommen. Davon betroffen sind das [b]Stromnetz[/b], die [b]Wasserversorgung[/b] und das [b]Mobilfunknetz[/b].\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nVermeiden Sie alle überfluteten Bereiche! \nSichern Sie Wertgegenstände in tiefergelegenen, noch nicht betroffenen Räumen und schalten Sie dort den Strom ab! \nBereiten Sie sich auf die Unterbrechung der Versorgungsinfrastrukturen vor:\nNutzen Sie zur Lebensmittelzubereitung einen Gaskocher und informieren Sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/Kochen-ohne-Strom/kochen-ohne-strom_node.html]\"Kochen ohne Strom\"[/url]. \nStellen Sie sicher, dass Sie genügend sauberes Wasser zur Verfügung haben. Füllen Sie gegebenenfalls verunreinigtes Wasser ab und reinigen Sie es nach Bedarf mit Chlortabletten.\nInformieren Sie sich über die aktuelle Entwicklung via Warn-App und Radio.\nBefolgen Sie die Anweisungen der Einsatzkräfte. \nWeitere Informationen zum Verhalten bei [b]Hochwasser[/b] erhalten Sie beim Bundesamt für Bevölkerungsschutz und Katastrophenvorsorge: [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Mit-Naturgefahren-umgehen/Hochwasser/hochwasser_node.html]Hochwasser[/url]"
 	},
 	"Tutorial": {
-		"icon_id": 3,
-		"description": "[img]res://assets/GUI/icons/icon_no_electricity.png[/img][font_size=30][b]Tutorial[/b][/font_size]\n\nDies ist eine Übung. In den folgenden Tagen werden sie kein Strom habe\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nInformieren sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Tipps-Notsituationen/Kochen-ohne-Strom/kochen-ohne-strom_node.html]stromloses Kochen[/url]."
+		"icon_id": 7,
+		"description": "[img]res://assets/GUI/icons/icon_no_electricity.png[/img][font_size=30][b]Tutorial[/b][/font_size]\n\nDies ist eine Übung. In den folgenden Tagen werden Sie keinen Strom haben\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nInformieren Sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/Kochen-ohne-Strom/kochen-ohne-strom_node.html]stromloses Kochen[/url]."
+	},
+	"Pandemie": {
+		"icon_id": 8,
+		"title": "Pandemie\nAusbreitung Krisoviren",
+		"description": "[img]res://assets/GUI/icons/pandemie_icon.png[/img][font_size=30][b]\t\t\tPandemie[center]Ausbreitung Krisoviren[/center][/b][/font_size]\n\nWarnung vor steigenden Fallzahlen von Infektionen mit den hochansteckenden Krisoviren in Krisopolis. [b]Betretungsverbote[/b] können in Kürze erfolgen\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nMeiden Sie Menschenansammlungen und halten Sie die AHA-Regeln ein.\nFolgen Sie Quarantäne- und Isolationsanordnungen des Gesundheitsamtes.\nInformieren Sie sich über die aktuelle Entwicklung via Warn-App und Radio."
+	},
+	"Starkregen": {
+		"icon_id": 9,
+		"title": "Starkregen durch Tief Flutaris",
+		"description": "[img]res://assets/GUI/icons/flutaris_icon.png[/img][font_size=30][b]\t Starkregen durch Tief[center]Flutaris[/center][/b][/font_size]\n\nWarnung vor lokalem, extremem Niederschlag durch Tief Flutaris. In der Folge kann es zu Störungen oder dem Ausfall verschiedener Infrastruktursysteme kommen. Dazu zählen das [b]Stromnetz[/b], die [b]Wasserversorgung[/b] und das [b]Mobilfunknetz[/b].\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nVermeiden Sie alle überfluteten Bereiche!\nSichern Sie Wertgegenstände in tiefergelegenen, noch nicht betroffenen Räumen und schalten Sie dort den Strom ab!\nBereiten Sie sich auf die Unterbrechung der Versorgungsinfrastrukturen vor:\nNutzen Sie zur Lebensmittelzubereitung einen Gaskocher und informieren Sie sich über [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/Kochen-ohne-Strom/kochen-ohne-strom_node.html] „Kochen ohne Strom“[/url].\nStellen Sie sicher, dass Sie genügend sauberes Wasser zur Verfügung haben. Füllen Sie gegebenenfalls verunreinigtes Wasser ab und reinigen Sie es nach Bedarf mit Chlortabletten.\nInformieren Sie sich über die aktuelle Entwicklung via Warn-App und Radio.\nBefolgen Sie die Anweisungen der Einsatzkräfte.\nWeitere Informationen zum Verhalten bei [b]Starkregen und Hochwasser[/b] erhalten Sie beim Bundesamt für Bevölkerungsschutz und Katastrophenvorsorge: [url=https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Mit-Naturgefahren-umgehen/Hochwasser/hochwasser_node.html]Hochwasser[/url]"
+	},
+	"Waldbrand": {
+		"icon_id": 10,
+		"title": "Waldbrand\nStarke Rauchentwicklung",
+		"description": "[img]res://assets/GUI/icons/forestfire_icon.png[/img][font_size=30][b]\t\t\tWaldbrand[center]Starke Rauchentwicklung[/center][/b][/font_size]\n\nWarnung vor großflächigem Brand im Waldgebiet Gluthain. In der Folge kann es zu Störungen oder dem Ausfall verschiedener Infrastruktursysteme kommen.\n\n[img]res://assets/GUI/icons/icon_pin_info.png[/img][b]Handlungsempfehlung:[/b]\nMeiden Sie die betroffene Region weiträumig!\nHalten Sie Fenster und Türen geschlossen!\nBereiten Sie sich auf Störungen oder den möglichen Ausfall von Versorgungsinfrastrukturnetzen vor.\nInformieren Sie sich über die aktuelle Entwicklung via Warn-App und Radio.\nBefolgen Sie die Anweisungen der Einsatzkräfte!"
 	}
 }

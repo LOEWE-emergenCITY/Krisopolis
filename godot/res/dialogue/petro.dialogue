@@ -2,7 +2,7 @@
 Petro: Moin!
 ~ BRANCH
 Petro: Alles klar bei dir, kommst du gut durch die Krise?
-- Avatar: Ja, wie läuft's bei dir?
+- Avatar: Ja, wie läuft es bei dir?
 	%2 => DIALOG1
 	%2 => DIALOG2
 - Avatar: Hast du was zu tauschen?
@@ -33,7 +33,7 @@ Petro: Tschö [wait=0.5], mit Ö.
 do TradeMngr.setup_next_trade("Petro")
 Petro: Immer doch. Suche grad nach {{TradeMngr.get_sought_items_text()}}, dafür biete ich {{TradeMngr.get_offered_items_text()}}.
 if TradeMngr.is_trade_feasible()
-	Petro: Wie sieht's aus?
+	Petro: Wie sieht es aus?
 	- Avatar: Passt.
 		do TradeMngr.execute_trade()
 		Petro: [#mood=happy]Exzellent, hier.
@@ -45,5 +45,5 @@ else
 
 
 ~ FIRE_DEPARTMENT_DEMONSTRATION
-Petro: Ich sollte wohl meinen Erste-Hilfe-Kasten zuhause austauschen...
+Petro: Ich sollte wohl meinen Erste-Hilfe-Kasten zu Hause austauschen...
 => END

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dhftxjokqdgiu" path="res://assets/GUI/buttons/button_doorbell_normal.png" id="1_oi2wa"]
 [ext_resource type="Texture2D" uid="uid://gfl5egwn4qbu" path="res://assets/GUI/buttons/button_doorbell_pressed.png" id="2_35i7k"]
-[ext_resource type="Script" path="res://GUI/doorbell/doorbell.gd" id="3_t1474"]
+[ext_resource type="Script" uid="uid://bxcn1a6u0wxrg" path="res://GUI/doorbell/doorbell.gd" id="3_t1474"]
 
 [node name="Doorbell" type="TextureButton"]
 anchors_preset = 5
@@ -14,6 +14,7 @@ offset_bottom = 82.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("1_oi2wa")
 texture_pressed = ExtResource("2_35i7k")
 script = ExtResource("3_t1474")

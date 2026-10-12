@@ -1,0 +1,51 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar mert.flipped
+[text]
+mert:Nach einem harten Einsatz im Bett zu liegen und Momos Schnurren zu lauschen ist das Größte!
+
+[[Node]] two
+[actors] avatar mert.flipped
+[text]
+mert:Die Arbeit beim THW gibt mir wirklich eine Menge. Kann ich nur empfehlen.
+
+[[Node]] three
+[actors] avatar mert.flipped
+[text]
+mert:Bin heute Abend noch mit Petro beim Training verabredet. Er hat wirklich gute Tipps!
+
+[[Node]] four
+[actors] avatar mert.flipped
+[text]
+mert:Manchmal ist es schwer, eine Routine zu entwickeln, wenn Einsätze dazwischenkommen. Aber das THW ist mir wichtiger als die Routine.
+
+[[Node]] five
+[Condition] not_bool(npc_is_sad("mert"))
+[actors] avatar mert.flipped
+[text]
+mert:Wunderbarer Tag. Es gibt so viel Gutes im Leben, wenn man nur darauf achtet.
+
+[[Node]] six
+[actors] avatar mert.flipped
+[text]
+mert:Hm? Oh, sorry, mir ging gerade Musik durch den Kopf.
+
+[[Node]] seven
+[actors] avatar mert.flipped
+[text]
+mert:Viel los in so einer Krise. Manchmal kann das schon anstrengend werden. Aber ich habe ja genug Zeit, mich auszuruhen.
+
+[[Node]] eight
+[actors] avatar mert.flipped
+[text]
+mert:Den Rest des Tages mache ich nichts mehr, außer mich zu entspannen. Es sei denn, ich werde gebraucht.

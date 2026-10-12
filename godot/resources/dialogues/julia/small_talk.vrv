@@ -1,0 +1,51 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar julia.flipped
+[text]
+julia:Es freut mich, dass du dich in Krisopolis so gut eingelebt hast.
+
+[[Node]] two
+[actors] avatar julia.flipped
+[text]
+julia:Es ist schön zu sehen, dass dir zwischenmenschliche Kontakte so wichtig sind. Viele Menschen haben davon viel zu wenig.
+
+[[Node]] three
+[actors] avatar julia.flipped
+[text]
+julia:Ich mache gerade Pause. Das ist wichtig, damit mein Kopf wieder aufnehmen kann, was meine Patienten sagen.
+julia:Ich versuche auch immer, ihnen zu sagen, wie wichtig Pausen sind ...
+
+[[Node]] four
+[actors] avatar julia.flipped
+[text]
+julia:Ich möchte später auch nochmal raus gehen, Bewegung an der frischen Luft tut gut.
+
+[[Node]] five
+[actors] avatar julia.flipped
+[text]
+julia:Hast du auch genug Zeit zur Entspannung während dieser Krise? Ich meditiere dreimal täglich. Das hilft mir enorm.
+
+[[Node]] six
+[actors] avatar julia.flipped
+[text]
+julia:Heute Abend gehe ich ins Fitnessstudio. Immer eine Überwindung, dahin zu gehen, aber danach fühle ich mich großartig!
+
+[[Node]] seven
+[actors] avatar julia.flipped
+[text]
+julia:Ich wollte noch meine Eltern anrufen. Das darf ich nicht vergessen.
+
+[[Node]] eight
+[actors] avatar julia.flipped
+[text]
+julia:Oh, so spät schon? Manchmal vergesse ich die Zeit.

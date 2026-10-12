@@ -2,18 +2,23 @@
 	"comp": {
 		"descr": {
 			"name": "Mert",
-			"descr": "Das hier ist Mert.\nEr ist lieb.",
-			"portait": "mert"
+			"descr": "Das hier ist Mert.\nEr ist unauffällig, aber unverzichtbar.",
+			"portait": "mert",
+			"sprite": "mert"
 		},
-		"sprite": {
-			"texture_name": "mert"
-		},
-		"interaction": {
-			"conversation": {
-				"pitch": 0.9
+		"conversation": {
+			"pitch": 0.9,
+			"day": "res://resources/dialogues/mert/day/day.vrv",
+			"small_talk": "res://resources/dialogues/mert/small_talk.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/mert/day/"
 			}
 		},
 		"stage": {
+			"stage_name": "apartment_mert",
+			"spot": "cooking",
+
+			"position": { "x": 400, "y": 310 },
 			"start": "ApartmentMert",
 			"positions": {
 				"ApartmentMert": { "x": 400, "y": 310 },

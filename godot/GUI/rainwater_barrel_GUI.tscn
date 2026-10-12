@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8c6lclmuiqum"]
 
-[ext_resource type="Script" path="res://GUI/rainwater_barrel_GUI.gd" id="1_u6c7a"]
+[ext_resource type="Script" uid="uid://dooh8huxyf08f" path="res://GUI/rainwater_barrel_GUI.gd" id="1_u6c7a"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="2_27xxb"]
 
 [node name="RainwaterBarrelGUI" type="Control"]
@@ -30,6 +30,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="TitleSpacing" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -39,7 +40,7 @@ theme_type_variation = &"TitleSpacing"
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 bbcode_enabled = true
-text = "[center]Wie viel Wasser willst du abschöpfen?[/center]"
+text = "[center]Regentonne[/center]"
 fit_content = true
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
@@ -49,16 +50,19 @@ theme_type_variation = &"WhitePanelContainer"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
+bbcode_enabled = true
 text = "Es hat geregnet, in deiner Regentonne befinden sich Liter Wasser."
 fit_content = true
 
 [node name="GetWaterBtn" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_27xxb")]
 layout_mode = 2
-text = "Eine Flasche (250ml) abschöpfen"
+theme_type_variation = &"ConfirmButton"
+text = "Wasser abschöpfen"
 
 [node name="DoneBtn" parent="PanelContainer/VBoxContainer" instance=ExtResource("2_27xxb")]
 layout_mode = 2
-text = "Fertig"
+theme_type_variation = &"CancelButton"
+text = "Zurück"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/GetWaterBtn" to="." method="_on_get_water_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/DoneBtn" to="." method="_on_done_btn_pressed"]

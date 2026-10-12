@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://cqjslr7qgv878"
+path="res://.godot/imported/tutorial.vrv-bf33a988d7a865afe838c163b3c3b0d2.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/tutorial.vrv"
+dest_files=["res://.godot/imported/tutorial.vrv-bf33a988d7a865afe838c163b3c3b0d2.tres"]
+
+[params]
+

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://hvrc68vqew2a"]
 
-[ext_resource type="Script" path="res://preparePhase/information.gd" id="1_3i2wm"]
+[ext_resource type="Script" uid="uid://bs1glssba1b5j" path="res://preparePhase/information.gd" id="1_3i2wm"]
 [ext_resource type="PackedScene" uid="uid://cul33oq5ev2pa" path="res://crisisPhase/stage/park.tscn" id="2_skwwi"]
 [ext_resource type="Texture2D" uid="uid://bfxwegfvf1ime" path="res://assets/kochenohnestrom.png" id="3_v146t"]
-[ext_resource type="Texture2D" uid="uid://b77uhdblr7pj8" path="res://assets/bbkbroschüre.png" id="4_nlyup"]
+[ext_resource type="Texture2D" uid="uid://b136kc3hwj5da" path="res://assets/BBK.png" id="4_yo7y1"]
 [ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="5_4en81"]
 
 [node name="CreditInformation" type="Control"]
@@ -48,16 +48,17 @@ bbcode_enabled = true
 layout_mode = 2
 
 [node name="BBKButton" type="TextureButton" parent="CanvasLayer_unaffectedByCM/HBoxContainer/VBoxContainer2" groups=["Button"]]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(182, 257)
 layout_mode = 2
-texture_normal = ExtResource("4_nlyup")
+texture_normal = ExtResource("4_yo7y1")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer_unaffectedByCM/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
-text = " 7,61 MB"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer_unaffectedByCM"]
 offset_left = 465.0

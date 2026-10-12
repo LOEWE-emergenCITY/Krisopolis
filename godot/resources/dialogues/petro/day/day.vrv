@@ -1,0 +1,209 @@
+[[Node]] start
+[actors] avatar petro.flipped
+[text]
+petro:Moin! Alles klar bei dir, kommst du gut durch die Krise?
+avatar:Ja, wie läuft's bei dir?
+[random]
+- [text] petro:YOLO.
+- [text] petro:Es läuft. Zwar nicht rund, aber es läuft.
+- [text] petro:Same procedure as every crisis.
+- [text] petro:Schlimmer geht immer.
+- [text] petro:Keine Panik auf der Titanic.
+- [text] petro:Wird schon.
+- [text] petro:Kommt Zeit, kommt Rat.
+[jump] talk
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+- [jump] talk5
+- [jump] talk6
+- [jump] talk7
+- [jump] talk8
+
+[[Node]] stop
+[actors] avatar petro.flipped
+[text]
+petro:Tschö!
+
+[[Node]] talk1
+[actors] avatar petro.flipped
+[text]
+petro:Meine Liebe für die Luftfahrt färbt schon auf Irena ab.
+petro:Vielleicht sollte ich nicht ständig gedanklich abheben und eher [i]bodenständiger[/i] bleiben.
+avatar:Haha. Naja, bis dann.
+petro:Tschö, mit Ö.
+
+[[Node]] talk2
+[actors] avatar petro.flipped
+[text]
+petro:In letzter Zeit überlege ich, ob wir nicht Modellflugzeuge einsetzen könnten, um die Bevölkerung zu versorgen.
+petro:Irre Idee, nicht?
+[Choice]
+- [irre] Klingt unrealistisch.
+- [spannend] Schon spannend.
+
+[[Node]] irre
+[actors] avatar petro.flipped
+[text]
+petro:Naja, ist in großem Maßstab sicher noch schwierig. Aber es wäre eine riesige Hilfe, oder?
+
+[[Node]] spannend
+[jump] befreundet
+[jump] nicht_befreundet
+
+[[Node]] befreundet
+[Condition] npc_friendship_higher_than("petro",4)
+[actors] avatar petro.flipped
+[text]
+petro:Wusste ich doch, dass dich das auch begeistert!
+
+[[Node]] nicht_befreundet
+[actors] avatar petro.flipped
+[text]
+petro:Ich merke, wir verstehen uns!
+
+[[Node]] talk3
+[actors] avatar petro.flipped
+[text]
+petro:Ich dachte mal, ich werde Pilot. Aber wie das Leben so spielt...
+petro:Dass ich mal als Journalist arbeiten würde, hätte ich nie gedacht.
+petro:Und Vlogs und Blogs gab es noch gar nicht, als ich damals fliegen wollte.
+petro:Aber ich liebe meine Arbeit.
+avatar:Bist du mal geflogen?
+petro:Selbst? Nein. Das war nie mehr als ein Wunsch.
+petro:Vielleicht kommt Irenas Wunsch, Pilotin zu werden, eigentlich von mir.
+
+[[Node]] talk4
+[actors] avatar petro.flipped
+[text]
+petro:Es ist faszinierend, wenn man über die technologischen Fortschritte des letzten Jahrhunderts nachdenkt.
+petro:Und trotzdem verwenden wir noch viele alte Technologien, weil sie so robust sind.
+petro:Die Funktechnologie zum Beispiel. Keine komplexe Software, einfach nur Physik.
+petro:Sowas braucht es, während einer Krise. Einfache Dinge, die immer noch funktionieren.
+avatar:Stimmt schon.
+
+[[Node]] talk5
+[actors] avatar petro.flipped
+[text]
+petro:Ich bin ja ein Freund von Technik und Fortschritt, und ich nutze ja selbst Social Media ... Aber manchmal gruselt es mich schon, was da passiert.
+petro:Besonders, wenn ich an Irena denke.
+petro:Dabei bräuchte es nur eine Plattform, die positive Interaktionen fördert.
+petro:So wie ich das mit meinen Videos versuche. Meine Follower sind lauter Nerds, da entstehen richtig wertvolle Diskussionen.
+[jump] bad_social_media
+
+[[Node]] bad_social_media
+[Condition] npc_is_sad("petro")
+[actors] avatar petro.flipped
+[text]
+petro:Aber wenn ich mir den Rest von Social Media anschaue, dann ist da so viel Hass und Polarisation.
+petro:Und alles nur, weil die Algorithmen uns das zuspielen, damit wir länger auf den Plattformen bleiben.
+petro:Ich will nicht, dass meine Tochter lernt, dass Lügen okay sind und die Welt böse ist.
+
+[[Node]] talk6
+[actors] avatar petro.flipped
+[text]
+petro:Es ist nicht leicht, als alleinerziehender Vater im Rollstuhl mit einem Kind mitzuhalten.
+avatar:Das kann ich mir gut vorstellen.
+[random]
+- [jump] spielplatz
+- [jump] kein_spielplatz
+
+[[Node]] spielplatz
+[Condition] npc_friendship_higher_than("petro",10)
+[actors] avatar petro.flipped
+[text]
+petro:Als Irena klein war, musste ich höllisch aufpassen, dass sie nicht auf die Straße rennt.
+petro:Andere Eltern rennen dann einfach hinterher, aber ich ...
+petro:Ich war froh, wenn ich mit dem Rollstuhl überhaupt bis zum Spielplatz kam. Da gab es keinen geteerten Zugang.
+petro:Ich dachte, wenn sie älter wird, wird das leichter. Aber die Probleme ändern sich nur.
+[jump] end_spielplatz
+
+[[Node]] kein_spielplatz
+[actors] avatar petro.flipped
+[text]
+petro:Ohne Rollstuhl wäre es leichter.
+[jump] end_spielplatz
+
+[[Node]] end_spielplatz
+[actors] avatar petro.flipped
+[text]
+petro:Ich hoffe, dass ich bald ein Exoskelett bekomme, damit ich wieder gehen kann.
+avatar:Das wäre großartig!
+petro:Ja und die Fortschritte in der Entwicklung in den letzten Jahren waren wirklich gewaltig.
+
+[[Node]] talk6
+[actors] avatar petro.flipped
+[text]
+petro:Denkst du gerne an die Zukunft?
+[Choice]
+- [zukunft_ja] Ja.
+- [zukunft_schlecht] Die Zukunft macht mir eher Sorgen.
+- [zukunft_nein] Ich weiß nicht. Ich bleibe lieber im Hier und Jetzt.
+- [vergangenheit] Die Vergangenheit finde ich interessanter.
+
+[[Node]] zukunft_ja
+[actors] avatar petro.flipped
+[text]
+petro:Ich auch. Viele Menschen sehen so schwarz, wenn sie in die Zukunft schauen. Ich stelle mir gerne vor, wie die Welt aussehen könnte.
+petro:Wenn Roboter alle Arbeiten übernommen haben, die wir nicht gerne tun. Und wir nur noch arbeiten, wenn wir wollen, und nicht mehr, weil wir müssen.
+petro:Wenn die Medizin so weit ist, dass man beinahe alle Krankheiten behandeln kann. Und vielleicht sogar das Altern stoppen.
+petro:Wenn wir andere Planeten besiedeln.
+
+[[Node]] zukunft_schlecht
+[actors] avatar petro.flipped
+[text]
+petro:Das ist gut. Das heißt, du siehst Probleme, und Probleme kann man lösen, sobald man sie identifiziert hat.
+petro:Oder zumindest kann man sein Bestes zur Lösung beitragen.
+avatar:Hm. Da hast du wohl recht.
+
+[[Node]] zukunft_nein
+[actors] avatar petro.flipped
+[text]
+petro:Typisch für mich, das nicht zu tun. Ich lebe zu sehr in meinem Kopf. Haha.
+petro:Aber ich finde es auch wichtig, die Zukunft im Blick zu behalten. Man will ja wissen, wohin es geht.
+avatar:Ja, das schon.
+
+[[Node]] vergangenheit
+[actors] avatar petro.flipped
+[text]
+petro:Die Vergangenheit kann auch sehr spannend sein. Gerade wenn man sich die Entwicklung der letzten 200 Jahre anschaut.
+
+[[Node]] talk7
+[actors] avatar petro.flipped
+[text]
+petro:Irena beschwert sich immer wieder, weil sie keinen Taschenrechner verwenden darf. Ich weiß nie so recht, was ich dazu sagen soll.
+petro:Es stimmt ja. Wir müssen nicht mehr Kopfrechnen, das macht der Taschenrechner.
+petro:Wir müssen uns nicht mehr orientieren, das macht das Navi.
+petro:Wir müssen keine anderen Sprachen mehr lernen, das Übersetzen macht die AI. Sag Irena aber nicht, dass ich das gesagt hab.
+petro:Was werden LLMs ersetzen? Experten? Entscheidungen?
+avatar:Wir werden sehen.
+petro:Ja. Aber die eigentliche Frage ist, was passiert, wenn das Internet ausfällt oder das Smartphone keinen Strom hat?
+petro:Der Taschenrechner funktioniert offline, aber Karten oft nicht mehr und Navigation schon gar nicht. Übersetzen oder mit LLMs chatten kannst du vergessen.
+petro:Und ohne Strom geht gar nichts.
+petro:Fortschritt ist super. Aber wir sollten uns gut überlegen, was offline für alle verfügbar sein sollte.
+petro:Ich hab zum Beispiel eine ausgedruckte Liste wichtiger Adressen und Telefonnummern.
+avatar:Das klingt nach einer guten Idee.
+[action] add_score("tip", {"source": "petro1"})
+[actors] avatar petro.flipped
+[text]
+petro:War schon mal sehr wertvoll. Wir sollten aber auch überlegen, was in der Schule gelehrt werden sollte, weil es sonst einfach niemand mehr lernt.
+avatar:So wie Kopfrechnen?
+petro:Vermutlich ...
+
+[[Node]] talk8
+[actors] avatar petro.flipped
+[text]
+petro:Krisen sind immer ein bisschen anstrengend, egal wie gut man vorbereitet ist.
+petro:Ich gebe mir dann Mühe, mehr Zeit mit Irena zu verbringen. Aber gleichzeitig den Alltag noch so gut es geht zu bewahren.
+petro:Am schlimmsten ist es, wenn die Schule ausfällt und Irena den ganzen Vormittag allein am Bildschirm hockt.
+petro:Zum Glück passiert das nur selten.
+
+[Comment]
+	Ist das absichtlich nicht mehr Teil vom dialoge?
+	[[Node]] trade
+	[Prompt] Hast du was zu tauschen?
+	[action] request_trade_gui("petro")

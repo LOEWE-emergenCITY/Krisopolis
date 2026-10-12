@@ -1,0 +1,229 @@
+[gd_scene load_steps=20 format=3 uid="uid://bwmnipiors5rv"]
+
+[ext_resource type="Script" uid="uid://doifnju5vr0df" path="res://GUI/phone/warn_app.gd" id="1_30s3w"]
+[ext_resource type="Texture2D" uid="uid://dcgwu2rccab6r" path="res://assets/GUI/icons/chemie_icon.png" id="2_ebkh6"]
+[ext_resource type="Texture2D" uid="uid://cg6otwnlnqjd3" path="res://assets/GUI/icons/lkw_icon.png" id="3_87cy0"]
+[ext_resource type="Texture2D" uid="uid://djbl2wksd35ha" path="res://assets/GUI/icons/heat_icon.png" id="4_3pymp"]
+[ext_resource type="Texture2D" uid="uid://ckjuxbkx78uml" path="res://assets/GUI/icons/storm_icon.png" id="5_tcrk2"]
+[ext_resource type="Texture2D" uid="uid://fporcnwl6csd" path="res://assets/GUI/icons/highwater_icon.png" id="6_non2t"]
+[ext_resource type="Texture2D" uid="uid://bjd8nobhmauco" path="res://assets/GUI/icons/riskana_icon.png" id="7_3bptk"]
+[ext_resource type="Texture2D" uid="uid://ckhxcs0p45ige" path="res://assets/GUI/icons/icon_no_electricity.png" id="8_moati"]
+[ext_resource type="Texture2D" uid="uid://cejau2hhujec5" path="res://assets/GUI/icons/pandemie_icon.png" id="9_sbwef"]
+[ext_resource type="Texture2D" uid="uid://xuhitwogmglt" path="res://assets/GUI/icons/flutaris_icon.png" id="10_3o3ys"]
+[ext_resource type="Texture2D" uid="uid://c0hmfc280arn3" path="res://assets/GUI/icons/forestfire_icon.png" id="11_sehay"]
+[ext_resource type="PackedScene" uid="uid://l7giak7i5oop" path="res://util/item_list.tscn" id="12_mt6wr"]
+[ext_resource type="PackedScene" uid="uid://hurmnm4yg5ew" path="res://GUI/handy/warn_list_item.tscn" id="13_5e8jx"]
+[ext_resource type="Texture2D" uid="uid://80yai28l2kh6" path="res://assets/GUI/buttons/button_left.png" id="14_ebkh6"]
+[ext_resource type="Texture2D" uid="uid://b0whs1kiah54x" path="res://assets/GUI/buttons/button_left_disabled.png" id="15_87cy0"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_vp7jv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x08ft"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xj50q"]
+bg_color = Color(0.0431373, 0.223529, 0.415686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prkbl"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Warn" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 833)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_type_variation = &"WarnItemList"
+script = ExtResource("1_30s3w")
+scenario_icons = Array[Texture2D]([SubResource("ImageTexture_vp7jv"), ExtResource("2_ebkh6"), ExtResource("3_87cy0"), ExtResource("4_3pymp"), ExtResource("5_tcrk2"), ExtResource("6_non2t"), ExtResource("7_3bptk"), ExtResource("8_moati"), ExtResource("9_sbwef"), ExtResource("10_3o3ys"), ExtResource("11_sehay")])
+
+[node name="Notifications" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Notifications"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 940.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 106
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBC" type="VBoxContainer" parent="Notifications/Margin"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Notifications/Margin/VBC"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+theme_type_variation = &"WarnItemList"
+theme_override_styles/panel = SubResource("StyleBoxFlat_x08ft")
+
+[node name="Title" type="RichTextLabel" parent="Notifications/Margin/VBC/PanelContainer"]
+custom_minimum_size = Vector2(150, 34)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][color=black][b]Krisopolis[/b][/color][/center]"
+
+[node name="ItemList" parent="Notifications/Margin/VBC" instance=ExtResource("12_mt6wr")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_type_variation = &"WarnItemList"
+LIST_ITEM_SCN = ExtResource("13_5e8jx")
+
+[node name="Panel" type="PanelContainer" parent="Notifications"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 96.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xj50q")
+
+[node name="Margin" type="MarginContainer" parent="Notifications/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="HBC" type="HBoxContainer" parent="Notifications/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="BackPlace" type="TextureButton" parent="Notifications/Panel/Margin/HBC"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("14_ebkh6")
+texture_disabled = ExtResource("15_87cy0")
+stretch_mode = 3
+
+[node name="Title" type="RichTextLabel" parent="Notifications/Panel/Margin/HBC"]
+custom_minimum_size = Vector2(180, 26)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=white]Meine Orte[/color]"
+fit_content = true
+
+[node name="Description" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Infos" type="PanelContainer" parent="Description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_prkbl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Description/Infos"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 14
+
+[node name="Text" type="RichTextLabel" parent="Description/Infos/MarginContainer"]
+custom_minimum_size = Vector2(0, 700)
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+
+[node name="Panel" type="PanelContainer" parent="Description"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 96.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xj50q")
+
+[node name="Margin" type="MarginContainer" parent="Description/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="HBC" type="HBoxContainer" parent="Description/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="BackDescr" type="TextureButton" parent="Description/Panel/Margin/HBC"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("14_ebkh6")
+texture_disabled = ExtResource("15_87cy0")
+stretch_mode = 3
+
+[node name="Title" type="RichTextLabel" parent="Description/Panel/Margin/HBC"]
+custom_minimum_size = Vector2(180, 26)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=white]Krisopolis[/color]"
+fit_content = true
+
+[node name="Offline" type="Control" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Infos" type="PanelContainer" parent="Offline"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_prkbl")
+
+[node name="MarginContainer" type="MarginContainer" parent="Offline/Infos"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 110
+theme_override_constants/margin_right = 14
+
+[node name="Text" type="RichTextLabel" parent="Offline/Infos/MarginContainer"]
+custom_minimum_size = Vector2(0, 202.73)
+layout_mode = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "[center][img]res://assets/GUI/icons/icon_offline.png[/img]
+ Du hast momentan kein Empfang"
+fit_content = true
+
+[node name="Panel" type="PanelContainer" parent="Offline"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 96.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xj50q")
+
+[node name="Margin" type="MarginContainer" parent="Offline/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="HBC" type="HBoxContainer" parent="Offline/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="BackOffline" type="TextureButton" parent="Offline/Panel/Margin/HBC"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("14_ebkh6")
+texture_disabled = ExtResource("15_87cy0")
+stretch_mode = 3
+
+[node name="Title" type="RichTextLabel" parent="Offline/Panel/Margin/HBC"]
+custom_minimum_size = Vector2(180, 26)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=white]Krisopolis[/color]"
+fit_content = true
+
+[connection signal="pressed" from="Notifications/Panel/Margin/HBC/BackPlace" to="." method="back"]
+[connection signal="meta_clicked" from="Description/Infos/MarginContainer/Text" to="." method="_on_text_meta_clicked"]
+[connection signal="pressed" from="Description/Panel/Margin/HBC/BackDescr" to="." method="back"]
+[connection signal="meta_clicked" from="Offline/Infos/MarginContainer/Text" to="." method="_on_text_meta_clicked"]
+[connection signal="pressed" from="Offline/Panel/Margin/HBC/BackOffline" to="." method="back"]

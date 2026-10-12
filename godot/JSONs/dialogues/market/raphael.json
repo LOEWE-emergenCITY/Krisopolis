@@ -29,7 +29,7 @@
 	  "cooldown_count": 0,
 	  "actors": ["avatar", "raphael.r"],
 	  "text": [
-		"raphael.r#Momentan handel ich ohne Geld. Wer weiß wie viel es morgen wert ist.",
+		"raphael.r#Momentan handel ich ohne Geld. Wer weiß, wie viel es morgen wert ist.",
 		"avatar#Nur [i]Ware[/i] ist Wahres?",
 		"raphael.r#Hahaha. So könnte man es ausdrücken."
 	  ]

@@ -1,7 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnmcmtfl1jq8q"]
+[gd_scene load_steps=20 format=3 uid="uid://bnmcmtfl1jq8q"]
 
-[ext_resource type="Script" path="res://GUI/end_game_gui.gd" id="1_brneb"]
+[ext_resource type="Script" uid="uid://cyti3p2j30tvq" path="res://GUI/end_game_gui.gd" id="1_brneb"]
+[ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="2_c2i0o"]
 [ext_resource type="Texture2D" uid="uid://d35pi0p7mtby6" path="res://assets/particles/particle_star.png" id="2_wm8fx"]
+[ext_resource type="Texture2D" uid="uid://biq6rkvttsy7w" path="res://assets/GUI/icons/empyt_big_water_icon.png" id="3_cm15d"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="3_jq4mf"]
+[ext_resource type="Texture2D" uid="uid://5vkk1hy7to2c" path="res://assets/GUI/icons/big_water_icon.png" id="4_ji60q"]
+[ext_resource type="Texture2D" uid="uid://beasjnrq61yqq" path="res://assets/GUI/icons/empyt_big_food_icon.png" id="5_0o3ah"]
+[ext_resource type="Texture2D" uid="uid://b8mtd6d75g4xc" path="res://assets/GUI/icons/cross_icon.png" id="5_4gypq"]
+[ext_resource type="Texture2D" uid="uid://bmim23ipkim6l" path="res://assets/GUI/icons/big_food_icon.png" id="6_1hsn2"]
+[ext_resource type="Texture2D" uid="uid://sb7e0xow2nrn" path="res://assets/GUI/icons/empyt_big_heart_icon.png" id="7_ykpya"]
+[ext_resource type="Texture2D" uid="uid://bmaimpm6yaeu3" path="res://assets/GUI/icons/big_heart_icon.png" id="8_k3pof"]
+[ext_resource type="Texture2D" uid="uid://bn44e46c4gwnt" path="res://assets/GUI/icons/empyt_big_smile_icon.png" id="9_es11y"]
+[ext_resource type="Texture2D" uid="uid://bsu6de4kj4y2v" path="res://assets/GUI/icons/big_smile_icon.png" id="10_7x6eh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edsbq"]
 
 [sub_resource type="Gradient" id="Gradient_vswwg"]
 offsets = PackedFloat32Array(0, 0.918803)
@@ -40,187 +53,164 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_brneb")
 
-[node name="WinnerScreen" type="PanelContainer" parent="."]
-visible = false
+[node name="SummaryWindow" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -329.0
-offset_right = 218.0
-offset_bottom = 329.0
+offset_left = -208.0
+offset_top = -314.5
+offset_right = 208.0
+offset_bottom = 315.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="WinnerScreen"]
+[node name="MarginContainer" type="MarginContainer" parent="SummaryWindow"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WinnerScreen/MarginContainer"]
+[node name="VBC" type="VBoxContainer" parent="SummaryWindow/MarginContainer"]
+custom_minimum_size = Vector2(0, 286)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TitleSpacing" type="MarginContainer" parent="WinnerScreen/MarginContainer/VBoxContainer"]
+[node name="TitleSpacing" type="MarginContainer" parent="SummaryWindow/MarginContainer/VBC"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 12
 
-[node name="Title" type="RichTextLabel" parent="WinnerScreen/MarginContainer/VBoxContainer/TitleSpacing"]
+[node name="Title" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/TitleSpacing"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_type_variation = &"HeaderLarge"
 bbcode_enabled = true
 text = "[center]GEWONNEN[/center]"
-
-[node name="TextBox2" type="PanelContainer" parent="WinnerScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="Description" type="RichTextLabel" parent="WinnerScreen/MarginContainer/VBoxContainer/TextBox2"]
-custom_minimum_size = Vector2(24, 60)
-layout_mode = 2
-text = "Du hast die Krise überstanden.
-"
-fit_content = true
-autowrap_mode = 2
-
-[node name="TextBox3" type="PanelContainer" parent="WinnerScreen/MarginContainer/VBoxContainer"]
-clip_contents = true
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="MarginContainer" type="MarginContainer" parent="WinnerScreen/MarginContainer/VBoxContainer/TextBox3"]
-clip_contents = true
-layout_mode = 2
-
-[node name="Scroll" type="ScrollContainer" parent="WinnerScreen/MarginContainer/VBoxContainer/TextBox3/MarginContainer"]
-custom_minimum_size = Vector2(0, 250)
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="Actions" type="RichTextLabel" parent="WinnerScreen/MarginContainer/VBoxContainer/TextBox3/MarginContainer/Scroll"]
-custom_minimum_size = Vector2(340, 250)
-layout_mode = 2
-mouse_filter = 1
-bbcode_enabled = true
 fit_content = true
 scroll_active = false
+autowrap_mode = 0
 
-[node name="TextBox" type="PanelContainer" parent="WinnerScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="Description" type="RichTextLabel" parent="WinnerScreen/MarginContainer/VBoxContainer/TextBox"]
-custom_minimum_size = Vector2(24, 30)
-layout_mode = 2
-text = "
-"
-fit_content = true
-autowrap_mode = 2
-
-[node name="MainMenu" type="Button" parent="WinnerScreen/MarginContainer/VBoxContainer" groups=["Button"]]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Zurück zum Hauptmenü"
-
-[node name="LoserScreen" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -329.0
-offset_right = 218.0
-offset_bottom = 329.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="LoserScreen"]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LoserScreen/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="TitleSpacing" type="MarginContainer" parent="LoserScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_bottom = 12
-
-[node name="Title" type="RichTextLabel" parent="LoserScreen/MarginContainer/VBoxContainer/TitleSpacing"]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-theme_type_variation = &"HeaderLarge"
-bbcode_enabled = true
-text = "[center]VERLOREN[/center]"
-
-[node name="TextBox" type="PanelContainer" parent="LoserScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="Description" type="RichTextLabel" parent="LoserScreen/MarginContainer/VBoxContainer/TextBox"]
-custom_minimum_size = Vector2(24, 60)
-layout_mode = 2
-text = "Du hast die Krise nicht überstanden."
-fit_content = true
-autowrap_mode = 2
-
-[node name="TextBox3" type="PanelContainer" parent="LoserScreen/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(376, 0)
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="Scroll" type="ScrollContainer" parent="LoserScreen/MarginContainer/VBoxContainer/TextBox3"]
-custom_minimum_size = Vector2(0, 250)
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="Actions" type="RichTextLabel" parent="LoserScreen/MarginContainer/VBoxContainer/TextBox3/Scroll"]
-custom_minimum_size = Vector2(340, 250)
-layout_mode = 2
-mouse_filter = 1
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-
-[node name="TextBox2" type="PanelContainer" parent="LoserScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="Description" type="RichTextLabel" parent="LoserScreen/MarginContainer/VBoxContainer/TextBox2"]
-custom_minimum_size = Vector2(24, 30)
-layout_mode = 2
-text = "Du hast 10 ECoins erworben!
-"
-fit_content = true
-autowrap_mode = 2
-
-[node name="MainMenu" type="Button" parent="LoserScreen/MarginContainer/VBoxContainer" groups=["Button"]]
+[node name="PCScore" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxEmpty_edsbq")
+
+[node name="Score" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/PCScore"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PCStatus" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("2_c2i0o")
+
+[node name="HBC" type="HBoxContainer" parent="SummaryWindow/MarginContainer/VBC/PCStatus"]
+layout_mode = 2
+
+[node name="Water" type="TextureProgressBar" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC"]
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("3_cm15d")
+texture_progress = ExtResource("4_ji60q")
+
+[node name="Cross" type="TextureRect" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC/Water"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 52.0
+offset_bottom = 54.0
+texture = ExtResource("5_4gypq")
+
+[node name="Food" type="TextureProgressBar" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC"]
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("5_0o3ah")
+texture_progress = ExtResource("6_1hsn2")
+
+[node name="Cross" type="TextureRect" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC/Food"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 52.0
+offset_bottom = 54.0
+texture = ExtResource("5_4gypq")
+
+[node name="Heart" type="TextureProgressBar" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC"]
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("7_ykpya")
+texture_progress = ExtResource("8_k3pof")
+
+[node name="Cross" type="TextureRect" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC/Heart"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 52.0
+offset_bottom = 54.0
+texture = ExtResource("5_4gypq")
+
+[node name="Smile" type="TextureProgressBar" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC"]
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("9_es11y")
+texture_progress = ExtResource("10_7x6eh")
+
+[node name="Cross" type="TextureRect" parent="SummaryWindow/MarginContainer/VBC/PCStatus/HBC/Smile"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 52.0
+offset_bottom = 54.0
+texture = ExtResource("5_4gypq")
+
+[node name="SC" type="ScrollContainer" parent="SummaryWindow/MarginContainer/VBC"]
+custom_minimum_size = Vector2(0, 218)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_c2i0o")
+
+[node name="Logs" type="VBoxContainer" parent="SummaryWindow/MarginContainer/VBC/SC"]
+layout_mode = 2
+
+[node name="TextBox" type="PanelContainer" parent="SummaryWindow/MarginContainer/VBC"]
+layout_mode = 2
+theme_type_variation = &"WhitePanelContainer"
+
+[node name="ECoins" type="RichTextLabel" parent="SummaryWindow/MarginContainer/VBC/TextBox"]
+custom_minimum_size = Vector2(24, 55)
+layout_mode = 2
+bbcode_enabled = true
+text = "Du erhältst 0 [img]res://assets/GUI/icons/icon_ecoins.png[/img]."
+fit_content = true
+autowrap_mode = 2
+
+[node name="MainMenu" parent="SummaryWindow/MarginContainer/VBC" instance=ExtResource("3_jq4mf")]
+layout_mode = 2
 text = "Zurück zum Hauptmenü"
 
 [node name="StarExplosionVFX" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(297, 221)
 emitting = false
 amount = 80
-process_material = SubResource("ParticleProcessMaterial_txb1w")
 texture = ExtResource("2_wm8fx")
 lifetime = 5.0
 one_shot = true
 explosiveness = 0.88
 randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_txb1w")
 
-[connection signal="pressed" from="WinnerScreen/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="LoserScreen/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="SummaryWindow/MarginContainer/VBC/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cku3etpcuk085"]
 
-[ext_resource type="Script" path="res://crisisPhase/characters/avatar.gd" id="1_6xgqy"]
+[ext_resource type="Script" uid="uid://bd4dsmrh1t0r" path="res://crisisPhase/characters/avatar.gd" id="1_6xgqy"]
 [ext_resource type="Texture2D" uid="uid://ppdc880khrdn" path="res://assets/characters/sprite_avatar.png" id="2_fbrni"]
 [ext_resource type="AudioStream" uid="uid://cue08qspeb5te" path="res://assets/SFX/walking.wav" id="3_nintj"]
 
@@ -60,9 +60,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rd3ph"]
 _data = {
-"RESET": SubResource("Animation_cxjb2"),
-"idle": SubResource("Animation_5s4w8"),
-"walking": SubResource("Animation_v3hvq")
+&"RESET": SubResource("Animation_cxjb2"),
+&"idle": SubResource("Animation_5s4w8"),
+&"walking": SubResource("Animation_v3hvq")
 }
 
 [node name="Avatar" type="CharacterBody2D"]
@@ -96,7 +96,7 @@ stream = ExtResource("3_nintj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_rd3ph")
+&"": SubResource("AnimationLibrary_rd3ph")
 }
 
 [connection signal="navigation_finished" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_navigation_finished"]

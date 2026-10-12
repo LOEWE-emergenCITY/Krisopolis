@@ -2,7 +2,7 @@
 	"start": {
 		"actors": ["avatar", "agathe.r"],
 		"text": [
-			"agathe.r#Hallo Schätzchen! Ich habe ein altes Fotobuch gefunden. Hast du Lust, dir das mit mir anzuschauen?"
+			"agathe.r#Hallo Schätzchen! Ich habe noch ein altes Fotobuch gefunden. Hast du Lust, dir das mit mir anzuschauen?"
 		],
 		"options": {
 			"#ja": "",
@@ -15,7 +15,7 @@
 			"add_item_question": [
 				"JAM",
 				{
-					"question": "Diese %s ist bestimmt was ganz besonderes.\nDu erkennst das sie mit Liebe gemacht wurde.",
+					"question": "Diese %s ist bestimmt was ganz Besonderes.\nDu erkennst, dass sie mit Liebe gemacht wurde.",
 					"answere": "",
 					"decline": "Einpacken"
 				}
@@ -27,7 +27,7 @@
 			"avatar#Klar, gerne!",
 			"agathe.r#Wie schön! Schau mal, das bin ich mit Freunden zu Schulzeiten.",
 			"agathe.r#Solche Frisuren waren damals total angesagt ...",
-			"agathe.r#Ach ja, ich habe viel zu viel Obst gekauft, und mehr Marmelade gekocht als ich selbst essen kann.",
+			"agathe.r#Ach ja, ich habe viel zu viel Obst gekauft und mehr Marmelade gekocht als ich selbst essen kann.",
 			"agathe.r#Magst du ein Glas haben?",
 			"avatar#Oh ja, danke!"
 		]

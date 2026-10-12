@@ -1,0 +1,28 @@
+[[Node]] start
+[[Type]] stage
+[Condition] is_current_stage("HOME")
+[actors] agathe avatar.flipped
+[text]
+agathe:Hallo Schätzchen! Ich habe noch ein altes Fotobuch gefunden. Hast du Lust, dir das mit mir anzuschauen?
+[Choice]
+- [ja] Ja.
+- [nein] Nein.
+
+[[Node]] ja
+[actors] agathe avatar.flipped
+[text]
+avatar:Klar, gerne!
+agathe:Wie schön! Schau mal, das bin ich mit Freunden zu Schulzeiten.
+agathe:Solche Frisuren waren damals ganz modern ...
+[action] progress_day("Mit Agathe plaudern")
+[text]
+agathe:Ach ja, ich habe viel zu viel Obst gekauft und mehr Marmelade gekocht, als ich selbst essen kann.
+agathe:Möchtest du ein Glas haben?
+avatar:Oh ja, danke!
+[action] gain_player_item("JAM", "Diese Marmelade ist bestimmt was ganz Besonderes.\nDu erkennst, dass sie mit Liebe gemacht wurde.")
+
+[[Node]] nein
+[actors] agathe avatar.flipped
+[text]
+avatar:Tut mir leid, das passt mir gerade nicht gut.
+agathe:Oh, hast du gerade keine Zeit? Schade. Dann vielleicht ein andermal.

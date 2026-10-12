@@ -2,6 +2,7 @@ class_name EMC_TradeUI
 extends EMC_GUI
 
 @export var mood_texture : AtlasTexture
+@export var gui_mngr : EMC_GUIMngr
 
 @onready var portrait : TextureRect = $VBC/Header/HBC/VBC/Portrait
 @onready var monologe : RichTextLabel = $VBC/Header/HBC/Baloon/Text
@@ -9,6 +10,7 @@ extends EMC_GUI
 
 @onready var inventory_grid : EMC_Inventory_UI = $VBC/Inventories/Inventory/InventoryGrid
 @onready var trader_grid : EMC_Inventory_UI = $VBC/Inventories/Trader/InventoryGrid
+@onready var inventories : TabContainer = $VBC/Inventories
 
 @onready var sell : HBoxContainer = $VBC/Exchange/Sell/HBC
 @onready var buy : HBoxContainer = $VBC/Exchange/Buy/HBC
@@ -21,7 +23,6 @@ extends EMC_GUI
 var _ITEM_PANEL_SCN := preload("res://inventory/item_panel.tscn")
 
 var _inventory : EMC_Inventory
-var _gui_mngr : EMC_GUIMngr
 
 var _npc_trade: EMC_NPC_Trading
 var _npc_descr: EMC_NPC_Descr
@@ -32,18 +33,31 @@ var _buy_items : Array[EMC_Item]
 
 var trade_score : float = -1.0
 
-func setup(p_inventory : EMC_Inventory, p_gui_mngr : EMC_GUIMngr) -> void:
+func setup(p_inventory : EMC_Inventory) -> void:
 	_inventory = p_inventory
-	_gui_mngr = p_gui_mngr
 	
 	inventory_grid.set_inventory(_inventory)
 	
 	inventory_grid.item_clicked.connect(_on_inventory_item_clicked.bind(true))
 	trader_grid.item_clicked.connect(_on_inventory_item_clicked.bind(false))
+	inventory_grid.item_long_pressed.connect(
+		_on_item_long_pressed.bind([{"text": "Verkaufen", "callback": _on_inventory_item_clicked.bind(true), "design": "CancelButton"}]))
+	trader_grid.item_long_pressed.connect(
+		_on_item_long_pressed.bind([{"text": "Einkaufen", "callback": _on_inventory_item_clicked.bind(false), "design": "ConfirmButton"}]))
+		#gui_mngr.request_gui.bind("ItemInfoGui", [self, {"text": "Einkaufen", "callback": _on_inventory_item_clicked.bind(false), "design": "ConfirmButton"}]))
+	
+	inventories.set_tab_title(0, "Rucksack")
+
+func _on_item_long_pressed(sender: EMC_Item, blocked: bool, info: Array) -> void:
+	#self.modulate = Color("#787878")
+	gui_mngr.overlay_gui("ItemInfoGui", [sender, info])
 
 func open(npc : EMC_NPC) -> void:
-	_npc_trade = npc.get_comp(EMC_NPC_Trading)
-	_npc_descr = npc.get_comp(EMC_NPC_Descr)
+	_npc_trade = npc.npc_resource.get_comp(EMC_NPC_Trading)
+	_npc_descr = npc.npc_resource.get_comp(EMC_NPC_Descr)
+	
+	inventories.set_tab_title(1, _npc_descr.get_npc_name())
+	inventories.set_current_tab(1)
 	
 	_npc_inventory = _npc_trade.get_inventory()
 	trader_grid.set_inventory(_npc_inventory)
@@ -63,6 +77,9 @@ func open(npc : EMC_NPC) -> void:
 	opened.emit()
 	
 func close() -> void:
+	if not _sell_items.is_empty() or not _buy_items.is_empty():
+		_on_cancel_pressed()
+	
 	hide()
 	closed.emit(self)
 
@@ -75,7 +92,9 @@ func _on_inventory_item_clicked(sender : EMC_Item, backpack : bool) -> void:
 		(not backpack and
 			(buy.get_child_count() >= 5
 			or buy.get_child_count() > _inventory.get_free_num_slot()))):
+		SoundMngr.play_sound("talk", 0, 1.5)
 		return
+	sender.clicked_sound()
 	
 	var grid : EMC_Inventory_UI = inventory_grid if backpack else trader_grid
 	var to_current : HBoxContainer = sell if backpack else buy
@@ -178,7 +197,7 @@ func _on_cancel_pressed() -> void:
 
 func _on_deal_pressed() -> void:
 	if trade_score <= 0.0:
-		var answer : bool = await _gui_mngr.request_gui("ConfirmationGUI", [_npc_descr.get_npc_name() + " ist nicht sehr zufrieden mit dem Handel
+		var answer : bool = await gui_mngr.request_gui("ConfirmationGUI", [_npc_descr.get_npc_name() + " ist nicht sehr zufrieden mit dem Handel
 		\n Sicher das du ihn trotzdem eingehen willst.
 		\nEs könnte negative Einflüsse auf eure Beziehung haben."])
 		

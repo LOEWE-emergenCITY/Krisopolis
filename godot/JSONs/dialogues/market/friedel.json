@@ -8,7 +8,27 @@
 		},
 		"actors" : ["avatar", "friedel"],
 		"text" : [
-			"avatar#Oh Friedel was machst du denn hier alleine auf dem Markplatz?",
+			"avatar#Oh, Friedel, was machst du denn hier alleine auf dem Marktplatz?",
+			"friedel#Wuff Wuff",
+			"avatar#Ich ruf mal schnell Gerhard an!",
+			"friedel#Wuff"
+		],
+		"options" : {
+			"#mobile" : "#mobile",
+			"#offline1": "#offline1",
+			"#offline2": "#offline2"
+		}
+	},
+	"start5" : {
+		"conditions": {
+			"has_quest_stage": {
+				"quest": "FRIEDEL_WEG",
+				"stage": 5
+			}
+		},
+		"actors" : ["avatar", "friedel"],
+		"text" : [
+			"avatar#Oh, Friedel, was machst du denn hier alleine auf dem Marktplatz?",
 			"friedel#Wuff Wuff",
 			"avatar#Ich ruf mal schnell Gerhard an!",
 			"friedel#Wuff"
@@ -28,7 +48,7 @@
 		],
 		"actors" : ["avatar", "friedel"],
 		"text": [
-			"avatar#Hmm ich hab hier keine Empfang!"
+			"avatar#Hmm, ich hab hier keinen Empfang!"
 		],
 		"options": {
 			"#offline": "#offline"
@@ -43,7 +63,7 @@
 		],
 		"actors" : ["avatar", "friedel"],
 		"text": [
-			"avatar#Ah mein Handy hat kein Strom mehr!"
+			"avatar#Ah, mein Handy hat keinen Strom mehr!"
 		],
 		"options": {
 			"#offline": "#offline"
@@ -52,7 +72,7 @@
 	"#offline": {
 		"actors" : ["avatar", "friedel"],
 		"text": [
-			"avatar#Ich könnte auch einfach bei Gerhard vorbeit gehn.",
+			"avatar#Ich könnte auch einfach bei Gerhard vorbeigehen.",
 			"friedel#Wuff"
 		],
 		"options":{
@@ -73,11 +93,11 @@
 		],
 		"actors": ["avatar", "gerhard.r"],
 		"text": [
-			"gerhard.r#Hallo Gerhard am Apparat.",
-			"avatar#Hi Gerhard, Ich hab hier grad Friedel auf dem Markplatz gefunden!",
-			"gerhard.r#Oh wie schön. Ich hab Friedel schon überall gesucht.",
-			"gerhard.r#Gut das du ihn gefunden hast.",
-			"gerhard.r#Ich bin gerade Zuhause du kannst ihn also gerne vorbei bringen."
+			"gerhard.r#Hallo, Gerhard am Apparat.",
+			"avatar#Hi Gerhard, ich hab hier gerade Friedel auf dem Marktplatz gefunden!",
+			"gerhard.r#Oh, wie schön. Ich habe Friedel schon überall gesucht.",
+			"gerhard.r#Gut, dass du ihn gefunden hast.",
+			"gerhard.r#Ich bin gerade zu Hause. Du kannst ihn also gerne vorbeibringen."
 		],
 		"options": {
 			"#idiot": "#idiot",
@@ -88,7 +108,7 @@
 		"prompt": "Friedel Nachhause bringen",
 		"actors": ["avatar", "gerhard.r"],
 		"text": [
-			"avatar#Ja ich kann ihn gerne gerade vorbei bringen."
+			"avatar#Ja, ich kann ihn gerne gerade vorbeibringen."
 		],
 		"options": {
 			"#end": "#end"
@@ -112,9 +132,9 @@
 		},
 		"actors" : ["avatar", "friedel"],
 		"text" : [
-			"avatar#Das bist du ja Friedel. Gerhard hat dich schon gesucht.",
+			"avatar#Da bist du ja, Friedel. Gerhard hat dich schon gesucht.",
 			"friedel#Wuff Wuff Wuff Wuff Wuff Wuff",
-			"avatar#Komm mit mir wir gehn jetzt zum Treffpunkt",
+			"avatar#Komm mit mir, wir gehen jetzt zum Treffpunkt.",
 			"friedel#Wuff"
 		],
 		"options" : {
@@ -132,7 +152,7 @@
 				"avatar_pos": {"x": 150, "y": 900},
 				"wait": true
 			},
-			"progress_day": ["Suche nach Friedel"]
+			"progress_day": "Suche nach Friedel"
 		}
 	}
 }

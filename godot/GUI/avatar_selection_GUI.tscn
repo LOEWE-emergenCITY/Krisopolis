@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://ctqd8vvfeado1"]
 
 [ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="1_71v8c"]
-[ext_resource type="Script" path="res://GUI/avatar_selection_GUI.gd" id="2_6drtd"]
+[ext_resource type="Script" uid="uid://cehlxwbja6a5r" path="res://GUI/avatar_selection_GUI.gd" id="2_6drtd"]
 [ext_resource type="Texture2D" uid="uid://dqlhol50ouj46" path="res://assets/characters/portrait_avatar_W01.png" id="3_7yewj"]
 [ext_resource type="Texture2D" uid="uid://dn3elg7o7wsnh" path="res://assets/GUI/chosen_avatar_frame.png" id="3_wk28i"]
 [ext_resource type="Texture2D" uid="uid://cmqnuvuv5lg77" path="res://assets/characters/portrait_avatar_NB01.png" id="5_pdc1g"]
@@ -43,11 +43,13 @@ theme = ExtResource("1_71v8c")
 script = ExtResource("2_6drtd")
 
 [node name="BackgroundColor" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 700.0
-offset_bottom = 1000.0
+offset_bottom = 1024.0
 texture = SubResource("GradientTexture2D_uc3mg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_right = 720.0
 offset_bottom = 1488.0
 scale = Vector2(0.8, 0.8)
@@ -68,6 +70,7 @@ custom_minimum_size = Vector2(630, 900)
 layout_mode = 2
 
 [node name="ChosenAvatarFrame" type="TextureRect" parent="VBoxContainer/CenterContainer/ScrollContainer"]
+visible = false
 z_index = 1
 layout_mode = 2
 texture = ExtResource("3_wk28i")
@@ -83,94 +86,131 @@ columns = 3
 [node name="W01" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("3_7yewj")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="NB01" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("5_pdc1g")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="M01" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("5_tvfkq")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="W02" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("6_5hypo")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="NB02" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("8_a3nl4")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="M02" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("7_17xgo")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="W03" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("8_tnd65")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="NB03" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("11_pka4g")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="M03" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("9_35uxv")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="W04" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("10_0dwwe")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="NB04" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("14_p6eup")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="M04" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("11_klvuv")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="W05" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("12_aw024")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="NB05" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("17_i51es")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="M05" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("13_bf2s8")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="W06" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("14_rq43u")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="NB06" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("20_mfpjl")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="M06" type="TextureButton" parent="VBoxContainer/CenterContainer/ScrollContainer/GridContainer"]
 layout_mode = 2
 mouse_filter = 1
+action_mode = 0
 texture_normal = ExtResource("15_16neq")
+texture_focused = ExtResource("3_wk28i")
 
 [node name="BackBtn" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 500.0
 offset_top = 900.0
 offset_right = 564.0
@@ -178,6 +218,7 @@ offset_bottom = 964.0
 texture_normal = ExtResource("16_vsmkq")
 
 [node name="Continue" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 500.0
 offset_top = 900.0
 offset_right = 564.0

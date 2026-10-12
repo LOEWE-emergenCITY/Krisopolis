@@ -2,18 +2,23 @@
 	"comp": {
 		"descr": {
 			"name": "Irena",
-			"descr": "Das hier ist Irena.\nSie ist lieb.",
-			"portait": "irena"
+			"descr": "Das hier ist Irena.\nSie sorgt dafür, dass Petro nie die Ideen ausgehen.",
+			"portait": "irena",
+			"sprite": "irena"
 		},
-		"sprite": {
-			"texture_name": "irena"
-		},
-		"interaction": {
-			"conversation": {
-				"pitch": 1.3
+		"conversation": {
+			"pitch": 1.3,
+			"day": "res://resources/dialogues/irena/day/day.vrv",
+			"small_talk": "res://resources/dialogues/irena/small_talk.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/irena/day/"
 			}
 		},
 		"stage": {
+			"stage_name": "mansion",
+			"spot": "bedside",
+
+			"position": { "x": 460, "y": 260 },
 			"start": "Mansion",
 			"positions": {
 				"Mansion": { "x": 460, "y": 260 },

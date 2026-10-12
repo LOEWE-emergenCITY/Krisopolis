@@ -2,29 +2,34 @@
 	"comp": {
 		"descr": {
 			"name": "Petro",
-			"descr": "Das hier ist Petro.\nEr ist lieb.",
-			"portait": "petro"
+			"descr": "Das hier ist Petro.\nEr ist überzeugt, jedes Problem verdient eine technische Lösung.",
+			"portait": "petro",
+			"sprite": "petro"
 		},
-		"sprite": {
-			"texture_name": "petro"
-		},
-		"save": {},
 		"karma": {},
-		"interaction": {
-			"conversation": {
-				"pitch": 0.65
+		"conversation": {
+			"pitch": 0.65,
+			"day": "res://resources/dialogues/petro/day/day.vrv",
+			"small_talk": "res://resources/dialogues/petro/small_talk.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/petro/day/"
+			}
+		},
+		"trading": {
+			"preferences": {
+				"BATTERIES": 9,
+				"POTATOES": 3
 			},
-			"trading": {
-				"preferences": {
-					"BATTERIES": 9,
-					"POTATOES": 3
-				},
-				"inventory": {
-					"BATTERIES": 3
-				}
+			"inventory": {
+				"BATTERIES": 3,
+				"UNCOOKED_PASTA": 3
 			}
 		},
 		"stage": {
+			"stage_name": "mansion",
+			"spot": "kitchen",
+
+			"position": { "x": 300, "y": 832 },
 			"start": "Mansion",
 			"positions": {
 				"Mansion": { "x": 300, "y": 832 },

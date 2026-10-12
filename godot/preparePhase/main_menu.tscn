@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bosmqyv0utabo"]
 
 [ext_resource type="Theme" uid="uid://c7p7h5j8cckif" path="res://preparePhase/prep_theme.tres" id="1_prdod"]
-[ext_resource type="Script" path="res://preparePhase/main_menu.gd" id="2_bbqsv"]
+[ext_resource type="Script" uid="uid://cjhobhp6wy22m" path="res://preparePhase/main_menu.gd" id="2_bbqsv"]
 [ext_resource type="Texture2D" uid="uid://dnbnxosef5r58" path="res://assets/citymap/citymap.png" id="3_ddmuk"]
 [ext_resource type="Texture2D" uid="uid://18r2pljgx646" path="res://assets/GUI/icons/icon_menu_settings.png" id="4_0v5y1"]
 [ext_resource type="Texture2D" uid="uid://b4cvdmct7qdxn" path="res://assets/GUI/icons/icon_ecoins.png" id="4_2txvv"]
@@ -67,7 +67,7 @@ text = "10"
 horizontal_alignment = 2
 
 [node name="TextureRect" type="TextureRect" parent="Menu/CanvasLayer_unaffectedByCM/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(49, 0)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("4_2txvv")
 
@@ -108,14 +108,18 @@ offset_bottom = 707.0
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Title" type="TextureRect" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons"]
+[node name="VBC" type="VBoxContainer" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons"]
+layout_mode = 2
+theme_override_constants/separation = -14
+
+[node name="Title" type="TextureRect" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons/VBC"]
 custom_minimum_size = Vector2(576, 244)
 layout_mode = 2
 texture = ExtResource("7_mlnh7")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Slogan" type="RichTextLabel" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons"]
+[node name="Slogan" type="RichTextLabel" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons/VBC"]
 clip_contents = false
 custom_minimum_size = Vector2(450, 50)
 layout_mode = 2
@@ -126,6 +130,7 @@ fit_content = true
 
 [node name="HSeparator" type="HSeparator" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="StartRound" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons" instance=ExtResource("7_57rlv")]
 custom_minimum_size = Vector2(0, 60)
@@ -133,13 +138,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Neues Spiel starten"
 
-[node name="Shop" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons" instance=ExtResource("7_57rlv")]
+[node name="Scenario" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons" instance=ExtResource("7_57rlv")]
+visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Vorräte einkaufen"
+text = "Szenario starten"
 
 [node name="UpgradeCenter" parent="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons" instance=ExtResource("7_57rlv")]
+visible = false
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -153,6 +160,6 @@ visible = false
 [connection signal="pressed" from="Menu/CanvasLayer_unaffectedByCM/InformationButtons/Information" to="Menu" method="_on_information_pressed"]
 [connection signal="pressed" from="Menu/CanvasLayer_unaffectedByCM/InformationButtons/CreditScreen" to="Menu" method="_on_credit_screen_pressed"]
 [connection signal="pressed" from="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons/StartRound" to="Menu" method="_on_start_round_pressed"]
-[connection signal="pressed" from="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons/Shop" to="Menu" method="_on_shop_pressed"]
+[connection signal="pressed" from="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons/Scenario" to="Menu" method="_on_scenario_pressed"]
 [connection signal="pressed" from="Menu/CanvasLayer_unaffectedByCM/CenterContainer/GameButtons/UpgradeCenter" to="Menu" method="_on_upgrade_center_pressed"]
 [connection signal="closed" from="Menu/CanvasLayer_unaffectedByCM/AvatarSelectionGUI" to="Menu" method="_on_avatar_selection_gui_closed"]

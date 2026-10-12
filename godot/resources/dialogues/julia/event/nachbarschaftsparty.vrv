@@ -1,0 +1,23 @@
+[[Node]] start
+[actors] avatar julia.flipped leonie
+[text]
+julia:Ich rede gerade mit Leonie über Bücher.
+julia:Liest du lieber was oder schaust du eher Filme?
+[Choice]
+- [buecher] Bücher.
+- [filme] Filme.
+
+[[Node]] buecher
+[actors] avatar julia.flipped leonie
+[text]
+julia:Wir sollten unseren eigenen Buchclub gründen!
+[set] #buchclub true
+
+[[Node]] filme
+[actors] avatar julia.flipped leonie.flipped
+[text]
+leonie:Ehrlich gesagt mag ich Filme genauso sehr! Kommt wirklich auf den Film an.
+julia:Wird Zeit für nen Filmabend, Leonie!
+[set] #filmabend_einladung true
+
+

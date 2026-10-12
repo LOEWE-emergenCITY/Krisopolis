@@ -2,7 +2,7 @@
     "start": {
         "actors": ["avatar", "julia.r", "leonie"],
         "text": [
-            "julia.r#Ich reden gerade mit Leonie über Bücher.",
+            "julia.r#Ich rede gerade mit Leonie über Bücher.",
             "julia.r#Liest du lieber was oder schaust du eher Filme?"
         ],
         "options": {

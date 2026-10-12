@@ -1,26 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://e2vuw03w1lx6"]
+[gd_scene load_steps=16 format=3 uid="uid://e2vuw03w1lx6"]
 
-[ext_resource type="Script" path="res://GUI/cooking/cooking_GUI.gd" id="1_yctcf"]
+[ext_resource type="Script" uid="uid://ccfdpxhpkl27t" path="res://GUI/cooking/cooking_GUI.gd" id="1_yctcf"]
 [ext_resource type="Texture2D" uid="uid://c10dm4x6n65dm" path="res://assets/GUI/icons/icon_needs_heat.png" id="2_rmnvb"]
 [ext_resource type="Texture2D" uid="uid://clxphar2j8ggq" path="res://assets/GUI/icons/icon_needs_time.png" id="2_srli2"]
 [ext_resource type="Texture2D" uid="uid://b3oov025lvb8v" path="res://assets/GUI/icons/icon_needs_water.png" id="3_f34gp"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="5_kacsq"]
+[ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="6_5p4k5"]
+[ext_resource type="PackedScene" uid="uid://j5nyqj2o5l6f" path="res://GUI/cooking/recipe_button.tscn" id="6_6qspi"]
+[ext_resource type="StyleBox" uid="uid://dpomspib1gvl1" path="res://resources/background/menu_box_dark_gray_tex.tres" id="6_thnuv"]
+[ext_resource type="StyleBox" uid="uid://bt3ktwka5eklj" path="res://resources/background/menu_box_yellow_tex.tres" id="6_uixv0"]
+[ext_resource type="StyleBox" uid="uid://b6m3psgnyr5ac" path="res://resources/background/menu_box_blue_tex.tres" id="6_v5tt8"]
+[ext_resource type="Script" uid="uid://bjofqooknj8w4" path="res://GUI/cooking/recipe.gd" id="7_6qspi"]
+[ext_resource type="StyleBox" uid="uid://om37cubdbi5" path="res://resources/background/menu_box_red_tex.tres" id="7_thnuv"]
+[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="9_uixv0"]
+[ext_resource type="Texture2D" uid="uid://upvg4o4g0c8" path="res://assets/GUI/buttons/button_right.png" id="10_v5tt8"]
+
+[sub_resource type="Resource" id="Resource_thnuv"]
+script = ExtResource("7_6qspi")
+metadata/_custom_type_script = "uid://bjofqooknj8w4"
 
 [node name="CookingGUI" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_yctcf")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,5 +130,166 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Abbrechen"
 
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -118.5
+offset_right = 250.0
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBC" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Margin" type="MarginContainer" parent="Panel/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = -26
+theme_override_constants/margin_right = -16
+
+[node name="Panel" type="PanelContainer" parent="Panel/Margin/VBC/Margin"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Panel/Margin/VBC/Margin/Panel"]
+custom_minimum_size = Vector2(460, 52)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Küche[/center]"
+fit_content = true
+
+[node name="NoWater" type="PanelContainer" parent="Panel/Margin/VBC" groups=["cook_feedback"]]
+visible = false
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("6_v5tt8")
+
+[node name="Label" type="Label" parent="Panel/Margin/VBC/NoWater"]
+layout_mode = 2
+text = "Du hast kein Wasser"
+horizontal_alignment = 1
+
+[node name="NoItems" type="PanelContainer" parent="Panel/Margin/VBC" groups=["cook_feedback"]]
+visible = false
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("6_uixv0")
+
+[node name="Label" type="Label" parent="Panel/Margin/VBC/NoItems"]
+layout_mode = 2
+text = "Dir fehlen Zutaten"
+horizontal_alignment = 1
+
+[node name="NoHeat" type="PanelContainer" parent="Panel/Margin/VBC" groups=["cook_feedback"]]
+visible = false
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("7_thnuv")
+
+[node name="Label" type="Label" parent="Panel/Margin/VBC/NoHeat"]
+layout_mode = 2
+text = "Du hast keinen Strom!"
+horizontal_alignment = 1
+
+[node name="NoSelection" type="PanelContainer" parent="Panel/Margin/VBC" groups=["cook_feedback"]]
+custom_minimum_size = Vector2(0, 66)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("6_thnuv")
+
+[node name="Label" type="Label" parent="Panel/Margin/VBC/NoSelection"]
+layout_mode = 2
+text = "Wähle ein Rezept aus"
+horizontal_alignment = 1
+
+[node name="Recipe" parent="Panel/Margin/VBC" groups=["cook_feedback"] instance=ExtResource("6_6qspi")]
+visible = false
+layout_mode = 2
+theme_type_variation = &"ConfirmButton"
+recipe = SubResource("Resource_thnuv")
+
+[node name="VBC" type="VBoxContainer" parent="Panel/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="PanelContainer" parent="Panel/Margin/VBC/VBC"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("6_5p4k5")
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/Margin/VBC/VBC/Panel"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="RecipeList" type="VBoxContainer" parent="Panel/Margin/VBC/VBC/Panel/Scroll"]
+custom_minimum_size = Vector2(428, 0)
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="Panel/Margin/VBC/VBC"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="CC" type="CenterContainer" parent="Panel/Margin/VBC/VBC/HBC"]
+custom_minimum_size = Vector2(312, 0)
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="Panel/Margin/VBC/VBC/HBC/CC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Cook" parent="Panel/Margin/VBC/VBC/HBC/CC/HBC" instance=ExtResource("5_kacsq")]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ConfirmButton"
+text = "Kochen"
+
+[node name="Info" parent="Panel/Margin/VBC/VBC/HBC/CC/HBC" instance=ExtResource("5_kacsq")]
+visible = false
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_type_variation = &"BlueButton"
+text = "Info"
+
+[node name="Back" type="TextureButton" parent="Panel/Margin/VBC/VBC/HBC"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("9_uixv0")
+
+[node name="Continue" type="TextureButton" parent="Panel/Margin/VBC/VBC/HBC"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("10_v5tt8")
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBC/HBoxContainer/Cook" to="." method="_on_cook_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBC/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Panel/Margin/VBC/VBC/HBC/CC/HBC/Cook" to="." method="_on_cook_pressed"]
+[connection signal="pressed" from="Panel/Margin/VBC/VBC/HBC/Back" to="." method="_on_cancel_pressed"]

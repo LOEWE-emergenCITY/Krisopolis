@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsmvtvjkbid3v"]
+[gd_scene load_steps=5 format=3 uid="uid://bsmvtvjkbid3v"]
 
-[ext_resource type="Script" path="res://inventory/inventory_ui.gd" id="1_m8gf6"]
+[ext_resource type="Script" uid="uid://cymgiicy38wxe" path="res://inventory/inventory_ui.gd" id="1_m8gf6"]
+[ext_resource type="Script" uid="uid://b0ymg5og4kujm" path="res://inventory/inventory.gd" id="2_cedrj"]
+[ext_resource type="Script" uid="uid://dg0wue01hcvsg" path="res://inventory/item.gd" id="3_7rvkw"]
+
+[sub_resource type="Resource" id="Resource_45d2x"]
+script = ExtResource("2_cedrj")
+metadata/_custom_type_script = "uid://b0ymg5og4kujm"
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -10,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m8gf6")
+inventory = SubResource("Resource_45d2x")
 
 [node name="SC" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -18,7 +25,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 
 [node name="Grid" type="GridContainer" parent="SC"]
 layout_mode = 2
+size_flags_horizontal = 4
 columns = 6

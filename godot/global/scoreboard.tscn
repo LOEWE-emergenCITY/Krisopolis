@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwklogkejltna"]
+
+[ext_resource type="Script" uid="uid://bwdtuvm8f73k6" path="res://global/scoreboard.gd" id="1_7yw4w"]
+
+[node name="EMC_Scoreboard" type="Node"]
+script = ExtResource("1_7yw4w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2

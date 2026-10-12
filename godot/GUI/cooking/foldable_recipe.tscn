@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://bg21twvowvkuc"]
+
+[ext_resource type="Texture2D" uid="uid://the3xo4y6lnv" path="res://assets/GUI/buttons/button_down_small_blue.png" id="1_jtugf"]
+[ext_resource type="Texture2D" uid="uid://dmotet5jbha8q" path="res://assets/GUI/buttons/button_plus_small_blue.png" id="2_2xr0e"]
+[ext_resource type="StyleBox" uid="uid://bwu0dssl63nbv" path="res://resources/background/menu_box_tex.tres" id="3_oakr6"]
+[ext_resource type="Script" uid="uid://chd5xy66wpdob" path="res://GUI/cooking/foldable_recipe.gd" id="4_2xr0e"]
+[ext_resource type="Script" uid="uid://bjofqooknj8w4" path="res://GUI/cooking/recipe.gd" id="6_dxjbi"]
+[ext_resource type="PackedScene" uid="uid://j5nyqj2o5l6f" path="res://GUI/cooking/recipe_button.tscn" id="6_oakr6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oakr6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxjbi"]
+
+[sub_resource type="Resource" id="Resource_dxjbi"]
+script = ExtResource("6_dxjbi")
+_input_item_IDs = Array[int]([15, 14])
+_output_item_ID = 10
+_needs_water = true
+_needs_heat = true
+metadata/_custom_type_script = "uid://bjofqooknj8w4"
+
+[sub_resource type="Resource" id="Resource_hwrij"]
+script = ExtResource("6_dxjbi")
+_input_item_IDs = Array[int]([1, 14, 15])
+_output_item_ID = 10
+metadata/_custom_type_script = "uid://bjofqooknj8w4"
+
+[node name="FoldableRecipe" type="FoldableContainer"]
+custom_minimum_size = Vector2(428, 66)
+offset_right = 471.0
+offset_bottom = 64.0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 15
+theme_override_font_sizes/font_size = 25
+theme_override_icons/expanded_arrow = ExtResource("1_jtugf")
+theme_override_icons/folded_arrow = ExtResource("2_2xr0e")
+theme_override_styles/title_panel = ExtResource("3_oakr6")
+theme_override_styles/title_hover_panel = ExtResource("3_oakr6")
+theme_override_styles/title_collapsed_panel = ExtResource("3_oakr6")
+theme_override_styles/title_collapsed_hover_panel = ExtResource("3_oakr6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oakr6")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dxjbi")
+folded = true
+title = " "
+script = ExtResource("4_2xr0e")
+recipes = Array[ExtResource("6_dxjbi")]([SubResource("Resource_dxjbi"), SubResource("Resource_hwrij")])
+
+[node name="Margin" type="MarginContainer" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = -28
+
+[node name="VBC" type="VBoxContainer" parent="Margin"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="Panel" type="PanelContainer" parent="Margin/VBC"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Margin" type="MarginContainer" parent="Margin/VBC/Panel"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -16
+theme_override_constants/margin_bottom = -18
+
+[node name="Recipe" parent="Margin/VBC/Panel/Margin" instance=ExtResource("6_oakr6")]
+layout_mode = 2
+recipe = SubResource("Resource_dxjbi")
+
+[connection signal="recipe_disabled_pressed" from="Margin/VBC/Panel/Margin/Recipe" to="." method="_on_recipe_disabled_pressed"]
+[connection signal="recipe_pressed" from="Margin/VBC/Panel/Margin/Recipe" to="." method="_on_recipe_pressed"]

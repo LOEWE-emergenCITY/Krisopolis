@@ -1,0 +1,20 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+
+[[Node]] one
+[actors] avatar friedel.flipped
+[text]
+friedel:WUUUUUUUF
+
+[[Node]] two
+[actors] avatar friedel.flipped
+[text]
+friedel:Wuf Wuf Wuf Wuf
+
+[[Node]] three
+[actors] avatar friedel.flipped
+[text]
+friedel:[i]*Hechel.*[/i] Wuff!

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://kq1mex3dussp"
+path="res://.godot/imported/friedel_ablenken.vrv-a2ce2231579ccd68e8953dcfe11677a5.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/gerhard/quest/friedel_ablenken.vrv"
+dest_files=["res://.godot/imported/friedel_ablenken.vrv-a2ce2231579ccd68e8953dcfe11677a5.tres"]
+
+[params]
+

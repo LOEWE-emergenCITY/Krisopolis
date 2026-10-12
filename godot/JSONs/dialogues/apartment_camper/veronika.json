@@ -10,9 +10,9 @@
       "options": {
         "#reden": {
           "prompt": "Wie läuft's?",
-          "options": { "#reden1": ""}
+          "options": {"#reden1": "", "#reden2": "", "#reden3": "", "#reden4": ""}
         },
-        "#handeln": "tatsächlich überhaupt nicht relevant was hier steht",
+        "#handeln": "Tatsächlich überhaupt nicht relevant was hier steht",
         "#nichts": {
             "prompt": "Tschüss!",
             "actors": ["avatar", "veronika.r"],
@@ -30,12 +30,45 @@
       "text": [
         "veronika.r#Wir planen gerade unseren nächsten Camping-Ausflug! Na gut, eigentlich plane ich ihn ...",
         "kris.r#Das habe ich gehört! Ich helfe sehr wohl auch beim Planen!",
-        "veronika#Du verstehst aber unter 'Planen' auch nur 'Snacks einkaufen'.",
+        "veronika#Du verstehst aber unter 'planen' auch nur 'Snacks einkaufen'.",
         "kris.r#Wenn du das nächste Mal mitten in einer Wanderung Hunger kriegst, wirst du um jeden Snack froh sein!",
         "veronika#Aber auch nur, wenn du bis dahin welche übrig gelassen hast.",
         "kris.r#...",
         "veronika#...",
         "kris.r#Ich kaufe noch ein paar mehr ein."
+      ]
+    },
+    "#reden2": {
+      "actors": ["avatar", "veronika.r"],
+      "text": [
+        "veronika.r#Ich liebe die Fotografie.",
+        "veronika.r#Aber du hättest meine ersten Fotos sehen sollen! Zwanzigmal dasselbe platte Motiv!",
+        "veronika.r#Ich hatte Angst, dass das Foto nichts wird. Damals hatte ich noch eine analoge Kamera.",
+        "veronika.r#Mein Vater hat trotzdem Abzüge von allen gemacht. Und dann hat er mich mitgenommen auf einen Spaziergang.",
+        "veronika.r#Und mir drei Tipps verraten, die bis heute meine besten Bilder ausmachen."
+      ]
+    },
+    "#reden3": {
+      "actors": ["avatar", "veronika.r", "kris.r"],
+      "text": [
+        "veronika.r#Als Kind dachte ich, man dürfte aus klaren Bächen trinken.",
+        "veronika.r#In Kinderbüchern machen sie das oft so. Aber die meisten Bäche sind verschmutzt.",
+        "veronika.r#Deshalb haben wir immer Chlortabletten vorrätig. Für den Campingurlaub oder wenn das Wasser ausfällt.",
+        "veronika.r#Abkochen geht natürlich auch, aber dafür bräuchte man wieder Strom oder Gas.",
+        "kris.r#Vero hat sich da schon alles Mögliche angeschaut. Filtersysteme, Tabletten...",
+        "kris.r#Meinen Pflanzen macht das dreckige Wasser meist nichts aus. Die sind viel anspruchsloser als wir."
+      ]
+    },
+    "#reden4": {
+      "actors": ["avatar", "veronika.r", "kris.r"],
+      "text": [
+        "veronika.r#Bei einem unserer ersten Campingwochenenden sind Kris und ich ganz schön aneinander geraten.",
+        "veronika.r#Ich hatte sie gebeten, vor dem Ausflug die Gaskartusche zu prüfen. Ob das Gas noch reicht.",
+        "veronika.r#Sie hat es vergessen. Die Nudeln hatten gerade 30 Sekunden gekocht, da war das Gas alle.",
+        "kris.r#Oh ja, Vero war wirklich sauer. Wir haben uns ewig gestritten.",
+        "veronika.r#Stellt sich raus, einmal aufgekocht werden Nudeln auch im warmen Wasser gar, dauert nur länger.",
+        "kris.r#Und du willst wirklich nicht in Veros Nähe sein, wenn sie hungrig ist.",
+        "veronika.r#Dann kannst du ja froh sein, dass das Gas noch zum Aufkochen gereicht hat!"
       ]
     },
     "#handeln": {

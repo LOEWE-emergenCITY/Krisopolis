@@ -2,159 +2,75 @@
 	"comp": {
 		"descr": {
 			"name": "Gerhard",
-			"descr": "Das hier ist Gerhard.\nEr ist lieb.",
-			"portait": "gerhard"
+			"descr": "Das hier ist Gerhard.\nEr hegt einen Garten und ein Herz aus Gold.",
+			"portait": "gerhard",
+			"sprite": "gerhard"
 		},
-		"sprite": {
-			"texture_name": "gerhard"
-		},
-		"save": {},
 		"karma": {},
-		"interaction": {
-			"conversation": {
-				"pitch": 0.5
+		"conversation": {
+			"pitch": 0.5,
+			"day": "res://resources/dialogues/gerhard/day/day.vrv",
+			"small_talk": "res://resources/dialogues/gerhard/small_talk.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/gerhard/day/",
+				"quest": "res://resources/dialogues/gerhard/quest/"
+			}
+		},
+		"trading": {
+			"preferences": {
+				"WATER": 1,
+				"WATER_DIRTY": 4,
+				"VEGETABLES": 0.5
 			},
-			"trading": {
-				"preferences": {
-					"WATER": 1,
-					"WATER_DIRTY": 4,
-					"VEGETABLES": 0.5
-				},
-				"inventory": {
-					"WATER": 3,
-					"WATER_DIRTY": 2,
-					"VEGETABLES": 3
-				},
-				"bottom": -0.6,
-				"low": -0.3,
-				"mid": 0.0,
-				"high": 0.3,
-				"top": 0.6,
-				"response": {
-					"BASE": ["Ich mag alles das mir im Garten hilft", "Mmh mal schaun.", "MMh oh ja."],
-					"WATER_DIRTY" : ["Oh das kann ich gut gebrauchen", "Ich benutze dreckiges Wasser immer um meine Pflanzen zu gießen!"],
-					"WATER": ["Oh Wasser ist gut.", "Ich könnte dreckiges Wasser auch gut gebrauchen."],
-					"UNPALATABLE": ["Mmh das ist doch verschimmelt!"],
-					"FOOD": ["Essen kann man immer gebrauchen."]
-				}
+			"inventory": {
+				"WATER": 3,
+				"WATER_DIRTY": 2,
+				"VEGETABLES": 3
+			},
+			"bottom": -0.6,
+			"low": -0.3,
+			"mid": 0.0,
+			"high": 0.3,
+			"top": 0.6,
+			"response": {
+				"BASE": [
+					"Ich mag alles, was mir im Garten hilft",
+					"Mmh mal schaun.",
+					"MMh, oh ja."
+				],
+				"WATER_DIRTY": [
+					"Oh, das kann ich gut gebrauchen",
+					"Ich benutze dreckiges Wasser immer, um meine Pflanzen zu gießen!"
+				],
+				"WATER": [
+					"Oh, Wasser ist gut.",
+					"Ich könnte dreckiges Wasser auch gut gebrauchen."
+				],
+				"UNPALATABLE": ["Mmh, das ist doch verschimmelt!"],
+				"FOOD": ["Essen kann man immer gebrauchen."]
 			}
 		},
 		"stage": {
+			"stage_name": "gardenhouse",
+			"spot": "default",
+
+			"position": {
+				"x": 448,
+				"y": 380
+			},
 			"start": "Gardenhouse",
 			"positions": {
-				"Park": { "x": 128, "y": 704 },
-				"Gardenhouse": { "x": 448, "y": 380 },
-				"Market": { "x": 150, "y": 300 }
-			}
-		},
-		"brain": {
-			"actions": {
-				"work": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage_pos",
-					"params": ["gardenhouse", {"x": 290, "y": 725}]
+				"Park": {
+					"x": 128,
+					"y": 704
 				},
-				"park": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": ["park"]
+				"Gardenhouse": {
+					"x": 448,
+					"y": 380
 				},
-				"idle": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": ["gardenhouse"]
-				},
-				"friedel": {
-					"type": "multi",
-					"acc": "array",
-					"actions":[
-						{
-							"type": "single",
-							"comp": "self",
-							"method": "coop",
-							"params": ["friedel", "stroll"]
-						},
-						{
-							"type": "single",
-							"comp": "stage",
-							"method": "change_stage",
-							"params": ["park"]
-						}
-					]
-				},
-				"friedel_weg": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage_pos",
-					"params": ["home", {"x": 110, "y": 990}]
-				},
-				"ignored": {
-					"type": "multi",
-					"acc": "array",
-					"actions": [
-						{
-							"type": "single",
-							"comp": "quest",
-							"method": "remove_quest",
-							"params": ["FRIEDEL_WEG"]
-						},
-						{
-							"type": "single",
-							"comp": "stage",
-							"method": "change_stage",
-							"params": ["gardenhouse"]
-						}
-					]
-				}
-			},
-			"decide": {
-				"name": "weighted_decide",
-				"weight": {
-					"work": 1,
-					"stroll": 1,
-					"idle": 1,
-					"friedel": 1,
-					"friedel_weg": 1,
-					"park": 1,
-					"ignored": 1
-				}
-			},
-			"comps": {
-				"routine": {
-					"schedule": {
-						"0": "friedel",
-						"1": "work",
-						"2": "idle"
-					}
-				},
-				"cooperation": {},
-				"quest": {
-					"priority": "",
-					"actions":  [
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 1,
-							"action": "friedel_weg"
-						},
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 2,
-							"action": "park"
-						},
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 3,
-							"action": "idle"
-						},
-						{
-							"quest": "FRIEDEL_WEG",
-							"stage": 4,
-							"action": "ignored"
-						}
-					]
+				"Market": {
+					"x": 150,
+					"y": 300
 				}
 			}
 		}

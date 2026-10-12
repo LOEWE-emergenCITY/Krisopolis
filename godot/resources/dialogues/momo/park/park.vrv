@@ -1,0 +1,37 @@
+[[Node]] start
+[[Type]] stage
+[actors] avatar momo.flipped
+[text]
+momo:[i]*Fauch.*[/i]
+[Choice]
+- [talk] Na, da ist aber jemand unfreundlich.
+- [stop] Schon gut! Ich bin weg.
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+
+[[Node]] stop
+[actors] avatar momo.flipped
+[text]
+momo:Miau.
+
+[[Node]] talk1
+[actors] avatar momo.flipped
+[text]
+momo:[i]*Ksch!*[/i]
+avatar:Okay, okay! Ich geh ja.
+
+[[Node]] talk2
+[actors] avatar momo.flipped
+[text]
+momo:[i]*Fauuuch!*[/i]
+avatar:Ja, okay! Ich geh ja.
+
+[[Node]] talk3
+[action] leave("momo")
+[actors] avatar momo.flipped
+[text]
+avatar:Oh, mist! Jetzt habe ich Momo verjagt.

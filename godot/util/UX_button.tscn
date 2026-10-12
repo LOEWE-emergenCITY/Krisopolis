@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cf2pewcvtrtic"]
 
-[ext_resource type="Script" path="res://util/UX_button.gd" id="1_olci0"]
+[ext_resource type="Script" uid="uid://blef4op2dfrsg" path="res://util/UX_button.gd" id="1_olci0"]
 
 [node name="UxButton" type="Button" groups=["Button"]]
 offset_right = 53.0

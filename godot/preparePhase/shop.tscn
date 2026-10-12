@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://j8qcqefgbhq4"]
+[gd_scene load_steps=12 format=3 uid="uid://j8qcqefgbhq4"]
 
-[ext_resource type="Script" path="res://preparePhase/shop.gd" id="1_mfqhx"]
+[ext_resource type="Script" uid="uid://cm8alivdahvmt" path="res://preparePhase/shop.gd" id="1_mfqhx"]
 [ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="2_duud7"]
+[ext_resource type="Texture2D" uid="uid://dnbnxosef5r58" path="res://assets/citymap/citymap.png" id="3_bnbfs"]
 [ext_resource type="Texture2D" uid="uid://b4cvdmct7qdxn" path="res://assets/GUI/icons/icon_ecoins.png" id="3_spno5"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_egv6r"]
 [ext_resource type="PackedScene" uid="uid://bsmvtvjkbid3v" path="res://inventory/inventory_ui.tscn" id="4_q2qsc"]
+[ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="5_gucn1"]
+[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="6_spdxm"]
+[ext_resource type="PackedScene" uid="uid://dpabqqngimcqo" path="res://GUI/item_info_gui.tscn" id="7_joe5f"]
+[ext_resource type="Texture2D" uid="uid://c1f0dydwhw21e" path="res://assets/GUI/buttons/help_button.png" id="10_7ye0n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l86im"]
 bg_color = Color(0.360784, 0.333333, 0.301961, 1)
@@ -19,29 +24,32 @@ grow_vertical = 2
 theme = ExtResource("2_duud7")
 script = ExtResource("1_mfqhx")
 
-[node name="Background" type="PanelContainer" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(0.470588, 0.470588, 0.470588, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l86im")
+texture = ExtResource("3_bnbfs")
 
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 1024.0
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 38
 
-[node name="PanelContainer" type="PanelContainer" parent="Background/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/MarginContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -50,123 +58,178 @@ bbcode_enabled = true
 text = "[right][color=black]10[/color][/right]"
 scroll_active = false
 
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/PanelContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture = ExtResource("3_spno5")
 
-[node name="Margin" type="MarginContainer" parent="Background"]
-layout_mode = 2
-size_flags_vertical = 0
+[node name="Margin" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 1024.0
 theme = ExtResource("2_duud7")
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Main" type="VBoxContainer" parent="Background/Margin"]
+[node name="Main" type="VBoxContainer" parent="ColorRect/Margin"]
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_constants/separation = 10
+alignment = 2
 
-[node name="InventorySection" type="VBoxContainer" parent="Background/Margin/Main"]
+[node name="InventoryPanel" type="PanelContainer" parent="ColorRect/Margin/Main"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Titel" type="RichTextLabel" parent="Background/Margin/Main/InventorySection"]
+[node name="InventorySection" type="VBoxContainer" parent="ColorRect/Margin/Main/InventoryPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Titel" type="RichTextLabel" parent="ColorRect/Margin/Main/InventoryPanel/InventorySection"]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 4
-theme = ExtResource("2_duud7")
 theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
 text = "[center]Rucksack[/center]"
+scroll_active = false
 
-[node name="InventoryPanel" type="PanelContainer" parent="Background/Margin/Main/InventorySection"]
-custom_minimum_size = Vector2(0, 470)
+[node name="Panel" type="PanelContainer" parent="ColorRect/Margin/Main/InventoryPanel/InventorySection"]
+custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("5_gucn1")
 
-[node name="Margin" type="MarginContainer" parent="Background/Margin/Main/InventorySection/InventoryPanel"]
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBox" type="VBoxContainer" parent="Background/Margin/Main/InventorySection/InventoryPanel/Margin"]
-layout_mode = 2
-
-[node name="InventoryUI" parent="Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox" instance=ExtResource("4_q2qsc")]
-custom_minimum_size = Vector2(416, 190)
+[node name="InventoryUI" parent="ColorRect/Margin/Main/InventoryPanel/InventorySection/Panel" instance=ExtResource("4_q2qsc")]
+custom_minimum_size = Vector2(404, 336)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Description" type="PanelContainer" parent="Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox"]
-custom_minimum_size = Vector2(0, 200)
+[node name="ShopPanel" type="PanelContainer" parent="ColorRect/Margin/Main"]
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
-[node name="VBox" type="VBoxContainer" parent="Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/Description"]
+[node name="ShopSection" type="VBoxContainer" parent="ColorRect/Margin/Main/ShopPanel"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Name" type="RichTextLabel" parent="Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/Description/VBox"]
-custom_minimum_size = Vector2(0, 46)
+[node name="HBC" type="HBoxContainer" parent="ColorRect/Margin/Main/ShopPanel/ShopSection"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
+alignment = 2
 
-[node name="Components" type="RichTextLabel" parent="Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/Description/VBox"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme = ExtResource("2_duud7")
-theme_override_font_sizes/normal_font_size = 22
-
-[node name="Description" type="RichTextLabel" parent="Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/Description/VBox"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-theme = ExtResource("2_duud7")
-theme_override_font_sizes/italics_font_size = 18
-
-[node name="ShopSection" type="VBoxContainer" parent="Background/Margin/Main"]
-layout_mode = 2
-
-[node name="Title" type="RichTextLabel" parent="Background/Margin/Main/ShopSection"]
-custom_minimum_size = Vector2(0, 59)
+[node name="Title" type="RichTextLabel" parent="ColorRect/Margin/Main/ShopPanel/ShopSection/HBC"]
+custom_minimum_size = Vector2(350, 55)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_duud7")
 theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
-text = "[center]Shop[/center]
+text = "[center]Laden[/center]
 "
 
-[node name="ShopPanel" type="PanelContainer" parent="Background/Margin/Main/ShopSection"]
-custom_minimum_size = Vector2(0, 300)
+[node name="Help" type="TextureButton" parent="ColorRect/Margin/Main/ShopPanel/ShopSection/HBC"]
+custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
+texture_normal = ExtResource("10_7ye0n")
+stretch_mode = 3
+
+[node name="Panel" type="PanelContainer" parent="ColorRect/Margin/Main/ShopPanel/ShopSection"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("5_gucn1")
+
+[node name="InventoryUI" parent="ColorRect/Margin/Main/ShopPanel/ShopSection/Panel" instance=ExtResource("4_q2qsc")]
+custom_minimum_size = Vector2(404, 221)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_filter = 1
 
-[node name="InventoryUI" parent="Background/Margin/Main/ShopSection/ShopPanel" instance=ExtResource("4_q2qsc")]
-custom_minimum_size = Vector2(416, 190)
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/Margin/Main"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 4
+alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/Margin/Main"]
+[node name="CC" type="CenterContainer" parent="ColorRect/Margin/Main/HBoxContainer"]
+custom_minimum_size = Vector2(364, 0)
+layout_mode = 2
+
+[node name="Home" parent="ColorRect/Margin/Main/HBoxContainer/CC" instance=ExtResource("4_egv6r")]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 40
+theme_type_variation = &"ConfirmButton"
+text = "Einkauf bestätigen"
 
-[node name="Home" parent="Background/Margin/Main/HBoxContainer" instance=ExtResource("4_egv6r")]
+[node name="Cancel" type="TextureButton" parent="ColorRect/Margin/Main/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Bestätigen"
+texture_normal = ExtResource("6_spdxm")
 
-[node name="Cancel" parent="Background/Margin/Main/HBoxContainer" instance=ExtResource("4_egv6r")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Abbrechen"
+[node name="Background" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l86im")
 
-[connection signal="pressed" from="Background/Margin/Main/HBoxContainer/Home" to="." method="_on_home_pressed"]
-[connection signal="pressed" from="Background/Margin/Main/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ItemInfoGui" parent="CanvasLayer" instance=ExtResource("7_joe5f")]
+visible = false
+
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/Tutorial"]
+custom_minimum_size = Vector2(500, 624)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 200.0
+offset_right = 538.0
+offset_bottom = 824.0
+theme_type_variation = &"WhiteRichTextLabel"
+text = "Stocke deine Vorräte auf!
+
+Hier kannst du Lebensmittel und Nützliches kaufen, mit denen du in jeder Krise einen Schritt voraus bist.
+
+Halte ein Item gedrückt, um mehr über Haltbarkeit, Nährwerte und Kosten herauszufinden.
+
+Tippe kurz auf ein Item, um es zu kaufen und in deinen Rucksack zu legen.
+
+Die leicht durchsichtigen Items in deinem Rucksack sind Standard-Items, die du immer dabei hast."
+
+[node name="TuBack" type="TextureButton" parent="CanvasLayer/Tutorial"]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 939.0
+offset_right = 539.0
+offset_bottom = 1003.0
+texture_normal = ExtResource("6_spdxm")
+
+[connection signal="pressed" from="ColorRect/Margin/Main/ShopPanel/ShopSection/HBC/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/Main/HBoxContainer/CC/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/Main/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="CanvasLayer/Tutorial/TuBack" to="." method="_on_tu_back_pressed"]

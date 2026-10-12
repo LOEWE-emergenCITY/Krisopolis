@@ -1,0 +1,65 @@
+[[Node]] start
+[[Type]] stage
+[actors] avatar elias.flipped
+[text]
+elias:Hi. Auch zum Handeln hier?
+[Choice]
+- [talk] Wir könnten reden.
+- [stop] Ja
+
+[[Node]] talk
+[actors] avatar elias.flipped
+[text]
+avatar:Eigentlich schon, aber wo ich Sie schon sehe, könnten wir uns ja kurz unterhalten.
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+
+[[Node]] stop
+[actors] avatar elias.flipped
+[text]
+elias:Gut. Hab eh keine Zeit.
+
+[[Node]] talk1
+[actors] avatar elias.flipped
+[text]
+elias:Wenns wirklich kurz ist. Ich habs eilig.
+elias:Hab meinen e-Scooter direkt um die Ecke geparkt, weil ich heute Abend Besuch kriege.
+elias:Und meine Mutter ist da, um mir für heute Abend was zu kochen. Aber ihr fehlten Zutaten.
+elias:Dabei hat sie ein Auto, hätte sie doch auf dem Hinweg kaufen können.
+elias:Stattdessen muss ich eine wichtige Mail auf morgen verschieben.
+elias:Naja, wie auch immer. Ich muss weiter. Bye.
+
+[[Node]] talk2
+[actors] avatar elias.flipped
+[text]
+elias:Von mir aus. Ich bin grad gut drauf.
+elias:Dieser Einfaltspinsel von Verkäufer hat mir ein Stück Seife total unter Wert verkauft.
+elias:Keine Ahnung von Inflation während Krisen.
+elias:Und weil er kein Geld will, kann man ihm den billigsten Schrott andrehen.
+elias:Sollten Sie auch mal versuchen.
+avatar:Äh -
+[actors] avatar elias
+elias:Anyway. Gutes Gespräch. Bye.
+
+[[Node]] talk3
+[actors] avatar elias.flipped
+[text]
+elias:Raphael ist der Einzige, der überhaupt noch auf den Markt kommt.
+elias:Gut, dass wenigstens irgendwer hier noch was verkauft.
+elias:Weiß nicht, wo ich sonst während einer Krise meinen Kram herbekommen sollte.
+elias:Wirklich nervig, diese ganzen Krisen.
+elias:Naja. Ich muss weiter verhandeln. Bye.
+
+[[Node]] talk4
+[actors] avatar elias.flipped
+[text]
+elias:Sie haben auch zu viel Zeit, nicht wahr?
+elias:Das scheint hier in der Stadt so normal zu sein.
+elias:Jeder hat Zeit und muss deshalb seine Mitmenschen anquatschen, um sie zu füllen.
+elias:In der Großstadt passiert einem das nicht.
+elias:Da passieren auch nicht so viele Krisen.
+elias:Und man kann sich die Einkäufe nach Hause liefern lassen...
+elias:[i]Seufzt.[/i]

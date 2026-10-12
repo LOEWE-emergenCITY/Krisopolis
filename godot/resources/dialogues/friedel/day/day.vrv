@@ -1,0 +1,63 @@
+[[Node]] start
+[actors] avatar friedel
+[random]
+- [jump] wuff
+- [jump] wuff1
+- [jump] wuff2
+- [jump] wuff3
+- [jump] wuff4
+- [jump] wuff5
+
+[[Node]] wuff
+[actors] avatar friedel
+[text]
+friedel:Wuff!
+[jump] streicheln
+
+[[Node]] wuff1
+[actors] avatar friedel
+[text]
+friedel:Wuffwuff!!
+[jump] streicheln
+
+[[Node]] wuff2
+[actors] avatar friedel
+[text]
+friedel:Wuff...
+[jump] streicheln
+
+[[Node]] wuff3
+[actors] avatar friedel
+[text]
+friedel:Wuff??
+[jump] streicheln
+
+[[Node]] wuff4
+[actors] avatar friedel
+[text]
+friedel:WUFF!!!
+[jump] streicheln
+
+[[Node]] wuff5
+[actors] avatar friedel
+[text]
+friedel:Wuuuuuuuff.
+[jump] streicheln
+
+[[Node]] streicheln
+[actors] avatar friedel
+[text]
+Erzähler:Möchtest du Friedel streicheln?
+[Choice]
+- [streicheln_ja] Unbedingt!
+- [streicheln_nein] Jetzt nicht.
+
+[[Node]] streicheln_ja
+[actors] avatar friedel
+[text]
+friedel:Wuff <3
+
+[[Node]] streicheln_nein
+[actors] avatar friedel
+[text]
+friedel:[i]*winsel*[/i]

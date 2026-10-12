@@ -1,459 +1,583 @@
 [
-	{"ID": 0, "name": "DUMMY", "descr": "Error: You should not see this Item."},
+	{ "ID": 0, "name": "DUMMY", "descr": "Error: You should not see this Item." },
 	{
 		"ID": 1,
 		"name": "Wasser",
 		"descr": "Sauberes Trinkwasser. Eignet sich auch zum Kochen oder Waschen.",
-		"comps": [
-			{"name": "cost", "params": 10},
-			{"name": "drink", "params": 1},
-			{"name": "value", "params": 2}
-		]
+		"comps": {
+			"cost": {
+				"cost": 5,
+				"buyable": true
+			},
+			"drink": { "value": 2 }
+		}
 	},
 	{
 		"ID": 2,
 		"name": "Dreckiges Wasser",
 		"descr": "Verschmutzt. Trinken auf eigene Gefahr.",
-		"comps": [
-			{"name": "drink", "params": 1},
-			{"name": "unpalatable", "params": 1},
-			{"name": "value", "params": 1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 3,
+				"buyable": false
+			},
+			"drink": { "value": 2 },
+			"healthy": { "value": -1 }
+		}
 	},
 	{
 		"ID": 3,
 		"name": "Ravioli-Konserve",
-		"descr": "Auch kalt genießbar, aber ein Festmahl sieht anders aus..",
-		"comps": [
-			{"name": "cost", "params": 10},
-			{"name": "food", "params": 1},
-			{"name": "value", "params": 2}
-		]
+		"descr": "Auch kalt genießbar, aber ein Festmahl sieht anders aus...",
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": true
+			},
+			"food": { "value": 1 },
+			"pleasurable": { "value": -1 }
+		}
 	},
 	{
 		"ID": 4,
 		"name": "Gaskartusche",
-		"descr": "Für den Gaskocher.",
-		"comps": [
-			{"name": "cost", "params": 30},
-			{"name": "uses", "params": 2},
-			{"name": "value", "params": 6}
-		]
+		"descr": "Für den Gaskocher. Können benutzt werden um 5 mal zu kochen.",
+		"comps": {
+			"cost": {
+				"cost": 30,
+				"buyable": true
+			},
+			"uses": { "value": 5 }
+		}
 	},
 	{
 		"ID": 5,
 		"name": "Gekochte Ravioli",
 		"descr": "Warm deutlich leckerer als kalt.",
-		"comps": [
-			{"name": "food", "params": 2},
-			{"name": "pleasurable", "params": 1},
-			{"name": "shelflife", "params": 2},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": false
+			},
+			"food": { "value": 1 },
+			"pleasurable": { "value": 1 },
+			"shelflife": { "value": 2 }
+		}
 	},
 	{
 		"ID": 6,
 		"name": "Ungekochte Nudeln",
-		"descr": "Zu hart um sie roh zu essen, müssen erst gekocht werden.",
-		"comps": [
-			{"name": "cost", "params": 10},
-			{"name": "value", "params": 2}
-		]
+		"descr": "Zu hart, um sie roh zu essen, müssen erst gekocht werden.",
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 7,
 		"name": "Nudeln",
 		"descr": "Trockene, gekochte Nudeln. Die Definition von 'langweiligem Essen', aber machen satt.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 2},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": false
+			},
+			"food": { "value": 1 },
+			"shelflife": { "value": 2 }
+		}
 	},
 	{
 		"ID": 8,
 		"name": "Soße im Glas",
 		"descr": "Alleine nicht lecker, aber wertet deine trockenen Nudeln auf.",
-		"comps": [
-			{"name": "cost", "params": 20},
-			{"name": "food", "params": 1},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 9,
 		"name": "Nudeln mit Soße",
 		"descr": "Leicht zu machen und lecker; nicht umsonst das Lieblingsessen vieler Kinder.",
-		"comps": [
-			{"name": "food", "params": 2},
-			{"name": "shelflife", "params": 2},
-			{"name": "pleasurable", "params": 1},
-			{"name": "value", "params": 8}
-		]
+		"comps": {
+			"cost": {
+				"cost": 30,
+				"buyable": false
+			},
+			"food": { "value": 2 },
+			"shelflife": { "value": 1 }
+		}
 	},
 	{
 		"ID": 10,
 		"name": "Brot",
 		"descr": "Wie eine weiße Leinwand: Besser mit Belag darauf.",
-		"comps": [
-			{"name": "cost", "params": 20},
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 6},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			},
+			"food": { "value": 1 },
+			"shelflife": { "value": 6 }
+		}
 	},
 	{
 		"ID": 11,
 		"name": "Marmelade",
 		"descr": "Süßer Obstaufstrich. Einkochen hat das Obst sehr haltbar gemacht.",
-		"comps": [
-			{"name": "cost", "params": 40},
-			{"name": "healthy", "params": -1},
-			{"name": "value", "params": 8}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"healthy": {"value": -1},
+			"pleasurable": {"value": 1}
+		}
 	},
 	{
 		"ID": 12,
 		"name": "Brot mit Marmelade",
 		"descr": "Der Frühstücksklassiker schlechthin.",
-		"comps": [
-			{"name": "food", "params": 2},
-			{"name": "shelflife", "params": 6},
-			{"name": "value", "params": 12}
-		]
+		"comps": {
+			"cost": {
+				"cost": 30,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"healthy": {"value": -1},
+			"pleasurable": {"value": 1}
+		}
 	},
 	{
 		"ID": 13,
-		"name": "Chlortablette",
+		"name": "Chlortabletten",
 		"descr": "Können genutzt werden, um schmutziges Wasser zu reinigen.",
-		"comps": [
-			{"name": "cost", "params": 70},
-			{"name": "uses", "params": 3},
-			{"name": "value", "params": 14}
-		]
+		"comps":  {
+			"cost": {
+				"cost": 70,
+				"buyable": true
+			},
+			"uses": {"value": 3}
+		}
 	},
 	{
 		"ID": 14,
 		"name": "Mehl",
 		"descr": "Zutat zum Backen, alleine nicht genießbar.",
-		"comps": [
-			{"name": "cost", "params": 10},
-			{"name": "value", "params": 2}
-		]
+		"comps": {
+			"cost": {
+				"cost": 5,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 15,
 		"name": "Salz",
-		"descr": "Das beliebteste Gewürz; nicht zu Verwechseln mit Zucker.",
-		"comps": [
-			{"name": "cost", "params": 10},
-			{"name": "value", "params": 2}
-		]
+		"descr": "Das beliebteste Gewürz; nicht zu verwechseln mit Zucker.",
+		"comps": {
+			"cost": {
+				"cost": 5,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 16,
 		"name": "Zucker",
-		"descr": "Das beliebteste Süßungsmittel; nicht zu Verwechseln mit Salz.",
-		"comps": [
-			{"name": "cost", "params": 15},
-			{"name": "value", "params": 2.5}
-		]
+		"descr": "Das beliebteste Süßungsmittel; nicht zu verwechseln mit Salz.",
+		"comps": {
+			"cost": {
+				"cost": 5,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 17,
 		"name": "Reis",
 		"descr": "Vielseitige Beilage, besonders gerne zu Curry serviert.",
-		"comps": [
-			{"name": "cost", "params": 20},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 18,
 		"name": "Hülsenfrüchte",
 		"descr": "Unterschätzte Alleskönner, reich an Eiweiß und oft besonders lange haltbar.",
-		"comps": [
-			{"name": "cost", "params": 25},
-			{"name": "value", "params": 4.5}
-		]
+		"comps": {
+			"cost": {
+				"cost": 15,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 19,
 		"name": "Fisch",
 		"descr": "Achtung vor den Gräten!",
-		"comps": [
-			{"name": "cost", "params": 30},
-			{"name": "food", "params": 1},
-			{"name": "healthy", "params": -2},
-			{"name": "shelflife", "params": 2},
-			{"name": "value", "params": 6}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"healthy": {"value": -1},
+			"shelflife": {"value": 2}
+		}
 	},
 	{
 		"ID": 20,
 		"name": "Kartoffeln",
-		"descr": "Für diese allseits beliebten Knollen gibt es zig verschiedenen Zubereitungsarten.",
-		"comps": [
-			{"name": "cost", "params": 15},
-			{"name": "healthy", "params": 1},
-			{"name": "value", "params": 2.5}
-		]
+		"descr": "Für diese allseits beliebten Knollen gibt es zig verschiedene Zubereitungsarten.",
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			}
+		}
 	},
 	{
 		"ID": 21,
 		"name": "Gemüse",
 		"descr": "Vielseitig und gesund, und frisch geerntet besonders lecker.",
-		"comps": [
-			{"name": "cost", "params": 20},
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 6},
-			{"name": "healthy", "params": 1},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 6}
+		}
 	},
 	{
 		"ID": 22,
 		"name": "Früchte",
 		"descr": "Süß und gesund, perfekt für den Snack zwischendurch.",
-		"comps": [
-			{"name": "cost", "params": 20},
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 6},
-			{"name": "healthy", "params": 1},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"drink": {"value": 1},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 6}
+		}
 	},
 	{
 		"ID": 23,
 		"name": "Schokolade",
-		"descr": "Zum Genießen, in Maßen.",
-		"comps": [
-			{"name": "cost", "params": 50},
-			{"name": "food", "params": 1},
-			{"name": "pleasurable", "params": 1},
-			{"name": "healthy", "params": -1},
-			{"name": "value", "params": 10}
-		]
+		"descr": "Zum Genießen in Maßen.",
+		"comps": {
+			"cost": {
+				"cost": 30,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"healthy": {"value": -1},
+			"pleasurable": {"value": 1}
+		}
 	},
 	{
 		"ID": 24,
 		"name": "Fleisch",
 		"descr": "Nur wenige Sorten (und nur sehr frische Stücke) sind roh genießbar, der Rest sollte dringend durchgebraten werden.",
-		"comps": [
-			{"name": "cost", "params": 40},
-			{"name": "food", "params": 1},
-			{"name": "healthy", "params": -2},
-			{"name": "shelflife", "params": 2},
-			{"name": "value", "params": 8}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"healthy": {"value": -2},
+			"shelflife": {"value": 2}
+
+		}
 	},
 	{
 		"ID": 25,
 		"name": "Tofu",
 		"descr": "Eiweißlieferant, häufig als Fleischersatz verwendet.",
-		"comps": [
-			{"name": "cost", "params": 30},
-			{"name": "shelflife", "params": 6},
-			{"name": "value", "params": 6}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": true
+			},
+			"shelflife": {"value": 6}
+
+		}
 	},
 	{
 		"ID": 26,
 		"name": "Nüsse",
 		"descr": "Lang haltbare Lieferanten für Eiweiß, Eisen und Omega-3-Fettsäuren.",
-		"comps": [
-			{"name": "cost", "params": 50},
-			{"name": "food", "params": 1},
-			{"name": "healthy", "params": 1},
-			{"name": "value", "params": 10}
-		]
-
+		"comps": {
+			"cost": {
+				"cost": 15,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"healthy": {"value": 1}
+		}
 	},
 	{
 		"ID": 27,
 		"name": "Käse",
 		"descr": "In Scheiben geschnitten ein beliebter Brotbelag.",
-		"comps": [
-			{"name": "cost", "params": 30},
-			{"name": "shelflife", "params": 5},
-			{"name": "value", "params": 6}
-		]
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 6}
+		}
 	},
 	{
 		"ID": 28,
 		"name": "Milch",
 		"descr": "Von einer Kuh oder aus Hafer/Soja/Mandeln.",
-		"comps": [
-			{"name": "cost", "params": 20},
-			{"name": "shelflife", "params": 6},
-			{"name": "drink", "params": 1},
-			{"name": "food", "params": 1},
-			{"name": "value", "params": 4}
-		]
+		"comps": {
+			"cost": {
+				"cost": 10,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"drink": {"value": 2},
+			"shelflife": {"value": 4}
+
+			
+		}
 	},
 	{
 		"ID": 29,
 		"name": "Bolognese",
 		"descr": "Nudelgericht, dessen Soße mehr Eiweiß enthält als eine gewöhnliche Tomatensoße.",
-		"comps": [
-			{"name": "shelflife", "params": 3},
-			{"name": "food", "params": 1},
-			{"name": "pleasurable", "params": 1},
-			{"name": "value", "params": 12}
-		]
+		"comps": {
+			"cost": {
+				"cost": 40,
+				"buyable": false
+			},
+			"food": {"value": 3},
+			"pleasurable": {"value": 1},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 30,
 		"name": "Saft",
-		"descr": "Schmeckt frisch gepresst am Besten.",
-		"comps": [
-			{"name": "cost", "params": 30},
-			{"name": "shelflife", "params": 3},
-			{"name": "drink", "params": 1},
-			{"name": "pleasurable", "params": 1},
-			{"name": "healthy", "params": 1},
-			{"name": "value", "params": 6}
-		]
+		"descr": "Schmeckt frisch gepresst am besten.",
+		"comps":{
+			"cost": {
+				"cost": 20,
+				"buyable": true
+			},
+			"food": {"value": 1},
+			"drink": {"value": 2},
+			"shelflife": {"value": 4}
+		}
 	},
 	{
 		"ID": 31,
 		"name": "Gesalzener Fisch",
 		"descr": "Länger haltbar als ungesalzener Fisch, aber eben auch ... salziger.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "pleasurable", "params": -1},
-			{"name": "hydrating", "params": -1},
-			{"name": "value", "params": 8}
-		]
+		"comps": {
+			"cost": {
+				"cost": 25,
+				"buyable": false
+			},
+			"food": {"value": 1},
+			"drink": {"value": -1}
+		}
 	},
 	{
 		"ID": 32,
 		"name": "Eingelegtes Gemüse",
 		"descr": "Länger haltbar als unbehandeltes Gemüse.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "healthy", "params": 1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 15,
+				"buyable": false
+			},
+			"food": {"value": 1},
+			"healthy": {"value": 1}
+		}
 	},
 	{
 		"ID": 33,
 		"name": "Gemüsereis",
 		"descr": "Beliebtes Gericht, das mit quasi jeder Gemüsesorte funktioniert.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 3},
-			{"name": "pleasurable", "params": 1},
-			{"name": "healthy", "params": 1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 34,
 		"name": "Curry mit Reis",
 		"descr": "Je nach Rezept irgendwo zwischen 'ein wenig scharf' und 'SEHR scharf'. Der Reis mildert den Geschmack ein wenig ab.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 3},
-			{"name": "pleasurable", "params": 1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 25,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 35,
 		"name": "Hummus mit Brot",
 		"descr": "Brot mit deftigem Kichererbsen-Aufstrich, den es in verschiedenen Würzungen gibt.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 3},
-			{"name": "pleasurable", "params": 1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 25,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 36,
 		"name": "Käsesandwich",
-		"descr": "Der Klassiker unter den Pausebroten.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 3},
-			{"name": "pleasurable", "params": 1}
-		]
+		"descr": "Der Klassiker unter den Pausenbroten.",
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 37,
 		"name": "Heiße Schokolade",
 		"descr": "Ein warmer Genuss für Jung und Alt.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "drink", "params": 1},
-			{"name": "shelflife", "params": 3},
-			{"name": "pleasurable", "params": 2},
-			{"name": "healthy", "params": -1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"drink": {"value": 1},
+			"healthy": {"value": -1},
+			"pleasurable": {"value": 1},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 38,
 		"name": "Gulasch",
-		"descr": "Das Eintopf-artige Gericht wärmt von innen.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 3},
-			{"name": "pleasurable", "params": 1}
-		]
+		"descr": "Das eintopfartige Gericht wärmt von innen.",
+		"comps": {
+			"cost": {
+				"cost": 40,
+				"buyable": false
+			},
+			"food": {"value": 3},
+			"healthy": {"value": 1},
+			"pleasurable": {"value": 1},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 39,
 		"name": "Milchreis",
 		"descr": "Leckere Süßspeise, traditionell mit Obst oder Zimt und Zucker gegessen.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "shelflife", "params": 3},
-			{"name": "pleasurable", "params": 1},
-			{"name": "healthy", "params": -1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 25,
+				"buyable": false
+			},
+			"food": {"value": 3},
+			"pleasurable": {"value": 1},
+			"shelflife": {"value": 3}
+		}
 	},
 	{
 		"ID": 40,
 		"name": "Suppe",
 		"descr": "Nicht nur reich an Nährstoffen, sondern auch ein Helfer bei der Flüssigkeitszufuhr.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "drink", "params": 1},
-			{"name": "shelflife", "params": 1},
-			{"name": "pleasurable", "params": 1}
-		]
+		"comps": {
+			"cost": {
+				"cost": 25,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"drink": {"value": 1},
+			"healthy": {"value": 1},
+			"shelflife": {"value": 1}
+		}
 	},
 	{
 		"ID": 41,
 		"name": "Batterien",
 		"descr": "Wiederaufladbar. Können benutzt werden, um verschiedene Geräte zu betreiben.",
-		"comps": [
-			{"name": "cost", "params": 90},
-			{"name": "uses", "params": 3}
-		]
+		"comps": {
+			"cost": {
+				"cost": 50,
+				"buyable": true
+			},
+			"uses": {"value": 3}
+		}
 	},
 	{
 		"ID": 42,
 		"name": "Seife",
 		"descr": "Duschen geht auch ohne, ist mit aber viel effektiver.",
-		"comps": [
-			{"name": "cost", "params": 30},
-			{"name": "uses", "params": 5}
-		]
+		"comps": {
+			"cost": {
+				"cost": 30,
+				"buyable": true
+			},
+			"uses": {"value": 5}
+		}
 	},
 	{
 		"ID": 43,
 		"name": "Bratfisch mit Pommes",
 		"descr": "Fettig, aber lecker.",
-		"comps": [
-			{"name": "food", "params": 2},
-			{"name": "pleasurable", "params": 1},
-		]
+		"comps": {
+			"cost": {
+				"cost": 30,
+				"buyable": false
+			},
+			"food": {"value": 2},
+			"pleasurable": {"value": 1},
+			"shelflife": {"value": 1}
+		}
 	},
 	{
 		"ID": 44,
 		"name": "Bratfisch",
 		"descr": "Genau das, wonach es klingt: Gebratener Fisch.",
-		"comps": [
-			{"name": "food", "params": 1},
-			{"name": "pleasurable", "params": 1},
-		]
-	},
+		"comps": {
+			"cost": {
+				"cost": 20,
+				"buyable": false
+			},
+			"food": {"value": 1},
+			"shelflife": {"value": 1}
+		}
+	}
 ]

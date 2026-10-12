@@ -1,0 +1,167 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwo4v2jnqda51"]
+
+[ext_resource type="Texture2D" uid="uid://c1f0dydwhw21e" path="res://assets/GUI/buttons/help_button.png" id="1_471w7"]
+[ext_resource type="Script" uid="uid://b5p3qvilexr8n" path="res://GUI/cooking/fridge_gui.gd" id="1_dum00"]
+[ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="1_kug0h"]
+[ext_resource type="PackedScene" uid="uid://bsmvtvjkbid3v" path="res://inventory/inventory_ui.tscn" id="2_k2l77"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="3_471w7"]
+[ext_resource type="StyleBox" uid="uid://dpomspib1gvl1" path="res://resources/background/menu_box_dark_gray_tex.tres" id="3_k2l77"]
+[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="4_dum00"]
+[ext_resource type="Texture2D" uid="uid://upvg4o4g0c8" path="res://assets/GUI/buttons/button_right.png" id="5_bklmd"]
+
+[node name="FridgeGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dum00")
+
+[node name="VBC" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -311.5
+offset_right = 250.0
+offset_bottom = 311.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -3
+
+[node name="Panel" type="PanelContainer" parent="VBC"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="VBC/Panel"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="VBC" type="VBoxContainer" parent="VBC/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Margin" type="MarginContainer" parent="VBC/Panel/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = -16
+theme_override_constants/margin_right = -16
+
+[node name="Panel" type="PanelContainer" parent="VBC/Panel/Margin/VBC/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBC" type="HBoxContainer" parent="VBC/Panel/Margin/VBC/Margin/Panel"]
+layout_mode = 2
+alignment = 2
+
+[node name="Title" type="RichTextLabel" parent="VBC/Panel/Margin/VBC/Margin/Panel/HBC"]
+custom_minimum_size = Vector2(358, 45)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Kühlschrank"
+
+[node name="Help" type="TextureButton" parent="VBC/Panel/Margin/VBC/Margin/Panel/HBC"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_471w7")
+stretch_mode = 3
+
+[node name="VBC" type="VBoxContainer" parent="VBC/Panel/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBC" type="VBoxContainer" parent="VBC/Panel/Margin/VBC/VBC"]
+layout_mode = 2
+
+[node name="Tip" type="RichTextLabel" parent="VBC/Panel/Margin/VBC/VBC/VBC"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Wähle Zutaten zum kochen aus."
+fit_content = true
+
+[node name="VBC" type="VBoxContainer" parent="VBC/Panel/Margin/VBC/VBC/VBC"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Panel" type="PanelContainer" parent="VBC/Panel/Margin/VBC/VBC/VBC/VBC"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_kug0h")
+
+[node name="InventoryUI" parent="VBC/Panel/Margin/VBC/VBC/VBC/VBC/Panel" instance=ExtResource("2_k2l77")]
+custom_minimum_size = Vector2(404, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Panel2" type="PanelContainer" parent="VBC/Panel/Margin/VBC/VBC/VBC/VBC"]
+custom_minimum_size = Vector2(460, 98)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("3_k2l77")
+
+[node name="Bowl" parent="VBC/Panel/Margin/VBC/VBC/VBC/VBC/Panel2" instance=ExtResource("2_k2l77")]
+custom_minimum_size = Vector2(404, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBC" type="HBoxContainer" parent="VBC/Panel/Margin/VBC/VBC"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="CC" type="CenterContainer" parent="VBC/Panel/Margin/VBC/VBC/HBC"]
+custom_minimum_size = Vector2(312, 0)
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="VBC/Panel/Margin/VBC/VBC/HBC/CC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Continue" parent="VBC/Panel/Margin/VBC/VBC/HBC/CC/HBC" instance=ExtResource("3_471w7")]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ConfirmButton"
+text = "Weiter"
+
+[node name="Info" parent="VBC/Panel/Margin/VBC/VBC/HBC/CC/HBC" instance=ExtResource("3_471w7")]
+visible = false
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_type_variation = &"BlueButton"
+text = "Info"
+
+[node name="Back" type="TextureButton" parent="VBC/Panel/Margin/VBC/VBC/HBC"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("4_dum00")
+
+[node name="Continue" type="TextureButton" parent="VBC/Panel/Margin/VBC/VBC/HBC"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("5_bklmd")
+
+[connection signal="item_clicked" from="VBC/Panel/Margin/VBC/VBC/VBC/VBC/Panel/InventoryUI" to="." method="_on_inventory_item_clicked"]
+[connection signal="item_long_pressed" from="VBC/Panel/Margin/VBC/VBC/VBC/VBC/Panel/InventoryUI" to="." method="_on_inventory_item_long_pressed"]
+[connection signal="item_clicked" from="VBC/Panel/Margin/VBC/VBC/VBC/VBC/Panel2/Bowl" to="." method="_on_bowl_item_clicked"]
+[connection signal="item_long_pressed" from="VBC/Panel/Margin/VBC/VBC/VBC/VBC/Panel2/Bowl" to="." method="_on_bowl_item_long_pressed"]
+[connection signal="pressed" from="VBC/Panel/Margin/VBC/VBC/HBC/CC/HBC/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBC/Panel/Margin/VBC/VBC/HBC/Back" to="." method="_on_back_pressed"]

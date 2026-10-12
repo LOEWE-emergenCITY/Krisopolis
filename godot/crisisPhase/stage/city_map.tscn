@@ -1,9 +1,9 @@
 [gd_scene load_steps=27 format=3 uid="uid://hcfsn06a2085"]
 
 [ext_resource type="Texture2D" uid="uid://dnbnxosef5r58" path="res://assets/citymap/citymap.png" id="1_pkkoa"]
-[ext_resource type="Script" path="res://crisisPhase/stage/city_map.gd" id="2_a4fhc"]
+[ext_resource type="Script" uid="uid://b3ep5ann1w43w" path="res://crisisPhase/stage/city_map.gd" id="2_a4fhc"]
 [ext_resource type="Texture2D" uid="uid://f8j852tv3e22" path="res://assets/GUI/buttons/invisible_button.png" id="3_wxrxy"]
-[ext_resource type="Shader" path="res://shaders/city_map_clickable_buildings.gdshader" id="3_x6gau"]
+[ext_resource type="Shader" uid="uid://dnc3k6hq41tpp" path="res://shaders/city_map_clickable_buildings.gdshader" id="3_x6gau"]
 [ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="4_b0mqi"]
 [ext_resource type="Texture2D" uid="uid://botpe5ux15226" path="res://assets/GUI/icons/icon_pin_home.png" id="5_kxfhx"]
 [ext_resource type="Texture2D" uid="uid://6bj8wmm5lv04" path="res://assets/GUI/icons/icon_pin.png" id="6_bj4s0"]
@@ -121,8 +121,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uc87h"]
 _data = {
-"RESET": SubResource("Animation_xndm7"),
-"pin_animation": SubResource("Animation_inmhp")
+&"RESET": SubResource("Animation_xndm7"),
+&"pin_animation": SubResource("Animation_inmhp")
 }
 
 [node name="CityMap" type="TextureRect"]
@@ -238,39 +238,39 @@ texture_normal = ExtResource("3_wxrxy")
 [node name="FountainVFX" type="GPUParticles2D" parent="."]
 position = Vector2(495, 569)
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_2q5kx")
 texture = ExtResource("10_7a7e0")
 lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_2q5kx")
 
 [node name="BirdsVFX" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_jp4rf")
 position = Vector2(-23, 400)
 amount = 4
-process_material = SubResource("ParticleProcessMaterial_s1aqt")
 texture = ExtResource("8_nsn6c")
 lifetime = 30.0
 explosiveness = 0.91
 visibility_rect = Rect2(-433.222, -566.763, 760.599, 1203.53)
+process_material = SubResource("ParticleProcessMaterial_s1aqt")
 
 [node name="CloudShadowVFX" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_rabjr")
 position = Vector2(760, 671)
 amount = 4
 amount_ratio = 0.4
-process_material = SubResource("ParticleProcessMaterial_mqlo5")
 texture = ExtResource("11_0jybd")
 lifetime = 70.0
 visibility_rect = Rect2(-1031.31, -285.027, 1287.81, 564.721)
+process_material = SubResource("ParticleProcessMaterial_mqlo5")
 
 [node name="CloudVFX" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_rabjr")
 position = Vector2(621, 47)
 amount = 10
 amount_ratio = 0.4
-process_material = SubResource("ParticleProcessMaterial_bi3dh")
 texture = ExtResource("9_5vlc8")
 lifetime = 100.0
 visibility_rect = Rect2(-1031.31, -285.027, 1287.81, 564.721)
+process_material = SubResource("ParticleProcessMaterial_bi3dh")
 
 [node name="HomePin" type="Sprite2D" parent="."]
 process_mode = 3
@@ -279,7 +279,7 @@ texture = ExtResource("5_kxfhx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HomePin"]
 libraries = {
-"": SubResource("AnimationLibrary_uc87h")
+&"": SubResource("AnimationLibrary_uc87h")
 }
 
 [node name="OptEventPin_Template" type="Sprite2D" parent="."]
@@ -290,7 +290,7 @@ texture = ExtResource("6_um0qv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="OptEventPin_Template"]
 libraries = {
-"": SubResource("AnimationLibrary_uc87h")
+&"": SubResource("AnimationLibrary_uc87h")
 }
 
 [node name="OptEventPins" type="Node2D" parent="."]
@@ -302,7 +302,7 @@ texture = ExtResource("6_bj4s0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CurrPosPin"]
 libraries = {
-"": SubResource("AnimationLibrary_uc87h")
+&"": SubResource("AnimationLibrary_uc87h")
 }
 
 [node name="DoorbellsGUI" parent="." instance=ExtResource("7_s5hyn")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://l7giak7i5oop"]
 
-[ext_resource type="Script" path="res://util/item_list.gd" id="1_wbqoc"]
+[ext_resource type="Script" uid="uid://bva2bs4nm0o1w" path="res://util/item_list.gd" id="1_wbqoc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8htgw"]
 
@@ -19,4 +19,3 @@ script = ExtResource("1_wbqoc")
 
 [node name="List" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 1

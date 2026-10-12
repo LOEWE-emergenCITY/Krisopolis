@@ -5,7 +5,7 @@ const INVALID_STRING_VALUE: String = "ERROR"
 const INVALID_DICTIONARY_VALUE: Dictionary = {}
 
 ## RECIPTS
-const RECIPE_SCN: PackedScene = preload("res://GUI/cooking/recipe.tscn")
+#const RECIPE_SCN: PackedScene = preload("res://GUI/cooking/recipe.tscn")
 const RECIPT_SOURCE := "res://JSONs/recipe.json"
 ## ITEMS
 const ITEM_SOURCE := "res://JSONs/item.json"
@@ -22,12 +22,17 @@ const ACTION_SOURCE := "res://JSONs/action.json"
 const DOORBELL_SOURCE := "res://JSONs/doorbell.json"
 ## SCENARIOS
 const SCENARIOS_SOURCE := "res://JSONs/scenarios.json"
+## CRISIS
+const CRISIS_SOURCE := "res://JSONs/crisis.json"
 ## UPGARDE
 const UPGRADES_SOURCE := "res://JSONs/upgrades.json"
 ## DIALOGUES
 const DIALOGUES_SOURCE := "res://JSONs/dialogues/"
 
 ########################################JSON RECIPES################################################
+
+var _is_recipes_loaded : bool = false
+var recipes: Array[EMC_Recipe]
 
 func load_recipes() -> Array[EMC_Recipe]:
 	if not FileAccess.file_exists(RECIPT_SOURCE):
@@ -77,7 +82,7 @@ func load_recipes() -> Array[EMC_Recipe]:
 		var needs_water : bool = recipe_json.get("needs_water", false) as bool
 		var needs_heat : bool = recipe_json.get("needs_heat", false) as bool
 		
-		var new_recipe : EMC_Recipe = RECIPE_SCN.instantiate()
+		var new_recipe : EMC_Recipe = EMC_Recipe.new()#RECIPE_SCN.instantiate()
 		new_recipe.setup(input_item_IDs, output_item_ID, needs_water, needs_heat)
 		
 		results.append(new_recipe)
@@ -171,7 +176,7 @@ func load_items() -> void:
 	load_item_translator()
 	
 	if not FileAccess.file_exists(ITEM_SOURCE):
-		printerr("Could not load recipes from source: " + ITEM_SOURCE)
+		printerr("Could not load item from source: " + ITEM_SOURCE)
 		return
 
 	var recipe_source : FileAccess = FileAccess.open(ITEM_SOURCE, FileAccess.READ)
@@ -219,8 +224,8 @@ func load_items() -> void:
 		else:
 			item_data["sound"] = _sound
 			
-		var _comp_dicts : Variant = item.get("comps", [])
-		if typeof(_comp_dicts) != TYPE_ARRAY:
+		var _comp_dicts : Variant = item.get("comps", {})
+		if typeof(_comp_dicts) != TYPE_DICTIONARY:
 			printerr("Item-JSON: item in position " + str(item_index) + " has an invalid item 'comps'.")
 			item_index += 1
 			continue
@@ -232,7 +237,7 @@ func load_items() -> void:
 			#"sound": _sound,
 		}
 		
-		_id_to_item_vars[str(_id)] = item_data
+		_id_to_item_vars[str(int(_id))] = item_data
 		
 		item_index += 1
 	
@@ -347,10 +352,12 @@ func get_action(id: String) -> EMC_Action:
 func load_actions() -> void:
 	var data: Dictionary = load_file_check_type(ACTION_SOURCE, "Actions", TYPE_DICTIONARY)
 	assert(data != null, "Failed to load Actions!")
-	
+	if data == null:
+		printerr("Failed to load Actions!")
+		return
+
 	for key: String in data:
-		var res: Resource = ResourceLoader.load("res://util/action/" + data[key]["type"] + "_action.gd")
-		_actions[key] = res.new(data[key])
+		_actions[key] = EMC_Action.load_action(data[key])
 
 func set_action_comp(get_exe: Callable) -> void:
 	if not _is_action_loaded:
@@ -384,28 +391,32 @@ func load_door_bell() -> Dictionary:
 #endregion
 ##########################################JSON NPCS#################################################
 #region NPC
-const _NPC_SCN: PackedScene = preload("res://crisisPhase/characters/Base_NPC.tscn")
 
-func load_NPC() -> Dictionary:
+func load_NPC() -> Array[EMC_NPC_Resource]:
 	assert(_is_items_loaded, "NPS-JSON: Items must be loaded before NPCs")
 		
-	var result : Dictionary
+	var result : Array[EMC_NPC_Resource]
 	
 	for file : String in DirAccess.get_files_at(NPC_SOURCE):
 		var source := NPC_SOURCE + "/" + file
 
 		var data : Dictionary = load_file_check_type(source, "NPC", TYPE_DICTIONARY)
 		
-		assert(data.has_all(["comp"]))
+		# assert(data.has_all(["comp"]))
+		if not data.has("comp"):
+			printerr("NPC has no comps!")
 		
-		var new_npc := _NPC_SCN.instantiate()
-		result[new_npc] = []
+		var new_npc: EMC_NPC_Resource = EMC_NPC_Resource.new()
 
-		for comp_name: String in data["comp"]:
-			var comp : Resource = Preloader.get_resource("res://crisisPhase/characters/npc_" + comp_name + ".gd")
-			
-			var new_comp: Variant = comp.new(data["comp"][comp_name])
-			result[new_npc].append(new_comp)
+		for comp_name: String in data.get("comp", []):
+			var comp : Resource = ResourceLoader.load("res://crisisPhase/npc/npc_" + comp_name + ".gd")
+			if not comp:
+				continue
+			var new_comp: Resource = comp.new()
+			new_comp.setup(data["comp"][comp_name])
+			new_npc.add_comp(new_comp)
+		
+		result.append(new_npc)
 					
 	return result
 		
@@ -458,6 +469,19 @@ func load_scenarios() -> void:
 		return
 	
 	scenarios = data
+
+#######################################JSON CIRISIS#################################################
+
+var crisis: Dictionary[String, Dictionary]
+
+func load_crisis() -> void:
+	var data : Dictionary = (load_file_check_type(CRISIS_SOURCE, "Crisis", TYPE_DICTIONARY) as Dictionary)
+	if data == null or data.is_empty():
+		return
+		
+	assert(data.has_all(["TUTORIAL", "EASY", "following"])) 
+	
+	crisis.assign(data)
 
 ######################################JSON DIALOGUES################################################
 #region DIALOGUES
@@ -611,23 +635,3 @@ func dict_to_vector(data : Dictionary, type : Variant.Type) -> Variant:
 			push_error(str(type) + " is not a Type.")
 	push_error("Wrong Type!")
 	return null
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

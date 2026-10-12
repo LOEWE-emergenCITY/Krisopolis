@@ -26,7 +26,6 @@
 		"constraints": {
 			"constraint_not_evening": "",
 			"constraint_no_limited_public_access": "",
-			"constraint_no_isolation": "",
 		},
 		"consequences": {
 			"add_items_by_name" : "WATER;WATER;WATER",
@@ -75,13 +74,12 @@
 	{
 		"name": "FIRE_DEPARTMENT_DEMONSTRATION",
 		"probability": 1,
-		"descr": "Und nun die Nachrichten: Im [b]Park[/b] unternimmt die Feuerwehr zurzeit eine Übung zur Nutzung von Feuerlöschern sowie erste Hilfe Maßnahmen für Interessierte.",
+		"descr": "Und nun die Nachrichten: Im [b]Park[/b] unternimmt die Feuerwehr zurzeit eine Übung zur Nutzung von Feuerlöschern sowie Erste-Hilfe-Maßnahmen für Interessierte.",
 		"announce_only_on_radio": true,
 		"active_periods": 2,
 		"constraints": {
 			"constraint_not_evening": "",
 			"constraint_no_limited_public_access": "",
-			"constraint_no_isolation": "",
 			"is_not_scenario": "Flut;Hurricane",
 		},
 		"consequences": {
@@ -167,11 +165,10 @@
 	{
 		"name": "NEIGHBORHOOD_PARTY",
 		"probability": 1,
-		"descr": "Da wir momentan die Krise im Griff haben, hat die Stadt ein Get-together Treffen im Park arrangiert.",
+		"descr": "Da wir momentan die Krise im Griff haben, hat die Stadt ein Get-Together Treffen im Park arrangiert.",
 		"announce_only_on_radio": true,
 		"active_periods": 1,
 		"constraints": {
-			"no_active_crisis": "",
 		},
 		"consequences": {
 			"JSON KOMMENTAR": "Is chosen by dialogue-option, see raphael.dialogue",

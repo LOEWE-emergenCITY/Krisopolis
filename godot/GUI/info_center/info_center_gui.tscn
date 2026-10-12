@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxdptvo5x7o3t"]
+
+[ext_resource type="Script" uid="uid://5wijx6txjy0g" path="res://GUI/info_center/info_center_gui.gd" id="1_sjylv"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="5_f6nx5"]
+[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="6_i3a0i"]
+
+[node name="InfoCenterGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sjylv")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -213.5
+offset_right = 250.0
+offset_bottom = 213.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBC" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="RichTextLabel" parent="Panel/Margin/VBC"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 46
+bbcode_enabled = true
+text = "[center]Info Zentrum[/center]"
+fit_content = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/Margin/VBC"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"WhitePanelContainer"
+
+[node name="VBC" type="VBoxContainer" parent="Panel/Margin/VBC/PanelContainer"]
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="Panel/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Margin/VBC/HBC"]
+visible = false
+custom_minimum_size = Vector2(324, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="UxButton" parent="Panel/Margin/VBC/HBC/Buttons" instance=ExtResource("5_f6nx5")]
+layout_mode = 2
+theme_type_variation = &"ConfirmButton"
+text = "Kaufen"
+
+[node name="UxButton2" parent="Panel/Margin/VBC/HBC/Buttons" instance=ExtResource("5_f6nx5")]
+layout_mode = 2
+theme_type_variation = &"CancelButton"
+text = "Zurückgeben"
+
+[node name="Cancel" type="TextureButton" parent="Panel/Margin/VBC/HBC"]
+layout_mode = 2
+texture_normal = ExtResource("6_i3a0i")
+
+[connection signal="pressed" from="Panel/Margin/VBC/HBC/Cancel" to="." method="close"]

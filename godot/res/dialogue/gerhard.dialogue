@@ -12,8 +12,8 @@ Gerhard: Moin. Willst du handeln?
 	=> END
 
 ~ DIALOG1
-Avatar: Lass uns reden! Wie geht's dir?
-Gerhard: Man kann sich nicht beklagen. Also, man könnte schon, aber man tuts ja nicht.
+Avatar: Lass uns reden! Wie geht es dir?
+Gerhard: Man kann sich nicht beklagen. Also, man könnte schon, aber man tut es ja nicht.
 Friedel: Wuff.
 Gerhard: Worüber willst du dich denn beklagen? Zu wenig Essen?
 Friedel: Wuff ...
@@ -22,7 +22,7 @@ Friedel: Wuff!
 => END
 
 ~ DIALOG2
-Avatar: Lass uns reden! Wie geht's Friedel?
+Avatar: Lass uns reden! Wie geht es Friedel?
 Gerhard: Manchmal glaube ich, er spürt, dass wir uns in einer Krise befinden.
 Gerhard: Wenn er am Fenster liegt und traurig nach draußen schaut. Oder wenn er anhänglicher wird als sonst.
 Gerhard: Aber am nächsten Tag tollt er wieder durch den Park, ohne eine Sorge im Leben ... Also vielleicht doch nicht.
@@ -38,7 +38,7 @@ if TradeMngr.is_trade_feasible()
 	- Avatar: Okay!
 		do TradeMngr.execute_trade()
 		Gerhard: [#mood=happy]Wunderbar, hier.
-	- Avatar: Nein Danke.
+	- Avatar: Nein, danke.
 		Gerhard: Ok.
 else
 	Gerhard: [#mood=sad]Sorry, aber {{TradeMngr.get_unfeasibility_reason()}}!

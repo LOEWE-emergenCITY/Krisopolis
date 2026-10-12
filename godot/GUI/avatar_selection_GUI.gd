@@ -31,19 +31,15 @@ func open(p_show_continue_button: bool = false) -> void:
 	show()
 	opened.emit()
 
-
 func close() -> void:
 	hide()
 	closed.emit()
 
-
 func _ready() -> void:
 	hide()
 
-
 func _on_back_btn_pressed() -> void:
 	close()
-
 
 ## Repositions frame around selected avatar skin
 func _position_chosen_avatar_frame() -> void:
@@ -89,101 +85,58 @@ func _position_chosen_avatar_frame() -> void:
 			_chosen_avatar_frame.hide()
 			return
 	
-	_chosen_avatar_frame.position = _chosen_avatar_button.position
-
-
-func _process(p_delta: float) -> void:
-	if _chosen_avatar_button != null:
-		_chosen_avatar_frame.position = _chosen_avatar_button.position - \
-			Vector2(0, $VBoxContainer/CenterContainer/ScrollContainer.scroll_vertical)
-
+	_chosen_avatar_button.grab_focus()
 
 func _on_w_01_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_W01)
-	_position_chosen_avatar_frame()
-
 
 func _on_nb_01_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_NB01)
-	_position_chosen_avatar_frame()
-
 
 func _on_m_01_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_M01)
-	_position_chosen_avatar_frame()
-
 
 func _on_w_02_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_W02)
-	_position_chosen_avatar_frame()
-
 
 func _on_nb_02_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_NB02)
-	_position_chosen_avatar_frame()
-
 
 func _on_m_02_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_M02)
-	_position_chosen_avatar_frame()
-
 
 func _on_w_03_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_W03)
-	_position_chosen_avatar_frame()
-
 
 func _on_nb_03_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_NB03)
-	_position_chosen_avatar_frame()
-
 
 func _on_m_03_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_M03)
-	_position_chosen_avatar_frame()
-
 
 func _on_w_04_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_W04)
-	_position_chosen_avatar_frame()
-
 
 func _on_nb_04_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_NB04)
-	_position_chosen_avatar_frame()
-
 
 func _on_m_04_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_M04)
-	_position_chosen_avatar_frame()
-
 
 func _on_w_05_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_W05)
-	_position_chosen_avatar_frame()
-
 
 func _on_nb_05_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_NB05)
-	_position_chosen_avatar_frame()
-
 
 func _on_m_05_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_M05)
-	_position_chosen_avatar_frame()
-
 
 func _on_w_06_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_W06)
-	_position_chosen_avatar_frame()
-
 
 func _on_nb_06_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_NB06)
-	_position_chosen_avatar_frame()
-
 
 func _on_m_06_pressed() -> void:
 	_settingGUI.set_avatar_sprite_suffix(SPRITE_M06)
-	_position_chosen_avatar_frame()
-

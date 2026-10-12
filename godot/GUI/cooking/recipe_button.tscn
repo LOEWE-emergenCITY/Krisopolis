@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://j5nyqj2o5l6f"]
+
+[ext_resource type="Script" uid="uid://c3bg7mx357nr" path="res://GUI/cooking/recipe_button.gd" id="2_s56x6"]
+[ext_resource type="Script" uid="uid://bjofqooknj8w4" path="res://GUI/cooking/recipe.gd" id="3_4xuw8"]
+[ext_resource type="PackedScene" uid="uid://cfk7h3ji5pkne" path="res://inventory/item_slot.tscn" id="3_vj05b"]
+
+[sub_resource type="Resource" id="Resource_vj05b"]
+script = ExtResource("3_4xuw8")
+_input_item_IDs = Array[int]([1, 14, 15])
+_output_item_ID = 10
+_needs_heat = true
+metadata/_custom_type_script = "uid://bjofqooknj8w4"
+
+[node name="Recipe" type="Button"]
+custom_minimum_size = Vector2(0, 66)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -33.0
+offset_right = 209.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_type_variation = &"BasicButton"
+script = ExtResource("2_s56x6")
+recipe = SubResource("Resource_vj05b")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="Ingredients" type="HBoxContainer" parent="Margin"]
+custom_minimum_size = Vector2(193, 32)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="HBC" type="HBoxContainer" parent="Margin"]
+custom_minimum_size = Vector2(193, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="title" type="Label" parent="Margin/HBC"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Brot"
+
+[node name="Output" parent="Margin/HBC" instance=ExtResource("3_vj05b")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+item = null
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="item_long_pressed" from="Margin/HBC/Output" to="." method="_on_item_long_pressed"]

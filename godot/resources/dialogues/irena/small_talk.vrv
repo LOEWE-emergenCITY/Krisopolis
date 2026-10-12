@@ -1,0 +1,72 @@
+[[Node]] start
+[jump] starkregen
+[jump] kein_starkregen
+
+[[Node]] starkregen
+[Condition] crisis_is("Starkregen")
+[match] get_var_or(#visited_irena_talks_about_fear, false)
+- [true] [text]
+	irena:Ich mag so viel Regen nicht ...
+- [false] [text]
+	irena:...
+[Comment]
+	[if] eq_bool(#visited_irena_talks_about_fear, true)
+		[then]
+			[text]
+			irena:Ich mag so viel Regen nicht ...
+		[else]
+			[text]
+			irena:...
+
+[[Node]] kein_starkregen
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar irena.flipped
+[text]
+irena:In 20 Sekunden werden wir den Mondschatten erreichen und die Funkverbindung zur Erde wird abbrechen.
+
+[[Node]] two
+[actors] avatar irena.flipped
+[text]
+irena:Ariane 7 mit Ziel Saturn Ringstation. Letzte Systemprüfung fertig. Alle Systeme bereit zum Start.
+irena:Roger, der Countdown ist bei T-minus 10 Minuten.
+
+[[Node]] three
+[actors] avatar irena.flipped
+[text]
+irena:WUUUUUSCH. Wusstest du, dass Raketen nur beim Start Geräusche machen? Im Weltall ist alles still, weil da keine Luft ist.
+
+[[Node]] four
+[actors] avatar irena.flipped
+[text]
+irena:Dum dum di dum dum.
+
+[[Node]] five
+[actors] avatar irena.flipped
+[text]
+irena:Wir müssen diesen runden Filter mit dieser quadratischen Filterbox verbinden - oder unsere Astronauten werden an ihrem eigenen Atem ersticken!
+
+[[Node]] six
+[actors] avatar irena.flipped
+[text]
+irena:Wusstest du, dass die ersten Computer Frauen waren? Die waren wirklich gut in Mathe! Das will ich auch sein.
+
+[[Node]] seven
+[actors] avatar irena.flipped
+[text]
+irena:Heute Abend gehe ich wieder mit Papa und Mert ins Fitnessstudio. Die machen da auch ganz lustige Sachen. Handstand zum Beispiel.
+irena:Handstand kann ich besser als die meisten Leute da.
+
+[[Node]] eight
+[actors] avatar irena.flipped
+[text]
+irena:Papa hat versprochen, mit mir zu spielen, wenn er fertig ist. Also muss ich ganz leise sein und darf ihn nicht stören.

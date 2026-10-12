@@ -3,15 +3,27 @@
 		"actors": [ "agathe", "avatar.r"],
 		"text": [
 			"agathe#Oh toll, endlich wieder Besuch!",
-			"agathe#Bist du zum Tauschen hier?",
+			"agathe#Bist du zum Tauschen hier?"
 		],
 		"options": {
 			"random": {
-				"prompt": "Nein, lass uns quatschen!",
+				"prompt": "Nein, lass uns reden!",
 				"options": {
 					"#dialog1": "",
 					"#dialog2": "",
 					"#dialog3": "",
+					"#dialog4": "",
+					"#dialog5": "",
+					"#dialog6": "",
+					"#dialog7": "",
+					"#dialog8": "",
+					"#dialog9": "",
+					"#dialog10": "",
+					"#dialog11": "",
+					"#dialog12": "",
+					"#dialog13": "",
+					"#dialog14": "",
+					"#dialog15": ""
 				}
 			},
 			"#handeln": "",
@@ -25,9 +37,24 @@
 		"text": [
 			"agathe#Wie reizend! Seitdem diese Krise angefangen hat, traue ich mich kaum raus.",
 			"agathe#Einkaufen kann man auch nichts mehr! Gut, dass mich meine Nichte ab und zu besucht.",
-			"agathe#Und deine Besuche sind auch immer sehr schön.",
-			"avatar.r#Finde ich auch!",
+			"agathe#Sie hat ja wenig Zeit. Mit Arbeit und Familie.",
+			"agathe#Aber es ist jedes Mal schön, wenn sie hier ist."
 		],
+		"options": {
+			"BesucheSchoen": {
+				"conditions": [
+					{
+						"has_karma_with": "agathe",
+						"karma": 1
+					}
+				],
+				"actors": [ "agathe", "avatar.r"],
+				"text": [
+					"agathe#Und deine Besuche sind auch immer sehr schön.",
+					"avatar.r#Finde ich auch!"
+				]
+			}
+		}
 	},
 	"#dialog2": {
 		"actors": [ "agathe", "avatar.r"],
@@ -35,8 +62,8 @@
 			"agathe#Wie schön! Kennst du schon meinen Nachbarn Mert? Ein sehr netter Mensch.",
 			"agathe#Seine Katze Momo ist sehr niedlich, aber leider auch sehr scheu.",
 			"agathe#Ob ich mir auch ein Haustier zulegen sollte? Es wäre schön, Gesellschaft zu haben.",
-			"agathe#Aber es ist auch viel Verantwortung, besonders in Krisenzeiten.",
-		],
+			"agathe#Aber es ist auch viel Verantwortung, besonders in Krisenzeiten."
+		]
 	},
 	"#dialog3": {
 		"actors": [ "agathe", "avatar.r"],
@@ -45,8 +72,338 @@
 			"agathe#Veronika ist sehr organisiert und akribisch, aber wusstest du, dass von den beiden Kris sich um die Pflanzen kümmert?",
 			"agathe#Kris wirkt zwar oft etwas verträumt, aber die Pflanzen sind Kris wichtig, das merkt man.",
 			"agathe#Als die beiden das letzte Mal im Camping-Urlaub waren, hat Kris mir genau erklärt, welche Pflanze wie oft gegossen werden muss.",
-			"agathe#Und da alle Pflanzen gut überlebt haben, darf ich sie beim nächsten Urlaub bestimmt wieder gießen.",
+			"agathe#Und da alle Pflanzen gut überlebt haben, darf ich sie beim nächsten Urlaub bestimmt wieder gießen."
+		]
+	},
+	"#dialog4": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie reizend! Gestern war meine Nichte hier, kennst du sie eigentlich?",
+			"agathe#Nein, noch nicht.",
+			"agathe#Schade. Sie ist auch immer sehr beschäftigt.",
+			"agathe#Ich weiß gar nicht, wie sie das macht. Arbeit und drei Kinder.",
+			"agathe#Mir war damals schon ein Mann zu viel. Die Arbeit hat mich so eingenommen.",
+			"agathe#Aber inzwischen sind die Zeiten ja andere."
+		]
+	},
+	"#dialog5": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie reizend, dass du dir Zeit für deine Mitmenschen nimmst.",
+			"agathe#Wenn ich da an mich zurückdenke... Ich hatte immer nur meine Karriere im Kopf.",
+			"agathe#Ganz wie Elias, fürchte ich. Kennst du Elias?"
+			],
+		"options": {
+			"EliasBekannt": {
+				"prompt": "Ja",
+				"actors": ["agathe", "avatar.r"],
+				"text": [
+					"avatar.r#Ja, ich kenne ihn."
+				],
+				"options": {
+					"#EliasWeiter": "#EliasWeiter"
+				}
+			},
+			"EliasNichtBekannt": {
+				"prompt": "Kaum",
+				"actors": ["agathe", "avatar.r"],
+				"text": [
+					"avatar.r#Ja, aber nur flüchtig.",
+					"agathe#Das ist genau was ich meine. Keine Zeit für niemanden."
+				],
+				"options": {
+					"#EliasWeiter": "#EliasWeiter"
+				}
+			}
+		}
+	},
+	"#EliasWeiter": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Er wohnt in meiner alten Wohnung.",
+			"agathe#Sehr schöne Wohnung. Zumindest war sie das zu meiner Zeit.",
+			"agathe#Diese moderne Einrichtung von Elias... Hast du diese Couch gesehen? Ein Albtraum!",
+			"agathe#Hat mich von allen Sentimentalitäten geheilt."
+		]
+	},
+	"#dialog6": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie schön! Manchmal denke ich doch noch an meine alte Wohnung zurück.",
+			"agathe#Mitten unter Menschen, weit weg von meiner Arbeit. Aber der Kopf war immer bei der Arbeit.",
+			"agathe#Heute schaut mein Fenster raus aufs Industriegebiet. Ganz hinten kann man die Schornsteine der Fabrik sehen.",
+			"agathe#Aber jetzt genieße ich es, mich mit meinen Nachbarn zu unterhalten."
 		],
+		"options": { "#dialog6Mood1": "", "#dialog6Mood2": "", "#dialog6Mood3": ""}
+	},
+	"#dialog6Mood1": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": 1
+			}
+		],
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Und denke sogar über ein Haustier nach. Wer hätte das gedacht?"
+		]
+	},
+	"#dialog6Mood2": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": 0
+			}
+		],
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Seltsam, nicht wahr? Aber so ist das Leben manchmal."
+		]
+	},
+	"#dialog6Mood3": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": -1
+			}
+		],
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Es kommt mir vor, als hätte ich all die Zeit zuvor vergeudet..."
+		]
+	},
+	"#dialog7": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie schön! Gestern Nachmittag kam Veronika zum Tee vorbei.",
+			"agathe#Hat sie dir schon von ihrem Fotobuch erzählt?",
+			"agathe#Sie ist so eine begabte Künstlerin!",
+			"agathe#Ich helfe ihr ein wenig. Meine Familie lebt schon seit Generationen in Krisopolis.",
+			"agathe#Als ich jung war, wollte ich hier weg. Aber anderswo wurde es mir schnell zu langweilig."
+		]
+	},
+	"#dialog8": {
+		"conditions": [
+			{
+				"method": "is_state_by_name",
+				"state": "ElectricityState.NONE"
+			}
+		],
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie reizend! Ich bin auch gleich mit Kris und Veronika verabredet.",
+			"agathe#Ich leihe mir nämlich immer ihren Campingkocher aus, wenn der Strom ausgefallen ist.",
+			"agathe#Es ist zwar etwas mühsamer, auf dem Balkon zu kochen, aber ich koche so gerne."
+		],
+		"options": {
+			"MarmeladeFuerAvatar": {
+				"conditions": [
+					{
+						"has_karma_with": "agathe",
+						"karma": 1
+					}
+				],
+				"actors": [ "agathe", "avatar.r"],
+				"text": [
+					"agathe#Ganz besonders Marmelade.",
+					"agathe#Ich bring dir mal ein Glas vorbei.",
+					"avatar.r#Oh ja, gerne!"
+				]
+			},
+			"ChemieUndKochen": {
+				"actors": [ "agathe", "avatar.r"],
+				"text": [
+					"agathe#Vielleicht bin ich deshalb in die Chemie gegangen."
+				]
+			}
+		}
+	},
+	"#dialog9": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie reizend! Ich habe eben in einem alten Fotobuch geblättert.",
+			"agathe#Veronika möchte ein paar meiner Bilder für ihr Buch verwenden."
+		],
+		"options": {
+			"FotosTeilenSuper": {
+				"prompt": "Super!",
+				"actors": ["agathe", "avatar.r"],
+				"text": [
+					"avatar.r#Das ist ja toll!",
+					"agathe#Ja, nicht wahr? Dabei war ich immer nur Amateur.",
+					"agathe#Ein Nachbar hatte damals eine Dunkelkammer.",
+					"agathe#Er hat mir gezeigt, wie man Fotos entwickelt. Da war ich noch ein Kind."
+				]
+			},
+			"FotosTeilenMeh": {
+				"prompt": "Okay...",
+				"actors": ["agathe", "avatar.r"],
+				"text": [
+					"avatar.r#Ja, ich weiß, ich bin nur Amateur.",
+					"agathe#Ich habe die Alben ja nur, weil es mir so einen Spaß gemacht hat, die Fotos zu entwickeln.",
+					"agathe#Und der Erinnerungen wegen..."
+				]
+			}
+		}
+	},
+	"#dialog10": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie reizend! Hast du dich gut eingelebt in Krisopolis?"
+		],
+		"options": {
+			"EingelebtJa": {
+				"prompt": "Ja",
+				"actors": ["agathe", "avatar.r"],
+				"text": [
+					"avatar.r#Ja, es ist wirklich schön hier!",
+					"agathe#Ja, nicht wahr?",
+					"agathe#Es freut mich, dass du das auch so siehst."
+				],
+				"options": {
+					"#EingelebtWeiter": "#EingelebtWeiter"
+				}
+			},
+			"EingelebtNein": {
+				"prompt": "Weiß nicht",
+				"actors": ["avatar.r", "agathe"],
+				"text": [
+					"avatar.r#Ich weiß nicht so recht.",
+					"agathe#Ich verstehe, was du meinst."
+				],
+				"options": {
+					"#EingelebtWeiter": "#EingelebtWeiter"
+				}
+			}
+		}
+	},
+	"#EingelebtWeiter": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Es ist ja nicht immer so leicht, hier zu leben.",
+			"agathe#Aber uns kann auch nicht mehr viel überraschen, nicht wahr?",
+			"avatar.r#Da hast du recht."
+		]
+	},
+	"#dialog11": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie schön! Habe ich dir schon mal von der großen Flut von 1977 erzählt?"
+		],
+		"options": {
+			"#Flut1977Ja": {
+				"prompt": "Ja",
+				"actors": ["agathe", "avatar.r"],
+				"text": [
+					"avatar.r#Ja, schon mehr als einmal.",
+					"agathe#Oh, wirklich? Wie schade."
+				]
+			},
+			"#Flut1977Nein": {
+				"prompt": "Nein",
+				"actors": ["agathe", "avatar.r"],
+				"text": [
+					"avatar.r#Noch nicht.",
+					"agathe#Das war ein Jahr! Die Riskana tritt ja häufiger über die Ufer, aber damals...",
+					"agathe#Wir sind mit Booten durch die Straßen gefahren. Wie in Venedig!"
+				],
+				"options": { "#dialogFlutMood1": "", "#dialogFlutMood2": "", "#dialogFlutMood3": ""}
+			}
+		}
+	},
+	"#dialogFlutMood1": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": 1
+			}
+		],
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Ich habe noch im Kopf, wie mein Bruder sich im Boot aufstellte und anfing zu singen.",
+			"agathe#Oh, süße Krisopolis, du Stadt meiner Jugend.",
+			"agathe#Bei dir zu verweilen, das wär meine Tugend.",
+			"agathe#Hauch deiner Sirenen in der Nacht.",
+			"agathe#Donnernde Küsse, Häuser in Feuerspracht.",
+			"agathe#Doch ich, ich hab mich davon gemacht.",
+			"agathe#Keine Liebe mehr an dich verschwendet.",
+			"agathe#Mit deiner Tränenflut hast du es nun beendet.",
+			"agathe#Zu schade, dass mein Bruder keinen Fuß mehr in die Stadt setzt."
+		]
+	},
+	"#dialogFlutMood2": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": 0
+			}
+		],
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wir waren tagelang ohne sauberes Trinkwasser.",
+			"agathe#Alle Vorräte im Keller vernichtet.",
+			"agathe#Das ist etwas, was ich damals gelernt habe. Hier oben sind immer Notfallvorräte."
+		]
+	},
+	"#dialogFlutMood3": {
+		"conditions": [
+			{
+				"method": "has_mood",
+				"mood": -1
+			}
+		],
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Meine Eltern haben mich damals gefragt, ob ich ihr Haus übernehmen will.",
+			"agathe#Keller, Erdgeschoss, alles war hinüber.",
+			"agathe#Als ich ablehnte, sind sie umgezogen. Renovieren war ihnen zu viel Arbeit.",
+			"agathe#Schade eigentlich."
+		]
+	},
+	"#dialog12": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie reizend! Wusstest du, dass Waldbrände früher selten waren?",
+			"agathe#Wir hatten ja alles. Hochwasser, Dürre, Sturm, Erdbeben, Unfälle, Häuserbränder... ja, die schon.",
+			"agathe#Aber ich habe nur einen einzigen Waldbrand erlebt - in meinen ersten sechzig Lebensjahren.",
+			"agathe#Seitdem waren es drei oder vier. Ich erinnere mich nicht genau.",
+			"agathe#Die Dürren heute sind schlimmer als damals. Und der Wald ist trockener.",
+			"agathe#Den letzten schlimmen Brand hat ein Zigarettenstummel ausgelöst. Furchtbar!"
+		]
+	},
+	"#dialog13": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie reizend! Es gibt so einiges, was man sich angewöhnt, wenn man hier wohnt.",
+			"agathe#Andernorts schauen einen die Leute immer komisch an.",
+			"agathe#Wenn man bei Sturm sofort rausgeht und die Sachen auf dem Balkon befestigt, zum Beispiel.",
+			"agathe#Und dann passiert etwas und plötzlich wird man ganz anders angeschaut.",
+			"agathe#Und die Leute fangen an zu fragen.",
+			"agathe#So ist das wohl. Man kocht mit den Zutaten, die man kennt.",
+			"agathe#Ich bin froh, dass ich weiß, was ich tun muss - egal was passiert."
+		]
+	},
+	"#dialog14": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie schön! Früher bin ich immer in den Supermarkt gegangen.",
+			"agathe#Heute bin ich froh, dass wir den Marktplatz haben.",
+			"agathe#Das Essen von dort schmeckt einfach viel besser.",
+			"agathe#Noch besser ist es natürlich, wenn man es selbst anbaut.",
+			"agathe#Kennst du Gerhard? Er baut ganz viel Obst und Gemüse an.",
+			"agathe#Leider ist er so zurückhaltend. Er sieht mich kaum an, wenn ich mit ihm spreche."
+		]
+	},
+	"#dialog15": {
+		"actors": [ "agathe", "avatar.r"],
+		"text": [
+			"agathe#Wie schön! Ich koche ja wirklich gerne. Aber ohne Internet.",
+			"agathe#Wenn ich da über Nährstoffverluste und so einen Quatsch lese, das verdirbt mir die Laune.",
+			"agathe#Als ob wir heutzutage nicht schon überversorgt wären.",
+			"agathe#Mit Nährstoffen und Stress.",
+			"agathe#Wer hat denn schon die Zeit, alles von Grund auf zuzubereiten?",
+			"agathe#Nein, den Stress spare ich mir."
+		]
 	},
 	"#handeln": {
 		"weight": 1,
@@ -55,8 +412,8 @@
 		"consequences": {
 			"overlay_gui": {
 				"name": "Trade",
-				"args": "Agathe",
-			},
+				"args": "Agathe"
+			}
 		},
 		"actors": [""],
 		"prompt": "Ja, ich will handeln.",

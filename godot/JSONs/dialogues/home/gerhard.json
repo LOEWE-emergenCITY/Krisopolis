@@ -3,12 +3,15 @@
 		"conditions": {
 			"has_quest_stage": {
 				"quest": "FRIEDEL_WEG",
-				"stage": 1
+				"stage": 5
 			}
 		},
-		"actors": ["avatar", "gerhard.r"],
+		"actors": [
+			"avatar",
+			"gerhard.r"
+		],
 		"text": [
-			"gerhard.r#Friedel ist schon wieder alleine losgezogen. Hast du ihn gesehen?"
+			"gerhard.r#Friedel ist schon wieder alleine losgezogen. Kannst du mir helfen, ihn zu suchen?"
 		],
 		"options": {
 			"#helfen": "",
@@ -16,32 +19,54 @@
 		}
 	},
 	"#depp": {
-		"prompt": "Nicht suchen helfen",
+		"prompt": "Neee",
 		"consequences": {
 			"set_quest_stage": {
 				"quest": "FRIEDEL_WEG",
 				"stage": 4
+			},
+			"npc_change_stage": {
+				"npc": "Friedel",
+				"stage": "gardenhouse",
+				"wait": false
 			}
 		},
-		"actors": ["avatar", "gerhard.r"],
+		"actors": [
+			"avatar",
+			"gerhard.r"
+		],
 		"text": [
-			"avatar#Nein, ich habe ihn leider nicht gesehen.",
-			"gerhard.r#Okay, schade. Trotzdem danke! Ich suche dann mal weiter."
+			"avatar#Das schaffst du schon alleine.",
+			"gerhard.r#Oh, okay, schade. Ich suche dann mal weiter."
 		]
 	},
 	"#helfen": {
-		"prompt": "Suchen Helfen",
-		"actors": ["avatar", "gerhard.r"],
+		"prompt": "Suchen helfen",
+		"consequences": {
+			"set_quest_stage": {
+				"quest": "FRIEDEL_WEG",
+				"stage": 2
+			}
+		},
+		"actors": [
+			"avatar",
+			"gerhard.r"
+		],
 		"text": [
 			"avatar#Komm, wir suchen ihn zusammen.",
 			"gerhard.r#Danke! Ich suche ihn im Park, schaust du dich auf dem Marktplatz um?",
 			"gerhard.r#Und dann treffen wir uns in einer Stunde bei mir, hoffentlich mit Friedel.",
 			"avatar#Alles klar!"
 		],
-		"consequences": {
-			"set_quest_stage": {
-				"quest": "FRIEDEL_WEG",
-				"stage": 2
+		"options": {
+			"#next": {
+				"consequences": {
+					"npc_change_stage": {
+						"npc": "Gerhard",
+						"stage": "park",
+						"wait": false
+					}
+				}
 			}
 		}
 	}

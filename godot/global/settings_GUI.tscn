@@ -1,15 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://5dpuu2l72yhg"]
+[gd_scene load_steps=9 format=3 uid="uid://5dpuu2l72yhg"]
 
 [ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="1_g18nf"]
-[ext_resource type="Script" path="res://global/settings_GUI.gd" id="2_f1d4f"]
+[ext_resource type="Script" uid="uid://clstq8gwbbcak" path="res://global/settings_GUI.gd" id="2_f1d4f"]
 [ext_resource type="Texture2D" uid="uid://dnbnxosef5r58" path="res://assets/citymap/citymap.png" id="3_2gmg0"]
-[ext_resource type="Script" path="res://volume_slider.gd" id="3_n24n2"]
+[ext_resource type="Script" uid="uid://n2o2oh2ntwq5" path="res://volume_slider.gd" id="3_n24n2"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_5kd0i"]
 [ext_resource type="PackedScene" uid="uid://ctqd8vvfeado1" path="res://GUI/avatar_selection_GUI.tscn" id="4_s3tp7"]
-[ext_resource type="PackedScene" uid="uid://cdvvsn8hcgjtw" path="res://GUI/actionGUI/confirmation_GUI.tscn" id="6_cbnpx"]
+[ext_resource type="PackedScene" uid="uid://cdvvsn8hcgjtw" path="res://GUI/default/confirmation_GUI.tscn" id="6_cbnpx"]
+[ext_resource type="PackedScene" uid="uid://dmp3dkvy1barj" path="res://GUI/default/tooltip_GUI.tscn" id="7_lfnls"]
 
 [node name="SettingsGUI" type="Control"]
 process_mode = 2
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +35,7 @@ color = Color(0.305882, 0.305882, 0.305882, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 offset_top = 150.0
@@ -78,6 +81,12 @@ custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Dyslexic Font"
+
+[node name="Info" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" instance=ExtResource("4_5kd0i")]
+custom_minimum_size = Vector2(400, 49)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Info"
 
 [node name="Reset" parent="CanvasLayer/VBoxContainer/CenterContainer2/Buttons" instance=ExtResource("4_5kd0i")]
 layout_mode = 2
@@ -135,6 +144,9 @@ text = "Speichern & Zurück
 [node name="ConfirmationGUI" parent="CanvasLayer" instance=ExtResource("6_cbnpx")]
 visible = false
 
+[node name="TooltipGUI" parent="CanvasLayer" instance=ExtResource("7_lfnls")]
+visible = false
+
 [node name="AvatarSelectionGUI" parent="CanvasLayer" instance=ExtResource("4_s3tp7")]
 visible = false
 
@@ -142,6 +154,7 @@ visible = false
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Buttons/SelectAvatar" to="." method="_on_select_avatar_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Buttons/Sound" to="." method="_on_sound_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Buttons/FontChange" to="." method="_on_font_change_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Buttons/Info" to="." method="_on_info_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Buttons/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Sounds/Vibrate" to="." method="_on_vibrate_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/CenterContainer2/Sounds/Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbh3i1g4hxurj"]
+
+[ext_resource type="Script" uid="uid://db5dshc3fh5lw" path="res://GUI/default/default_action_GUI.gd" id="1_47fy4"]
+[ext_resource type="Texture2D" uid="uid://b7kk24kpdehbm" path="res://assets/GUI/backgrounds/menu_box_white.png" id="2_7crf1"]
+[ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="3_0ta68"]
+[ext_resource type="Texture2D" uid="uid://clxphar2j8ggq" path="res://assets/GUI/icons/icon_needs_time.png" id="4_4twlg"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_6xb23"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jy4p8"]
+texture = ExtResource("2_7crf1")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[node name="DefaultActionGUI" type="PanelContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -140.0
+offset_right = 246.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("1_47fy4")
+icon = ExtResource("4_4twlg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jy4p8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("3_0ta68")
+bbcode_enabled = true
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ConfirmBtn" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_6xb23")]
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Bestätigen"
+icon = ExtResource("4_4twlg")
+expand_icon = true
+
+[node name="BackBtn" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_6xb23")]
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Abbrechen"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ConfirmBtn" to="." method="_on_confirm_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]

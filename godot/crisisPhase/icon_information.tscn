@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmchkorcdvl0d"]
 
-[ext_resource type="Script" path="res://crisisPhase/icon_information.gd" id="1_y0unm"]
+[ext_resource type="Script" uid="uid://4jx0xxvbryhf" path="res://crisisPhase/icon_information.gd" id="1_y0unm"]
 [ext_resource type="Texture2D" uid="uid://dodrjlcgbbf5j" path="res://assets/GUI/icons/icon_statusbar_nutrition.png" id="2_nlkmw"]
 [ext_resource type="Texture2D" uid="uid://bqq5vbmiv8nrr" path="res://assets/GUI/icons/icon_statusbar_hydration.png" id="3_75l8e"]
 [ext_resource type="Texture2D" uid="uid://dhj4hfky75aeg" path="res://assets/GUI/icons/icon_statusbar_health.png" id="4_51kyr"]
@@ -49,7 +49,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[center]Nahrung
-Sinkt täglich um 750 kcal.[/center]"
+Sinkt täglich um 3 Balken.[/center]"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -67,11 +67,12 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[center]Hydration
-Sinkt täglich um 750 ml.[/center]"
+Sinkt täglich um 3 Balken.[/center]"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(64, 64)
@@ -84,11 +85,12 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[center]Gesundheit
-Sinkt täglich um 10 %.[/center]"
+Sinkt täglich um 3 Balken.[/center]"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(64, 64)
@@ -101,10 +103,11 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[center]Wohlbefinden
-Sinkt täglich um 10 %.[/center]"
+Sinkt täglich um 3 Balken.[/center]"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer6"]
 layout_mode = 2
@@ -116,7 +119,7 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "[center]Zeitabschnitt
-Aktion verbraucht Zeit.[/center]"
+Aktionen verbrauchen Zeit.[/center]"
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]

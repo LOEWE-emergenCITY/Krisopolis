@@ -1,0 +1,296 @@
+[[Node]] start
+[actors] avatar kris.flipped
+[text]
+kris:Oh, hey!
+avatar:Was geht?
+[jump] talk
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+- [jump] talk5
+- [jump] talk6
+- [jump] talk7
+- [jump] talk8
+
+[[Node]] stop
+[actors] avatar kris.flipped
+[text]
+kris:Okay, bis dann!
+
+[[Node]] talk1
+[actors] avatar kris.flipped veronika.flipped
+[text]
+kris:Hast du Lust auf eine heiße Schokolade?
+veronika:Wir haben keine Milch mehr da.
+[actors] avatar kris veronika.flipped
+[text]
+kris:Oh, schade. Aber ich könnte uns einen Smoothie machen!
+veronika:Obst haben wir auch keins mehr.
+[actors] avatar kris veronika.flipped
+[text]
+kris:Stimmt ja. Oh – und was ist mit Milchreis?
+veronika:... Kris. Keine Milch.
+[actors] avatar kris.flipped veronika.flipped
+[text]
+kris:Achja. Na gut. Dann nächstes Mal.
+
+[[Node]] talk2
+[actors] avatar kris.flipped
+[text]
+kris:Vero plant schon unseren nächsten Campingtrip. Ich hoffe, sie plant nicht zu viele Urlaubstage komplett durch.
+kris:Versteh mich nicht falsch: Ich finde es toll, dass sie immer den Überblick hat und ich mich um nichts kümmern muss.
+kris:Aber manchmal will ich auch einfach in die Natur wandern, ohne einen Plan für den Tag. Verstehst du?
+[Choice]
+- [same] Kann ich gut nachvollziehen.
+- [no] Sehe ich anders.
+
+[[Node]] same
+[actors] avatar kris.flipped
+[text]
+avatar:Ohne Spontaneität ist das Leben langweilig.
+kris:Genau! Wenn ich nie vom Wanderweg abweiche, verpasse ich so viele schöne Orte!
+kris:Und als ich letztes Mal den Wasserfall gefunden habe, war Vero auch total begeistert.
+kris:Mal sehen, was wir dieses Mal finden!
+
+[[Node]] no
+[actors] avatar kris.flipped
+[text]
+avatar:Nur in den Tag hinein leben funktioniert auch nicht.
+[actors] avatar kris
+[text]
+kris:Ja, das stimmt natürlich ...
+kris:Vermutlich hast du recht. Ich sollte dankbar sein, dass Vero alles für uns plant.
+
+[[Node]] talk3
+[actors] avatar kris.flipped
+[text]
+kris:Du siehst nicht zufällig meinen Schlüssel? Ich suche ihn schon seit Ewigkeiten.
+[random]
+- [jump] BraucheSchluessel
+- [jump] BraucheSchluessel2
+
+[[Node]] BraucheSchluessel
+[actors] avatar kris.flipped
+[Condition] has_not_flag("NoEntry", "")
+[text]
+kris:Ich brauche ihn erst heute Abend, wenn ich auf die Arbeit gehe.
+kris:Aber eigentlich wollte ich vorher nochmal spazieren.
+[random]
+- [jump] SchluesselPosition1
+- [jump] SchluesselPosition2
+- [jump] SchluesselPosition3
+- [jump] SchluesselPosition4
+
+[[Node]] BraucheSchluessel2
+[actors] avatar kris.flipped
+[text]
+kris:Vielleicht hab ich ihn verloren? Ich hab schon überall gesucht.
+kris:Keine Ahnung, wo er stecken könnte...
+[random]
+- [jump] SchluesselPosition1
+- [jump] SchluesselPosition2
+- [jump] SchluesselPosition3
+- [jump] SchluesselPosition4
+
+[[Node]] SchluesselPosition1
+[actors] avatar kris veronika.flipped
+[text]
+veronika:Neben der Gießkanne unter der Spüle.
+kris:Oh. Wie kommt er denn da hin?
+veronika:Das hab ich mich auch gefragt.
+
+[[Node]] SchluesselPosition2
+[actors] avatar kris veronika.flipped
+[text]
+veronika:Auf der Ablage im Bad.
+kris:Ah ja, stimmt. Jetzt fällt es mir wieder ein!
+kris:Du bist ein Schatz, Vero!
+
+[[Node]] SchluesselPosition3
+[actors] avatar kris veronika.flipped
+[text]
+veronika:Am Haken neben der Tür.
+kris:Aber das ist doch deiner!
+veronika:Nein, meiner steckt in meiner Kameratasche.
+kris:Oh. Dann war er ja die ganze Zeit da!
+
+[[Node]] SchluesselPosition4
+[actors] avatar kris.flipped veronika.flipped
+[text]
+veronika:Vielleicht kannst du uns suchen helfen. Ich weiß auch nicht, wo er ist.
+[Choice]
+- [SchluesselSuchenJa] Okay.
+- [SchluesselSuchenNein] Heute nicht, sorry.
+
+[[Node]] SchluesselSuchenJa
+[actors] avatar kris.flipped veronika.flipped
+[text]
+avatar:Klar, gerne!
+kris:Mega! Ich hab auch was für dich, als Dankeschön!
+[action] gain_player_item("CHLOR_TABLETS", "Chlortabletten kann man immer mal gebrauchen.")
+[action] progress_day("Bei der Schlüsselsuche helfen")
+
+[[Node]] SchluesselSuchenNein
+[actors] avatar kris.flipped veronika.flipped
+[text]
+avatar:Viel Glück bei der Suche!
+kris:Danke. Das brauchen wir.
+
+[[Node]] talk4
+[actors] avatar kris.flipped veronika.flipped
+[text]
+kris:Krisopolis ist der beste Ort der Welt, um zu entspannen!
+veronika:Kris stört sich nicht an den Krisen.
+[actors] avatar kris veronika.flipped
+[text]
+kris:Warum soll ich auch? Ist ja auch nicht so viel anders als Camping.
+[actors] avatar kris.flipped veronika.flipped
+[text]
+kris:Meine Pflanzen. Kochen auf dem Balkon. Kellnern muss ich auch nicht.
+kris:Wenn man sich keinen Kopf macht, sind diese Krisen gar nicht schlimm.
+kris:Mehr wie schlechtes Wetter. Bisschen ungemütlich, aber dafür hat man ja die passende Kleidung.
+veronika:Es geht nichts über Kris' Gelassenheit während Krisen. Das muss ich schon sagen.
+
+[[Node]] talk5
+[actors] avatar kris.flipped veronika.flipped
+[Condition] npc_is_sad("veronika")
+[text]
+kris:Du kommst grade recht. Vielleicht kannst du mir helfen, Vero zu beruhigen.
+avatar:Wieso? Was ist passiert?
+veronika:Nichts ist passiert.
+kris: Vero ist schlechter Laune, weil sie zu einem Kundentermin zu spät kam.
+veronika:Kris! Erzähl das doch nicht rum! Das ist so schon schlimm genug!
+[actors] avatar kris veronika.flipped
+[text]
+kris:Es waren vier Minuten ...
+veronika:Vier Minuten zu spät, ja!
+[actors] avatar kris.flipped veronika.flipped
+[text]
+kris:Siehst du, was ich meine? Vero dreht total durch. Dabei passiert sowas jedem mal.
+kris:Außerdem kann sie nicht mal was dafür.
+veronika:Das ist egal. Ich bin zu spät gekommen, das ist das Problem.
+kris:Und warum ist es dann nicht egal, dass dein Kunde darin gar kein Problem gesehen hat?
+veronika:Das sagt sie nur so, um nett zu sein.
+kris:...
+[Choice]
+- [calm_vero] Ich finde auch, dass da nichts dabei ist.
+- [compassion] Ich versteh schon, warum Vero so aufgebracht ist.
+
+[[Node]] calm_vero
+[actors] avatar kris.flipped veronika.flipped
+[text]
+kris:Siehst du?
+veronika:...
+
+[[Node]] compassion
+[actors] avatar kris.flipped veronika.flipped
+[text]
+veronika:Danke!
+kris:Das tu ich ja auch. Sowas ist ärgerlich. Aber dann ärgert man sich eben kurz, entschuldigt sich und dann passt das doch auch, wenns nicht weiter schlimm ist.
+kris:Ist doch viel schlimmer, wenn ich den ganzen Ärger in mir aufstaue.
+kris:Dann bin ich nur noch damit beschäftigt, den Deckel draufzuhalten, und kann mich nicht mehr auf das Meeting konzentrieren.
+veronika:...
+veronika:Manchmal hasse ich es, wenn du Recht hast ...
+kris:Na also. So gefällst du mir besser.
+
+[[Node]] talk6
+[actors] avatar kris.flipped
+[text]
+kris:Neulich waren wir bei Nebel und Regen wandern. Richtig mystische Stimmung.
+kris:Und so ruhig. Kaum jemand auf dem Trail.
+[match] and_bool(randomize(1, 10), eq_bool(get_var_or(#kids_on_trail, false), false))
+- [true] [jump] set_kids_trail_dialogue
+- [false] [text] kris:Ich liebe diese Stille.
+[jump] talk6_1
+[Comment]
+	[if] and_bool(randomize(1,10),eq_bool(#kids_on_trail,false))
+		[then]
+			[text]
+			kris:Wobei da eine Familie war mit kleinen Kindern, alle im Poncho. Ich hab so getan, als würde ich von Geistern gejagt. Das war spitze!
+			[set] #kids_on_trail true
+		[else]
+			[text]
+			kris:Ich liebe diese Stille.
+
+[[Node]] set_kids_trail_dialogue
+[actors] avatar kris.flipped
+[text]
+kris:Wobei da eine Familie war mit kleinen Kindern, alle im Poncho. Ich hab so getan, als würde ich von Geistern gejagt. Das war spitze!
+[set] #kids_on_trail true
+[jump] talk6_1
+
+[[Node]] talk6_1
+[actors] avatar kris.flipped
+[text]
+kris:Und dann kamen wir auf einen Hügel und die Sonnenstrahlen zogen sich durch den Nebel zwischen den Bäumen ...
+kris:Sag das nicht Vero, aber das war schöner als auf jedem Foto.
+kris:Am Ende lag der Nebel wie ein weißes Meer vor uns und wir standen in der Sonne.
+kris:Die Natur ist wunderbar.
+
+[[Node]] talk7
+[actors] avatar kris.flipped
+[text]
+kris:Ich bin froh, dass ich beim Kellnern immer in Bewegung bin. So wie Vero ständig vorm Computer hocken, das wär nichts für mich.
+kris:Je mehr ich draußen und in Bewegung bin, desto besser fühle ich mich.
+[Choice]
+- [outside_meh] Ist bei mir anders.
+- [outside_great] Geht mir genauso.
+
+[[Node]] outside_meh
+[actors] avatar kris.flipped
+[text]
+kris:Ist ja auch okay. Hauptsache, du bist zufrieden mit dem, was du machst.
+
+[[Node]] outside_great
+[actors] avatar kris.flipped
+[text]
+kris:Ich wusste, wir verstehen uns.
+
+[[Node]] talk8
+[actors] avatar kris.flipped
+[text]
+kris:Kinder lernen heutzutage kaum noch was über die Natur. Das ist richtig schade.
+kris:Ich hab schon ein paar Mal als Wanderführer mit der Grundschule Ausflüge organisiert.
+kris:Von sowas sollte es viel mehr geben. Leider sind es nur die interessierten Lehrer, die sich darauf einlassen.
+kris:Viel zu viele Leute sind heute viel zu überarbeitet. Da geht so viel Magie verloren.
+[match] eq_int(randomize(1, 3), 1)
+- [true] [actors] avatar kris.flipped veronika.flipped
+- [false] [Choice]
+	- [disagree_overworked] Na ja, man muss ja auch Geld verdienen, um zu leben.
+	- [agree_overworked] Das stimmt.
+[text]
+veronika:Redest du da gerade über mich?
+kris:Nö. Über Lehrer.
+veronika:Ach so.
+[Comment]
+	[if] randomize(1,3)
+		[then]
+			[actors] avatar kris.flipped veronika.flipped
+			[text]
+			veronika:Redest du da gerade über mich?
+			kris:Nö. Über Lehrer.
+			veronika:Ach so.
+		[else]
+			[Choice]
+			- [disagree_overworked] Na ja, man muss ja auch Geld verdienen, um zu leben.
+			- [agree_overworked] Das stimmt.
+
+[[Node]] disagree_overworked
+[actors] avatar kris.flipped
+[text]
+kris:Schon. Aber Geld bringt nichts, wenn daneben keine Zeit zum Leben bleibt.
+kris:Wenn ich früh sterbe, hab ich trotzdem was erlebt.
+kris:Und wenn ich so alt werde wie Agathe, brauche ich mich nicht zu fragen, was ich eigentlich aus meinem Leben gemacht hab. Ich weiß es.
+kris:Nichts gegen Agathe, die ist cool drauf. Wenn auch ein bisschen zu sehr Stubenhocker für meinen Geschmack.
+kris:Dafür passt sie auf meine Pflanzen auf. Das ist super.
+
+[[Node]] agree_overworked
+[actors] avatar kris.flipped
+[text]
+kris:Wir sollten ein gutes Vorbild sein. Das ist das Beste, was wir tun können.
+
+

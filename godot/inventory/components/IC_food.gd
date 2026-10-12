@@ -3,16 +3,20 @@ class_name EMC_IC_Food
 
 @export var _nutritionness: int = 0
 
-const UNIT: String = "kcal"
+const UNIT: String = "[img=center,center]res://assets/GUI/icons/food_capsule.png[/img]"
 const UNIT_FACTOR: int = 250 #1 Unit = 250kcal
 
 ########################################## PUBLIC METHODS ##########################################
-func _init(nutritionness: int = 0, pleasurable: int = 0) -> void:
-	super("Essen", Color.INDIAN_RED)
-	_nutritionness = nutritionness
+func _init() -> void:
+	super("Essen", EMC_Palette.LIGHT_GREEN)
+
+func setup(data: Dictionary) -> EMC_IC_Food:
+	_nutritionness = data.get("value", _nutritionness)
+	
+	return self
 
 func consume(p_avatar : EMC_Avatar) -> void:
-	p_avatar.update_nutrition(self.get_nutritionness())	
+	p_avatar.modify_food_delta(self.get_nutritionness())
 
 ## Get the internal nutritionness value
 func get_nutritionness() -> int:
@@ -26,7 +30,10 @@ func get_unit_nutritionness() -> int:
 
 ## RENAME WITH CAUTION: It overrides superclass method!
 func get_name_with_values() -> String:
-	return name + " (" + str(get_unit_nutritionness()) + UNIT + ")"
+	if _nutritionness >= 0:
+		return "Nährwert: " + "+\u2060".repeat(_nutritionness).left(-1) #name + " (" + str(get_unit_nutritionness()) + UNIT + ")"
+	else:
+		return "Nährwert: " + "-\u2060".repeat(-_nutritionness).left(-1)
 
 func to_dict() -> Dictionary:
 	var data : Dictionary = {

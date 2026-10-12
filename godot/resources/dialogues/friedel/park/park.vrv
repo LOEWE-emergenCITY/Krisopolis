@@ -1,0 +1,55 @@
+[[Node]] start
+[[Type]] stage
+[random]
+- [jump] talk1
+- [jump] talk2
+
+[[Node]] talk1
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+friedel:Wuff! Wuff! Wuff!
+gerhard:Ich glaube, Friedel will spielen.
+[Choice]
+- [play] Ich hätte ein bisschen Zeit.
+- [stop] Diesmal nicht.
+
+[[Node]] play
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+friedel:Wuff! Wuff! Wuff!
+gerhard:Jetzt bist du verpflichtet, fürchte ich.
+avatar:Na dann: Fang, Friedel!
+[action] progress_day("Spiele mit Friedel")
+
+[[Node]] stop
+[actors] avatar friedel.flipped gerhard.flipped
+[text]
+friedel:[i]*winsel*[/i]
+gerhard:Keine Sorge, Friedel, ich werfe dir später noch ein paar Bälle.
+friedel:Wuff! Wuff!
+
+[[Node]] talk2
+[actors] avatar friedel.flipped
+[text]
+avatar:Na, Friedel?
+[Choice]
+- [park_schoen] Magst du den Park?
+- [gassi_schoen] Gehst du gerne Gassi?
+- [reden] Was hast du heute zu sagen?
+
+[[Node]] park_schoen
+[actors] avatar friedel.flipped
+[text]
+friedel:Wuff! Wuff!
+
+[[Node]] gassi_schoen
+[actors] avatar friedel.flipped
+[text]
+friedel:Wuff! Wuff! Wuff!
+
+[[Node]] reden
+[actors] avatar friedel.flipped
+[text]
+friedel:Wuff!
+avatar:Recht hast du!
+friedel:Wuff!

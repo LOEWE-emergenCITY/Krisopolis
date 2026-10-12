@@ -14,7 +14,7 @@ func _init(_p_health_reduction : int = 0) -> void:
 		_health_reduction = _health_reduction * -1 #only accept positive numbers
 
 func consume(p_avatar : EMC_Avatar) -> void:
-	p_avatar.update_health(-self.get_health_reduction())
+	p_avatar.modify_health_delta(-self.get_health_reduction())
 
 ## Get the internal nutritionness value
 func get_health_reduction() -> int:
@@ -23,7 +23,7 @@ func get_health_reduction() -> int:
 
 ## Get the hydration value scaled to fit real-life units
 func get_unit_health_reduction() -> int:
-	return get_health_reduction() * EMC_Avatar.UNIT_FACTOR_HEALTH
+	return get_health_reduction() * EMC_IC_Healthy.UNIT_FACTOR
 
 
 ## RENAME WITH CAUTION: It overrides superclass method!

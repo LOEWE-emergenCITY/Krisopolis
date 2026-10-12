@@ -18,8 +18,8 @@ extends Resource
 class_name EMC_ItemComponent
 
 #FYI: Inherits "name" property of Node
-var _color: Color
-var name : String
+@export var _color: Color
+@export var name : String
 
 static var COMP_SCNS : Dictionary = {}
 
@@ -45,22 +45,19 @@ func get_colored_name_with_vals() -> String:
 
 ## Returns a EMC_ItemComponent Child Object
 ## If the Component name is invalid return null
-static func from_dict(data : Dictionary) -> EMC_ItemComponent:
-	var comp_name : String = data.get("name")
-	var comp_params : Variant = data.get("params")
+static func from_dict(comp_name: String, data : Dictionary) -> EMC_ItemComponent:
 	var comp_scn : Resource = COMP_SCNS.get(comp_name, null)
 			
-	if comp_scn != null:
-		return comp_scn.new(comp_params)
-	else:
-		var tmp_scn : Resource = load("res://inventory/components/IC_" + comp_name + ".gd")
+	if comp_scn == null:
+		comp_scn = load("res://inventory/components/IC_" + comp_name + ".gd")
 		
-		if tmp_scn == null:
+		if comp_scn == null:
 			printerr("Comp with name: " + comp_name + ", does not exist.")
 			return null
-			assert(tmp_scn != null)
+			
+		COMP_SCNS[comp_name] = comp_scn
 		
-		COMP_SCNS[comp_name] = tmp_scn
-		return COMP_SCNS[comp_name].new(comp_params)
+	var new_comp: EMC_ItemComponent = comp_scn.new()
+	return new_comp.setup(data)
 
 ########################################## PRIVATE METHODS #########################################

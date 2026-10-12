@@ -2,16 +2,6 @@
 class_name EMC_Stage
 extends Node2D
 
-enum Layers{
-	NAVIGATION   = 0,
-	BACKGROUND   = 1,
-	MIDDLEGROUND_1 = 2,
-	MIDDLEGROUND_2 = 3,
-	MIDDLEGROUND_3 = 4,
-	FOREGROUND   = 5,
-	TOOLTIPS     = 6,
-}
-
 enum Atlases{ #Tileset Atlasses
 	FURNITURE_PNG = 0,
 	GROUND_PNG = 1,
@@ -30,60 +20,46 @@ enum CustomDataLayers{
 }
 
 const INVALID_TILE: Vector2 = Vector2(-1, -1)
-const TILE_MIN_X_COORD: int = 0
-const TILE_MAX_X_COORD: int = 9
-const TILE_MIN_Y_COORD: int = 0
-const TILE_MAX_Y_COORD: int = 16
-const NPC_TILE_COORD: Vector2i = Vector2i(3, 0)
-const NAVI_TILE_COORD = Vector2i(0, 0)
 
 var _npcs : Control
 var _opt_event_mngr : EMC_OptionalEventMngr
 
-var _stage : TileMap = null
+@onready var navigation: TileMapLayer = $Navigation
+@onready var background: TileMapLayer = $Background
+@onready var middleground_1: TileMapLayer = $"Middleground 1"
+@onready var middleground_2: TileMapLayer = $"Middleground 2"
+@onready var middleground_3: TileMapLayer = $"Middleground 3"
+@onready var foreground: TileMapLayer = $Foreground
+@onready var tooltips: TileMapLayer = $Tooltips
 
-func setup(p_stage_name : String, p_npcs : Control, p_opt_event_mngr : EMC_OptionalEventMngr) -> void:
-	set_name(p_stage_name)
+@onready var spots: Node2D = $Spots
+
+func setup(p_npcs : Control, p_opt_event_mngr : EMC_OptionalEventMngr) -> void:
 	_npcs = p_npcs
 	_opt_event_mngr = p_opt_event_mngr
 
 ####################Public Methods#######################
 
-func load_stage(override_spawn : Dictionary = {}) -> void:
-	_stage = load("res://crisisPhase/stage/" + name + ".tscn").instantiate()
-	#_stage.y_sort_enabled = true
-	add_child(_stage)
+func _ready() -> void:
 	
-	if not Engine.is_editor_hint():
-		_load_optional_event()
+	if not Engine.is_editor_hint() and name == "home":
+		_place_upgrade_furniture()
 	
-		if name == "home":
-			_place_upgrade_furniture()
-		
-		_create_navigation_layer_tiles()
-		
-		if not override_spawn.is_empty():
-			_override_spawn(override_spawn)
-	
-	const INVISIBLE := Color(0, 0, 0, 0)
-	_stage.set_layer_modulate(Layers.TOOLTIPS, INVISIBLE)
-	
-func unload_stage() -> void:
-	remove_child(_stage)
-	_stage.queue_free()
-	
-	_deactivate_NPCs()
+		show_electricity()
 	
 func get_tile_type(p_click_pos : Vector2) -> String:
 	var tile_coord := _global_to_map(p_click_pos)
 	
 	var tile_data : TileData
 	
-	var layers_to_check := [Layers.TOOLTIPS, Layers.FOREGROUND, Layers.MIDDLEGROUND_2, Layers.MIDDLEGROUND_1, Layers.BACKGROUND]
-	for layer: Layers in layers_to_check:
-		tile_data = _stage.get_cell_tile_data(layer, tile_coord)
+	var layers_to_check := [tooltips, foreground, middleground_2, middleground_1, background]
+	for layer: TileMapLayer in layers_to_check:
+		tile_data = layer.get_cell_tile_data(tile_coord)
 		if tile_data != null:
 			break
+	
+	if tile_data == null:
+		return "background"
 			
 	var tooltip : String = tile_data.get_custom_data_by_layer_id(CustomDataLayers.TOOLTIP)
 	if tooltip != "":
@@ -93,61 +69,26 @@ func get_tile_type(p_click_pos : Vector2) -> String:
 	if book_id != 0:
 		return "book\\" + str(book_id) 
 		
-	var action_id : int = tile_data.get_custom_data_by_layer_id(CustomDataLayers.ACTION_ID)
-	if action_id != 0:
-		return "action\\" + str(action_id) 
+	var action_id : String = tile_data.get_custom_data_by_layer_id(CustomDataLayers.ACTION_ID)
+	if not action_id.is_empty():
+		return "action\\" + action_id 
 	
 	return "background"
 	
 func get_avatar_target(p_click_pos : Vector2) -> Vector2:
-	#if get_tile_type(p_click_pos) == "background":
-		#return p_click_pos
-	
 	var _target_position := _determine_adjacent_free_tile(p_click_pos)
 	if _target_position != INVALID_TILE:
 		return _target_position
 	
 	return Vector2.INF
 	
-func show_electricity() -> void:
-	if OverworldStatesMngr.get_electricity_state() == OverworldStatesMngr.ElectricityState.UNLIMITED:
-		_stage.set_layer_modulate(Layers.MIDDLEGROUND_3, Color(1, 1, 1, 0))
+func show_electricity(_tmp: int = 0) -> void:
+	if OverworldStatesMngr.is_effective_state_eq("ElectricityState", "UNLIMITED"): # REMOVE OverworldStatesMngr.get_electricity_state() == OverworldStatesMngr.ElectricityState.UNLIMITED:
+		middleground_3.hide()
 	else:
-		_stage.set_layer_modulate(Layers.MIDDLEGROUND_3, Color(1, 1, 1, 1))
+		middleground_3.show()
 
 ###################Private Methods######################
-
-#*****************Navigation************************
-
-## dynamically create Navigation Layer tiles where there is no collision
-func _create_navigation_layer_tiles() -> void:
-	var tile_coords: Array[Vector2i] = _stage.get_used_cells(Layers.BACKGROUND)
-	
-	## Pro tip to debug this: You can "Force Show" the Navigation visibility:
-	_stage.navigation_visibility_mode = TileMap.VISIBILITY_MODE_FORCE_SHOW
-	
-	for tile_coord: Vector2i in tile_coords:
-		if !_has_tile_collision(tile_coord):
-			_stage.set_cell(Layers.NAVIGATION, tile_coord, \
-				Atlases.NAVIGATION_PNG, NAVI_TILE_COORD)
-		else:
-			_stage.erase_cell(Layers.NAVIGATION, tile_coord)
-
-## Checks multiple distinct layers for collision polygons. If any of them contain one then true
-## is returned, otherwise false is returned
-func _has_tile_collision(p_tile_coord: Vector2i) -> bool:
-	const PHYSICS_LAYER: int = 0
-	if (p_tile_coord.x < 0 || p_tile_coord.y < 0):
-		#push_error("Angeklickte Tile-Koordinaten ungültig")
-		return true
-	
-	#Back to forth, as this should be the shortest check in most cases:
-	var collision_layers := [Layers.BACKGROUND, Layers.FOREGROUND, Layers.MIDDLEGROUND_1, Layers.MIDDLEGROUND_2, Layers.TOOLTIPS]
-	
-	# WARNING may need to check for null
-	return collision_layers.any(func(layer : int) -> bool: 
-		var tile_date := _stage.get_cell_tile_data(layer, p_tile_coord)
-		return tile_date != null and tile_date.get_collision_polygons_count(PHYSICS_LAYER))
 
 #************OPTIONAL EVENTS*****************
 
@@ -158,99 +99,58 @@ func _load_optional_event() -> void:
 			var spawn_tiles_arr := opt_event.spawn_tiles_arr
 			if spawn_tiles_arr != null && !spawn_tiles_arr.is_empty():
 				for spawn_tiles in spawn_tiles_arr:
-					_place_furniture_on_position(spawn_tiles.tilemap_pos,Layers.MIDDLEGROUND_1,
+					_place_furniture_on_position(spawn_tiles.tilemap_pos, middleground_1,
 					 spawn_tiles.atlas_coord, Atlases.FURNITURE_PNG,
 					spawn_tiles.tiles_cols, spawn_tiles.tiles_rows, spawn_tiles.overwrite_existing_tiles)
 					
 			var spawn_NPCs_arr := opt_event.spawn_NPCs_arr
 			if spawn_NPCs_arr != null && !spawn_NPCs_arr.is_empty():
 				for spawn_NPCs in spawn_NPCs_arr:
-					var stage_comp :EMC_NPC_Stage = _npcs.get_node(spawn_NPCs.NPC_name).get_comp(EMC_NPC_Stage)
+					var stage_comp: EMC_NPC_Stage = (_npcs.get_node(spawn_NPCs.NPC_name) as EMC_NPC).get_comp(EMC_NPC_Stage)
 					stage_comp.override_spawn(spawn_NPCs.pos)
 					#_spawn_NPC(spawn_NPCs.NPC_name, spawn_NPCs.pos)
 					
 #********************NPCs******************
 
-func reserve_spawn_pos(p_spawn_pos: Vector2) -> Vector2:
-	var tile_position : Vector2 = _global_to_map(p_spawn_pos)
-	var center_position : Vector2 = _map_to_global(tile_position)
-	
-	if center_position.distance_to(p_spawn_pos) > 16:
-		var direction := p_spawn_pos - center_position
-		direction[direction.abs().min_axis_index()] = 0
-		var norm_direction := direction.normalized()
-		center_position += norm_direction * 32
-		if norm_direction.abs() == Vector2.DOWN:
-			center_position -= Vector2.UP*20
-		_stage.erase_cell(Layers.NAVIGATION, _global_to_map(center_position + norm_direction*32))
+func request_spot(spot_name: String) -> EMC_Stage_Spot:
+	var spot: EMC_Stage_Spot = spots.get_node(spot_name)
 
-	_stage.erase_cell(Layers.NAVIGATION, tile_position)
-	return p_spawn_pos #center_position
-
-## Remove all NPCs that are currently spawned
-func _deactivate_NPCs() -> void:
-	for npc : EMC_NPC in _npcs.get_children():
-		npc.hide()
-
-func _override_spawn(dict : Dictionary) -> void:
-	for NPC_name: String in dict:
-		_npcs.get_node(NPC_name).get_comp(EMC_NPC_Stage).override_spawn(dict[NPC_name])
-	
-	##Hide all NPCs first
-	#_deactivate_NPCs()
-	#
-	##Dependend on the stage show and spawn NPCs
-	#if not override_spawn.is_empty():
+	if spot == null:
+		printerr("EMC_Stage: no such spot %s" % spot_name)
+	elif spot_name == "start":
+		return spot
+	elif spot.is_occupied():
+		EMC_Util.print_warn("EMC_Stage: spot occupied.")
+	else:
+		occupy_spot(spot)
+		return spot
 		
-		
-		#for NPC_name: String in override_spawn:
-			#_spawn_NPC(NPC_name, override_spawn[NPC_name])
-	#
-	#if name == "home":
-		#return
-	#
-	#for npc : EMC_NPC in _npcs.get_children():
-		#if npc.get_stage_name() == _stage.name:
-			#npc.activate()
-		#else:
-			#npc.deactivate()
+	for alternative_spot: EMC_Stage_Spot in spots.get_children():
+		if not alternative_spot.is_occupied():
+			occupy_spot(alternative_spot)
+			return alternative_spot
+			
+	printerr("EMC_Stage: no unoccupied spot found.")
+	return null
 
-#func _spawn_NPC(p_NPC_name: String, p_spawn_pos: Vector2) -> void:
-	#var NPC : EMC_NPC = _npcs.get_node(p_NPC_name)
-	#if NPC == null:
-		#printerr("Stage._spawn_NPC(): Unknown NPC Name: " + p_NPC_name)
-		#return
-	#
-	#var tile_position : Vector2 = _global_to_map(p_spawn_pos)
-	#var center_position : Vector2 = _map_to_global(tile_position)
-	#
-	#if center_position.distance_to(p_spawn_pos) > 16:
-		#var direction := p_spawn_pos - center_position
-		#direction[direction.abs().min_axis_index()] = 0
-		#var norm_direction := direction.normalized()
-		#center_position += norm_direction * 32
-		#if norm_direction.abs() == Vector2.DOWN:
-			#center_position -= Vector2.UP*20
-		#_stage.erase_cell(Layers.NAVIGATION, _global_to_map(center_position + norm_direction*32))
-	#
-	#NPC.activate()
-	#NPC.position = center_position
-	#
-	#_stage.erase_cell(Layers.NAVIGATION, tile_position)
+func occupy_spot(spot: EMC_Stage_Spot) -> void:
+	spot.set_occupied(true)
+	for tile_coord: Vector2i in spot.tile_coords:
+		navigation.erase_cell(tile_coord)
 
 #*************UPGRADES*****************
 
 func _place_upgrade_furniture() -> void:
-	for upgrade: EMC_Upgrade in Global.get_equipped_upgrades():
+	for upgrade: EMC_Upgrade in OverworldStatesMngr.get_upgrades():
 		var spawn_pos : Vector2i = upgrade.get_spawn_pos()
 		var atlas_coords : Vector2i = upgrade._atlas_coord
-		_place_furniture_on_position(spawn_pos, Layers.MIDDLEGROUND_2,
-		atlas_coords, Atlases.UPGRADE_FURNITURE_PNG, upgrade._cols, upgrade._rows, true)
+		_place_furniture_on_position(spawn_pos, middleground_2,
+		atlas_coords, Atlases.UPGRADE_FURNITURE_PNG, 1, 2, true)
 
 #***************UTIL******************
 
 ## Places a tile from the furniture-Atlas on the Middleground 1 Layer
-func _place_furniture_on_position(p_tilemap_pos: Vector2i, p_layer : Layers,\
+func _place_furniture_on_position(p_tilemap_pos: Vector2i, p_layer : TileMapLayer,\
 p_atlas_coord: Vector2i, p_altlas : Atlases, p_tiles_cols: int = 1, p_tiles_rows: int = 1, \
 p_overwrite_existing_tiles: bool = false) -> void:
 	
@@ -262,39 +162,51 @@ p_overwrite_existing_tiles: bool = false) -> void:
 		for y_offset in range(0, p_tiles_rows):
 			#If necessary, check if previous tile exists and exit
 			if p_overwrite_existing_tiles == false:
-				var previous_tile := _stage.get_cell_tile_data(p_layer, p_tilemap_pos)
+				var previous_tile := p_layer.get_cell_tile_data(p_tilemap_pos)
 				if previous_tile != null: continue
 			
 			var tilemap_pos := Vector2i(p_tilemap_pos.x + x_offset, p_tilemap_pos.y + y_offset)
 			var atlas_coord := Vector2i(p_atlas_coord.x + x_offset, p_atlas_coord.y + y_offset)
-			_stage.set_cell(p_layer, tilemap_pos, p_altlas, atlas_coord)
+			p_layer.set_cell(tilemap_pos, p_altlas, atlas_coord)
+			navigation.erase_cell(tilemap_pos)
 			
 func _global_to_map(p_click_pos: Vector2) -> Vector2i:
 	#The click position has to be scaled according to the scale of the stage
 	var scaled_click_pos := to_local(p_click_pos)
-	return _stage.local_to_map(scaled_click_pos)
+	return navigation.local_to_map(scaled_click_pos)
 
 func _map_to_global(p_click_pos: Vector2) -> Vector2i:
 	#The click position has to be scaled according to the scale of the stage
-	var scaled_click_pos := _stage.map_to_local(p_click_pos)
+	var scaled_click_pos := navigation.map_to_local(p_click_pos)
 	return to_global(scaled_click_pos)
 	
-## Returns only true, if click was on a tile, that belongs to the "inner" tiles 
-## The outer half-tile broad "frame" doesn't count
-func _is_tile_out_of_bounds(p_tile_coord: Vector2i) -> bool:
-	if p_tile_coord.x <= TILE_MIN_X_COORD || p_tile_coord.x >= TILE_MAX_X_COORD:
-		return true
-	if p_tile_coord.y <= TILE_MIN_Y_COORD || p_tile_coord.y >= TILE_MAX_Y_COORD:
-		return true
-	
-	return false
+
+func is_tile_walkable(tile_coord: Vector2i) -> bool:
+	return navigation.get_cell_source_id(tile_coord) != -1
 
 func _determine_adjacent_free_tile(p_click_pos: Vector2) -> Vector2:
 	var tile_coord := _global_to_map(p_click_pos)
 	
-	if !_has_tile_collision(tile_coord) && !_is_tile_out_of_bounds(tile_coord):
+	if is_tile_walkable(tile_coord):
+		#return _map_to_global(tile_coord)
 		return p_click_pos
-		
+
+	#navigation.get_surrounding_cells(tile_coord)
+	#
+	#var priority_list: Array[Vector2i]
+	#
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_LEFT_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_RIGHT_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	#priority_list.append(navigation.get_neighbor_cell(tile_coord, TileSet.CELL_NEIGHBOR_BOTTOM_SIDE))
+	#
+	#return INVALID_TILE
+			
 	const search_area : Array[Vector2i] = [
 		Vector2i(-1, -1), 	Vector2i(0, -1), 	Vector2i(1, -1),
 		Vector2i(-1, 0), 						Vector2i(1, 0),
@@ -305,7 +217,7 @@ func _determine_adjacent_free_tile(p_click_pos: Vector2) -> Vector2:
 		func(accum : Vector2i, pos : Vector2i) -> Vector2i:
 			var tile := tile_coord + pos
 			var accum_tile := tile_coord + accum
-			if (!_has_tile_collision(tile) && !_is_tile_out_of_bounds(tile)
+			if (is_tile_walkable(tile)
 			and (_map_to_global(tile) as Vector2 - p_click_pos).length_squared() < (_map_to_global(accum_tile) as Vector2 - p_click_pos).length_squared()):
 				return pos
 			return accum
@@ -315,4 +227,4 @@ func _determine_adjacent_free_tile(p_click_pos: Vector2) -> Vector2:
 		push_warning("The clicked furniture has no adjacent free tiles that the Avatar can navigate towards!")
 		return INVALID_TILE
 	
-	return _map_to_global(goal + tile_coord) - 2*  goal
+	return _map_to_global(goal + tile_coord)# - 2*  goal

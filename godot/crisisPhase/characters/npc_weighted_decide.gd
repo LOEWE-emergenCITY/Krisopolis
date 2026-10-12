@@ -11,6 +11,6 @@ func choose_option(options: Array[String]) -> String:
 	for option in options:
 		weight.append(weights.get(option, 0.0) as float)
 		if weight.back() == 0.0:
-			print_debug("Action is not present.")
+			print_debug("Action: " + option + " is not present.")
 	
 	return EMC_Util.pick_weighted_random(options, weight, 1)[0]

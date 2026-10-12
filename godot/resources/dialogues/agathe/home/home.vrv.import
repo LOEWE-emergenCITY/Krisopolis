@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://bna67sonbxmu"
+path="res://.godot/imported/home.vrv-ce42eac22f549430e84f3d43c904ca83.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/agathe/home/home.vrv"
+dest_files=["res://.godot/imported/home.vrv-ce42eac22f549430e84f3d43c904ca83.tres"]
+
+[params]
+

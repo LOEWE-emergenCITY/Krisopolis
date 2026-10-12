@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://djhelv5xr4djt"]
+
+[ext_resource type="Script" uid="uid://cxsdblq40rhdj" path="res://GUI/upgrade_info_gui.gd" id="1_o26t6"]
+[ext_resource type="PackedScene" uid="uid://drj36g2wu4xb5" path="res://preparePhase/upgrade_slot.tscn" id="2_1jnh3"]
+[ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="5_1oeci"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="6_7uyur"]
+[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="7_iscsh"]
+
+[node name="UpgradeInfoGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o26t6")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -213.5
+offset_right = 250.0
+offset_bottom = 213.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBC" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CC" type="CenterContainer" parent="Panel/Margin/VBC"]
+layout_mode = 2
+
+[node name="Upgrade" parent="Panel/Margin/VBC/CC" instance=ExtResource("2_1jnh3")]
+layout_mode = 2
+
+[node name="Description" type="PanelContainer" parent="Panel/Margin/VBC"]
+custom_minimum_size = Vector2(460, 200)
+layout_mode = 2
+theme_type_variation = &"WhitePanelContainer"
+
+[node name="VBC" type="VBoxContainer" parent="Panel/Margin/VBC/Description"]
+layout_mode = 2
+
+[node name="Name" type="RichTextLabel" parent="Panel/Margin/VBC/Description/VBC"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+
+[node name="Components" type="RichTextLabel" parent="Panel/Margin/VBC/Description/VBC"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = ExtResource("5_1oeci")
+theme_override_font_sizes/normal_font_size = 22
+
+[node name="Description" type="RichTextLabel" parent="Panel/Margin/VBC/Description/VBC"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme = ExtResource("5_1oeci")
+theme_override_font_sizes/italics_font_size = 18
+
+[node name="HBC" type="HBoxContainer" parent="Panel/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/Margin/VBC/HBC"]
+custom_minimum_size = Vector2(324, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="UxButton" parent="Panel/Margin/VBC/HBC/Buttons" instance=ExtResource("6_7uyur")]
+layout_mode = 2
+theme_type_variation = &"ConfirmButton"
+text = "Kaufen"
+
+[node name="UxButton2" parent="Panel/Margin/VBC/HBC/Buttons" instance=ExtResource("6_7uyur")]
+layout_mode = 2
+theme_type_variation = &"CancelButton"
+text = "Zurückgeben"
+
+[node name="Cancel" type="TextureButton" parent="Panel/Margin/VBC/HBC"]
+layout_mode = 2
+texture_normal = ExtResource("7_iscsh")
+
+[connection signal="pressed" from="Panel/Margin/VBC/HBC/Cancel" to="." method="_on_cancel_pressed"]

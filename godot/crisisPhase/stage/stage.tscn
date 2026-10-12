@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://denwwuybtt0vq"]
 
-[ext_resource type="Script" path="res://crisisPhase/stage/stage.gd" id="1_2hpsw"]
+[ext_resource type="Script" uid="uid://b6l4geud16fdn" path="res://crisisPhase/stage/stage.gd" id="1_2hpsw"]
 
 [node name="Stage" type="Node2D"]
 y_sort_enabled = true

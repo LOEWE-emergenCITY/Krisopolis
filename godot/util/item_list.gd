@@ -1,3 +1,4 @@
+@tool
 class_name EMC_Item_List
 extends Control
 
@@ -7,9 +8,14 @@ signal item_clicked(id : String)
 @export var LIST_ITEM_SCN := preload("res://util/simple_list_item.tscn")
 @export var separation : int = 0
 
+@export var test_items: int = 0
+
 func _ready() -> void:
 	list.remove_theme_constant_override("separation")
 	list.add_theme_constant_override("separation", separation)
+	
+	for i in range(test_items):
+		add_item([], "")
 
 func add_item(argv : Array = [], id : String = "") -> void:
 	var list_item : Button = LIST_ITEM_SCN.instantiate()

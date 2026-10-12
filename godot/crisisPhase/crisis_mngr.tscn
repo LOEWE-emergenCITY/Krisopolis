@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://rl2yskkewcsu"]
 
-[ext_resource type="Script" path="res://crisisPhase/crisis_mngr.gd" id="1_7os6q"]
+[ext_resource type="Script" uid="uid://cghmm4rvti8mf" path="res://crisisPhase/crisis_mngr.gd" id="1_7os6q"]
 [ext_resource type="Texture2D" uid="uid://cvbhl3b6g5y3j" path="res://assets/GUI/backgrounds/menu_box_gray.png" id="1_bnv34"]
 
 [node name="CrisisMngr" type="Control"]

@@ -1,18 +1,31 @@
 extends Control
 
+const buy_text: String = "Kaufen"
+const sell_text: String = "Zurückgeben"
+
 var _inventory : EMC_Inventory
 var _tmp_inventory := EMC_Inventory.new()
 var _shop_inventory := EMC_Inventory.new()
 var _balance : int = Global.get_e_coins()
 
-@onready var label_ecoins := $Background/MarginContainer/PanelContainer/HBoxContainer/RichTextLabel
-@onready var inventory_ui : EMC_Inventory_UI = $Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/InventoryUI
-@onready var shop_ui : EMC_Inventory_UI = $Background/Margin/Main/ShopSection/ShopPanel/InventoryUI
+@onready var label_ecoins := $ColorRect/MarginContainer/PanelContainer/HBoxContainer/RichTextLabel
+@onready var inventory_ui : EMC_Inventory_UI = $ColorRect/Margin/Main/InventoryPanel/InventorySection/Panel/InventoryUI
+@onready var shop_ui : EMC_Inventory_UI = $ColorRect/Margin/Main/ShopPanel/ShopSection/Panel/InventoryUI
+@onready var canvas_modulate: CanvasModulate = $CanvasModulate
+@onready var item_info_gui: EMC_ItemInfo = $CanvasLayer/ItemInfoGui
+
+# Tutorial
+@onready var tutorial: Control = $CanvasLayer/Tutorial
+@onready var root_shop: MarginContainer = $ColorRect/Margin
+@onready var root_coin: MarginContainer = $ColorRect/MarginContainer
+
 
 func _ready() -> void:
 	_add_balance(0)
 	
-	_inventory = Global.get_inventory()
+	item_info_gui.closed.connect(hide_canvas)
+	
+	_inventory = Global.session["inventory"]# Global.get_inventory()
 	if _inventory == null:
 		_inventory = EMC_Inventory.new()
 	
@@ -23,27 +36,46 @@ func _ready() -> void:
 	inventory_ui.reload()
 	inventory_ui.block_first_items(_inventory.get_num_item())
 	inventory_ui.item_clicked.connect(_on_inventory_item_clicked)
+	inventory_ui.item_long_pressed.connect(_on_item_long_pressed.bindv([sell_text, _on_inventory_item_clicked, "CancelButton"]))
 	
 	for item_id : EMC_Item.IDs in JsonMngr.get_all_ids():
 		if item_id == EMC_Item.IDs.DUMMY:
 			continue
 		var item := EMC_Item.make_from_id(item_id)
-		if item.has_comp(EMC_IC_Cost):
+		if item.has_comp(EMC_IC_Cost) and (item.get_comp(EMC_IC_Cost) as EMC_IC_Cost).is_buyable():
 			_shop_inventory.add_item(item)
 			
 	_shop_inventory.num_slots = _shop_inventory.get_num_item()
 	shop_ui.set_inventory(_shop_inventory)
 	shop_ui.item_clicked.connect(_on_shop_item_clicked)
+	shop_ui.item_long_pressed.connect(_on_item_long_pressed.bindv([buy_text, _on_shop_item_clicked, "ConfirmButton"]))
 	shop_ui.reload()
 	#reload()
+
+func hide_canvas(args: Variant) -> void:
+	canvas_modulate.hide()
 
 func reload() -> void:
 	shop_ui.reload()
 	inventory_ui.reload()
 
-func _on_shop_item_clicked(sender: EMC_Item) -> void:
-	_display_info(sender)
+func _on_item_long_pressed(sender: EMC_Item, blocked: bool, text: String, callback: Callable, design: String) -> void:
+	#_display_info(sender)
 	sender.clicked_sound()
+	canvas_modulate.show()
+	var info: Array[Dictionary]
+	info.assign([] if blocked else [{"text": text, "callback": callback, "design": design}])
+	item_info_gui.open(sender, info)
+	
+	#callback.call(sender)
+
+func _on_shop_item_clicked(sender: EMC_Item) -> void:
+	sender.clicked_sound()
+	canvas_modulate.hide()
+	#item_info_gui.hide()
+	
+	#_display_info(sender)
+	#sender.clicked_sound()
 	
 	var comp := sender.get_comp(EMC_IC_Cost)
 	if comp == null:
@@ -59,7 +91,11 @@ func _on_shop_item_clicked(sender: EMC_Item) -> void:
 	shop_ui.reconnect()
 
 func _on_inventory_item_clicked(sender : EMC_Item) -> void:
-	_display_info(sender)
+	canvas_modulate.hide()
+	sender.clicked_sound()
+	#item_info_gui.hide()
+	
+	#_display_info(sender)
 	_tmp_inventory.remove_item(sender)
 	var comp := sender.get_comp(EMC_IC_Cost)
 	if comp != null:
@@ -70,38 +106,37 @@ func _add_balance(value : int) -> void:
 	label_ecoins.clear()
 	label_ecoins.append_text("[right][color=black]" + str(_balance) + "[/color][/right]")
 
-## Display information of clicked [EMC_Item]
-func _display_info(sender: EMC_Item) -> void:
-	
-	#Name of the item
-	var label_name := $Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/Description/VBox/Name
-	label_name.clear()
-	label_name.append_text("[color=black]" + sender.get_name() + "[/color]")
-	
-	#Components of item
-	var comps := sender.get_comps()
-	var comp_string: String = ""
-	for comp in comps:
-		comp_string += comp.get_colored_name_with_vals() + ", "
-	#Remove superfluous comma:
-	comp_string = comp_string.left(comp_string.length() - 2)
-	var label_comps := $Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/Description/VBox/Components
-	label_comps.clear()
-	label_comps.append_text("[color=black]" + comp_string + "[/color]")
-	
-	#Description of item:
-	var label_descr := $Background/Margin/Main/InventorySection/InventoryPanel/Margin/VBox/Description/VBox/Description
-	label_descr.clear()
-	label_descr.append_text("[color=black][i]" + sender.get_descr() + "[/i][/color]")
-
+func _notification(what : int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		if item_info_gui.visible:
+			item_info_gui.close()
+		elif tutorial.visible:
+			_on_tu_back_pressed()
+		else:
+			_on_cancel_pressed()
 
 func _on_home_pressed() -> void:
 	_tmp_inventory.sort_custom(EMC_Inventory.sort_by_id)
-	Global.set_inventory(_tmp_inventory)
+	Global.session["inventory"] = _tmp_inventory
+	#Global.set_inventory(_tmp_inventory)
 	Global.set_e_coins(_balance)
-	Global.goto_scene(Global.MAIN_MENU_SCENE)
+	Global.goto_scene(Global.CRISIS_START_SCENE)
 
 
 func _on_cancel_pressed() -> void:
-	Global.set_inventory(_inventory)
-	Global.goto_scene(Global.MAIN_MENU_SCENE)
+	Global.session["inventory"] = _inventory
+	#Global.set_inventory(_inventory)
+	#Global.goto_scene(Global.MAIN_MENU_SCENE)
+	Global.goto_scene(Global.UPGRADE_CENTER_SCENE)
+
+func _on_help_pressed() -> void:
+	root_coin.hide()
+	root_shop.hide()
+	canvas_modulate.show()
+	tutorial.show()
+
+func _on_tu_back_pressed() -> void:
+	root_coin.show()
+	root_shop.show()
+	canvas_modulate.hide()
+	tutorial.hide()

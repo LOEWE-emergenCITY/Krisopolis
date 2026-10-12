@@ -8,14 +8,17 @@ const DECAY_RATE_WITH_ELECTRICITY: int = 1
 const UNIT: String = "Tage"
 
 ########################################## PUBLIC METHODS ##########################################
-func _init(_p_max_shelflife : int = 0) -> void:
+func _init() -> void:
 	super("Haltbarkeit", Color.CHOCOLATE)
-	_shelflife = _p_max_shelflife
 
+func setup(data: Dictionary) -> EMC_IC_Shelflife:
+	_shelflife = data.get("value", _shelflife)
+	
+	return self
 
 ## Get the internal nutritionness value
 func get_shelflife() -> int:
-	if OverworldStatesMngr.get_electricity_state() == OverworldStatesMngr.ElectricityState.NONE:
+	if OverworldStatesMngr.is_effective_state_eq("ElectricityState", "NONE"):
 		# Note: When electricity is missing, the shelflife is reduced by 2 each day, and thus
 		# has to be displayed by half of its amount, rounded up:
 		return ceil(_shelflife / 2.0)
@@ -28,7 +31,7 @@ func is_spoiled() -> bool:
 
 
 func reduce_shelflife() -> void:
-	if OverworldStatesMngr.get_electricity_state() == OverworldStatesMngr.ElectricityState.NONE:
+	if OverworldStatesMngr.is_effective_state_eq("ElectricityState", "NONE"):
 		_shelflife -= DECAY_RATE_NO_ELECTRICITY
 		if _shelflife < 0: _shelflife = 0
 	else:

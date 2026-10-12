@@ -1,0 +1,75 @@
+[[Node]] start
+[actors] avatar
+[text]
+avatar:Ah, so ein schöner Morgen! Huch, wieso geht mein Licht nicht an?
+avatar:Der Herd geht auch nicht, der Kühlschrank ist auch aus ... Mist. Mein Strom ist wohl weg.
+avatar:Oh, da ist jemand an der Tür.
+[actors] avatar julia.flipped
+[text]
+julia:Guten Morgen! Hast du auch keinen Strom?
+avatar:Sieht ganz so aus.
+julia:Dann scheint es wohl ein größeres Problem zu sein. Kommst du klar?
+avatar:Ehrlich gesagt trifft mich das etwas unvorbereitet.
+[Choice]
+- [ja] Aber ich komme schon klar, danke dir.
+- [naja] Ich könnte ein paar Tipps gebrauchen.
+
+[[Node]] ja
+[actors] avatar julia.flipped
+[text]
+avatar:Ich habe ja auch noch mein Krisenbewältigungsbuch im Regal.
+julia:Klingt gut. Viel Erfolg!
+[jump] info
+
+[[Node]] naja
+[actors] avatar julia.flipped
+[text]
+julia:Gerne! Das Krisenbewältigungsbuch in deinem Regal kennst du ja sicher schon.
+julia:Und hast du schon die Warn-App auf deinem Handy installiert? Das kann ich nur empfehlen!
+julia:Denk auch daran, dich nicht nur zu Hause zu verschanzen.
+[Choice]
+- [wohingehen] Wohin soll ich denn gehen?
+- [mehrtipps] Danke. Hast du noch mehr Tipps?
+- [helfenende] Danke. Das hilft mir schon weiter.
+
+[[Node]] wohingehen
+[actors] avatar julia.flipped
+[text]
+julia:Komm gerne bei mir vorbei. Ich wohne in dem Reihenhaus mit dem roten Dach.
+julia:Und Agathe freut sich auch immer über Besuch. Du weißt ja, sie wohnt oben im Apartmentkomplex.
+julia:Außerdem gibt es noch viele andere nette Leute hier und ein Besuch auf dem Markt oder im Rathaus lohnt sich.
+julia:Wenn du mal entspannen willst, empfehle ich den Park.
+julia:Der Laden ist während Krisen geschlossen, aber wir tauschen immer untereinander, was wir gerade brauchen.
+[Choice]
+- [mehrtipps] Danke. Hast du noch mehr Tipps?
+- [helfenende] Danke. Das hilft mir schon weiter.
+
+[[Node]] mehrtipps
+[actors] avatar julia.flipped
+[text]
+julia:Ja, achte auf die Zeit! Ein Tag während einer Krise vergeht schneller, als man denkt.
+julia:Und denk immer daran, genug zu essen und zu trinken. Aber das steht ja alles in deinem Buch.
+[Choice]
+- [wohingehen] Danke. Hast du Vorschläge, wohin ich gehen kann?
+- [helfenende] Danke. Das hilft mir schon weiter.
+
+[[Node]] helfenende
+[actors] avatar julia.flipped
+[text]
+julia:Du wirst dich bald besser zurechtfinden. Probier dich einfach aus!
+[Choice]
+- [versagen] Ich bin immer noch unsicher, ob ich das schaffe.
+- [info] Danke. Das mache ich.
+
+[[Node]] versagen
+[actors] avatar julia.flipped
+[text]
+julia:Mach dir keine Sorgen, wir passen hier alle aufeinander auf.
+julia:Anfangs musste ich auch experimentieren, um mich zurechtzufinden. Aber irgendwann wird man krisenfest.
+julia:Du wirst schnell merken, worauf es ankommt, wenn du nicht aufgibst.
+avatar:Okay. Danke dir!
+[jump] info
+
+[[Node]] info
+[action] request_gui("IconInformation", [])
+[action] set_tutorial(true)

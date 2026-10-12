@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn3ryoq1oruxb"]
+[gd_scene load_steps=7 format=3 uid="uid://cn3ryoq1oruxb"]
 
-[ext_resource type="Script" path="res://global/global.gd" id="1_f83gq"]
+[ext_resource type="Script" uid="uid://lyw4p71sljj6" path="res://global/global.gd" id="1_f83gq"]
+[ext_resource type="Texture2D" uid="uid://5flghcxf7uf1" path="res://assets/GUI/save/save_animation1.png" id="2_4acp8"]
+[ext_resource type="Texture2D" uid="uid://dx3jbwk20ui65" path="res://assets/GUI/save/save_animation2.png" id="3_l7tt2"]
+[ext_resource type="Texture2D" uid="uid://485s8q5w5x2f" path="res://assets/GUI/save/save_animation3.png" id="4_ery7i"]
+[ext_resource type="Texture2D" uid="uid://degkgh7w0cc48" path="res://assets/GUI/save/save_animation4.png" id="5_803q2"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_5yjsk"]
+frames = 4
+speed_scale = 3.0
+frame_0/texture = ExtResource("2_4acp8")
+frame_1/texture = ExtResource("3_l7tt2")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_ery7i")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_803q2")
+frame_3/duration = 1.0
 
 [node name="Global" type="Node"]
 script = ExtResource("1_f83gq")
+
+[node name="SaveAniCanvas" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="SaveAniCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CC" type="CenterContainer" parent="SaveAniCanvas/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveAni" type="TextureRect" parent="SaveAniCanvas/ColorRect/CC"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_5yjsk")

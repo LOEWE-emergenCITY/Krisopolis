@@ -1,0 +1,51 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar leonie.flipped
+[text]
+leonie:Die Bücher sind nicht sortiert. Ich finde, das macht es spannender, die Regale zu erforschen.
+
+[[Node]] two
+[actors] avatar leonie.flipped
+[text]
+leonie:[i]*Schlürf.*[/i] Ah, es geht nichts über guten Kaffee.
+
+[[Node]] three
+[actors] avatar leonie.flipped
+[text]
+leonie:Alte Bücher erzählen einem viel darüber, wie die Menschen damals gedacht haben. Einfach dadurch, wie sie geschrieben sind.
+leonie:Das macht manches aber auch schwer verdaubar. Extreme Meinungen finden sich leider auch zwischen den Zeilen.
+
+[[Node]] four
+[actors] avatar leonie.flipped
+[text]
+leonie:Filme sind was Tolles. Ich sollte mal wieder einen Filmabend organisieren.
+
+[[Node]] five
+[actors] avatar leonie.flipped
+[text]
+leonie:Was nähe ich als nächstes ... Socken? Handschuhe? Wird Zeit für ne neue Farbe.
+
+[[Node]] six
+[actors] avatar leonie.flipped
+[text]
+leonie:Ich würde gerne mal die Kostüme fürs Theater oder für einen Film designen ...
+
+[[Node]] seven
+[actors] avatar leonie.flipped
+[text]
+leonie:Das sind wahrscheinlich die staubfreiesten Bücher von ganz Krisopolis. Gibt nicht viel zu tun hier.
+
+[[Node]] eight
+[actors] avatar leonie.flipped
+[text]
+leonie:Ich lese gerade Bücher aus meiner Kindheit zum zweiten Mal. Ich finde plötzlich ganz andere Details.

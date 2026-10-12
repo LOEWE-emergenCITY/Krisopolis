@@ -13,33 +13,30 @@
                 ]
             },
             "weiter": {
-                "prompt": "Ja, wie läuft's bei dir",
-                "options": {
-                    "#option1": "",
-                    "#option2": ""
-                }
+                "prompt": "Ja, wie läuft's bei dir?",
+                "options": {"#reden1": "", "#reden2": "", "#reden3": "", "#reden4": ""}
             }
         }
     },
-    "#option1": {
+    "#reden1": {
         "actors": ["avatar", "mert.r"],
         "text": [
             "mert.r#Bin ein bisschen gestresst. In solchen Zeiten hat das THW, also das Technische Hilfswerk, mehr zu tun als sonst.",
-            "mert.r#Aber zu sehen, wie viel Hilfsbereitschaft und Dankbarkeit die Menschen haben - Das ist das Größte."
+            "mert.r#Aber zu sehen, wie viel Hilfsbereitschaft und Dankbarkeit die Menschen haben - das ist das Größte."
         ]
     },
-    "#option2": {
+    "#reden2": {
         "actors": ["avatar", "mert.r"],
         "text": [
-            "mert.r#Mir gehts super! Kommst du gut durch die Krise?"
+            "mert.r#Mir geht es super! Kommst du gut durch die Krise?"
         ],
         "options": {
             "ja": {
-                "prompt": "ja",
+                "prompt": "Ja",
                 "actors": ["avatar", "mert.r"],
                 "text": [
                     "avatar#Ich komme klar.",
-	                "mert.r#Schön zu hören! Aber pass' trotzdem auf dich auf, ja? So eine Krise ist nicht ohne."
+	                "mert.r#Schön zu hören! Aber pass trotzdem auf dich auf, ja? So eine Krise ist nicht ohne."
                 ]
             },
             "nein": {
@@ -52,5 +49,28 @@
                 ]
             }
         }
+    },
+    "#reden3": {
+        "actors": ["avatar", "mert.r"],
+        "text": [
+            "mert.r#Grad wieder viel los beim THW. War heute Nacht bis 4 Uhr im Einsatz.",
+            "avatar#Uff, das klingt hart.",
+            "mert.r#Aber ich kanns nur absolut empfehlen. Hab schon so viele nette Leute kennengelernt.",
+            "mert.r#Sowas stärkt einem den Rücken.",
+            "mert.r#Sport tut das natürlich auch. Sogar ganz wörtlich.",
+            "mert.r#Freunde und Sport und das Gefühl, nen Beitrag zu leisten. Gibt nix Wichtigeres, das kann ich dir sagen."
+        ]
+    },
+    "#reden4": {
+        "actors": ["avatar", "mert.r"],
+        "text": [
+            "mert.r#Ich mach mir ein bisschen Sorgen um Momo.",
+            "mert.r#Sie mag ihre Zeiten und ich kann sie manchmal nicht rechtzeitig füttern, weil ich beim Einsatz bin.",
+            "mert.r#Hab schon ne Futtermaschine versucht, aber sie hat sie aufgekriegt und sich vollgefressen.",
+            "mert.r#Jetzt kommt Irena vorbei, um sie zu füttern. Eigentlich ist sie auch ganz vorsichtig mit Momo.",
+            "mert.r#Aber ich glaub Momo mag es nicht, wenn wer anders hier ist, aber ich nicht.",
+            "avatar#Sie gewöhnt sich sicher daran.",
+            "mert.r#Das hoff ich auch!"
+        ]
     }
 }

@@ -2,18 +2,31 @@
 	"comp": {
 		"descr": {
 			"name": "Veronika",
-			"descr": "Das hier ist Veronika.\nSie ist lieb.",
-			"portait": "veronika"
+			"descr": "Das hier ist Veronika.\nSie hat einen Backup-Plan für jeden Backup-Plan.",
+			"portait": "veronika",
+			"sprite": "veronika"
 		},
-		"sprite": {
-			"texture_name": "veronika"
+		"karma": {},
+		"conversation": {
+			"pitch": 1.1,
+			"day": "res://resources/dialogues/veronika/day/day.vrv",
+			"small_talk": "res://resources/dialogues/veronika/small_talk.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/veronika/day/"
+			}
 		},
-		"interaction": {
-			"conversation": {
-				"pitch": 1.1
+		"trading": {
+			"inventory": {
+				"CHLOR_TABLETS": 3,
+				"GAS_CARTRIDGE": 2,
+				"SOAP": 2
 			}
 		},
 		"stage": {
+			"stage_name": "apartment_camper",
+			"spot": "bedside",
+
+			"position": { "x": 450, "y": 750 },
 			"start": "ApartmentCamper",
 			"positions": {
 				"ApartmentCamper": { "x": 450, "y": 750 },

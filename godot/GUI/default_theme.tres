@@ -1,11 +1,13 @@
-[gd_resource type="Theme" load_steps=29 format=3 uid="uid://c38cnaco26erq"]
+[gd_resource type="Theme" load_steps=33 format=3 uid="uid://c38cnaco26erq"]
 
 [ext_resource type="Texture2D" uid="uid://bgfeu2ns15jno" path="res://assets/GUI/backgrounds/menu_box_black.png" id="1_707kn"]
 [ext_resource type="Texture2D" uid="uid://cvbhl3b6g5y3j" path="res://assets/GUI/backgrounds/menu_box_gray.png" id="1_g0i34"]
 [ext_resource type="Texture2D" uid="uid://fa2a48tltso1" path="res://assets/GUI/backgrounds/menu_box_blue.png" id="1_oyqmt"]
 [ext_resource type="Texture2D" uid="uid://b7kk24kpdehbm" path="res://assets/GUI/backgrounds/menu_box_white.png" id="2_68ab8"]
 [ext_resource type="StyleBox" uid="uid://b6m3psgnyr5ac" path="res://resources/background/menu_box_blue_tex.tres" id="2_un5r6"]
+[ext_resource type="StyleBox" uid="uid://bwu0dssl63nbv" path="res://resources/background/menu_box_tex.tres" id="2_xg1xr"]
 [ext_resource type="Texture2D" uid="uid://cmvvm2rtuidr1" path="res://assets/GUI/backgrounds/menu_box_dark_blue.png" id="3_7dt4j"]
+[ext_resource type="StyleBox" uid="uid://3hj7e733ssav" path="res://resources/background/menu_box_light_tex.tres" id="3_8mqsu"]
 [ext_resource type="Texture2D" uid="uid://dh1onkg56mwnh" path="res://assets/GUI/buttons/check_button.png" id="3_m8cu7"]
 [ext_resource type="StyleBox" uid="uid://om37cubdbi5" path="res://resources/background/menu_box_red_tex.tres" id="4_vh5w3"]
 [ext_resource type="Texture2D" uid="uid://y13b615jd7ju" path="res://assets/GUI/buttons/uncheck_button.png" id="4_wdcg4"]
@@ -78,6 +80,10 @@ texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ruees"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nupbd"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq76b"]
 bg_color = Color(0.878431, 0.870588, 0.87451, 1)
 
@@ -94,6 +100,12 @@ texture_margin_bottom = 16.0
 [resource]
 default_font = ExtResource("8_no5pd")
 default_font_size = 25
+BasicButton/base_type = &"Button"
+BasicButton/styles/disabled = ExtResource("5_5ati2")
+BasicButton/styles/hover = ExtResource("3_8mqsu")
+BasicButton/styles/hover_pressed = ExtResource("3_8mqsu")
+BasicButton/styles/normal = ExtResource("2_xg1xr")
+BasicButton/styles/pressed = ExtResource("3_8mqsu")
 BlackPanelContainer/base_type = &"PanelContainer"
 BlackPanelContainer/styles/panel = SubResource("StyleBoxTexture_elb5e")
 BlueButton/base_type = &"Button"
@@ -148,6 +160,8 @@ RichTextLabel/fonts/normal_font = ExtResource("8_no5pd")
 TitleSpacing/constants/margin_bottom = 12
 Tree/colors/font_color = Color(0, 0, 0, 1)
 Tree/styles/panel = SubResource("StyleBoxTexture_xpu0s")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_ruees")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_nupbd")
 WarnItemList/base_type = &"PanelContainer"
 WarnItemList/styles/panel = SubResource("StyleBoxFlat_mq76b")
 WarnListItem/base_type = &"Button"

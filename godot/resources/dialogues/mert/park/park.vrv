@@ -1,0 +1,70 @@
+[[Node]] start
+[[Type]] stage
+[actors] avatar mert.flipped
+[text]
+mert:Hey Kumpel!
+[Choice]
+- [talk] Hey! Was bringt dich her?
+- [stop] Ich muss los!
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+
+[[Node]] stop
+[actors] avatar mert.flipped
+[text]
+mert:Man sieht sich!
+
+[[Node]] talk1
+[actors] avatar mert.flipped
+[text]
+mert:Ich geh immer in den Park, wenn ich in der Stadt bin. Manchmal finde ich Momo hier.
+mert:Wenn ich Pech hab, muss ich sie aus einem Baum befreien.
+mert:Dafür bin ich inzwischen richtig gut im Klettern.
+
+[[Node]] talk2
+[actors] avatar mert.flipped
+[text]
+mert:Brauchte ein bisschen Ruhe.
+avatar:Oh, dann störe ich nicht weiter!
+mert:So war das nicht gemeint. Natur beruhigt mich einfach.
+
+[[Node]] talk3
+[actors] avatar mert.flipped mert.flipped
+[text]
+mert:Brauchte ein bisschen Abwechslung.
+mert:Dann geh ich in die Stadt und unterhalte mich mit den Leuten.
+mert:Es tut gut, nicht allein zu sein. Oft kann man irgendwem einen kleinen Gefallen tun.
+mert:Fühlt sich gut an. Manchmal bekommt man dafür auch was, das man grade brauchen kann. Oder man tauscht es.
+
+[[Node]] talk4
+[actors] avatar mert.flipped mert.flipped
+[text]
+mert:War in der Gegend. Was ist mit dir?
+[Choice]
+- [ebenso] Mir gehts genauso.
+- [leute_treffen] Hatte gehofft, ein paar Leute hier zu treffen.
+- [genuss] Ich genieße den Park.
+
+[[Node]] ebenso
+[actors] avatar mert.flipped
+[text]
+mert:Ist auch schön hier. Ruhiger als auf den Straßen.
+avatar:Das stimmt.
+
+[[Node]] leute_treffen
+[actors] avatar mert.flipped
+[text]
+mert:Das ist immer Zufall. Manchmal ist was los, manchmal ists wie ausgestorben hier.
+mert:Ich mag beides.
+mert:Und manchmal finden hier Events statt. Da geh ich auch ganz gern hin, wenn ich kann.
+avatar:Gut zu wissen!
+
+[[Node]] genuss
+[actors] avatar mert.flipped
+[text]
+mert:Ja, das mach ich auch.

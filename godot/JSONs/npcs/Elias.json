@@ -2,75 +2,38 @@
 	"comp": {
 		"descr": {
 			"name": "Elias",
-			"descr": "Das hier ist Elias.\nEr ist lieb.",
-			"portait": "elias"
+			"descr": "Das hier ist Elias.\nZeit sparen ist sein liebster Zeitvertreib.",
+			"portait": "elias",
+			"sprite": "elias"
 		},
-		"sprite": {
-			"texture_name": "elias"
-		},
-		"save": {},
 		"karma": {},
-		"interaction":{
-			"conversation": {
-				"pitch": 0.75
-			},
-			"trading": {
-				"preferences": {},
-				"inventory": {
-					"WATER": 4
-				}
+		"conversation": {
+			"pitch": 0.75,
+			"day": "res://resources/dialogues/elias/day/day.vrv",
+			"small_talk": "res://resources/dialogues/elias/small_talk.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/elias/day/"
+			}
+		},
+		"trading": {
+			"preferences": {},
+			"inventory": {
+				"WATER": 4,
+				"BREAD": 1,
+				"FLOUR": 2,
+				"SALT": 2
 			}
 		},
 		"stage": {
+			"stage_name": "penthouse",
+			"spot": "couch",
+
+			"position": { "x": 440, "y": 800 },
 			"start": "Penthouse",
 			"positions": {
 				"Penthouse": { "x": 440, "y": 800 },
 				"Market": { "x": 180, "y": 300 },
 				"Park": { "x": 440, "y": 800 }
-			}
-		},
-		"brain": {
-			"actions": {
-				"work": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": ["market"]
-				},
-				"idle": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": ["penthouse"]
-				},
-				"stroll": {
-					"type": "single",
-					"comp": "stage",
-					"method": "change_stage",
-					"params": ["park"]
-				}
-			},
-			"decide": {
-				"name": "decide"
-			},
-			"comps": {
-				"routine": {
-					"schedule": {
-						"1": ["idle"],
-						"2": "work",
-						"0": "idle"
-					}
-				},
-				"impulsive": {
-					"count": {
-						"0": 3.0,
-						"1": 1.0
-					},
-					"actions": {
-						"work": 1.0,
-						"stroll": 1.0
-					}
-				}
 			}
 		}
 	}

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://dpqt8stwoiuwy"
+path="res://.godot/imported/test.vrv-6c3fbba66436b4a7b9eef67704263aaf.tres"
+
+[deps]
+
+source_file="res://addons/vervain/test.vrv"
+dest_files=["res://.godot/imported/test.vrv-6c3fbba66436b4a7b9eef67704263aaf.tres"]
+
+[params]
+

@@ -1,0 +1,51 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar elias.flipped
+[text]
+elias:Keine Zeit für Smalltalk.
+
+[[Node]] two
+[actors] avatar elias.flipped
+[text]
+elias:Ich hab zu tun.
+
+[[Node]] three
+[actors] avatar elias.flipped
+[text]
+elias:Bin beschäftigt.
+
+[[Node]] four
+[actors] avatar elias.flipped
+[text]
+elias:Wenn du handeln willst, gern, sonst hab ich zu tun.
+
+[[Node]] five
+[actors] avatar elias.flipped
+[text]
+elias:Höre gerade einen Podcast zur Finanzentwicklung. Wenn du kein Experte auf dem Gebiet bist, wirst du ausgenommen.
+
+[[Node]] six
+[actors] avatar elias.flipped
+[text]
+elias:Esse ich heute Abend Sushi oder Pizza? Die Pizza kam beim letzten Mal nur lauwarm an ...
+
+[[Node]] seven
+[actors] avatar elias.flipped
+[text]
+elias:Hatte heute ein Meeting mit einem Bekannten. Der meinte doch ernsthaft, mir erklären zu können, wie mein Job läuft.
+elias:Manche Menschen glauben wirklich, alles besser zu wissen.
+
+[[Node]] eight
+[actors] avatar elias.flipped
+[text]
+elias:Mein Bruder will meiner Mutter einreden, dass sie nicht 'so viel für mich tun soll'. Idiot!

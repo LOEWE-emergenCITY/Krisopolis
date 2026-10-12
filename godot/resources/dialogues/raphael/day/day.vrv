@@ -1,0 +1,229 @@
+[[Node]] start
+[actors] avatar raphael.flipped
+[text]
+raphael:Guten Tag!
+avatar:Guten Tag. Was macht die Arbeit?
+[jump] talk
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+- [jump] talk5
+- [jump] talk6
+- [jump] talk7
+- [jump] talk8
+
+[[Node]] stop
+[actors] avatar raphael.flipped
+[text]
+raphael:Bis denne!
+
+[[Node]] talk1
+[actors] avatar raphael.flipped
+[text]
+raphael:Momentan handel ich ohne Geld. Wer weiß, wie viel es morgen wert ist.
+avatar:Nur [i]Ware[/i] ist Wahres?
+raphael:Hahaha. So könnt mans ausdrücken.
+
+[[Node]] talk2
+[actors] avatar raphael.flipped
+[text]
+raphael:Es gibt so Typen, denen riecht mans an, dass sie auf Geld sitzen.
+raphael:Dieser Elias zum Beispiel, kennste den?
+[Choice]
+- [KenneElias] Ja.
+- [KenneEliasNicht] Nein.
+
+[[Node]] KenneElias
+[actors] avatar raphael.flipped
+[text]
+raphael:Dann weißte ja, was ich meine.
+raphael:Der mit seiner Penthouse-Wohnung. Glaubt, auf uns andere herabsehen zu können.
+raphael:Aber nicht mit mir! Der zahlt bei mir extra.
+
+[[Node]] KenneEliasNicht
+[actors] avatar raphael.flipped
+[text]
+raphael:Jo, da haste auch nix verpasst.
+raphael:Das ist so'n Gockel. Denkt, ihm gehört die Welt.
+raphael:Aber mein Laden gehört mir und hier bestimm ich die Preise!
+
+[[Node]] talk3
+[actors] avatar raphael.flipped
+[text]
+raphael:Wenig Kundschaft. Aber was soll ich zuhause hocken? Da verdien ich gar nix.
+avatar:Aber durch das Tauschen verdienst du doch auch nichts.
+raphael:Das stimmt. Aber mein Abendessen kriegt mehr Geschmack. Und durch die Krise komm ich auch besser.
+raphael:Es gibt hier ein paar Leute, die wahre Schätze zuhause horten.
+raphael:Brauchst einfach nur nachzufragen.
+avatar:Das merk ich mir, danke!
+
+[[Node]] talk4
+[actors] avatar raphael.flipped
+[text]
+raphael:Noch gehts. Aber haste schon gehört? Die Krise soll noch zwei Wochen dauern!
+avatar:Sowas kann man doch gar nicht voraussagen.
+raphael:Dacht ich auch. Aber der Kumpel von dem Mann von meiner Kusine hats uns gesagt.
+[Choice]
+- [skeptisch] Und woher weiß er es?
+- [ablehnend] Ich wäre vorsichtig bei sowas.
+- [werden_sehen] Wir werden sehen.
+
+[[Node]] skeptisch
+[actors] avatar raphael.flipped
+[text]
+[match] is_state_by_name_str("MobileNetState.ONLINE")
+- [true] [text]
+	raphael:Keine Ahnung. Hab ja nicht mit ihm geredet. Das hat meine Tante im Chat geschrieben.
+- [false] [jump] skeptisch_intermediate
+[Comment]
+    [if] is_state_by_name_str("MobileNetState.ONLINE")
+        [then]
+            [text]
+            raphael:Keine Ahnung. Hab ja nicht mit ihm geredet. Das hat meine Tante im Chat geschrieben.
+        [else]
+            [text]
+            raphael:Keine Ahnung. Hab ja nicht mit ihm geredet. Das hat meine Kusine gesagt.
+
+[[Node]] skeptisch_intermediate
+[actors] avatar raphael.flipped
+[text]
+raphael:Keine Ahnung. Hab ja nicht mit ihm geredet. Das hat meine Kusine gesagt.
+
+[[Node]] ablehnend
+[actors] avatar raphael.flipped
+[text]
+raphael:Dein Bier. Ich bin jedenfalls vorbereitet.
+
+[[Node]] werden_sehen
+[actors] avatar raphael.flipped
+[text]
+raphael:Da haste recht. Ich bin jedenfalls vorbereitet.
+
+[[Node]] talk5
+[actors] avatar raphael.flipped
+[text]
+raphael:Ich sag dir was, diese Krisen in Krisopolis - die sind nicht echt.
+avatar:Nicht echt?
+raphael:Ne, da steht jemand dahinter, der plant das alles.
+avatar:Aber was hätte der- oder diejenige davon? Und wer sollte das sein?
+raphael:Keine Ahnung. Spaß vielleicht. Oder Wählerstimmen. Geht mich nix an, was die sich ausdenken.
+
+[[Node]] talk6
+[actors] avatar raphael.flipped
+[text]
+raphael:Wer weiß, wie lange ich noch hier sitzen kann.
+raphael:Wahrscheinlich kriegen wir bald wieder ne Ausgangssperre.
+[match] crisis_is("Pandemie")
+- [true] [text]
+	avatar:Könnte passieren.
+	raphael:Schlecht fürs Geschäft, sowas. Und für die Auswahl beim Abendessen.
+	raphael:Außerdem ist doch eh kaum jemand hier. Wie soll man sich da anstecken?
+	avatar:Das geht wohl nach dem Motto 'Vorsicht ist besser als Nachsicht'.
+	raphael:Hrmpf. Die sollten lieber Nachsicht mit Leuten wie mir haben.
+	raphael:Geld verdienen ist schließlich auch ne Sache von Leben und Tod. Muss mir ja mein Essen leisten können. Aber das schert ja keinen.
+- [false] [jump] chemie_intermediate
+[Comment]
+	[if] crisis_is("Pandemie")
+		[then]
+			[text]
+			avatar:Könnte passieren.
+			raphael:Schlecht fürs Geschäft, sowas. Und für die Auswahl beim Abendessen.
+			raphael:Außerdem ist doch eh kaum jemand hier. Wie soll man sich da anstecken?
+			avatar:Das geht wohl nach dem Motto 'Vorsicht ist besser als Nachsicht'.
+			raphael:Hrmpf. Die sollten lieber Nachsicht mit Leuten wie mir haben.
+			raphael:Geld verdienen ist schließlich auch ne Sache von Leben und Tod. Muss mir ja mein Essen leisten können. Aber das schert ja keinen.
+		[else]
+			[text]
+			avatar:Die gibt es doch nur bei Ansteckungsgefahr.
+			[jump] chemie_krise
+
+[[Node]] chemie_intermediate
+[actors] avatar raphael.flipped
+[text]
+avatar:Die gibt es doch nur bei Ansteckungsgefahr.
+[jump] chemie_krise
+
+[[Node]] chemie_krise
+[actors] avatar raphael.flipped
+[match] crisis_is("Chemie")
+- [true] [text]
+	raphael:Wer weiß, was die in dieser Höllenfabrik alles zusammengemischt haben.
+	raphael:Würd mich nicht wundern, wenn die da irgendwelche Killer-Viren züchten.
+	avatar:In einer Chemiefabrik?
+	raphael:Und was ist mit toxischen Gasen?
+	raphael:Du wirst schon sehen.
+- [false] [text] raphael:Du wirst schon sehen.
+[Comment]
+	[if] crisis_is("Chemie")
+		[then]
+			[text]
+			raphael:Wer weiß, was die in dieser Höllenfabrik alles zusammengemischt haben.
+			raphael:Würd mich nicht wundern, wenn die da irgendwelche Killer-Viren züchten.
+			avatar:In einer Chemiefabrik?
+			raphael:Und was ist mit toxischen Gasen?
+			raphael:Du wirst schon sehen.
+		[else]
+			[text]
+			raphael:Du wirst schon sehen.
+
+[[Node]] bad_mood_talk6
+[Condition] npc_is_sad("raphael")
+[actors] avatar raphael.flipped
+[text]
+raphael:Die sollten Nachsicht mit Leuten wie mir haben.
+raphael:Geld verdienen ist schließlich auch ne Sache von Leben und Tod. Muss mir ja mein Essen leisten können. Aber das schert ja keinen.
+
+[[Node]] talk7
+[actors] avatar raphael.flipped
+[text]
+raphael:Bin gar nicht sicher, ob ich meine Sachen wirklich tauschen soll.
+raphael:Ich brauch ja schließlich meine Vorräte, wenn das hier noch lange dauert.
+raphael:Also verstehste sicher, dass ich nen hohen Gegenwert verlangen muss.
+raphael:Sonst komm ich selbst nicht durch die Krise.
+[jump] billiger
+
+[[Node]] billiger
+[Condition] npc_friendship_higher_than("raphael",13)
+[actors] avatar raphael.flipped
+[text]
+raphael:Für dich mach ichs trotzdem günstiger. Sind ja alte Kumpels.
+[Choice]
+- [thx] Danke, das freut mich.
+- [andere] Was ist mit den anderen? Die brauchen doch auch ihre Vorräte.
+
+[[Node]] thx
+[actors] avatar raphael.flipped
+[text]
+raphael:Jaja. Erzähls nur nicht rum. Vor allem nicht diesem Elias.
+avatar:Klar!
+
+[[Node]] andere
+[actors] avatar raphael.flipped
+[text]
+raphael:Die kommen zurecht. Ist noch keiner verhungert. Du bist der Grünschnabel hier.
+avatar:Oh.
+raphael:Schadet nix, den Neuen etwas unter die Arme zu greifen. Wenn sie es verdienen. Krisopolis kann n raues Pflaster sein.
+avatar:Danke!
+raphael:Nix zu danken.
+
+[[Node]] talk8
+[actors] avatar raphael.flipped
+[text]
+raphael:Alles braucht heutzutage Internet. Wollte Geld abheben und der Automat ging nicht. Bald brauchts vermutlich noch AI.
+raphael:Aber ich sag dir was. In ner Krise brauchste deine Mitmenschen. Die Computer kannste vergessen. Die helfen dir nicht. Und die verhungern auch nicht.
+raphael:Wir Menschen, wir sitzen zusammen in nem Boot. Vergiss das nicht.
+avatar:Da hast du recht.
+
+[Comment]
+	Ist das absichtlich nicht mehr Teil vom dialoge?
+    Erinnere mich nicht daran, es rausgenommen zu haben. Oo
+    Allerdings wollten wir ja eh die trades separat machen, weil man sonst zweimal klicken muss, um zu reden?
+	[[Node]] trade
+	[Prompt] Handeln
+	[action] request_trade_gui("raphael")
+
+

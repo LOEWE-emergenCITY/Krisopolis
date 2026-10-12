@@ -14,26 +14,23 @@
             },
             "weiter": {
                 "prompt": "Was geht?",
-                "options": {
-                    "#option1": "",
-                    "#option2": ""
-                }
+                "options": {"#reden1": "", "#reden2": "", "#reden3": "", "#reden4": ""}
             }
         }
     },
-    "#option1": {
+    "#reden1": {
         "actors": ["avatar", "kris.r", "veronika.r"],
         "text": [
             "kris.r#Hast du Lust auf eine heiße Schokolade?",
             "veronika.r#Wir haben keine Milch mehr da.",
             "kris#Oh, schade. Aber ich könnte uns einen Smoothie machen!",
             "veronika.r#Obst haben wir auch keins mehr.",
-            "kris#Stimmt ja. Oh, und was ist mit Milchreis?",
+            "kris#Stimmt ja. Oh – und was ist mit Milchreis?",
             "veronika.r#... Kris. Keine Milch.",
-            "kris.r#Achja. Na gut. Dann nächstes Mal."
+            "kris.r#Ach ja. Na gut. Dann nächstes Mal."
         ]
     },
-    "#option2": {
+    "#reden2": {
         "actors": ["avatar", "kris.r"],
         "text": [
             "kris.r#Vero plant schon unseren nächsten Camping-Trip. Ich hoffe, sie plant nicht zu viele Urlaubstage komplett durch.",
@@ -45,7 +42,7 @@
                 "prompt": "Kann ich gut nachvollziehen.",
                 "actors": ["avatar", "kris.r"],
                 "text": [
-                    "avatar#Ohne Spontanität ist das Leben langweilig.",
+                    "avatar#Ohne Spontaneität ist das Leben langweilig.",
                     "kris.r#Genau! Wenn ich nie vom Wanderweg abweiche, verpasse ich so viele schöne Orte!",
                     "kris.r#Und als ich letztes Mal den Wasserfall gefunden habe, war Vero auch total begeistert.",
                     "kris.r#Mal sehen, was wir dieses Mal finden!"
@@ -61,5 +58,118 @@
                 ]
             }
         }
+    },
+    "#reden3": {
+        "actors": ["avatar", "kris.r"],
+        "text": [
+            "kris.r#Du siehst nicht zufällig meinen Schlüssel? Ich suche ihn schon seit Ewigkeiten."
+        ],
+        "options": {
+            "BraucheSchluessel": {
+                "weight": 1,
+                "conditions": [
+                    {
+                        "method": "is_state_by_name",
+                        "state": "IsolationState.NONE"
+                    }
+                ],
+                "actors": ["avatar", "kris.r"],
+                "text": [
+                    "kris.r#Ich brauche ihn erst heute Abend, wenn ich auf die Arbeit gehe.",
+                    "kris.r#Aber eigentlich wollte ich vorher nochmal spazieren."
+                ],
+                "options": {
+                    "#SchluesselPosition1": "SchluesselPosition1",
+                    "#SchluesselPosition2": "SchluesselPosition2",
+                    "#SchluesselPosition3": "SchluesselPosition3",
+                    "#SchluesselPosition4": "SchluesselPosition4"
+                }
+            },
+            "BraucheSchluessel2": {
+                "actors": ["avatar", "kris.r"],
+                "text": [
+                    "kris.r#Vielleicht hab ich ihn verloren? Ich hab schon überall gesucht.",
+                    "kris.r#Keine Ahnung, wo er stecken könnte..."
+                ],
+                "options": {
+                    "#SchluesselPosition1": "SchluesselPosition1",
+                    "#SchluesselPosition2": "SchluesselPosition2",
+                    "#SchluesselPosition3": "SchluesselPosition3",
+                    "#SchluesselPosition4": "SchluesselPosition4"
+                }
+            }
+        }
+    },
+    "#SchluesselPosition1": {
+        "actors": ["avatar", "kris", "veronika.r"],
+        "text": [
+            "veronika.r#Neben der Gießkanne unter der Spüle.",
+            "kris#Oh. Wie kommt er denn da hin?",
+            "veronika.r#Das hab ich mich auch gefragt."
+        ]
+    },
+    "#SchluesselPosition2": {
+        "actors": ["avatar", "kris", "veronika.r"],
+        "text": [
+            "veronika.r#Auf der Ablage im Bad.",
+            "kris#Ah ja, stimmt. Jetzt fällt es mir wieder ein!",
+            "kris.r#Du bist ein Schatz, Vero!"
+        ]
+    },
+    "#SchluesselPosition3": {
+        "actors": ["avatar", "kris", "veronika.r"],
+        "text": [
+            "veronika.r#Am Haken neben der Tür.",
+            "kris#Aber das ist doch deiner!",
+            "veronika.r#Nein, meiner steckt in meiner Kameratasche.",
+            "kris#Oh. Dann war er ja die ganze Zeit da!"
+        ]
+    },
+    "#SchluesselPosition4": {
+        "actors": ["avatar", "kris.r", "veronika.r"],
+        "text": [
+            "veronika.r#Vielleicht kannst du uns suchen helfen. Ich weiß auch nicht, wo er ist."
+        ],
+		"options": {
+			"#SchluesselSuchenJa": {
+				"prompt": "Okay",
+                "consequences": {
+                    "add_item_question": [
+                        "CHLOR_TABLETS",
+                        {
+                            "question": "Diese %s kann man immer mal gebrauchen.",
+                            "answere": "",
+                            "decline": "Einpacken"
+                        }
+                    ],
+                    "progress_day": ["Bei der Schlüsselsuche helfen"]
+                },
+				"actors": ["avatar", "kris.r", "veronika.r"],
+				"text": [
+					"avatar#Klar, gerne!",
+                    "kris.r#Mega! Ich hab auch was für dich, als Dankeschön!"
+				]
+			},
+			"#SchluesselSuchenNein": {
+				"prompt": "Nein",
+				"actors": ["avatar", "kris.r", "veronika.r"],
+				"text": [
+					"avatar#Heute nicht. Viel Glück!",
+					"kris.r#Danke. Das brauchen wir."
+				]
+			}
+		}
+    },
+    "#reden4": {
+        "actors": ["avatar", "kris.r", "veronika.r"],
+        "text": [
+            "kris.r#Krisopolis ist der beste Ort der Welt, um zu entspannen!",
+            "veronika.r#Kris stört sich nicht an den Krisen.",
+            "kris#Warum soll ich auch? Ist ja auch nicht so viel anders als Camping.",
+            "kris.r#Meine Pflanzen. Kochen auf dem Balkon. Kellnern muss ich auch nicht.",
+            "kris.r#Wenn man sich keinen Kopf macht, sind diese Krisen gar nicht schlimm.",
+            "kris.r#Mehr wie schlechtes Wetter. Bisschen ungemütlich, aber dafür hat man ja die passende Kleidung.",
+            "veronika.r#Es geht nichts über Kris' Gelassenheit während Krisen. Das muss ich schon sagen."
+        ]
     }
 }

@@ -43,10 +43,10 @@ if TradeMngr.is_trade_feasible()
 	- Avatar: Okay!
 		do TradeMngr.execute_trade()
 		Agathe: [#mood=happy]Entzückend!
-	- Avatar: Nein Danke.
+	- Avatar: Nein, danke.
 		Agathe: [#mood=sad][i]Schade[/i]..
 else
-	Agathe: [#mood=sad]Oh jemine, aber {{TradeMngr.get_unfeasibility_reason()}}!
+	Agathe: [#mood=sad] Ojemine, aber {{TradeMngr.get_unfeasibility_reason()}}!
 => END
 
 

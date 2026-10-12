@@ -1,0 +1,184 @@
+[gd_scene load_steps=16 format=3 uid="uid://y3stunek7sgq"]
+
+[ext_resource type="Script" uid="uid://clic2yjwi1q6x" path="res://GUI/phone/phone_gui.gd" id="1_tmxix"]
+[ext_resource type="PackedScene" uid="uid://c7njvi1qsgdon" path="res://GUI/phone/app_icon.tscn" id="2_41ni8"]
+[ext_resource type="Texture2D" uid="uid://ct48xgiok6714" path="res://assets/GUI/icons/power_icon.png" id="2_i3whd"]
+[ext_resource type="StyleBox" uid="uid://60p250u5pj7l" path="res://resources/background/menu_box_green_tex.tres" id="2_qqwkr"]
+[ext_resource type="Texture2D" uid="uid://bibb8kvoqoqpy" path="res://assets/GUI/icons/no_power_icon.png" id="3_jsv3h"]
+[ext_resource type="Texture2D" uid="uid://cxitvqg3w057t" path="res://assets/GUI/icons/online_icon.png" id="3_qqwkr"]
+[ext_resource type="Texture2D" uid="uid://b7cjaeg326se1" path="res://assets/GUI/icons/offline_icon.png" id="6_8vtge"]
+[ext_resource type="Texture2D" uid="uid://cno5csi1waa8v" path="res://assets/GUI/icons/icon_warn_app.png" id="6_qqwkr"]
+[ext_resource type="Texture2D" uid="uid://b87usik8pagtp" path="res://assets/GUI/icons/icon_cookl.png" id="7_utskd"]
+[ext_resource type="PackedScene" uid="uid://bwmnipiors5rv" path="res://GUI/phone/warn_app.tscn" id="8_5bq30"]
+[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="11_hinpo"]
+[ext_resource type="PackedScene" uid="uid://dctdukswlxo43" path="res://GUI/phone/cook_app.tscn" id="12_npk8y"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i3whd"]
+load_path = "res://.godot/imported/menu_box_black.png-4754cbdfea1e979fe3ed2615d0e2dc2b.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qqwkr"]
+texture = SubResource("CompressedTexture2D_i3whd")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(0, 0, 64, 55.02241)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41ni8"]
+bg_color = Color(0.317647, 0.541176, 0.776471, 1)
+
+[node name="PhoneGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tmxix")
+
+[node name="VBC" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 84.0
+offset_right = 576.0
+offset_bottom = 1024.0
+theme_override_constants/separation = 0
+
+[node name="Control" type="PanelContainer" parent="VBC"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qqwkr")
+
+[node name="Margin" type="MarginContainer" parent="VBC/Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="Panel" type="PanelContainer" parent="VBC/Control/Margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = ExtResource("2_qqwkr")
+
+[node name="Time" type="RichTextLabel" parent="VBC/Control/Margin/Panel"]
+custom_minimum_size = Vector2(84, 0)
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[center]12:00"
+fit_content = true
+
+[node name="HBC" type="HBoxContainer" parent="VBC/Control/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Power" type="TextureProgressBar" parent="VBC/Control/Margin/HBC"]
+layout_mode = 2
+value = 94.0
+fill_mode = 3
+texture_under = ExtResource("3_jsv3h")
+texture_progress = ExtResource("2_i3whd")
+
+[node name="Online" type="TextureRect" parent="VBC/Control/Margin/HBC"]
+layout_mode = 2
+texture = ExtResource("3_qqwkr")
+
+[node name="Offline" type="TextureRect" parent="VBC/Control/Margin/HBC"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_8vtge")
+
+[node name="Menu" type="PanelContainer" parent="VBC"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_41ni8")
+
+[node name="Margin" type="MarginContainer" parent="VBC/Menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="Grid" type="GridContainer" parent="VBC/Menu/Margin"]
+custom_minimum_size = Vector2(450, 500)
+layout_mode = 2
+theme_override_constants/h_separation = 56
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="Warn" parent="VBC/Menu/Margin/Grid" instance=ExtResource("2_41ni8")]
+layout_mode = 2
+app = "Warn"
+icon = ExtResource("6_qqwkr")
+title = "[center]Warn App[/center]"
+
+[node name="Check" parent="VBC/Menu/Margin/Grid" instance=ExtResource("2_41ni8")]
+visible = false
+layout_mode = 2
+app = "Check"
+title = "[center]Check Liste[/center]"
+
+[node name="Cook" parent="VBC/Menu/Margin/Grid" instance=ExtResource("2_41ni8")]
+layout_mode = 2
+app = "Cook"
+icon = ExtResource("7_utskd")
+title = "[center]Kochbuch[/center]"
+
+[node name="Off" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(492, 940)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_type_variation = &"BlackPanelContainer"
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 383.0
+offset_bottom = 447.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="BackButton" type="TextureButton" parent="Margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("11_hinpo")
+
+[node name="Apps" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 833)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Warn" parent="Apps" instance=ExtResource("8_5bq30")]
+visible = false
+layout_mode = 1
+
+[node name="Cook" parent="Apps" instance=ExtResource("12_npk8y")]
+visible = false
+layout_mode = 1
+
+[connection signal="app_pressed" from="VBC/Menu/Margin/Grid/Warn" to="." method="handle_app"]
+[connection signal="app_pressed" from="VBC/Menu/Margin/Grid/Check" to="." method="handle_app"]
+[connection signal="app_pressed" from="VBC/Menu/Margin/Grid/Cook" to="." method="handle_app"]
+[connection signal="pressed" from="Margin/BackButton" to="." method="close"]

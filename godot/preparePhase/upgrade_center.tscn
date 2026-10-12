@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://doc1tdsx8itqw"]
+[gd_scene load_steps=15 format=3 uid="uid://doc1tdsx8itqw"]
 
-[ext_resource type="Script" path="res://preparePhase/upgrade_center.gd" id="1_j1ie4"]
+[ext_resource type="Script" uid="uid://bo6xu7s5kjofe" path="res://preparePhase/upgrade_center.gd" id="1_j1ie4"]
 [ext_resource type="Texture2D" uid="uid://b4cvdmct7qdxn" path="res://assets/GUI/icons/icon_ecoins.png" id="1_xic5p"]
+[ext_resource type="Texture2D" uid="uid://dnbnxosef5r58" path="res://assets/citymap/citymap.png" id="2_4bnd7"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="3_wh8jv"]
 [ext_resource type="Texture2D" uid="uid://d35pi0p7mtby6" path="res://assets/particles/particle_star.png" id="4_c3pkx"]
-[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="4_o3hl2"]
+[ext_resource type="Texture2D" uid="uid://c1f0dydwhw21e" path="res://assets/GUI/buttons/help_button.png" id="4_oi7g5"]
+[ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="9_eku1m"]
+[ext_resource type="PackedScene" uid="uid://djhelv5xr4djt" path="res://GUI/upgrade_info_gui.tscn" id="11_2d7sk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0cck"]
 bg_color = Color(0.360784, 0.333333, 0.301961, 1)
@@ -44,35 +47,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j1ie4")
 
-[node name="Background" type="PanelContainer" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(0.470588, 0.470588, 0.470588, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_4bnd7")
+
+[node name="Margin" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_b0cck")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
+[node name="Margin" type="MarginContainer" parent="ColorRect/Margin"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_right = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="PanelContainer3" type="PanelContainer" parent="Background/MarginContainer/VBoxContainer"]
+[node name="Coins" type="PanelContainer" parent="ColorRect/Margin/Margin"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer/PanelContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/Margin/Margin/Coins"]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/Margin/Margin/Coins/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -81,145 +87,192 @@ bbcode_enabled = true
 text = "[right][color=black]10[/color][/right]"
 scroll_active = false
 
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/VBoxContainer/PanelContainer3/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Margin/Margin/Coins/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 texture = ExtResource("1_xic5p")
 
-[node name="Title" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="ColorRect/Margin"]
+visible = false
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 bbcode_enabled = true
 text = "[center]Statten Sie ihr Zuhause aus[/center]"
 fit_content = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/Margin"]
+visible = false
 layout_mode = 2
 bbcode_enabled = true
 text = "[center]Gekaufte Items sind dauerhaft freigeschaltet[/center]"
 fit_content = true
 
-[node name="UpgradePanel" type="PanelContainer" parent="Background/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(556, 510)
+[node name="UpgradePanel" type="PanelContainer" parent="ColorRect/Margin"]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="VBC" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer/UpgradePanel"]
-custom_minimum_size = Vector2(450, 0)
+[node name="VBC" type="VBoxContainer" parent="ColorRect/Margin/UpgradePanel"]
+custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Title" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/UpgradePanel/VBC"]
+[node name="HBC" type="HBoxContainer" parent="ColorRect/Margin/UpgradePanel/VBC"]
 layout_mode = 2
+alignment = 2
+
+[node name="Title" type="RichTextLabel" parent="ColorRect/Margin/UpgradePanel/VBC/HBC"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
 text = "[center]Upgrades[/center]"
 fit_content = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/VBoxContainer/UpgradePanel/VBC"]
-custom_minimum_size = Vector2(485, 440)
+[node name="Help" type="TextureButton" parent="ColorRect/Margin/UpgradePanel/VBC/HBC"]
+custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
-size_flags_horizontal = 4
+texture_normal = ExtResource("4_oi7g5")
+stretch_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/VBoxContainer/UpgradePanel/VBC/ScrollContainer"]
-custom_minimum_size = Vector2(485, 0)
+[node name="GridContainer" type="GridContainer" parent="ColorRect/Margin/UpgradePanel/VBC"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/h_separation = 10
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 11
+theme_override_constants/v_separation = 11
 columns = 3
 
-[node name="WhitePanel" type="PanelContainer" parent="Background/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"WhitePanelContainer"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer/WhitePanel"]
+[node name="CC" type="CenterContainer" parent="ColorRect/Margin/UpgradePanel/VBC"]
+custom_minimum_size = Vector2(364, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/VBoxContainer/WhitePanel/VBoxContainer"]
+[node name="HBC" type="HBoxContainer" parent="ColorRect/Margin/UpgradePanel/VBC/CC"]
 layout_mode = 2
-theme_type_variation = &"TitleSpacing"
-
-[node name="UpgradeName" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/WhitePanel/VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(0, 46)
-layout_mode = 2
-theme_type_variation = &"HeaderLarge"
-
-[node name="Price" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/WhitePanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 34)
-layout_mode = 2
-
-[node name="Description" type="RichTextLabel" parent="Background/MarginContainer/VBoxContainer/WhitePanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 108)
-layout_mode = 2
-
-[node name="MarginContainer3" type="MarginContainer" parent="Background/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer/MarginContainer3"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 40
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
-layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="BuyBtn" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer" instance=ExtResource("3_wh8jv")]
+[node name="BuyBtn" parent="ColorRect/Margin/UpgradePanel/VBC/CC/HBC" instance=ExtResource("3_wh8jv")]
 visible = false
-custom_minimum_size = Vector2(194, 50)
 layout_mode = 2
-text = "Item kaufen"
+theme_type_variation = &"ConfirmButton"
+text = "Freischalten"
 
-[node name="EquipBtn" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer" instance=ExtResource("3_wh8jv")]
+[node name="EquipBtn" parent="ColorRect/Margin/UpgradePanel/VBC/CC/HBC" instance=ExtResource("3_wh8jv")]
 visible = false
-custom_minimum_size = Vector2(194, 50)
 layout_mode = 2
-text = "Item ausrüsten"
+theme_type_variation = &"ConfirmButton"
+text = "Ausrüsten"
 
-[node name="UnEquipBtn" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer" instance=ExtResource("3_wh8jv")]
+[node name="UnEquipBtn" parent="ColorRect/Margin/UpgradePanel/VBC/CC/HBC" instance=ExtResource("3_wh8jv")]
 visible = false
-custom_minimum_size = Vector2(194, 50)
 layout_mode = 2
-text = "Item abrüsten"
+theme_type_variation = &"CancelButton"
+text = "Abrüsten"
 
-[node name="Control" type="Control" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(195, 0)
+[node name="Info" parent="ColorRect/Margin/UpgradePanel/VBC/CC/HBC" instance=ExtResource("3_wh8jv")]
+visible = false
 layout_mode = 2
+theme_type_variation = &"BlueButton"
+text = "Info"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
-custom_minimum_size = Vector2(195, 0)
+[node name="HBC" type="HBoxContainer" parent="ColorRect/Margin"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
+size_flags_vertical = 8
+theme_override_constants/separation = 4
+alignment = 2
 
-[node name="MainMenuBtn" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2" instance=ExtResource("3_wh8jv")]
-visible = false
-custom_minimum_size = Vector2(194, 50)
+[node name="CC" type="CenterContainer" parent="ColorRect/Margin/HBC"]
+custom_minimum_size = Vector2(364, 0)
 layout_mode = 2
-text = "Zurück zum Menü"
 
-[node name="BackButton" type="TextureButton" parent="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2"]
+[node name="Continue" parent="ColorRect/Margin/HBC/CC" instance=ExtResource("3_wh8jv")]
+layout_mode = 2
+theme_type_variation = &"ConfirmButton"
+text = "Ausrüstung bestätigen"
+
+[node name="BackButton" type="TextureButton" parent="ColorRect/Margin/HBC"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-texture_normal = ExtResource("4_o3hl2")
+texture_normal = ExtResource("9_eku1m")
+
+[node name="Background" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0cck")
 
 [node name="StarExplosionVFX" type="GPUParticles2D" parent="."]
 position = Vector2(297, 221)
 emitting = false
 amount = 80
-process_material = SubResource("ParticleProcessMaterial_a62gn")
 texture = ExtResource("4_c3pkx")
 lifetime = 5.0
 one_shot = true
 explosiveness = 0.88
 randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_a62gn")
 
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer/BuyBtn" to="." method="_on_buy_btn_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer/EquipBtn" to="." method="_on_equip_btn_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer/UnEquipBtn" to="." method="_on_un_equip_btn_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
-[connection signal="pressed" from="Background/MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2/BackButton" to="." method="_on_main_menu_btn_pressed"]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.470588, 0.470588, 0.470588, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UpgradeInfoGui" parent="CanvasLayer" instance=ExtResource("11_2d7sk")]
+visible = false
+
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="CanvasLayer/Tutorial"]
+custom_minimum_size = Vector2(500, 624)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 200.0
+offset_right = 538.0
+offset_bottom = 824.0
+theme_type_variation = &"WhiteRichTextLabel"
+text = "Rüste deinen Haushalt aus!
+
+Hier findest du Gegenstände, die dir im Ernstfall den entscheidenden  Vorteil bringen.
+
+Drücke lange auf ein Item, um herauszufinden, was es draufhat.
+
+Du kannst bis zu 3 Gegenstände gleichzeitig ausrüsten.
+
+Alle aktiven Items leuchten grün."
+
+[node name="TuBack" type="TextureButton" parent="CanvasLayer/Tutorial"]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 939.0
+offset_right = 539.0
+offset_bottom = 1003.0
+texture_normal = ExtResource("9_eku1m")
+
+[connection signal="pressed" from="ColorRect/Margin/UpgradePanel/VBC/HBC/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/UpgradePanel/VBC/CC/HBC/BuyBtn" to="." method="_on_buy_btn_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/UpgradePanel/VBC/CC/HBC/EquipBtn" to="." method="_on_equip_btn_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/UpgradePanel/VBC/CC/HBC/UnEquipBtn" to="." method="_on_un_equip_btn_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/UpgradePanel/VBC/CC/HBC/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/HBC/CC/Continue" to="." method="_on_continue_btn_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/HBC/BackButton" to="." method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Tutorial/TuBack" to="." method="_on_tu_back_pressed"]

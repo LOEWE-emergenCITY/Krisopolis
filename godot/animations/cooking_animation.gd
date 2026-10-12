@@ -46,5 +46,3 @@ func open(p_recipe: EMC_Recipe) -> void:
 func close() -> void:
 	hide()
 	closed.emit(self)
-
-

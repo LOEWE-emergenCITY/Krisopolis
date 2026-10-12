@@ -5,21 +5,23 @@ class_name EMC_IC_Uses
 #var _MAX_USES : int = 0
 
 #------------------------------------------ PUBLIC METHODS -----------------------------------------
-func _init(_p_max_uses : int = 0) -> void:
+func _init() -> void:
 	super("Uses", Color.DARK_CYAN)
-	_uses_left = _p_max_uses
 	#_MAX_USES = _p_max_uses
 	#
 #func get_max_uses() -> int: 
 	#return _MAX_USES
 
+func setup(data: Dictionary) -> EMC_IC_Uses:
+	_uses_left = data.get("value", _uses_left)
+	
+	return self
+
 func no_uses_left() -> bool:
 	return get_uses_left() <= 0
 
-
 func get_uses_left() -> int:
 	return _uses_left
-
 
 ## MRM: Renamed from "item_used" to "use_item", as the past-timetense implicitly 
 ## suggests it is a signal not a function

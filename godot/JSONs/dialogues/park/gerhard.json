@@ -23,10 +23,10 @@
 	"cooldown_count": 0,
 	"actors": ["avatar", "gerhard.r", "friedel"],
 	"text": [
-	  "avatar#Lass uns reden! Wie geht's dir?",
-	  "gerhard.r#Man kann sich nicht beklagen. Also, man könnte schon, aber man tuts ja nicht.",
+	  "avatar#Lass uns reden! Wie geht es dir?",
+	  "gerhard.r#Man kann sich nicht beklagen. Also, man könnte schon, aber man tut's ja nicht.",
 	  "friedel#Wuff.",
-	  "gerhard#Worüber willst du dich den beklagen? Zu wenig Essen?",
+	  "gerhard#Worüber willst du dich denn beklagen? Zu wenig Essen?",
 	  "friedel#Wuff ...",
 	  "gerhard#... na gut. Ein Leckerli noch. Aber das ist das Letzte für heute!",
 	  "friedel#Wuff!"
@@ -38,10 +38,10 @@
 	"cooldown_count": 0,
 	"actors": ["avatar", "friedel", "gerhard.r"],
 	"text": [
-	  "avatar#Lass uns reden! Wie geht's Friedel?",
-	  "gerhard.r#Manchmal glaub ich, er spürt, dass wir uns in einer Krise befinden.",
+	  "avatar#Lass uns reden! Wie geht es Friedel?",
+	  "gerhard.r#Manchmal glaube ich, er spürt, dass wir uns in einer Krise befinden.",
 	  "gerhard.r#Wenn er am Fenster liegt und traurig nach draußen schaut. Oder wenn er anhänglicher wird als sonst.",
-	  "gerhard.r#Aber am nächsten Tag tollt er wieder durch den Park, ohne eine Sorge im Leben ... Also vielleicht doch nicht.",
+	  "gerhard.r#Aber am nächsten Tag tollt er wieder durch den Park, ohne eine Sorge im Leben ... also vielleicht doch nicht.",
 	  "avatar#Hund müsste man sein ...",
 	  "friedel#Wuff!"
 	]

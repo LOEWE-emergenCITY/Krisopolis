@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl20ba4rnn1qj"]
+
+[ext_resource type="Script" uid="uid://sqqgua5mycs0" path="res://GUI/cooking/fold_button.gd" id="1_n46rc"]
+[ext_resource type="PackedScene" uid="uid://cfk7h3ji5pkne" path="res://inventory/item_slot.tscn" id="1_u3f2j"]
+
+[node name="FoldButton" type="MarginContainer"]
+offset_right = 89.0
+offset_bottom = 33.0
+script = ExtResource("1_n46rc")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_right = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Margin/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Test"
+
+[node name="Slot_BG" parent="Margin/HBoxContainer" instance=ExtResource("1_u3f2j")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+mouse_filter = 1
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

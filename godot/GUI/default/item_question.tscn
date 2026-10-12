@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://dnf32wr215wj3"]
+
+[ext_resource type="Script" uid="uid://5pq1q0ussyt8" path="res://GUI/default/item_question.gd" id="1_s8rsj"]
+[ext_resource type="PackedScene" uid="uid://cfk7h3ji5pkne" path="res://inventory/item_slot.tscn" id="2_nyoc0"]
+[ext_resource type="Texture2D" uid="uid://b7kk24kpdehbm" path="res://assets/GUI/backgrounds/menu_box_white.png" id="2_tvchu"]
+[ext_resource type="Script" uid="uid://dg0wue01hcvsg" path="res://inventory/item.gd" id="3_3xyb7"]
+[ext_resource type="Script" uid="uid://d374ckeaba1lx" path="res://inventory/components/item_component.gd" id="3_6qmk2"]
+[ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="3_inive"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_rgisu"]
+[ext_resource type="Texture2D" uid="uid://qk3ha65v0lsg" path="res://assets/items.png" id="4_sh5wl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a0jo"]
+atlas = ExtResource("4_sh5wl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_852rd"]
+resource_name = "Dummy"
+script = ExtResource("3_3xyb7")
+descr = "<No Descr>"
+texture = SubResource("AtlasTexture_7a0jo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jy4p8"]
+texture = ExtResource("2_tvchu")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[node name="ItemQuestionGUI" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -139.0
+offset_right = 250.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_s8rsj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="CC" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Slot" parent="VBoxContainer/CC" instance=ExtResource("2_nyoc0")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+item = SubResource("Resource_852rd")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_jy4p8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("3_inive")
+bbcode_enabled = true
+text = "Möchstest du ... jetzt essen oder für später aufheben?"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ConfirmBtn" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_rgisu")]
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"ConfirmButton"
+text = "Essen"
+
+[node name="BackBtn" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_rgisu")]
+custom_minimum_size = Vector2(180, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"BlueButton"
+text = "Aufheben"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ConfirmBtn" to="." method="_on_confirm_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]

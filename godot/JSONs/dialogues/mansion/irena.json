@@ -2,24 +2,149 @@
     "start": {
         "actors": ["avatar", "irena.r"],
         "text": [
+            "irena.r#Moin Moin!"
+          ],
+          "options": {
+            "#reden": {
+              "prompt": "Möchtest du mit mir reden?",
+              "options": {"#reden1": "", "#reden2": "", "#reden3": "", "#reden4": ""}
+            },
+            "#nichts": {
+                "prompt": "Spiel schön!",
+                "actors": ["avatar", "irena.r"],
+                "text": [
+                   "irena.r#Klaro!"
+                ]
+            }
+          }
+    },
+    "#reden1": {
+        "actors": ["avatar", "irena.r"],
+        "text": [
             "irena.r#Hast du Spiele auf deinem Handy??",
-            "irena.r#Meine Lieblingsapp ist Krisopolis: Play & Prepare!!!",
+            "irena.r#Meine Lieblings-App ist Krisopolis: Play & Prepare!!!",
             "avatar#Oh, das klingt spaßig.",
             "irena.r#Ist es auch!"
         ],
         "options": {
             "fragen": {
-                "prompt": "Nach Ireans Spielzeug fragen",
+                "prompt": "Nach Irenas Spielzeug fragen",
                 "actors": ["avatar", "irena.r"],
                 "text": [
                     "avatar#Mit was spielst du da?",
                     "irena.r#Mit einer Rakete! Wuuuuschhhh!!",
-                    "irena.r#Ist aber meine,\nÄäätschi bätsch!"
+                    "irena.r#Ist aber meine!\nÄäätschi bätsch!"
                 ]
             },
             "back": {
                 "prompt": "Zurück"
             }
         }
+    },
+    "#reden2": {
+        "actors": ["avatar", "irena.r"],
+        "text": [
+            "irena.r#Papa ist der Größte! Und Mert ist der Größte. Nur Mert ist natürlich nicht Papa.",
+            "irena.r#Ich darf jetzt auf Momo aufpassen, wenn Mert weg ist.",
+            "irena.r#Momo ist so süß! Ich hoffe, dass ich sie zum Schnurren kriege, wenn sie sich an mich gewöhnt hat.",
+            "irena.r#Streicheln kann ich sie schon!",
+            "irena.r#Aber versuchs besser nicht, sie kriegt ganz schnell Angst bei Erwachsenen."
+        ]
+    },
+    "#reden3": {
+        "actors": ["avatar", "irena.r"],
+        "text": [
+            "irena.r#Mmmmnh. Ich hab zu tun.",
+            "irena.r#Der Weltraum erobert sich nicht von alleine!"
+        ],
+        "options": {
+            "#GemeinsameEroberungAnbieten": {
+                "prompt": "Wie wär's zu zweit?",
+                "actors": ["avatar", "irena.r"],
+                "text": [
+                    "avatar#Ich könnte dir bei der Eroberung helfen."
+                ],
+                "options": {
+                    "GemeinsameWeltraumEroberung": {
+                        "conditions": [
+                            {
+                                "has_karma_with": "irena",
+                                "karma": 1
+                            }
+                        ],
+                        "actors": ["avatar", "irena.r"],
+                        "text": [
+                            "irena.r#Okay. Du bist Mission Control!"
+                        ],
+                        "options": {
+                            "MCNoName": {
+                                "actors": ["avatar", "irena.r"],
+                                "text": [
+                                    "avatar#Mission Control. Alles klar. Mission Control an Rakete: alles bereit zum Start?",
+                                    "irena.r#Das ist keine Rakete! Das ist Launcher272ab mit Ziel zum Pluto!"
+                                ],
+                                "progress_day": ["Mit Irena den Weltraum erobern"],
+                                "options": {
+                                    "#IrenaBeschaeftigt": "IrenaBeschaeftigt"
+                                }
+                            },
+                            "MCName": {
+                                "actors": ["avatar", "irena.r"],
+                                "text": [
+                                    "avatar#Mission Control. Alles klar. Mission Control an LauncherT404 auf Mission zu Alpha Centauri: alles bereit zum Start?",
+                                    "irena.r#Alles bereit!"
+                                ],
+                                "progress_day": ["Mit Irena den Weltraum erobern"],
+                                "options": {
+                                    "#IrenaBeschaeftigt": "IrenaBeschaeftigt"
+                                }
+                            }
+                        }
+                    },
+                    "EinsameWeltraumEroberung": {
+                        "actors": ["avatar", "irena.r"],
+                        "text": [
+                            "irena.r#Nö! Wuuuuusch!"
+                        ]
+                    }
+                }
+            },
+            "#GemeinsameEroberungNichtAnbieten": {
+                "prompt": "Stimmt",
+                "actors": ["avatar", "irena.r"],
+                "text": [
+                    "avatar#Dann noch viel Erfolg bei der Eroberung!",
+                    "irena.r#Wir haben immer Erfolg! Wuuuuusch!"
+                ]
+            }
+		}
+    },
+    "#reden4": {
+        "actors": ["avatar", "irena.r"],
+        "text": [
+            "irena.r#Ich hab noch Hausaufgaben.",
+            "irena.r#Die sollte ich eigentlich schon fertig haben.",
+            "irena.r#Aber sags Papa nicht, okay?",
+            "avatar#Ich schweige wie das Weltall!",
+            "irena.r#Hihi. Das ist gut."
+        ]
+    },
+    "#IrenaBeschaeftigt": {
+        "actors": ["avatar", "irena.r", "petro.r"],
+        "consequences": {
+            "add_item_question": [
+                "BATTERIES",
+                {
+                    "question": "Diese %s kann man immer mal gebrauchen.",
+                    "answere": "",
+                    "decline": "Einpacken"
+                }
+            ]
+        },
+        "text": [
+            "petro.r#Lieb von dir, mit Irena zu spielen.",
+            "petro.r#In der Krise findet man ja kaum Zeit für sich. Ich bin sicher, das geht dir auch ähnlich.",
+            "petro.r#Vielleicht hilft dir das hier weiter."
+        ]
     }
 }

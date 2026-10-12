@@ -2,23 +2,36 @@
 	"comp": {
 		"descr": {
 			"name": "Agathe",
-			"descr": "Das hier ist Agathe.\nSie ist lieb.",
-			"portait": "agathe"
+			"descr": "Das hier ist Agathe.\nSie macht aus jeder Krise eine Geschichte.",
+			"portait": "agathe",
+			"sprite": "agathe"
 		},
-		"sprite": {
-			"texture_name": "agathe"
+		"karma": {},
+		"conversation": {
+			"pitch": 1.2,
+			"day": "res://resources/dialogues/agathe/day/day.vrv",
+			"small_talk": "res://resources/dialogues/agathe/small_talk.vrv",
+			"paths": {
+				"day": "res://resources/dialogues/agathe/day/"
+			}
 		},
-		"interaction": {
-			"conversation": {
-				"pitch": 1.2
+		"trading": {
+			"inventory": {
+				"WATER": 2,
+				"RAVIOLI_TIN": 2,
+				"CHOCOLATE": 1
 			}
 		},
 		"stage": {
+			"stage_name": "apartment_default",
+			"spot": "book",
+
+			"position": { "x": 490, "y": 400 },
 			"start": "ApartmentDefault",
 			"positions": {
 				"ApartmentDefault": { "x": 490, "y": 400 },
 				"Market": { "x": 180, "y": 300 }
 			}
 		}
-	}	
+	}
 }

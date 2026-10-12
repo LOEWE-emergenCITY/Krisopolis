@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://ctlisou6u6wex"]
 
-[ext_resource type="Script" path="res://GUI/trade_ui.gd" id="1_klull"]
+[ext_resource type="Script" uid="uid://cf6lot0tm7q1v" path="res://GUI/trade_ui.gd" id="1_klull"]
 [ext_resource type="Texture2D" uid="uid://dwwuq7qn72bub" path="res://assets/characters/portrait_raphael.png" id="1_yjcyr"]
 [ext_resource type="Texture2D" uid="uid://roxqf34j7vb0" path="res://assets/GUI/icons/icon_NPC_relation.png" id="2_aiu0m"]
 [ext_resource type="StyleBox" uid="uid://bwu0dssl63nbv" path="res://resources/background/menu_box_tex.tres" id="4_ksqq8"]
@@ -96,8 +96,8 @@ stretch_mode = 5
 position = Vector2(60, 33)
 emitting = false
 amount = 21
-local_coords = true
 texture = ExtResource("14_2vl8a")
+local_coords = true
 emission_shape = 3
 emission_rect_extents = Vector2(60, 32)
 direction = Vector2(0, -1)
@@ -157,26 +157,29 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/font_unselected_color = Color(0, 0, 0, 1)
-theme_override_styles/tab_selected = ExtResource("4_yink0")
-theme_override_styles/tab_hovered = ExtResource("4_s4rwf")
-theme_override_styles/tab_unselected = ExtResource("4_ksqq8")
-theme_override_styles/tab_focus = ExtResource("4_yink0")
 theme_override_styles/panel = ExtResource("4_s4rwf")
+theme_override_styles/tab_unselected = ExtResource("4_ksqq8")
+theme_override_styles/tab_hovered = ExtResource("4_s4rwf")
+theme_override_styles/tab_selected = ExtResource("4_yink0")
+theme_override_styles/tab_focus = ExtResource("4_yink0")
 tab_alignment = 1
+current_tab = 1
 
 [node name="Inventory" type="PanelContainer" parent="VBC/Inventories"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
+metadata/_tab_index = 0
 
 [node name="InventoryGrid" parent="VBC/Inventories/Inventory" instance=ExtResource("10_knqvd")]
 custom_minimum_size = Vector2(416, 230)
 layout_mode = 2
 
 [node name="Trader" type="PanelContainer" parent="VBC/Inventories"]
-visible = false
 custom_minimum_size = Vector2(448, 262)
 layout_mode = 2
 size_flags_horizontal = 4
+metadata/_tab_index = 1
 
 [node name="InventoryGrid" parent="VBC/Inventories/Trader" instance=ExtResource("10_knqvd")]
 custom_minimum_size = Vector2(416, 230)

@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://bo10sdk1c1wnf"
+path="res://.godot/imported/fire_department_demonstration.vrv-ee72ced961513fb1c23ef93c466a3fbf.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/petro/event/fire_department_demonstration.vrv"
+dest_files=["res://.godot/imported/fire_department_demonstration.vrv-ee72ced961513fb1c23ef93c466a3fbf.tres"]
+
+[params]
+

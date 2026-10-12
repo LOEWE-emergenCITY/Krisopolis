@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://sdajxl07shyd" path="res://assets/GUI/buttons/menu_box_recipe_normal.png" id="2_kac0s"]
 [ext_resource type="Texture2D" uid="uid://curl1ea7gbxi7" path="res://assets/GUI/buttons/menu_box_recipe_pressed.png" id="3_xqt8f"]
 [ext_resource type="Texture2D" uid="uid://c43ofninr0nhl" path="res://assets/GUI/buttons/menu_box_recipe_disabled.png" id="4_okv03"]
-[ext_resource type="Script" path="res://GUI/cooking/mother_recipe.gd" id="5_qnpyp"]
+[ext_resource type="Script" uid="uid://bih4obb8q7dhi" path="res://GUI/cooking/mother_recipe.gd" id="5_qnpyp"]
 
 [node name="MotherRecipe" type="VBoxContainer"]
 offset_right = 40.0

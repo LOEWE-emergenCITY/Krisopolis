@@ -1,0 +1,51 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar petro.flipped
+[text]
+petro:Ich habe ein kleines Solarmodul für mein Radio gebaut. Wenn der Strom ausfällt, bekomme ich immer noch alle Nachrichten.
+
+[[Node]] two
+[actors] avatar petro.flipped
+[text]
+petro:Hat Irena ihre Hausaufgaben schon gemacht? Ich muss sie mal fragen.
+
+[[Node]] three
+[actors] avatar petro.flipped
+[text]
+petro:Wenn ich keine Ideen habe, spreche ich mit Irena. Ihre Fragen sind Gold wert.
+
+[[Node]] four
+[actors] avatar petro.flipped
+[text]
+petro:Ich denke gerade über meine nächste Aufnahme nach. Das Skript gefällt mir noch nicht ganz.
+
+[[Node]] five
+[actors] avatar petro.flipped
+[text]
+petro:Es wird wieder Zeit für einen Blogartikel. Worüber schreibe ich diesmal?
+
+[[Node]] six
+[actors] avatar petro.flipped
+[text]
+petro:Von zu Hause arbeiten hat Vor- und Nachteile. Für mich als Rollstuhlfahrer überwiegen die Vorteile.
+petro:Es gibt zwar schon Verbesserungen, aber es ist immer noch nicht leicht, durch die Stadt zu navigieren.
+
+[[Node]] seven
+[actors] avatar petro.flipped
+[text]
+petro:Das Leben kann schon aufregend sein. Vor allem als Freelancer.
+
+[[Node]] eight
+[actors] avatar petro.flipped
+[text]
+petro:Irena ist schon so groß geworden. Unglaublich.

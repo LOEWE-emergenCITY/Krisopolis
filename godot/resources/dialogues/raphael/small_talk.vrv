@@ -1,0 +1,53 @@
+[[Node]] start
+[random]
+- [jump] one
+- [jump] two
+- [jump] three
+- [jump] four
+- [jump] five
+- [jump] six
+- [jump] seven
+- [jump] eight
+
+[[Node]] one
+[actors] avatar raphael.flipped
+[text]
+raphael:Geld ist überbewertet. Ich hab lieber was Handfestes.
+
+[[Node]] two
+[actors] avatar raphael.flipped
+[text]
+raphael:Ich hab immer genug Vorräte zuhause. Mich kann nichts überraschen.
+
+[[Node]] three
+[actors] avatar raphael.flipped
+[text]
+raphael:Vorbereitung, das ist der entscheidende Faktor. Auf alles vorbereitet sein.
+
+[[Node]] four
+[actors] avatar raphael.flipped
+[text]
+raphael:Diese Kartoffeln sind echt alt ... Vielleicht tauscht die dieser Snob noch.
+
+[[Node]] five
+[actors] avatar raphael.flipped
+[text]
+raphael:Hier gibts Waren im fairen Austausch! Ich lass euch nicht im Stich!
+raphael:Hört wahrscheinlich eh keiner.
+
+[[Node]] six
+[actors] avatar raphael.flipped
+[text]
+raphael:Dieser große weiße Hund, der von dem alten Kerl mit dem Gemüse und den Kartoffeln, der liebt meinen Stand.
+raphael:Kann ich ihm nicht verdenken. Besseres Fleisch kriegste nicht.
+
+[[Node]] seven
+[actors] avatar raphael.flipped
+[text]
+raphael:Ich mach hier noch ehrliche Arbeit. Trotz Krise. Die jungen Leute von heute kommen ja kaum noch ausm Haus.
+
+[[Node]] eight
+[actors] avatar raphael.flipped
+[text]
+raphael:Ich fahr immer am Fitnessstudio vorbei, auf dem Weg hierher. Auch nur so ne Geldmaschinerie.
+raphael:Fertigfutter vom Fließband, schwitzende Menschen aufm Laufband, alles nur Industrie. Pah.

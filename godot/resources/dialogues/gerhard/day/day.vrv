@@ -1,0 +1,270 @@
+[[Node]] start
+[actors] avatar gerhard.flipped
+[text]
+avatar:Hallo!
+gerhard:Moin.
+[jump] talk
+
+[[Node]] talk
+[set] @last_talk get_talk_from_range(14, get_var_or(@last_talk, "talk-1"), get_var_or(@last_day, -1))
+[set] @last_day get_period_count()
+[jump] @last_talk
+[set] @last_talk "talk-1"
+[jump] talk
+
+[[Node]] stop
+[actors] avatar gerhard.flipped friedel
+[text]
+gerhard:Wir sehen uns.
+
+[[Node]] talk1
+[actors] avatar gerhard.flipped friedel
+[text]
+avatar:Wie geht's dir?
+gerhard:Man kann sich nicht beklagen. Also, man könnte schon, aber man tut es ja nicht.
+friedel:Wuff.
+[actors] avatar gerhard friedel
+[text]
+gerhard:Worüber willst du dich denn beklagen? Zu wenig Essen?
+friedel:Wuff ...
+gerhard:... na gut. Ein Leckerli noch. Aber das ist das Letzte für heute!
+friedel:Wuff!
+
+
+[[Node]] talk2
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Wie geht es Friedel?
+gerhard:Manchmal glaube ich, er spürt, dass wir uns in einer Krise befinden.
+gerhard:Wenn er am Fenster liegt und traurig nach draußen schaut. Oder wenn er anhänglicher wird als sonst.
+gerhard:Aber am nächsten Tag tollt er wieder durch den Park, ohne eine Sorge im Leben ... also vielleicht doch nicht.
+avatar:Hund müsste man sein ...
+friedel:Wuff!
+
+
+[[Node]] talk3
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Was macht die Gartenarbeit?
+gerhard:Arbeit? So würde ich das nicht nennen.
+gerhard:Der Garten war immer mein Rückzugsort nach der Arbeit.
+gerhard:Und heute ist er mein ganzer Stolz.
+friedel:Wuff?
+gerhard:Zusammen mit Friedel, natürlich.
+friedel:Wuff!
+
+
+[[Node]] talk4
+[Condition] npc_is_sad("gerhard")
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Du siehst aus, als wärst du verärgert.
+gerhard:Wirklich? Hm, ja. Ich habe mich in der Tat etwas geärgert.
+gerhard:Dieser junge Bursche mit seinem E-Scooter ist schuld.
+gerhard:Der im Anzug und mit diesen Stöpseln im Ohr.
+gerhard:Düst immer durch den Park, als sei er auf ner Rennstrecke.
+gerhard:Rast keine Handbreit an mir und Friedel vorbei, als gäbe es niemanden außer ihm auf der Welt.
+gerhard:Friedel ist ja wirklich nicht leicht aus der Ruhe zu bringen, aber die E-Scooter machen ihn wahnsinnig.
+gerhard:Das ärgert mich.
+friedel:Winsel.
+
+[[Node]] talk5
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Was gibt's Neues?
+gerhard:Ach, wenn man mal so alt ist wie ich, nicht mehr viel.
+gerhard:Unwetter. Krisen. Ungeziefer. Missernten. Alles schon gesehen.
+gerhard:Gibt einem eine gewisse Gelassenheit. Alles schon erlebt. Alles schon überstanden.
+gerhard:Nicht wahr, Friedel?
+friedel:[i]*Hechel.*[/i] Wuff!
+
+[[Node]] talk6
+[Condition] crisis_is("Hochwasser")
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Wie läuft es bei dir?
+gerhard:Viel Regen ist nicht gut für meine Kürbisse.
+gerhard:In der aktuellen Wachstumsphase sorgt zu viel Wasser für einen faden Geschmack.
+gerhard:Hoffentlich gibt es bald wieder mehr Sonnenschein.
+gerhard:Sonst muss ich die Kürbisse abdecken.
+gerhard:Außerdem stinkt Friedels Fell immer so, wenn es nass wird.
+friedel:Wuff?
+gerhard:Ich weiß, du kannst nichts dafür. Aber du magst es doch auch, wenn beim Spaziergang die Sonne scheint.
+friedel:Wuff!
+
+[[Node]] talk7
+[Condition] crisis_is("Duerre")
+[actors] avatar friedel gerhard.flipped
+[text]
+gerhard:Zu viel Sonne ist nicht gut für meinen Garten.
+gerhard:Außerdem vertrag ich die Hitze nicht mehr so gut wie früher. Friedel schwitzt auch in seinem dichten Fell.
+friedel:[i]*Hechel.*[/i] [i]*Hechel.*[/i]
+gerhard:Er liegt eigentlich den ganzen Tag nur rum.
+avatar:Klingt beneidenswert.
+gerhard:Schon, aber ich merke auch, dass ihn die Hitze mitnimmt.
+friedel:[i]*Hechel.*[/i]
+gerhard:Wir trinken einfach ganz viel und bleiben im Kühlen, dann wird das schon, nicht wahr, Friedel?
+friedel:[i]*Hechel.*[/i] [i]*Hechel.*[/i]
+gerhard:Vielleicht sollte ich doch eine Klimaanlage einbauen lassen.
+gerhard:Dann muss ich auch nicht mehr so mit den Medikamenten aufpassen. Da kann es auch ganz unterschiedliche Probleme bei Hitze geben.
+[Choice]
+- [medikamente_nachfragen] Was meinst du?
+- [medikamente_ignorieren] Das sind gute Tipps!
+
+[[Node]] medikamente_nachfragen
+[actors] avatar friedel gerhard.flipped
+[text]
+gerhard:Manche Medikamente verändern ihre Wirkung, wenn sie zu warm werden. Besonders flüssige Medikamente, also Salben und Tropfen und so.
+gerhard:Aber Tabletten darf man auch nicht einfach so im Auto lassen.
+gerhard:Manche Medikamente machen einen aber auch empfindlicher für die Sonne oder man schwitzt nicht mehr so leicht und überhitzt. Egal, wie man sie lagert.
+gerhard:Da muss man wirklich aufpassen.
+avatar:Das ist gut zu wissen!
+[action] add_score("tip", {"source": "gerhard1"})
+
+[[Node]] medikamente_ignorieren
+[actors] avatar friedel gerhard.flipped
+[text]
+gerhard:Ja, man muss schon auf sich Acht geben.
+[action] add_score("tip", {"source": "gerhard2"})
+
+[[Node]] talk8
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Was macht Friedel?
+gerhard:In Krisen läuft der Alltag nicht so wie sonst. Ich glaube, das findet er zur Abwechslung ganz nett.
+gerhard:Er mag alles, was neu und ungewohnt ist. Ganz im Gegenteil zu mir. Haha.
+friedel:Wuff! Wuff!
+gerhard:Aber für mich sind die meisten Krisen ja auch nichts Neues mehr.
+gerhard:Man darf natürlich trotzdem nicht aufhören, wachsam zu sein. Es kann ja immer noch alles mögliche passieren.
+gerhard:Aber es ist gut, vorbereitet zu sein.
+avatar:Das stimmt.
+[action] add_score("tip", {"source": "gerhard3"})
+
+[[Node]] talk9
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Lass uns reden!
+friedel:Wuff!
+gerhard:Friedel fühlt sich wohl angesprochen.
+gerhard:Er scheint dich wirklich zu mögen.
+avatar:Ich mag ihn auch.
+gerhard:Friedel muss man auch einfach gern haben, nicht wahr, Friedel?
+friedel:Wuff!
+
+[[Node]] talk10
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Wird dir auch nicht langweilig hier?
+gerhard:Langweilig? In Krisopolis? Wohl kaum. Ist dir etwa langweilig?
+[Choice]
+- [nicht_langweilig] Nein.
+- [langweilig] Manchmal.
+
+[[Node]] nicht_langweilig
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Nein, du hast Recht, hier wird es nicht langweilig.
+gerhard:Ich hab ja auch immer zu tun. Entweder bin ich im Garten. Oder im Park mit Friedel.
+gerhard:Manchmal gehen wir auch in den Wald, Beeren oder Pilze sammeln.
+friedel:Wuff!
+gerhard:Friedel mag den Wald ganz besonders. Dann sind wir nämlich immer ganz lange unterwegs.
+friedel:Wuff! Wuff!
+gerhard:Nein, Friedel, heute geht es nicht in den Wald.
+friedel:[i]*Winsel.*[/i].
+gerhard:Aber bald wieder!
+friedel:Wuff!
+
+[[Node]] langweilig
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Manchmal wünsche ich mir schon mehr Abwechslung.
+gerhard:Oh, wirklich? Dann müssen wir mal wieder eine Gartenparty feiern!
+[set] #gerhard_will_gartenparty_feiern true
+[Choice]
+- [gartenparty_ja] Gern.
+- [gartenparty_nein] Weiß nicht.
+
+[[Node]] gartenparty_ja
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Das klingt gut!
+gerhard:Meine ich auch. Ich sag dir Bescheid!
+
+[[Node]] gartenparty_nein
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Ich weiß nicht, ob das gerade das Richtige ist.
+gerhard:Eine Gartenparty kann nie schaden. Du wirst sehen!
+friedel:Wuff!
+
+[[Node]] talk11
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Fühlst du dich auch nicht einsam hier?
+gerhard:Ich und einsam? Ich hab doch Friedel.
+friedel:Wuff!
+gerhard:Und ab und zu treffe ich junge Leute im Park. So wie dich und Kris.
+gerhard:Kris weiß wirklich eine Menge über Pflanzen. Wir teilen gerne unsere Erfahrungen.
+[jump] besuche_schoen
+[jump] besuche_ok
+
+[[Node]] besuche_schoen
+[Condition] and_bool(npc_karma_higher_than("gerhard", 0.5), npc_friendship_higher_than("gerhard", 8))
+[actors] avatar friedel gerhard.flipped
+[text]
+gerhard:Und auf deine Besuche freuen wir uns auch immer. Nicht wahr, Friedel?
+friedel:Wuff!
+avatar:Ich mich auch!
+
+[[Node]] besuche_ok
+[Condition] npc_karma_higher_than("gerhard", 0)
+[actors] avatar friedel gerhard.flipped
+[text]
+gerhard:Und du kommst ja auch oft vorbei.
+avatar:Da hast du Recht.
+
+[[Node]] talk12
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Wie kommst du zurecht?
+gerhard:Ich komm zurecht. Musste nur neulich wieder zum Tierarzt mit Friedel wegen seiner Impfung.
+gerhard:Wär mir fast durchgebrannt, der Schlawiner.
+gerhard:Manchmal denke ich, ich bin zu alt für einen so großen Angsthasen von einem Hund.
+friedel:[i]*Winsel.*[/i]
+gerhard:Aber weggeben könnte ich ihn niemals. Ich hab ihn schon, seit er ein kleiner Welpe war.
+gerhard:Also müssen wir da ab und zu eben durch. Ist ja für sein Bestes.
+friedel:[i]*Schwanzwedel?*[/i]
+
+[[Node]] talk13
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Was macht der Garten?
+gerhard:Die Kürbisse werden dieses Jahr wirklich gut.
+gerhard:Ich züchte da eine besonders große Sorte. Einer bringt es schon auf 10 Kilo, würde ich sagen.
+avatar:Das ist eine Menge!
+gerhard:Ich hatte schonmal 16 Kilo. Dieses Jahr sollen es mehr werden.
+avatar:Wow!
+friedel:Wuff!
+gerhard:Ach, ist gar nichts dabei. Nur ein bisschen Zucht und Pflege. Viel Platz. Lockere Erde. Das richtige Wetter.
+gerhard:Die richtige Düngermischung zur richtigen Zeit. Vielleicht noch ein bisschen zureden.
+gerhard:Gut zuschneiden, damit es nicht viele kleine Kürbisse werden, sondern wenige Große.
+gerhard:Dann kann eigentlich nicht mehr viel schief gehen.
+avatar:Wenn du das sagst.
+
+[[Node]] talk14
+[actors] avatar friedel gerhard.flipped
+[text]
+avatar:Kommst du gut durch die Krise?
+gerhard:Ach, so gut wie man eben durch so eine Krise kommt.
+gerhard:Ich hab ja ganz viel Essen in Dosen zuhause, das ich kalt essen kann.
+gerhard:Und ganz viel Frisches aus dem Garten.
+gerhard:Und ganz viele Vorräte für Friedel.
+friedel:Wuff?
+gerhard:Nein, jetzt ist noch nicht Essenszeit, Friedel.
+friedel:Wuuuff.
+
+
+[[Node]] trade
+[action] request_trade_gui("gerhard")
+
+[[Node]] end

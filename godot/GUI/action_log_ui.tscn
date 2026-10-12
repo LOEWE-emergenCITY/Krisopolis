@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3idrrmeeqvy6"]
+
+[ext_resource type="Script" uid="uid://bqrt3eqa7obu1" path="res://GUI/action_log_ui.gd" id="1_g2wwf"]
+
+[node name="ActionLogUI" type="HBoxContainer"]
+custom_minimum_size = Vector2(350, 30)
+script = ExtResource("1_g2wwf")
+score = 4
+
+[node name="ScoreCat" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NONAME"
+
+[node name="Score" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+bbcode_enabled = true
+text = "[right]4"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(10, 30)
+layout_mode = 2

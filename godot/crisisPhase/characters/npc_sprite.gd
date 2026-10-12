@@ -2,7 +2,7 @@
 extends Sprite2D
 class_name EMC_NPC_Sprite
 
-var texture_name: String = "dummy" 
+var texture_name: String = "dummy"
 
 func _init(dict: Dictionary = {"texture_name": "dummy"}) -> void:
 	texture_name = dict.get("texture_name", "dummy")

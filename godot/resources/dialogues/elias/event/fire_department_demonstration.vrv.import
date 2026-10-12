@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://dhij6eh6ly840"
+path="res://.godot/imported/fire_department_demonstration.vrv-cd248a7c6e9fcf272503bd579e5e76fa.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/elias/event/fire_department_demonstration.vrv"
+dest_files=["res://.godot/imported/fire_department_demonstration.vrv-cd248a7c6e9fcf272503bd579e5e76fa.tres"]
+
+[params]
+

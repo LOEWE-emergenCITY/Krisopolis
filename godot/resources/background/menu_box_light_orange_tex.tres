@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dwfavtebfsx1c"]
+
+[ext_resource type="Texture2D" uid="uid://ca5fhxi0ogtia" path="res://assets/GUI/backgrounds/menu_box_light_orange.png" id="1_siu3p"]
+
+[resource]
+texture = ExtResource("1_siu3p")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0

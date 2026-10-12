@@ -1,0 +1,294 @@
+[gd_resource type="Resource" script_class="EMC_Inventory" load_steps=65 format=3 uid="uid://bayr86p850dt"]
+
+[ext_resource type="Script" uid="uid://b0ymg5og4kujm" path="res://inventory/inventory.gd" id="1_w3uv3"]
+[ext_resource type="Script" uid="uid://dg0wue01hcvsg" path="res://inventory/item.gd" id="2_bivd5"]
+[ext_resource type="Script" uid="uid://d374ckeaba1lx" path="res://inventory/components/item_component.gd" id="3_fl1kr"]
+[ext_resource type="Texture2D" uid="uid://qk3ha65v0lsg" path="res://assets/items.png" id="3_yhqop"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl1kr"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_cek5r"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 1
+name = "Wasser"
+descr = "Das ist Wasser"
+texture = SubResource("AtlasTexture_fl1kr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0xrm"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_sne3k"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 1
+name = "Wasser"
+texture = SubResource("AtlasTexture_l0xrm")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsc3k"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_jfg7s"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 1
+texture = SubResource("AtlasTexture_lsc3k")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndl0e"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_qopyf"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 2
+texture = SubResource("AtlasTexture_ndl0e")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yv0u"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_h6djs"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 2
+texture = SubResource("AtlasTexture_8yv0u")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ekp"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_nf4yk"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 3
+texture = SubResource("AtlasTexture_u4ekp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ud0"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_dtp41"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 3
+texture = SubResource("AtlasTexture_50ud0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1n2a"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_qlra2"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 6
+texture = SubResource("AtlasTexture_p1n2a")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3tdi"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_qxkll"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 8
+texture = SubResource("AtlasTexture_o3tdi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yvnw"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_om82k"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 10
+texture = SubResource("AtlasTexture_6yvnw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28u22"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="Resource" id="Resource_vvy1j"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+id = 11
+texture = SubResource("AtlasTexture_28u22")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o45b8"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_8cmd1"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_o45b8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b052n"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_cejxl"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_b052n")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyuch"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_gvlji"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_xyuch")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufc6t"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_0k4v5"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_ufc6t")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5kw8"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_g78ee"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_e5kw8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trdou"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_cate3"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_trdou")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rp41"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_t2t57"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_8rp41")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55k6e"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_teff6"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_55k6e")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqi00"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_07ofy"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_bqi00")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffd1o"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_gsp7l"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_ffd1o")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o5dr"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_0m8j8"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_2o5dr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or42x"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_r3mwb"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_or42x")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71jq8"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_j6eqq"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_71jq8")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_med2u"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_5i23s"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_med2u")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27642"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_k3dc1"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_27642")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpt4i"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_ywlth"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_cpt4i")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6aja"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_7w187"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_t6aja")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqu5n"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_f50nd"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_vqu5n")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt6yo"]
+atlas = ExtResource("3_yhqop")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="Resource" id="Resource_qika0"]
+resource_name = "Dummy"
+script = ExtResource("2_bivd5")
+texture = SubResource("AtlasTexture_dt6yo")
+
+[resource]
+script = ExtResource("1_w3uv3")
+slots = Array[ExtResource("2_bivd5")]([SubResource("Resource_cek5r"), SubResource("Resource_sne3k"), SubResource("Resource_jfg7s"), SubResource("Resource_qopyf"), SubResource("Resource_h6djs"), SubResource("Resource_nf4yk"), SubResource("Resource_dtp41"), SubResource("Resource_qlra2"), SubResource("Resource_qxkll"), SubResource("Resource_om82k"), SubResource("Resource_vvy1j"), SubResource("Resource_8cmd1"), SubResource("Resource_cejxl"), SubResource("Resource_gvlji"), SubResource("Resource_0k4v5"), SubResource("Resource_g78ee"), SubResource("Resource_cate3"), SubResource("Resource_t2t57"), SubResource("Resource_teff6"), SubResource("Resource_07ofy"), SubResource("Resource_gsp7l"), SubResource("Resource_0m8j8"), SubResource("Resource_r3mwb"), SubResource("Resource_j6eqq"), SubResource("Resource_5i23s"), SubResource("Resource_k3dc1"), SubResource("Resource_ywlth"), SubResource("Resource_7w187"), SubResource("Resource_f50nd"), SubResource("Resource_qika0")])

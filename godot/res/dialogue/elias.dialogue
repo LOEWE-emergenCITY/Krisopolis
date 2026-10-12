@@ -15,13 +15,13 @@ Elias: Brauchen Sie was?
 
 ~ TRADE
 do TradeMngr.setup_next_trade("Elias")
-Elias: Ich biete dir {{TradeMngr.get_offered_items_text()}} falls du {{TradeMngr.get_sought_items_text()}} hast.
+Elias: Ich biete dir {{TradeMngr.get_offered_items_text()}}, falls du {{TradeMngr.get_sought_items_text()}} hast.
 if TradeMngr.is_trade_feasible()
 	Elias: Wie sieht's aus?
 	- Avatar: Angebot akzeptiert.
 		do TradeMngr.execute_trade()
 		Elias: [#mood=happy]Es war mir eine Freude mit Ihnen Geschäfte zu machen!
-	- Avatar: Nein danke.
+	- Avatar: Nein, danke.
 		Elias: Vielleicht ein ander' Mal dann.
 else
 	Elias: [#mood=sad]Tja, {{TradeMngr.get_unfeasibility_reason()}} leider!

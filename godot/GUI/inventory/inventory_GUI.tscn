@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://diu2wl65n301n"]
 
-[ext_resource type="Script" path="res://GUI/inventory/inventory_GUI.gd" id="1_ve5h2"]
+[ext_resource type="Script" uid="uid://dtx4jipwjswfb" path="res://GUI/inventory/inventory_GUI.gd" id="1_ve5h2"]
+[ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="2_8srdv"]
 [ext_resource type="PackedScene" uid="uid://bsmvtvjkbid3v" path="res://inventory/inventory_ui.tscn" id="2_opbok"]
-[ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="3_270nm"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_2ujqp"]
-[ext_resource type="Texture2D" uid="uid://b7kk24kpdehbm" path="res://assets/GUI/backgrounds/menu_box_white.png" id="4_47hfl"]
+[ext_resource type="Resource" uid="uid://bayr86p850dt" path="res://resources/test/test_inventory.tres" id="4_8abox"]
 [ext_resource type="Texture2D" uid="uid://upvg4o4g0c8" path="res://assets/GUI/buttons/button_right.png" id="5_kbada"]
 [ext_resource type="AudioStream" uid="uid://kuu2ftwlhnk2" path="res://assets/SFX/open_GUI.wav" id="5_w1mvg"]
 [ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="6_gonuj"]
@@ -18,6 +18,7 @@ emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 26.0
 emission_ring_radius = 26.0
 emission_ring_inner_radius = 8.0
+emission_ring_cone_angle = 90.0
 orbit_velocity_min = 1.0
 orbit_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
@@ -25,150 +26,116 @@ gravity = Vector3(0, 0, 0)
 [node name="InventoryGUI" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 78.0
-offset_bottom = 78.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_ve5h2")
 
 [node name="Inventory" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(450, 730)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -246.0
-offset_top = -369.0
-offset_right = 246.0
-offset_bottom = 369.0
+offset_left = -250.0
+offset_top = -290.0
+offset_right = 250.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBC" type="VBoxContainer" parent="Inventory"]
+[node name="Margin" type="MarginContainer" parent="Inventory"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBC" type="VBoxContainer" parent="Inventory/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Margin" type="MarginContainer" parent="Inventory/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = -26
+theme_override_constants/margin_right = -16
+
+[node name="Panel" type="PanelContainer" parent="Inventory/Margin/VBC/Margin"]
 layout_mode = 2
 
-[node name="Label" type="RichTextLabel" parent="Inventory/VBC"]
-custom_minimum_size = Vector2(0, 52)
+[node name="Label" type="RichTextLabel" parent="Inventory/Margin/VBC/Margin/Panel"]
+custom_minimum_size = Vector2(460, 52)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[center]Inventory[/center]"
+fit_content = true
 
-[node name="InventoryUI" parent="Inventory/VBC" instance=ExtResource("2_opbok")]
-custom_minimum_size = Vector2(416, 350)
+[node name="VBC" type="VBoxContainer" parent="Inventory/Margin/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="PanelContainer" parent="Inventory/Margin/VBC/VBC"]
+custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = ExtResource("2_8srdv")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/VBC"]
-visible = false
-custom_minimum_size = Vector2(420, 350)
+[node name="InventoryUI" parent="Inventory/Margin/VBC/VBC/Panel" instance=ExtResource("2_opbok")]
+custom_minimum_size = Vector2(404, 350)
 layout_mode = 2
 size_flags_horizontal = 4
+inventory = ExtResource("4_8abox")
 
-[node name="GridContainer" type="GridContainer" parent="Inventory/VBC/ScrollContainer"]
-visible = false
-custom_minimum_size = Vector2(404, 0)
+[node name="HBC" type="HBoxContainer" parent="Inventory/Margin/VBC/VBC"]
+custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-columns = 6
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Inventory/VBC"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 10
-
-[node name="TextBoxBG" type="NinePatchRect" parent="Inventory/VBC/MarginContainer"]
-custom_minimum_size = Vector2(400, 220)
-layout_mode = 2
-texture = ExtResource("4_47hfl")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
-
-[node name="VBC" type="VBoxContainer" parent="Inventory/VBC/MarginContainer/TextBoxBG"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 410.0
-offset_bottom = 228.0
-
-[node name="Name" type="RichTextLabel" parent="Inventory/VBC/MarginContainer/TextBoxBG/VBC"]
-custom_minimum_size = Vector2(400, 45)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-
-[node name="Components" type="RichTextLabel" parent="Inventory/VBC/MarginContainer/TextBoxBG/VBC"]
-custom_minimum_size = Vector2(200, 70)
-layout_mode = 2
-theme = ExtResource("3_270nm")
-theme_override_font_sizes/normal_font_size = 22
-
-[node name="Description" type="RichTextLabel" parent="Inventory/VBC/MarginContainer/TextBoxBG/VBC"]
-custom_minimum_size = Vector2(400, 75)
-layout_mode = 2
-theme_override_font_sizes/italics_font_size = 16
-
-[node name="MG" type="MarginContainer" parent="Inventory/VBC"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_right = 4
-
-[node name="HSC" type="HSplitContainer" parent="Inventory/VBC/MG"]
+[node name="CC" type="CenterContainer" parent="Inventory/Margin/VBC/VBC/HBC"]
+custom_minimum_size = Vector2(312, 0)
 layout_mode = 2
 
-[node name="CC" type="CenterContainer" parent="Inventory/VBC/MG/HSC"]
-custom_minimum_size = Vector2(200, 0)
+[node name="HBC" type="HBoxContainer" parent="Inventory/Margin/VBC/VBC/HBC/CC"]
 layout_mode = 2
-size_flags_vertical = 4
+theme_override_constants/separation = 20
 
-[node name="Consume" parent="Inventory/VBC/MG/HSC/CC" instance=ExtResource("4_2ujqp")]
+[node name="Consume" parent="Inventory/Margin/VBC/VBC/HBC/CC/HBC" instance=ExtResource("4_2ujqp")]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"ConfirmButton"
 text = "Konsumieren"
 
-[node name="HBC" type="HBoxContainer" parent="Inventory/VBC/MG/HSC"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme_override_constants/separation = 10
-
-[node name="Discard" parent="Inventory/VBC/MG/HSC/HBC" instance=ExtResource("4_2ujqp")]
+[node name="Info" parent="Inventory/Margin/VBC/VBC/HBC/CC/HBC" instance=ExtResource("4_2ujqp")]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
-text = "Entsorgen"
+theme_type_variation = &"BlueButton"
+text = "Info"
 
-[node name="Continue" type="TextureButton" parent="Inventory/VBC/MG/HSC/HBC"]
+[node name="Back" type="TextureButton" parent="Inventory/Margin/VBC/VBC/HBC"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("6_gonuj")
+
+[node name="Continue" type="TextureButton" parent="Inventory/Margin/VBC/VBC/HBC"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture_normal = ExtResource("5_kbada")
-
-[node name="Back" type="TextureButton" parent="Inventory/VBC/MG/HSC/HBC"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture_normal = ExtResource("6_gonuj")
 
 [node name="SFX" type="Node" parent="."]
 
@@ -183,14 +150,14 @@ bus = &"SFX"
 [node name="SpoiledVFX_Template" type="GPUParticles2D" parent="."]
 position = Vector2(-249, -478)
 amount = 4
-process_material = SubResource("ParticleProcessMaterial_3fov1")
 texture = ExtResource("8_m04a3")
 speed_scale = 0.5
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3fov1")
 
 [node name="VFX_Instances" type="Node2D" parent="."]
 
-[connection signal="pressed" from="Inventory/VBC/MG/HSC/CC/Consume" to="." method="_on_consume_pressed"]
-[connection signal="pressed" from="Inventory/VBC/MG/HSC/HBC/Discard" to="." method="_on_discard_pressed"]
-[connection signal="pressed" from="Inventory/VBC/MG/HSC/HBC/Continue" to="." method="close"]
-[connection signal="pressed" from="Inventory/VBC/MG/HSC/HBC/Back" to="." method="close"]
+[connection signal="pressed" from="Inventory/Margin/VBC/VBC/HBC/CC/HBC/Consume" to="." method="_on_consume_pressed"]
+[connection signal="pressed" from="Inventory/Margin/VBC/VBC/HBC/CC/HBC/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="Inventory/Margin/VBC/VBC/HBC/Back" to="." method="close"]
+[connection signal="pressed" from="Inventory/Margin/VBC/VBC/HBC/Continue" to="." method="close"]

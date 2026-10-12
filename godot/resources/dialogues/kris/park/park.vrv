@@ -1,0 +1,62 @@
+[[Node]] start
+[[Type]] stage
+[actors] avatar kris.flipped
+[text]
+kris:Hey, hey! Genießt du auch die frische Luft?
+[Choice]
+- [talk] Ja, und du?
+- [stop] Man sieht sich!
+
+[[Node]] talk
+[random]
+- [jump] talk1
+- [jump] talk2
+- [jump] talk3
+- [jump] talk4
+
+[[Node]] stop
+[actors] avatar kris.flipped
+[text]
+kris:Okay, bis dann!
+
+[[Node]] talk1
+[actors] avatar kris.flipped
+[text]
+kris:Frische Luft, Vogelgezwitscher, Wassergeplätscher. Gibt nix Schöneres.
+kris:Wenn ich die Augen zumache, bin ich im Wald.
+kris:Mmmhm.
+
+[[Node]] talk2
+[Condition] time_is_evening()
+[actors] avatar kris.flipped
+[text]
+kris:Eigentlich liefer ich gerade Pizzen aus. Aber ich brauchte ne kurze Auszeit.
+kris:Muss leider gleich weiter, sonst beschwert sich meine Chefin.
+
+[[Node]] talk3
+[actors] avatar kris.flipped
+[text]
+kris:Ich musste einfach mal raus.
+[random]
+- [jump] mal_raus1
+- [jump] mal_raus2
+
+[[Node]] mal_raus1
+[Condition] npc_is_sad("kris")
+[actors] avatar kris.flipped
+[text]
+kris:Dicke Luft zuhause.
+kris:Vero und ich brauchten gerade beide ne Auszeit.
+kris:Ich werd gleich wieder zurückgehen und mich entschuldigen ...
+
+[[Node]] mal_raus2
+[actors] avatar kris.flipped
+[text]
+kris:Manchmal ist Vero anstrengend mit ihrem Arbeitseifer.
+kris:So ein Spaziergang im Grünen entspannt.
+
+[[Node]] talk4
+[actors] avatar kris.flipped
+[text]
+kris:Mmmh ja. Hier kann man richtig durchatmen.
+kris:Manchmal spiele ich mit Friedel, wenn Gerhard mit ihm Gassi geht. In der Schule war mein Wurfarm nie so gut!

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqjid78osbso6"]
 
-[ext_resource type="Script" path="res://crisisPhase/day_mngr.gd" id="1_wh1q6"]
+[ext_resource type="Script" uid="uid://bygs0rishh8q7" path="res://crisisPhase/day_mngr.gd" id="1_wh1q6"]
 [ext_resource type="Texture2D" uid="uid://mlwfi58qelas" path="res://assets/GUI/icons/icon_dayperiods.png" id="2_w2qxb"]
 
 [node name="DayMngr" type="Control"]

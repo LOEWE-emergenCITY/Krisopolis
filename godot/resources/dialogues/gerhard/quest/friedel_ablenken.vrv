@@ -1,0 +1,42 @@
+[[Node]] start
+[Condition]
+has_quest FRIEDEL_ABLENKEN
+[actors] avatar gerhard.flipped
+[text]
+gerhard: Gut, dass du da bist! Hättest du vielleicht etwas Zeit, um mir einen Gefallen zu tun?
+[Choice]
+- [annehmen] Ja, klar! Worum gehts?
+- [ablehnen] Leider nein. Beim nächsten Mal!
+
+[[Node]] annehmen
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Wunderbar! Ich wollte gerade ein Beet umgraben und Friedel denkt immer, wenn ich das tue, darf er das auch.
+gerhard:Leider buddelt er mir dabei gerne meine Pflanzen im Nachbarbeet aus ...
+gerhard:Kannst du mit ihm spielen, solange ich beschäftigt bin?
+[Choice]
+- [friedel_spielen] Liebend gern!
+- [ablehnen] Oh, so viel Zeit habe ich leider nicht.
+
+[[Node]] ablehnen
+[actors] avatar gerhard.flipped
+[text]
+gerhard:Oh, okay, schade.
+
+[[Node]] annehmen
+[actors] avatar gerhard.flipped
+[text]
+friedel:Wuff! Wuff!
+gerhard:Hörst du? Er freut sich schon! Und ich auch, wenn ich in Ruhe arbeiten kann.
+[action] progress_day("Spiele mit Friedel")
+[text]
+gerhard:Ich danke dir. Ich bin jetzt fertig. Und die hier habe ich für dich gepflückt.
+[action] gain_player_item("FRUITS", "Reife Früchte direkt vom Strauch.")
+avatar:Oh, die sehen lecker aus. Danke sehr!
+friedel:Wuff?
+gerhard:Ja, Friedel. Die Zeit zum Spielen ist vorbei.
+friedel:Wuuuff ...
+gerhard:Wir gehen jetzt Gassi.
+friedel:Wuffwuff!
+avatar:Hehe. Dann viel Spaß euch beiden!
+gerhard:Danke! Komm mich gern wieder besuchen!

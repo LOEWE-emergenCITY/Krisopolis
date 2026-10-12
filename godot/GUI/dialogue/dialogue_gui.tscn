@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dusoswyk1fft6"]
 
-[ext_resource type="Script" path="res://GUI/dialogue/dialogue_gui.gd" id="1_y8y0h"]
+[ext_resource type="Script" uid="uid://43p6r1myscdx" path="res://GUI/dialogue/dialogue_gui.gd" id="1_y8y0h"]
 [ext_resource type="Texture2D" uid="uid://dwwuq7qn72bub" path="res://assets/characters/portrait_raphael.png" id="2_jtonu"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="3_t61v8"]
 [ext_resource type="AudioStream" uid="uid://c3pwao7opow8f" path="res://assets/SFX/talk.wav" id="4_3e82l"]
@@ -90,11 +90,20 @@ sefsef
  sef s
 fs efseffe f"
 
+[node name="Skip" type="TextureButton" parent="Margin/VSplitContainer/TextPanel/Box"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 483.0
+offset_bottom = 216.0
+
 [node name="Margin" type="MarginContainer" parent="Margin/VSplitContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 122)
 layout_mode = 2
 
 [node name="Skip" parent="Margin/VSplitContainer/Margin" instance=ExtResource("3_t61v8")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -109,7 +118,6 @@ theme_type_variation = &"ConfirmButton"
 text = "Weiter"
 
 [node name="VBC" type="VBoxContainer" parent="Margin/VSplitContainer"]
-visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 8
@@ -122,6 +130,7 @@ size_flags_horizontal = 4
 theme_type_variation = &"BlueButton"
 text = "Option 1"
 alignment = 0
+autowrap_mode = 2
 
 [node name="Option2" parent="Margin/VSplitContainer/VBC" instance=ExtResource("3_t61v8")]
 custom_minimum_size = Vector2(490, 0)
@@ -130,6 +139,7 @@ size_flags_horizontal = 4
 theme_type_variation = &"BlueButton"
 text = "Option 1"
 alignment = 0
+autowrap_mode = 2
 
 [node name="Option3" parent="Margin/VSplitContainer/VBC" instance=ExtResource("3_t61v8")]
 custom_minimum_size = Vector2(490, 0)
@@ -138,6 +148,7 @@ size_flags_horizontal = 4
 theme_type_variation = &"BlueButton"
 text = "Option 1"
 alignment = 0
+autowrap_mode = 2
 
 [node name="TalkSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_3e82l")

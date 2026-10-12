@@ -1,0 +1,14 @@
+[remap]
+
+importer="spexify.vervain"
+type="VRV_Script"
+uid="uid://cbak20uake0vp"
+path="res://.godot/imported/nachbarschaftsparty.vrv-fd64f4f7c635900368bd57216f30a4b6.tres"
+
+[deps]
+
+source_file="res://resources/dialogues/leonie/event/nachbarschaftsparty.vrv"
+dest_files=["res://.godot/imported/nachbarschaftsparty.vrv-fd64f4f7c635900368bd57216f30a4b6.tres"]
+
+[params]
+

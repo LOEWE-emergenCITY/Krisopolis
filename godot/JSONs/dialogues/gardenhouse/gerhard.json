@@ -1,4 +1,4 @@
-{
+{	
 	"start2": {
 		"priority": "",
 		"conditions": {
@@ -30,6 +30,12 @@
 					],
 					"remove_quest": {
 						"quest": "FRIEDEL_WEG"
+					},
+					"add_score": {
+						"name": "quest",
+						"context": {
+							"value": 30
+						}
 					}
 				}
 			}
@@ -51,8 +57,7 @@
 			"#reden": {
 				"prompt": "Reden",
 				"options": {
-					"#reden1": "",
-					"#reden2": ""
+					"#reden1": "", "#reden2": "", "#reden3": "", "#reden4": ""
 				}
 			},
 			"#handeln": "tatsächlich überhaupt nicht relevant was hier steht",
@@ -72,9 +77,9 @@
 		],
 		"text": [
 			"avatar#Lass uns reden! Wie geht's dir?",
-			"gerhard.r#Man kann sich nicht beklagen. Also, man könnte schon, aber man tuts ja nicht.",
+			"gerhard.r#Man kann sich nicht beklagen. Also, man könnte schon, aber man tut es ja nicht.",
 			"friedel#Wuff.",
-			"gerhard#Worüber willst du dich den beklagen? Zu wenig Essen?",
+			"gerhard#Worüber willst du dich denn beklagen? Zu wenig Essen?",
 			"friedel#Wuff ...",
 			"gerhard#... na gut. Ein Leckerli noch. Aber das ist das Letzte für heute!",
 			"friedel#Wuff!"
@@ -90,12 +95,166 @@
 			"gerhard.r"
 		],
 		"text": [
-			"avatar#Lass uns reden! Wie geht's Friedel?",
-			"gerhard.r#Manchmal glaub ich, er spürt, dass wir uns in einer Krise befinden.",
+			"avatar#Lass uns reden! Wie geht es Friedel?",
+			"gerhard.r#Manchmal glaube ich, er spürt, dass wir uns in einer Krise befinden.",
 			"gerhard.r#Wenn er am Fenster liegt und traurig nach draußen schaut. Oder wenn er anhänglicher wird als sonst.",
-			"gerhard.r#Aber am nächsten Tag tollt er wieder durch den Park, ohne eine Sorge im Leben ... Also vielleicht doch nicht.",
+			"gerhard.r#Aber am nächsten Tag tollt er wieder durch den Park, ohne eine Sorge im Leben ... also vielleicht doch nicht.",
 			"avatar#Hund müsste man sein ...",
 			"friedel#Wuff!"
+		]
+	},
+	"#reden3": {
+		"actors": [
+			"avatar",
+			"friedel",
+			"gerhard.r"
+		],
+		"text": [
+			"avatar#Lass uns reden! Was macht die Gartenarbeit?",
+			"gerhard.r#Arbeit? So würde ich das nicht nennen.",
+			"gerhard.r#Der Garten war immer mein Rückzugsort nach der Arbeit.",
+			"gerhard.r#Und heute ist er mein ganzer Stolz.",
+			"friedel#Wuff?",
+			"gerhard.r#Zusammen mit Friedel, natürlich.",
+			"friedel#Wuff!"
+		]
+	},
+	"#reden4": {
+		"conditions": {
+			"method": "has_mood",
+			"mood": -1
+		},
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! Du siehst aus, als wärst du verärgert.",
+			"gerhard.r#Wirklich? Hm, ja. Ich habe mich in der Tat etwas geärgert.",
+			"gerhard.r#Dieser junge Bursche mit seinem E-Scooter ist schuld.",
+			"gerhard.r#Der im Anzug und mit diesen Stöpseln im Ohr.",
+			"gerhard.r#Düst immer durch den Park, als sei er auf ner Rennstrecke.",
+			"gerhard.r#Rast keine Handbreit an mir und Friedel vorbei, als gäbe es niemanden außer ihm auf der Welt.",
+			"gerhard.r#Friedel ist ja wirklich nicht leicht aus der Ruhe zu bringen, aber die E-Scooter machen ihn wahnsinnig.",
+			"gerhard.r#Das ärgert mich.",
+			"friedel#Winsel."
+		]
+	},
+	"#reden5": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden6": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden7": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden8": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden9": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden10": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden11": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden12": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden13": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
+		]
+	},
+	"#reden14": {
+		"actors": ["avatar", "friedel", "gerhard.r"],
+		"text": [
+			"avatar#Lass uns reden! ",
+			"gerhard.r#",
+			"gerhard.r#",
+			"gerhard.r#.",
+			"friedel#",
+			"gerhard.r#",
+			"friedel#"
 		]
 	},
 	"#handeln": {

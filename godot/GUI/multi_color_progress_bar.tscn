@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfvannwhsjdtl"]
+
+[ext_resource type="Script" uid="uid://dv0nyybs6jt0s" path="res://GUI/multi_color_progress_bar.gd" id="1_go723"]
+[ext_resource type="StyleBox" uid="uid://dt8x7ww14ngtb" path="res://resources/background/menu_box_white_tex.tres" id="2_byw0o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ix80a"]
+
+[node name="Progressbar" type="Control"]
+custom_minimum_size = Vector2(384, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 32.0
+script = ExtResource("1_go723")
+style_box_fill = ExtResource("2_byw0o")
+style_box_back = SubResource("StyleBoxEmpty_ix80a")
+colors = Array[Color]([Color(0.482353, 0.690196, 0.87451, 1), Color(0.564706, 0.784314, 0.52549, 1), Color(0.952941, 0.427451, 0.439216, 1), Color(0.94902, 0.576471, 0.176471, 1)])
+
+[node name="@ProgressBar@41741" type="ProgressBar" parent="."]
+modulate = Color(0.482353, 0.690196, 0.87451, 1)
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ix80a")
+theme_override_styles/fill = ExtResource("2_byw0o")
+value = 100.0
+show_percentage = false
+
+[node name="@ProgressBar@41742" type="ProgressBar" parent="."]
+modulate = Color(0.564706, 0.784314, 0.52549, 1)
+layout_mode = 0
+offset_left = 96.0
+offset_right = 192.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ix80a")
+theme_override_styles/fill = ExtResource("2_byw0o")
+value = 100.0
+show_percentage = false
+
+[node name="@ProgressBar@41743" type="ProgressBar" parent="."]
+modulate = Color(0.952941, 0.427451, 0.439216, 1)
+layout_mode = 0
+offset_left = 192.0
+offset_right = 288.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ix80a")
+theme_override_styles/fill = ExtResource("2_byw0o")
+value = 100.0
+show_percentage = false
+
+[node name="@ProgressBar@41744" type="ProgressBar" parent="."]
+modulate = Color(0.94902, 0.576471, 0.176471, 1)
+layout_mode = 0
+offset_left = 288.0
+offset_right = 384.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ix80a")
+theme_override_styles/fill = ExtResource("2_byw0o")
+value = 100.0
+show_percentage = false

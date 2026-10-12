@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cr304u228icot"]
 
-[ext_resource type="Script" path="res://GUI/npc_interaction_gui.gd" id="1_fosp6"]
+[ext_resource type="Script" uid="uid://gfc8gt7fsd4f" path="res://GUI/npc_interaction_gui.gd" id="1_fosp6"]
 [ext_resource type="Texture2D" uid="uid://byakht1f2qa3a" path="res://assets/characters/portrait_gerhard.png" id="2_t5c1u"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="3_ricak"]
 

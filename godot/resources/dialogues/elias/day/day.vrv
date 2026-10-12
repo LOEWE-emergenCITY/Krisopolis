@@ -1,0 +1,238 @@
+[[Node]] start
+[actors] avatar elias.flipped
+[text]
+elias:Hi.
+[random]
+- [jump] branchRedetNicht
+- [jump] branchRedet
+
+[[Node]] branchRedetNicht
+[Condition] and_bool(npc_is_sad("elias"), npc_karma_less_than("elias", -0.8))
+[actors] avatar elias.flipped
+[text]
+elias:Brauchen Sie was?
+[Choice]
+- [no_time] Nein, lass uns reden!
+- [trade] Ja, lass uns handeln.
+- [stop] Nö.
+
+[[Node]] no_time
+[actors] avatar elias.flipped
+[text]
+elias:Dafür hab ich gerade keine Zeit.
+elias:Sorry.
+
+[[Node]] branchRedet
+[actors] avatar elias.flipped
+[text]
+elias:Brauchen Sie was?
+[Choice]
+- [talk] Nein, lass uns reden!
+- [trade] Ja, lass uns handeln.
+- [stop] Nö.
+
+[[Node]] stop
+
+[[Node]] talk
+[set] @last_talk get_talk_from_range(8, get_var_or(@last_talk, "talk-1"), get_var_or(@last_day, -1))
+[set] @last_day get_period_count()
+[jump] @last_talk
+[set] @last_talk "talk-1"
+[jump] talk
+
+[[Node]] talk1
+[actors] avatar elias.flipped
+[text]
+elias:Gefällt Ihnen meine Einrichtung?
+[Choice]
+- [EinrichtungGefaellt] Ja, gefällt mir gut.
+- [EinrichtungGefaelltNicht] Ich weiß nicht.
+
+[[Node]] EinrichtungGefaellt
+[actors] avatar elias.flipped
+[text]
+elias:Endlich jemand mit Geschmack in dieser Katastrophe von einer Stadt.
+
+[[Node]] EinrichtungGefaelltNicht
+[actors] avatar elias.flipped
+[text]
+avatar:Sie wirkt etwas unpersönlich.
+elias:Ha! Sie sind genau wie die alte Tante, von der ich die Wohnung übernommen habe.
+elias:Kam mal hier vorbei. Auf dem Weg vom Rathaus, meinte sie.
+elias:Wollte ihrer Nostalgie frönen. Oder so ähnlich.
+elias:Als sie die Couch gesehen hat, dachte ich, sie kriegt nen Herzinfarkt. Hab sie nicht mehr hier gesehen.
+
+[[Node]] talk2
+[actors] avatar elias.flipped
+[text]
+elias:Ich weiß nicht, warum ich hierher gezogen bin.
+elias:Wie soll man bei diesen ständigen Internetausfällen vernünftig arbeiten?
+elias:Ich bin Geschäftsmann! Diese Krisen sind unkalkulierbare Risiken!
+[Choice]
+- [WarumHergezogen] Warum dann herziehen?
+- [Wegziehen] Warum nicht wegziehen?
+
+[[Node]] WarumHergezogen
+[actors] avatar elias.flipped
+[text]
+avatar:Warum sind Sie dann hergezogen?
+elias:Frag ich mich auch...
+[random]
+- [jump] dialog2Mood1
+- [jump] dialog2Mood2
+- [jump] dialog2Mood3
+
+[[Node]] dialog2Mood1
+[Condition] npc_is_happy("elias")
+[actors] avatar elias.flipped
+[text]
+elias:Mein Vater kam von hier.
+elias:Hat immer von der Stadt geschwärmt. Wollte immer zurück.
+elias:Aber meine Mutter wollte nicht. Zu gefährlich, meint sie.
+elias:Ich schätze, ich war einfach neugierig.
+[jump] ZuVielErzaehlt
+
+[[Node]] ZuVielErzaehlt
+[Condition] npc_karma_less_than("elias",0.5)
+[actors] avatar elias.flipped
+[text]
+elias:Aber warum erzähle ich Ihnen das überhaupt? Das geht Sie gar nichts an.
+elias:Gehen Sie, damit ich meine gute Laune nicht noch verliere!
+
+[[Node]] dialog2Mood2
+[Condition] and_bool(not_bool(npc_is_happy("elias")), not_bool(npc_is_sad("elias")))
+[actors] avatar elias.flipped
+[text]
+elias:...
+elias:Mein Vater hat hier mal gewohnt.
+elias:Ich wollte einen Ortswechsel. Ich wusste von diesem Ort.
+elias:Ich schätze, es braucht keinen guten Grund, nur die Gelegenheit.
+
+[[Node]] dialog2Mood3
+[Condition] npc_is_sad("elias")
+[actors] avatar elias.flipped
+[text]
+elias:Irgendein sentimentaler Unsinn.
+elias:Auf den Spuren meines Vaters. So ein Quatsch.
+
+[[Node]] Wegziehen
+[actors] avatar elias.flipped
+[text]
+avatar:Warum ziehen Sie dann nicht weg?
+elias:Sollte ich vielleicht.
+
+[[Node]] talk3
+[actors] avatar elias.flipped
+[text]
+elias:Ich hatte heute wieder ein Meeting, in dem einer nie zum Ende kam.
+elias:Keine Ahnung, was er gesagt hat. Ich hab parallel Mails beantwortet.
+elias:Aber sowas regt mich auf. Zeit ist Geld! Es gibt Leute, die das einfach nicht begreifen!
+
+[[Node]] talk4
+[actors] avatar elias.flipped
+[text]
+elias:Ich hab mir einen neuen E-Scooter geleistet.
+elias:Unbezahlbar die Dinger.
+avatar:Ja, die sind schon sehr teuer.
+elias:Teuer? Nein, ich meinte doch nicht in der Anschaffung, das ist ja ein Klacks.
+elias:Aber es spart so viel Zeit, mit dem Scooter zu fahren, statt zu Fuß zu gehen.
+
+[[Node]] talk5
+[actors] avatar elias.flipped
+[text]
+elias:Fürchterlich, was hier in dieser Stadt für Zustände herrschen!
+elias:Im Park läuft einem so ein verträumter Typ in den Weg. Oder ne Frau. Keine Ahnung.
+elias:Und auf der Straße wird man fast von nem weißen Riesenhund vom Scooter geworfen.
+elias:Konnte grade noch ausweichen. Was mir alles hätte passieren können ... und der Scooter ist neu!
+elias:Kein Besitzer in Sicht, keine Leine. Der läuft einfach so rum.
+elias:Angebellt hat er mich auch noch. Nicht zu fassen, sowas.
+
+[[Node]] talk6
+[actors] avatar elias.flipped
+[text]
+elias:Ich hab nen Kundentermin verpasst.
+elias:Der Termin war in meinem Kalender, aber ich hab keine Erinnerung bekommen. Auf Voice Assistants ist auch kein Verlass.
+elias:Wie soll ich denn so arbeiten? Ich hab doch keine Zeit, ständig meinen Kalender zu prüfen, welche Termine ich hab.
+elias:Wenn der Kunde wenigstens so intelligent gewesen wäre, mich anzurufen. Aber nein.
+elias:Er hat nur ne Mail geschickt. Als ob ich es mir leisten könnte, auf alle Notifications zu reagieren.
+[match] npc_friendship_higher_than("elias",15)
+- [true] [text]
+	elias:Hab zurückgeschrieben, dass hier wieder das Internet ausgefallen war.
+	elias:Das war immerhin der Vorteil davon, dass er nicht angerufen hat. Konnte so tun, als ob es nicht an meiner Technik gelegen hätte.
+	elias:Am Ende denkt er sonst noch, ich bin unfähig.
+- [false] [text]
+	elias:Ich bräuchte ne Sekretärin. Wenn die mich nicht an Termine erinnert, kann ich sie wenigstens ersetzen.
+	elias:Der Technik ist man ausgeliefert.
+[Comment]
+	[if] npc_friendship_higher_than("elias",15)
+		[then]
+			[text]
+			elias:Hab zurückgeschrieben, dass hier wieder das Internet ausgefallen war.
+			elias:Das war immerhin der Vorteil davon, dass er nicht angerufen hat. Konnte so tun, als ob es nicht an meiner Technik gelegen hätte.
+			elias:Am Ende denkt er sonst noch, ich bin unfähig.
+		[else]
+			[text]
+			elias:Ich bräuchte ne Sekretärin. Wenn die mich nicht an Termine erinnert, kann ich sie wenigstens ersetzen.
+			elias:Der Technik ist man ausgeliefert.
+
+[[Node]] talk7
+[actors] avatar elias.flipped
+[text]
+elias:...
+avatar:Ähm. Hallo?
+elias:Hä? Was?
+avatar:Alles in Ordnung?
+elias:Klar. Wieso? Wollten Sie was? Ich war gerade mit den Gedanken bei der Arbeit.
+[Choice]
+- [silence] Ja. Reden.
+- [nothing] Nein, nichts.
+
+[[Node]] silence
+[actors] avatar elias.flipped
+[text]
+elias:Ah ...
+elias:...
+
+[[Node]] nothing
+[actors] avatar elias.flipped
+[text]
+elias:Gut.
+
+[[Node]] talk8
+[actors] avatar elias.flipped
+[text]
+elias:Ich war bei einem Meetup für Geschäftsleute.
+elias:Gute Connections sind alles. Da kann man sich auch mal sowas antun.
+elias:Wenn du mit 100 Leuten redest, kriegst du einen neuen Kontakt. Reine Statistik.
+[match] get_var_or(@talked_of_veronika, false)
+- [false] [jump] set_talked_veronika
+- [true] [text]
+	elias:Sind natürlich keine 100 Leute da. Wer lässt sich als Geschäftsmann schon in einem Krisengebiet nieder?
+	elias:Dafür ist das Essen gut.
+[action] output("Here")
+[Comment]
+	[if] eq_bool(@talked_of_veronika, false)
+		[then]
+			[text]
+			elias:Hab mit ner Fotografin geredet. Workaholic und absolut perfektionistisch.
+			elias:Bleibt einem wohl auch nicht viel übrig, wenn man so ersetzbar ist.
+			elias:Aber wenn ich mal wieder ein Businessfoto brauche, weiß ich, wen ich anfrage.
+			[set] @talked_of_veronika true
+		[else]
+			[text]
+			elias:Sind natürlich keine 100 Leute da. Wer lässt sich als Geschäftsmann schon in einem Krisengebiet nieder?
+			elias:Dafür ist das Essen gut.
+
+[[Node]] set_talked_veronika
+[actors] avatar elias.flipped
+[text]
+elias:Hab mit ner Fotografin geredet. Workaholic und absolut perfektionistisch.
+elias:Bleibt einem wohl auch nicht viel übrig, wenn man so ersetzbar ist.
+elias:Aber wenn ich mal wieder ein Businessfoto brauche, weiß ich, wen ich anfrage.
+[set] @talked_of_veronika true
+
+[[Node]] trade
+[actors] avatar elias.flipped
+[text]
+elias:Für ein gutes Tauschgeschäft bin ich immer zu haben!
+[action] request_trade_gui("elias")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdvvsn8hcgjtw"]
+
+[ext_resource type="Script" uid="uid://cxtht26328a4w" path="res://GUI/default/confirmation_GUI.gd" id="2_y13du"]
+[ext_resource type="Texture2D" uid="uid://b7kk24kpdehbm" path="res://assets/GUI/backgrounds/menu_box_white.png" id="3_2x76g"]
+[ext_resource type="Theme" uid="uid://c38cnaco26erq" path="res://GUI/default_theme.tres" id="4_60yqs"]
+[ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="4_frcv6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h7xur"]
+texture = ExtResource("3_2x76g")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[node name="ConfirmationGUI" type="PanelContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -110.0
+offset_right = 246.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+script = ExtResource("2_y13du")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_h7xur")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("4_60yqs")
+bbcode_enabled = true
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ConfirmationBtn" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_frcv6")]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_type_variation = &"ConfirmButton"
+text = "Bestätigen"
+
+[node name="Cancel" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_frcv6")]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_type_variation = &"CancelButton"
+text = "Abbrechen"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ConfirmationBtn" to="." method="_on_confirmation_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]

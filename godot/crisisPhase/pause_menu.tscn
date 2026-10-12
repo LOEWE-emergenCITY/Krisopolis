@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8su8e0hk46wu"]
+[gd_scene load_steps=3 format=3 uid="uid://b8su8e0hk46wu"]
 
-[ext_resource type="Script" path="res://crisisPhase/pause_menu.gd" id="1_wnduq"]
-[ext_resource type="Texture2D" uid="uid://psk280o4uf5a" path="res://assets/GUI/icons/icon_semaphore.png" id="2_wuoxr"]
+[ext_resource type="Script" uid="uid://brfxpbjfhjdd0" path="res://crisisPhase/pause_menu.gd" id="1_wnduq"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="3_yj78q"]
 
 [node name="PauseMenu" type="Control"]
@@ -49,113 +48,6 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(300, 250)
 layout_mode = 2
 
-[node name="ElectricityState" type="HBoxContainer" parent="VBC/OverworldStates/VBC"]
-visible = false
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBC/OverworldStates/VBC/ElectricityState"]
-custom_minimum_size = Vector2(35, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="VBC/OverworldStates/VBC/ElectricityState/TextureRect"]
-texture = ExtResource("2_wuoxr")
-centered = false
-hframes = 3
-
-[node name="Name" type="RichTextLabel" parent="VBC/OverworldStates/VBC/ElectricityState"]
-custom_minimum_size = Vector2(120, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "[color=white]Strom:[/color]"
-
-[node name="Value" type="RichTextLabel" parent="VBC/OverworldStates/VBC/ElectricityState"]
-custom_minimum_size = Vector2(350, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "-
-"
-
-[node name="WaterState" type="HBoxContainer" parent="VBC/OverworldStates/VBC"]
-visible = false
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBC/OverworldStates/VBC/WaterState"]
-custom_minimum_size = Vector2(35, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="VBC/OverworldStates/VBC/WaterState/TextureRect"]
-texture = ExtResource("2_wuoxr")
-centered = false
-hframes = 3
-
-[node name="Name" type="RichTextLabel" parent="VBC/OverworldStates/VBC/WaterState"]
-custom_minimum_size = Vector2(120, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "[color=white]Wasser:[/color]"
-
-[node name="Value" type="RichTextLabel" parent="VBC/OverworldStates/VBC/WaterState"]
-custom_minimum_size = Vector2(350, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "-"
-
-[node name="IsolationState" type="HBoxContainer" parent="VBC/OverworldStates/VBC"]
-visible = false
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBC/OverworldStates/VBC/IsolationState"]
-custom_minimum_size = Vector2(35, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="VBC/OverworldStates/VBC/IsolationState/TextureRect"]
-texture = ExtResource("2_wuoxr")
-centered = false
-hframes = 3
-
-[node name="Name" type="RichTextLabel" parent="VBC/OverworldStates/VBC/IsolationState"]
-custom_minimum_size = Vector2(120, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "[color=white]Isolation:[/color]"
-
-[node name="Value" type="RichTextLabel" parent="VBC/OverworldStates/VBC/IsolationState"]
-custom_minimum_size = Vector2(350, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "-
-"
-
-[node name="FoodContamState" type="HBoxContainer" parent="VBC/OverworldStates/VBC"]
-visible = false
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBC/OverworldStates/VBC/FoodContamState"]
-custom_minimum_size = Vector2(35, 40)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="VBC/OverworldStates/VBC/FoodContamState/TextureRect"]
-texture = ExtResource("2_wuoxr")
-centered = false
-hframes = 3
-
-[node name="Name" type="RichTextLabel" parent="VBC/OverworldStates/VBC/FoodContamState"]
-custom_minimum_size = Vector2(120, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "[color=white]Essen:[/color]"
-
-[node name="Value" type="RichTextLabel" parent="VBC/OverworldStates/VBC/FoodContamState"]
-custom_minimum_size = Vector2(350, 40)
-layout_mode = 2
-bbcode_enabled = true
-text = "-
-"
-
 [node name="CenterContainer2" type="CenterContainer" parent="VBC"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
@@ -185,7 +77,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Speichern & Schließen"
 
+[node name="Save" parent="VBC/CenterContainer2/Buttons" instance=ExtResource("3_yj78q")]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Speichern"
+
 [connection signal="pressed" from="VBC/CenterContainer2/Buttons/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="VBC/CenterContainer2/Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBC/CenterContainer2/Buttons/CancelCurrCrisis" to="." method="_on_cancel_curr_crisis_pressed"]
 [connection signal="pressed" from="VBC/CenterContainer2/Buttons/SaveAndQuit" to="." method="_on_save_and_quit_pressed"]
+[connection signal="pressed" from="VBC/CenterContainer2/Buttons/Save" to="." method="_on_save_pressed"]

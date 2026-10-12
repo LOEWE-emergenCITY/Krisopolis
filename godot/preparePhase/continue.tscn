@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccgia2x32o7ds"]
+[gd_scene load_steps=4 format=3 uid="uid://ccgia2x32o7ds"]
 
-[ext_resource type="Script" path="res://preparePhase/continue.gd" id="1_3lud4"]
+[ext_resource type="Script" uid="uid://vkowsp7tgot2" path="res://preparePhase/continue.gd" id="1_3lud4"]
+[ext_resource type="Texture2D" uid="uid://dnbnxosef5r58" path="res://assets/citymap/citymap.png" id="2_owx4m"]
 [ext_resource type="PackedScene" uid="uid://cf2pewcvtrtic" path="res://util/UX_button.tscn" id="2_uhejc"]
 
 [node name="Continue" type="Control"]
@@ -12,48 +13,64 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3lud4")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.470588, 0.470588, 0.470588, 1)
+[node name="ColorRect" type="TextureRect" parent="."]
+self_modulate = Color(0.470588, 0.470588, 0.470588, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_owx4m")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 568.0
-offset_bottom = 1016.0
+[node name="Margin" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="Margin" type="MarginContainer" parent="ColorRect/Margin"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 60
+theme_override_constants/margin_bottom = 120
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 116)
+[node name="Margin" type="MarginContainer" parent="ColorRect/Margin/Margin"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 45
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Title" type="RichTextLabel" parent="ColorRect/Margin/Margin/Margin"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 46
 bbcode_enabled = true
 text = "[center]Du bist in der Mitte einer Krise.[/center]"
+fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Margin"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 20
 
-[node name="Continue" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_uhejc")]
-custom_minimum_size = Vector2(0, 90)
+[node name="Continue" parent="ColorRect/Margin/VBoxContainer" instance=ExtResource("2_uhejc")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+size_flags_vertical = 8
+theme_type_variation = &"ConfirmButton"
 text = "Krise fortsetzen"
 
-[node name="Reset" parent="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_uhejc")]
-custom_minimum_size = Vector2(0, 90)
+[node name="Cancel" parent="ColorRect/Margin/VBoxContainer" instance=ExtResource("2_uhejc")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Krise zurücksetzen"
+size_flags_vertical = 8
+theme_type_variation = &"CancelButton"
+text = "Krise abbrechen"
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/VBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="ColorRect/Margin/VBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
