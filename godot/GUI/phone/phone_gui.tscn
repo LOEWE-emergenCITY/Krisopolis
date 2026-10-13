@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bwmnipiors5rv" path="res://GUI/phone/warn_app.tscn" id="8_5bq30"]
 [ext_resource type="Texture2D" uid="uid://b210wc8r8w571" path="res://assets/GUI/buttons/button_back.png" id="11_hinpo"]
 [ext_resource type="PackedScene" uid="uid://dctdukswlxo43" path="res://GUI/phone/cook_app.tscn" id="12_npk8y"]
+[ext_resource type="Texture2D" uid="uid://dcgwu2rccab6r" path="res://assets/GUI/icons/icon_NPC_relation.png" id="13_contacts"]
+[ext_resource type="PackedScene" uid="uid://bqx7contactsapp01" path="res://GUI/phone/contacts_app.tscn" id="14_contacts"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i3whd"]
 load_path = "res://.godot/imported/menu_box_black.png-4754cbdfea1e979fe3ed2615d0e2dc2b.ctex"
@@ -125,6 +127,12 @@ app = "Cook"
 icon = ExtResource("7_utskd")
 title = "[center]Kochbuch[/center]"
 
+[node name="Contacts" parent="VBC/Menu/Margin/Grid" instance=ExtResource("2_41ni8")]
+layout_mode = 2
+app = "Contacts"
+icon = ExtResource("13_contacts")
+title = "[center]Kontakte[/center]"
+
 [node name="Off" type="PanelContainer" parent="."]
 visible = false
 custom_minimum_size = Vector2(492, 940)
@@ -178,7 +186,13 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="Contacts" parent="Apps" node_paths=PackedStringArray("gsi") instance=ExtResource("14_contacts")]
+visible = false
+layout_mode = 1
+gsi = NodePath("../../../../../EMC_GSI")
+
 [connection signal="app_pressed" from="VBC/Menu/Margin/Grid/Warn" to="." method="handle_app"]
 [connection signal="app_pressed" from="VBC/Menu/Margin/Grid/Check" to="." method="handle_app"]
 [connection signal="app_pressed" from="VBC/Menu/Margin/Grid/Cook" to="." method="handle_app"]
+[connection signal="app_pressed" from="VBC/Menu/Margin/Grid/Contacts" to="." method="handle_app"]
 [connection signal="pressed" from="Margin/BackButton" to="." method="close"]

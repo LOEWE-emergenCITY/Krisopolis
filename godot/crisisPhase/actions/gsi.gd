@@ -39,6 +39,13 @@ func request_gui(gui_name: String, args: Array) -> bool:
 	_gui_mngr.request_gui(gui_name, args)
 	return true
 
+
+func call_npc(npc: EMC_NPC) -> bool:
+	while _gui_mngr.is_any_gui():
+		_gui_mngr.close_current_gui()
+	request_gui("NpcInteraction", [npc])
+	return true
+
 func add_score(log_name: String, context: Dictionary) -> bool:
 	_score.add_score(log_name, context)
 	return true

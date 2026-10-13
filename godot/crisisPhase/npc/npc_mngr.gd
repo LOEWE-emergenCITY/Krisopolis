@@ -12,11 +12,27 @@ func setup() -> void:
 ### Add NPCs to the scene
 func _setup_NPCs(npc_resources: Array[EMC_NPC_Resource]) -> void:
 	for npc_res: EMC_NPC_Resource in npc_resources:
+		_ensure_needs_comp(npc_res)
 		var new_npc: EMC_NPC = _NPC_SCN.instantiate()
 		new_npc.npc_resource = npc_res
 		new_npc.clicked.connect(_stage_mngr._on_NPC_clicked)
 		
 		add_child(new_npc)
+
+
+func _ensure_needs_comp(npc_res: EMC_NPC_Resource) -> void:
+	if npc_res.has_comp(EMC_NPC_Needs):
+		var needs: EMC_NPC_Needs = npc_res.get_comp(EMC_NPC_Needs)
+		var stage: EMC_NPC_Stage = npc_res.get_comp(EMC_NPC_Stage)
+		if stage != null:
+			needs.bind_home(stage)
+		return
+	
+	var needs := EMC_NPC_Needs.new()
+	var stage: EMC_NPC_Stage = npc_res.get_comp(EMC_NPC_Stage)
+	if stage != null:
+		needs.bind_home(stage)
+	npc_res.add_comp(needs)
 
 func get_NPC(p_NPC_name: String) -> EMC_NPC:
 	return get_node(p_NPC_name.to_pascal_case())
@@ -46,8 +62,44 @@ func deactivate_NPCs() -> void:
 	for NPC: EMC_NPC in get_children():
 		NPC.hide()
 
-func let_npcs_act() -> void:
-	pass
+func let_npcs_act(_new_period: int) -> void:
+	var day_period: EMC_DayMngr.DayPeriod = _stage_mngr._day_mngr.get_current_day_period()
+	var any_moved := false
+	
+	for npc: EMC_NPC in get_children():
+		var needs: EMC_NPC_Needs = npc.npc_resource.get_comp(EMC_NPC_Needs)
+		if needs == null:
+			continue
+		
+		var npc_stage: EMC_NPC_Stage = npc.npc_resource.get_comp(EMC_NPC_Stage)
+		if npc_stage == null:
+			continue
+		
+		needs.tick_period(day_period)
+		var target: Dictionary = needs.choose_target()
+		var target_stage: String = target.get("stage_name", npc_stage.stage_name)
+		var target_spot: String = target.get("spot", npc_stage.spot)
+		
+		if npc_stage.stage_name != target_stage or npc_stage.spot != target_spot:
+			npc_stage.change_stage(target_stage, target_spot)
+			any_moved = true
+		_satisfy_needs_at_stage(needs, target_stage)
+	
+	if any_moved:
+		_on_stage_changed(_stage_mngr.get_curr_stage_name())
+
+
+func _satisfy_needs_at_stage(needs: EMC_NPC_Needs, stage_name: String) -> void:
+	match stage_name:
+		EMC_StageMngr.STAGENAME_MARKET:
+			needs.hunger = clampf(needs.hunger - 35.0, 0.0, 100.0)
+		EMC_StageMngr.STAGENAME_HOME:
+			if OverworldStatesMngr.is_effective_state_eq("WaterState", "CLEAN"):
+				needs.thirst = clampf(needs.thirst - 30.0, 0.0, 100.0)
+		EMC_StageMngr.STAGENAME_PARK:
+			needs.social = clampf(needs.social - 30.0, 0.0, 100.0)
+		_:
+			needs.safety = clampf(needs.safety - 20.0, 0.0, 100.0)
 	#var npcs := NPCs.get_children()
 	#npcs.shuffle()
 	#print("\n\nDay: " + str(_day_mngr.get_current_day()) + " Preiod: " + str(_day_mngr.get_current_day_period()))

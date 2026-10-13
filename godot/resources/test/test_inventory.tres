@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EMC_Inventory" load_steps=65 format=3 uid="uid://bayr86p850dt"]
+[gd_resource type="Resource" script_class="EMC_Inventory" format=3 uid="uid://bayr86p850dt"]
 
 [ext_resource type="Script" uid="uid://b0ymg5og4kujm" path="res://inventory/inventory.gd" id="1_w3uv3"]
 [ext_resource type="Script" uid="uid://dg0wue01hcvsg" path="res://inventory/item.gd" id="2_bivd5"]

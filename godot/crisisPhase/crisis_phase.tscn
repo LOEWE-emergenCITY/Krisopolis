@@ -388,6 +388,7 @@ gsi = NodePath("../EMC_GSI")
 metadata/_custom_type_script = "uid://bmk42mgjk4yaq"
 
 [connection signal="stage_changed" from="StageMngr" to="NPCMngr" method="_on_stage_changed"]
+[connection signal="period_increased" from="GUI/CL/VBC/UpperSection/HBC/DayMngr" to="NPCMngr" method="let_npcs_act"]
 [connection signal="status_updated" from="Avatar" to="GUI/CL/VBC/UpperSection/HBC/StatusBars" method="update_bars"]
 [connection signal="pressed" from="GUI/ButtonList/VBC/InfoCenterBtn" to="GUI" method="_on_info_center_btn_pressed"]
 [connection signal="pressed" from="GUI/ButtonList/VBC/PauseMenuBtn" to="GUI" method="_on_pause_menu_btn_pressed"]
