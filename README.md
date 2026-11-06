@@ -3,7 +3,7 @@
 **A serious game about crisis preparedness.** Survive power outages, lockdowns and storms in a fictional city, and learn what actually helps in a real crisis.
 
 [Google Play](https://play.google.com/store/apps/details?id=de.tu_darmstadt.krisopolis.android) · [App Store](https://apps.apple.com/de/app/krisopolis/id6478697470) · [Website](https://krisopolis.de/) · [Trailer on YouTube](https://www.youtube.com/watch?v=Mu4yAavImCA&list=PLtH4i5VlDa4y7mhsshb_5316KVgPm5Ok-) · [MIT License](LICENSE.txt)
-![[logo_krisopolis.png]]
+![Logo](logo_krisopolis.png)
 
 ## About
 
